@@ -1,0 +1,290 @@
+@BOOK{Laudon1999,
+  title = {Information Systems and the Internet: A Problem-Solving Approach},
+  publisher = {The Dryden Press, Fort Worth},
+  year = {1999},
+  author = {Kenneth C. Laudon and Jane P. Laudon},
+  pages = {1-31},
+  edition = {4th},
+  timestamp = {2013.10.30}
+}
+
+@misc{BoatCloud,
+  title = {BoatCloud},
+  url = {http://www.boatcloud.com/clubhub.htm},
+  urldate = {2014-02-13},
+  year = {2014},
+  author = {Anderson Software}
+}
+ 
+@misc{SailClub,
+  title = {Sailing Club Manager},
+  url = {http://www.sailingclubmanager.com},
+  urldate = {2014-02-13},
+  year = {2014},
+  author = {SailingClubManager}
+}
+
+@misc{SundetUdlaan,
+  title = {Sejlklubben Sundet - Udlån},
+  url = {http://sundet.dk/baadudlaan/baadlaan.htm},
+  urldate = {2014-02-13},
+  year = {2014},
+  author = {{Sejlklubben Sundet}}
+}
+@misc{Sundet,
+  title = {Sejlklubben Sundet},
+  url = {http://sundet.dk},
+  urldate = {2014-02-19},
+  year = {2014},
+  author = {{Sejlklubben Sundet}}
+}
+
+@misc{AalborgSejlklub,
+  title = {Aalborg-Sejlklub},
+  url = {http://aalborg-sejlklub.dk},
+  urldate = {2014-02-19},
+  year = {2014},
+  author = {{Aalborg Sejlklub}}
+}
+
+@misc{Frivilligrapporten,
+  title = {Frivilligrapporten},
+  url = {http://www.frivillighed.dk/Webnodes/da/Web/Public/Viden+\%26+information/Frivilligrapporten},
+  urldate = {2014-03-02},
+  year = {2012},
+  author = {{Center for frivilligt socialt arbejde}}
+}
+
+@misc{BaadklubbenValby,
+  title = {BådklubbenValby},
+  url = {http://bådklubbenvalby.dk},
+  urldate = {2014-02-19},
+  year = {2014},
+  author = {{Bådklubben Valby}}
+}
+
+@misc{Virtuelserver,
+  title = {Virtuel server},
+  url = {http://www.softcom.dk/priser-cloud-hosting},
+  urldate = {2014-03-18},
+  year = {2014},
+  author = {Softcom}
+}
+
+@misc{Dedikeretserver,
+  title = {Dedikeret server},
+  url = {http://www.abakomp.dk/dedikeret-server-premium.716/premium-serveri5-novice.776},
+  urldate = {2014-03-18},
+  year = {2014},
+  author = {abakomp}
+}
+
+@misc{SundetDokument1,
+ title = {SundetDokument1},
+ url = {https://drive.google.com/file/d/0B17jaCnLSKrfTmVEY0d6WXQ4YjA/edit?usp=sharing},
+ urldate = {2014-02-26},
+ year = {2014},
+ author = {{Sundet Ledelse}}
+}
+
+@misc{SundetDokument2,
+ title = {SundetDokument2},
+ url = {https://drive.google.com/file/d/0B17jaCnLSKrfWVc4U2xSOGltLW8/edit?usp=sharing},
+ urldate = {2014-02-26},
+ year = {2014},
+ author = {{Sundet Ledelse}}
+}
+
+@misc{Sejlsportdk,
+ title = {Sejlsport.dk},
+ NOTE = "URL \url{http://www.sejlsport.dk/mere/dansk-sejlunion/strategi-og-politik/vision-og-vaerdier} og 
+ 		 \url{http://www.sejlsport.dk/mere/dansk-sejlunion/historie}",
+ urldate = {2014-02-16},
+ year = {2014},
+ author = {{Dansk Sejlunion}}
+}
+
+@misc{sundet_vedtaegter,
+	title = {Vedtægter for Sejlklubben Sundet København},
+	url = {http://www.sundet.dk/vedtaegter/Vedtaegter\%20for\%20Sundet\%2027nov12.pdf},
+	urldate = {2014-03-11},
+	publisher = {Sejlklubben Sundet},
+	author = {{Sundet, Sejlklubben}},
+	month = nov,
+	year = {2012}
+}
+
+@misc{aalborg_sejlklub_vedtaegter,
+	title = {Vedtægter Aalborg Sejlklub},
+	url = {http://aalborg-sejlklub.dk/show_event.php?id=232},
+	urldate = {2014-03-11},
+	year = {2014},
+	journal = {Aalborg Sejlklub},
+	author = {{Aalborg Sejlklub}}
+}
+
+@misc{badklubben_valby_love,
+	title = {Love for Bådklubben Valby},
+	url = {http://xn--bdklubbenvalby-lib.dk/index.php/love-og-regler},
+	urldate = {2014-03-11},
+	year = {2014},
+	journal = {Bådklubben Valby},
+	author = {{Bådklubben Valby}}
+}
+
+@misc{baedklubben_valby_duelighedsbevis,
+	title = {Duelighedsbevis Bådklubben Valby},
+	url = {http://xn--bdklubbenvalby-lib.dk/index.php/duelighedsbevis},
+	urldate = {2014-03-11},
+	year = {2014},
+	journal = {Bådklubben Valby},
+	author = {{Bådklubben Valby}}
+}
+
+@misc{spt_hal,
+	title = {Spøttrup Kulturhal},
+	url = {http://www.spottrupkulturhal.dk/},
+	urldate = {2014-03-11},
+	year = {2014},
+	author = {{Spøttrup Kulturhal}}
+}
+
+%https://drive.google.com/file/d/0B3jEBF-Oqi0bV1c0bkpOWEtzWk0/edit?usp=sharing
+
+@misc{projektkatalog,
+  title = {P2 Projektkatalog},
+  url = {https://drive.google.com/file/d/0B3jEBF-Oqi0bV1c0bkpOWEtzWk0/edit?usp=sharing},
+  urldate = {2014-03-17},
+  year = 2014,
+  author = {{Kurt Nørmark}}
+}
+
+%http://www.dst.dk/da/Statistik/emner/forbrug/elektronik-i-hjemmet.aspx?tab=nog
+
+@misc{dstSPogPC,
+  title = {Elektronik i hjemmet},
+  url = {http://www.dst.dk/da/Statistik/emner/forbrug/elektronik-i-hjemmet.aspx?tab=nog},
+  urldate = {2014-03-17},
+  year = 2013,
+  author = {{Danmarks Statistik}}
+}
+
+@misc{fodbold1,
+  title = {VRI fodbold},
+  url = {http://www.vri.dk/filer/Fodbold/opgaver_skema.pdf},
+  urldate = {2014-03-19},
+  year = 2013,
+  author = {{Vejlby-Risskov Idrætsklub}}
+}
+
+@misc{fodbold2,
+  title = {Opgaveoversigt},
+  url = {http://olgodif-fodbold.dk/page.aspx?id=46698},
+  urldate = {2014-03-19},
+  year = 2013,
+  author = {{ØIF Fodbold}}
+}
+
+@misc{ung1,
+  title = {Vinderup Ungdomsskole},
+  url = {http://www.hk-ung.dk/vinderup/},
+  urldate = {2014-03-19},
+  year = 2013,
+  author = {{Holstebro Ungdomsskole}}
+}
+
+@misc{gui1,
+  title = {Minimalist and Intuitive User Interface Design Guidelines for Consumer Electronics Devices},
+  url = {http://www.jot.fm/issues/issue_2007_03/column5/},
+  urldate = {2014-04-20},
+  year = 2007,
+  author = {{Seonghoon Kang and Won Kim}}
+}
+
+@misc{flatfiles,
+  title = {Flat Files Vs. Database},
+  url = {http://www.ehow.com/about_5436936_flat-files-vs-database.html},
+  urldate = {2014-04-21},
+  year = 2007,
+  author = {{Leon Williams}}
+}
+
+@misc{entity,
+  title = {An Introduction to Entity Framework for Absolute Beginners},
+  url = {http://www.codeproject.com/Articles/363040/An-Introduction-to-Entity-Framework-for-Absolute-B},
+  urldate = {2014-04-21},
+  year = 2007,
+  author = {{Rahul Rajat Singh}}
+}
+
+@misc{wpf,
+  title = {Introduction to WPF},
+  url = {http://msdn.microsoft.com/en-us/library/aa970268(v=vs.110).aspx},
+  urldate = {2014-05-06},
+  year = 2014,
+  author = {{Microsoft}}
+}
+
+@misc{winforms,
+  title = {A WPF Q\&A},
+  url = {http://www.infoq.com/news/2014/04/WPF-QA},
+  urldate = {2014-05-07},
+  year = 2014,
+  author = {{Jonathan Allen}}
+}
+
+@misc{UIEffectiveness,
+  title = {GUI Effectiveness},
+  url = {http://ui-designer.net/usability/effectiveness.htm},
+  urldate = {2014-05-09},
+  year = 2014,
+  author = {{Anton Sergeev}}
+}
+  
+@misc{UIEffeciency,
+  title = {GUI Effeciency},
+  url = {http://ui-designer.net/usability/efficiency.htm},
+  urldate = {2014-05-09},
+  year = 2014,
+  author = {{Anton Sergeev}}
+}
+
+@misc{UISatisfaction,
+  title = {GUI Satisfaction},
+  url = {http://ui-designer.net/usability/satisfaction.htm},
+  urldate = {2014-05-09},
+  year = 2014,
+  author = {{Anton Sergeev}}
+}
+
+@misc{resolutions,
+  title = {Browser Display Statistics},
+  url = {http://www.w3schools.com/browsers/browsers_display.asp},
+  urldate = {2014-05-10},
+  year = 2014,
+  author = {{w3schools.com}}
+}
+
+@misc{winforms2,
+  title = {WPF vs. WinForms},
+  url = {http://www.wpf-tutorial.com/about-wpf/wpf-vs-winforms/},
+  urldate = {2014-05-14},
+  year = 2014,
+  author = {{wpf-tutorial.com}}
+}
+@misc{aalborg_sejlklub_sejlerskole,
+	title = {Sejlerskole Aalborg Sejlklub},
+	url = {http://www.aalborg-sejlklub.dk/events_category.php?id=20},
+	urldate = {2014-05-15},
+	year = {2014},
+	journal = {Aalborg Sejlklub},
+	author = {{Aalborg Sejlklub}}
+}
+
+@misc{agile_software,
+	title = {Agile Software development manifest},
+	url = {http://agilemanifesto.org/iso/dk/principles.html},
+	urldate = {2014-05-15},
+	year = {2014},
+	author = {{agilemanifesto.org}}
+}
