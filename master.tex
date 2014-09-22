@@ -35,13 +35,16 @@
 %%%%%%%%%%%%%%
 % Main matter starts here
 \mainmatter
-\part{Problemanalyse}
-\makeatletter\@openrightfalse
-\let\cleardoublepage\clearpage
-\part{Problemløsning}
-\makeatletter\@openrightfalse
-\let\cleardoublepage\clearpage
-\part{Refleksion}
+\part{Analyse}
+\input{chapters/indledning.tex}
+\input{chapters/interview_1.tex}
+%\input{chapters/fritidsklubber.tex}
+%\makeatletter\@openrightfalse
+%\let\cleardoublepage\clearpage
+%\part{Problemløsning}
+%\makeatletter\@openrightfalse
+%\let\cleardoublepage\clearpage
+%\part{Refleksion}
 %%%%%%%%%%%%%%%%
 %% REFERENCES %%
 %%%%%%%%%%%%%%%%
@@ -52,20 +55,20 @@
 %%% Bibliography %%%
 \bibliography{bibtex/litteratur}
 %%% Figures %%%
-\newpage
-\listoffigures
+%\newpage
+%\listoffigures
 %%% Tables %%%
-\listoftables
+%\listoftables
 %%% Acronyms %%%
 \vspace*{18mm}
 \@openrighttrue\makeatother
 %%%%%%%%%%%%%%
 %% APPENDIX %%
 %%%%%%%%%%%%%%
-\part{Appendiks}
-\appendix
-\settocdepth{chapter}
-\input{appendix/appendix1}
+%\part{Appendiks}
+%\appendix
+%\settocdepth{chapter}
+%\input{appendix/appendix1}
 %%%%%%%%%
 % INDEX %
 %%%%%%%%%
