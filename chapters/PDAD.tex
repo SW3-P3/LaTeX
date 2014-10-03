@@ -1,1 +1,53 @@
 \chapter{Problem- og Anvendelesområdeanalyse}
+
+I forhold til vores projekt om opskriftsanbefalinger og indkøbsassistent er der flere objekter som skal analyseres i forhold til henholdsvis problemområdet samt andvejdelsesområdet.
+
+\section{Problemområde analyse}
+Problemområdet defineres som:
+
+\textit{``Den del af omgivelserne, der administreres, overvåges eller styres ved hjælp af et system.''}
+
+Personer som er relevante for vores produkt er personer som laver mad og handler ind i hjemmet, disse vil have noget besvær med minimum en af følgende ting, finde relevante tilbud, finde på retter at lave til aftensmad, handle ind til bestemte retter, bruge og følge indkøbssedler.
+Disse personer betegner vi som kunder.
+
+Opskrifter er objekter i problemområdet da dette er noget som den enkelte kunder benytter sig af under tilberedningen af mad.
+Opskrifter har forskellige ingredienser der skal tages højde for når kunderne har deres præferencer som veganisme eller allergier.
+Ligeledes opererer brugerne indkøbslister til at holde styr på hvad der skal købes ind.
+Disse indkøbslister kan ofte være inspireret af tilbud de forskellige supermarkeder har en given uge.
+Varene er et objekt der skal kunne overvåges da brugeren har mulighed for at overvåge en specifik vare og dens pris, dette hænger sammen med de tilbud der føres på de givne varer samt hvilke varer der bliver brugt i de forskellige opskrifter.
+Kunderne er objekter i den forstand at de foretager sig valg af varer på indkøbslister og valg af opskrifter at bruge, disse valg og handlinger skal overvåges for at tilpasse vores anbefalinger af opskrifter og tilbud.
+Der er mulighed for at kunder deler login og hver kunde kan have forskellige præferencer, navn, diæt osv.
+Vurderingerne som brugerne har foretaget under brug af systemet, vil blive anvendt til at anbefale nye opskrifter, varer og tilbud.
+
+\begin{itemize}
+	\item Opskrifter
+	\item Tilbud
+	\item Indkøbsliste
+	\item Varer
+	\item Kunder
+	\item Vurderinger 
+\end{itemize}
+                                                                                                                                                                                                   
+\section{Anvendelseområde analyse}
+Anvendelsesområdet defineres som:
+
+\textit{``En organisation, der administrerer, overvåger eller styrer et problemområde.''}
+
+eTilbudsavis er en organisation der overvåger tilbudsaviser der er tilgængelige online, og giver da mulighed for at foretage søgninger og fremfinde præcise tilbud ud fra en større samling af aviser.
+Denne information skal vi bruge til at kunne informere brugerne om relevante tilbud.
+Derfor har vi taget kontakt til eTilbudsavisen, og håber på at få lov til at bruge deres API.
+Brugerne er personer der overvåger varer, opretter indkøbslister og ser på tilbud samt bedømmer opskrifter.
+Brugerne administrerer også hvilke krav og præferencer de har til deres indkøbsliste og derfor også deres opskrifter.
+De reagere på og overvåger derfor også anbefalinger som andre brugere har vurderet.
+En server skal overvåge og administrere anbefalinger, kunder og databaser.
+Serveren skal sørge  for at kunderne har adgang til deres data fra forskellige enheder.
+Serveren vil give anbefalinger ved at sammenligne de vurderinger en opskrift har modtaget fra flere brugere.
+
+Klienter er de enheder kunder benytter til at tilgå servicen, dette kan være smartphones eller computere.
+
+\begin{itemize}
+	\item eTilbudsavis
+	\item Brugere
+	\item Server
+	\item Klienter (desktop, smartphone)
+\end{itemize}
