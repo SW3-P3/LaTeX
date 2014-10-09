@@ -264,11 +264,12 @@
 
 %%% Text stuff %%%
 % Removes distance between items in itemize
-\let\olditemize=\itemize
-\def\itemize{\olditemize\setlength{\itemsep}{-1ex}}
-% Removes distance between items in enumerate
-\let\oldenumerate=\enumerate
-\def\enumerate{\oldenumerate\setlength{\itemsep}{-1ex}}
+%\let\olditemize=\itemize
+%\def\itemize{\olditemize\setlength{\itemsep}{-1ex}}
+%% Removes distance between items in enumerate
+%\let\oldenumerate=\enumerate
+%\def\enumerate{\oldenumerate\setlength{\itemsep}{-1ex}}
+\usepackage{enumitem}
 
 
 %%% Changes (Language strings) %%%
