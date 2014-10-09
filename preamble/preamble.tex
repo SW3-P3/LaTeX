@@ -96,7 +96,7 @@
 % Various image-commands
 \usepackage{eso-pic}
 % Use JPEG and PNG images
-\usepackage{graphicx}
+\usepackage{array,graphicx}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 \graphicspath{{./images/}}
 %Wrapping Images
@@ -490,3 +490,7 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows, positioning}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand*\rot{\rotatebox{90}}
