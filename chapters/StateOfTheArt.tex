@@ -1,7 +1,7 @@
 \chapter{State of the art}
 I dette afsnit vil der blive kigget på hvilke løsninger der allerrede findes på markedet.
-Der vil blive kigget på web services og applikationer der har til samme formål at løse nogle af de samme problemer vi vil undersøge nærmere.
-Løsningerne der er præsenteret, er nogle af de løsninger der løser problemet i problemområdet bedst. 
+Der vil blive kigget på web services og applikationer der har til samme formål at løse nogle af de samme problemer vi undersøger nærmere.
+Løsningerne der er præsenteret, hjælper med de problemer beskrevet i \myref{chapter:indledning}
 \section{eTilbudsavisen}
 eTilbudsavis er en online service der kan findes på \underline{www.eTilbudsavis.dk}. eTilbudsavisen er en online avis med en høj funktionalitet og en nem brugergrænseflade.
 Der kan på siden oprettes et login, således der kan findes tilbage til ændringer på et senere tidspunkt eller andre enheder.
@@ -18,41 +18,6 @@ Hvis det ikke ønskes at skulle bladres tilbudsaviser igennem, er der den muligh
 Alle aktuelle tilbud fra aviserne, er da vist som elementer med navn, beskrivelse, pris, butik, og afstand. Disse tilbud kan på samme måde nemt tilføjes til listerne.\\
 eTilbudsavisen er en god online løsning som har mange gode features, derfor har vi også brugt dem som kilde til vores tilbud, dette vil blive beskrevet senere.\fxnote{Sæt her kilde til afsnit vedr. API fra etilbudsavisen. - Søren}
 %\section{Fakta \& Føtex App}
-\section{Smartphone Apps udgivet af butikker}
-	Der findes som minimum Android apps de 7 butikker, som er med i tabellen \myref{tbl-smartphone}. 
-	For at skabe et overblik er der udvalgt features og disse er blevet opsat i et skema for overskuelighed. 
-	\begin{table}[H]
-		\label{tbl-smartphone}
-		\colorlet{shadecolor}{gray!40}
-    	\rowcolors{1}{white}{shadecolor}
-	    \begin{tabular}{l|lllllllllll}
-	    %Table: http://bit.ly/1tD6EI6
-	   	%Funktionalitet & Tilbudsavis & Indkøbsliste & Opskrifter & Varescan & Find butik & Budget & Madplan & Rabatkupon/fordelsordning & Deling af indkøbslister & Rating på Play & Senest opdateret \\ \hline
-	    Funktionalitet & \rot{Tilbudsavis} & \rot{Indkøbsliste} & \rot{Opskrifter} & \rot{Varescan} & \rot{Find butik } & \rot{Budget} & \rot{Madplan} & \rot{Rabatkupon} & \rot{Deling} & \rot{Play rating} & \rot{Senest opdateret} \\ \hline
-	   	Føtex                       & \cmark   & \cmark    & \cmark  & \cmark   & \cmark  & ~      & ~       & ~          & ~                       & 3.4 (354)      & 2014-07-24       \\
-	    SPAR                        & \cmark   & \cmark    & \cmark  & ~        & \cmark  & \cmark & ~       & ~          & ~                       & 2.8 (64)       & 2014-05-15       \\
-	    Fakta                       & \cmark   & \cmark    & \cmark  & ~        & \cmark  & ~      & \cmark        & \cmark     & \cmark               & 3.1 (454)      & 2014-08-02       \\
-	    FaktaQ                      & \cmark   & ~         & \cmark  & ~        & \cmark  & ~      & ~       & ~          & ~                       & 4.4 (7)        & 2014-03-11       \\
-	    REMA 1000                   & \cmark   & \cmark    & \cmark  & ~        & \cmark  & ~      & ~       & ~          & ~                       & 3.5 (674)      & 2014-04-16       \\
-	    SuperBrugsen                & \cmark   & \cmark    & \cmark  & ~        & \cmark  & ~      & ~       & ~          & ~                       & 3.8 (987)      & 2014-06-30       \\
-	    Kvickly                     & \cmark   & \cmark    & \cmark  & ~        & \cmark  & ~      & ~       & ~          & ~                       & 3.7 (632)      & 2014-07-20       \\
-	    \end{tabular}
-	    \caption{Denne tabel viser hvilke smartphone apps som har hvilke funktionaliteter.}
-	\end{table}
-	Vi har valgt at undersøge en af appsne nærmere, og valget faldte på Faktas app.
-	Da den bliver opdateret og har flest features. 
-	\subsection{Faktas Android App}\fxnote{Screenshot?}
-		Faktas android app kalder de for ``Mit fakta'', den er som helhed overskuelig.
-		Efter åbning af appen har man mulighed for 6 menupunkter og at ændre sine instillinger.
-		Første menupunkt omhander ``Coop-kortet'' og giver bruger mulighed for at indtaste sine medlemsinfomationer, da disse gives særlige tilbud.
-		Andet menupunkt er deres tilbudsavis, hvilket blot er en digital kopi af den fysiske tilbudsavis. 
-		Dog kan man fra den også tilføje varer til sin indkøbsliste, eller se varene i et gitterformat.
-		Tredje menupunkt er ``indkøbsliste'', her kan man have flere personlige og/eller delte indkøbslister.
-		Her kommer deres Facebook integration også i spil, og tillader nem deling af indkøbsliste med brugerens Facebook venner.
-		Fjerde menupunkt er en madplan, hvori man kan planlægge sin egen madplan, eller se Faktas anbefalinger til en under 20 kr pr. person pr. aften.
-		Femte menupunkt er deres opskrifter.
-		Her findes der et stort antal opskrifter, disse kan tilføjes direkte til sin madplan eller indkøbslister (både personlige og delte).
-		Sjette menupunkt hedder ``Åbningstider'', her kan brugeren finde Faktas butikker og deres åbningstider. 
 
 \section{Tilbudsugen}
 
@@ -69,8 +34,43 @@ Desuden kan man ikke ændre på antallet af varen du allerede har sat på din in
 For at opnå dette skal man slette varen, og tilføje den igen med det nye antal.
 De har desuden også en smartphone app, men denne crasher ofte når man benytter sig af deres indkøbsliste, men fungerer tilgengæld fint hvis man blot vil se på ugens tilbud i aviserne.
 
+\section{Smartphone Apps udgivet af butikker}
+	På \myref{tbl-smartphone} ses der nogle butikskæder som har udviklet android apps, og hvilke funktionaliteter disse har.  
+	For at skabe et overblik er der udvalgt features og disse er blevet opsat i et skema for overskuelighed. 
+	\begin{table}[H]
+		\colorlet{shadecolor}{gray!40}
+    	\rowcolors{1}{white}{shadecolor}
+	    \begin{tabular}{l|lllllllllll}
+	    %Table: http://bit.ly/1tD6EI6
+	   	%Funktionalitet & Tilbudsavis & Indkøbsliste & Opskrifter & Varescan & Find butik & Budget & Madplan & Rabatkupon/fordelsordning & Deling af indkøbslister & Rating på Play & Senest opdateret \\ \hline
+	    Funktionalitet & \rot{Tilbudsavis} & \rot{Indkøbsliste} & \rot{Opskrifter} & \rot{Varescan} & \rot{Find butik } & \rot{Budget} & \rot{Madplan} & \rot{Rabatkupon} & \rot{Deling} & \rot{Play rating} & \rot{Senest opdateret} \\ \hline
+	   	Føtex                       & \cmark   & \cmark    & \cmark  & \cmark   & \cmark  & ~      & ~       & ~          & ~                       & 3.4 (354)      & 2014-07-24       \\
+	    SPAR                        & \cmark   & \cmark    & \cmark  & ~        & \cmark  & \cmark & ~       & ~          & ~                       & 2.8 (64)       & 2014-05-15       \\
+	    Fakta                       & \cmark   & \cmark    & \cmark  & ~        & \cmark  & ~      & \cmark        & \cmark     & \cmark               & 3.1 (454)      & 2014-08-02       \\
+	    FaktaQ                      & \cmark   & ~         & \cmark  & ~        & \cmark  & ~      & ~       & ~          & ~                       & 4.4 (7)        & 2014-03-11       \\
+	    REMA 1000                   & \cmark   & \cmark    & \cmark  & ~        & \cmark  & ~      & ~       & ~          & ~                       & 3.5 (674)      & 2014-04-16       \\
+	    SuperBrugsen                & \cmark   & \cmark    & \cmark  & ~        & \cmark  & ~      & ~       & ~          & ~                       & 3.8 (987)      & 2014-06-30       \\
+	    Kvickly                     & \cmark   & \cmark    & \cmark  & ~        & \cmark  & ~      & ~       & ~          & ~                       & 3.7 (632)      & 2014-07-20       \\
+	    \end{tabular}
+	    \caption{Nogle butikskæder med smartphone apps samt deres funktionaliteter.}\label{tbl-smartphone}
+	\end{table}
+	Vi har valgt at undersøge en af disse apps nærmere, og valget faldte på Faktas app,
+	da denne bliver opdateret og har flest funktioner. 
+	\subsection{Faktas Android App}\fxnote{Screenshot?}
+		Faktas android app kalder de for ``Mit fakta'', den er som helhed overskuelig.
+		Efter åbning af appen har man mulighed for 6 menupunkter og at ændre sine indstillinger.
+		Første menupunkt omhandler ``Coop-kortet'' og giver bruger mulighed for at indtaste sine medlemsinfomationer, da disse giver særlige tilbud.
+		Andet menupunkt er deres tilbudsavis, hvilket blot er en digital kopi af den fysiske tilbudsavis. 
+		Dog kan man fra den også tilføje varer til sin indkøbsliste, eller se varerne i et gitterformat.
+		Tredje menupunkt er ``indkøbsliste'', her kan man have flere personlige og/eller delte indkøbslister.
+		Her kommer deres Facebook integration også i spil, og tillader nem deling af indkøbsliste med brugerens Facebook venner.
+		Fjerde menupunkt er en madplan, hvori man kan planlægge sin egen madplan, eller se Faktas anbefalinger til en under 20 kr pr. person pr. aften.
+		Femte menupunkt er deres opskrifter.
+		Her findes der et stort antal af opskrifter, disse kan tilføjes direkte til sin madplan eller indkøbslister (både personlige og delte).
+		Sjette menupunkt hedder ``Åbningstider'', her kan brugeren finde Faktas butikker og deres åbningstider. \fxnote{Fungerer det godt? Hvad fungerer skidt? - Søren}
 
-\section{``Tøm køleskabet''}
+
+\section{``Tøm køleskabet''}\fxnote{Gåseøjne? Giver det mening i en overskrift??}
 Der findes talrige tjenester, der tilbyder “at tømme dit køleskab”. 
 Mere specifikt, tilbyder de en service, hvor du som bruger, angiver hvilke varer dit køleskab pt. indeholder, samt hvilke andre ingredienser du har til rådighed. 
 Derefter får du så præsenteret en række forskellige opskrifter, der kan laves ud fra dine tilgængelige ingredienser. 
@@ -78,60 +78,58 @@ De fleste af tjenesterne (herunder dem vi her har undersøgt) viser også opskri
 Dette betyder naturligvis, at man som bruger ikke bliver fritaget fra at handle ind, hvis man mangler nogle ingredienser til lige netop den opskrift, man vælger at udføre. 
 Tjenesten \textit{MyFridgeFood} (kan findes på www.myfridgefood.com) tilbyder, at oprette en indkøbsliste ud fra netop disse manglende ingredienser, hvilket kan lade sig gøre blandt andet fordi, alle opskrifter er interne på \textit{MyFridgeFood}. 
 I modsætning til dette er der \textit{Supercook} (kan findes på www.supercook.com), som linker til eksterne opskrifter, og ikke tilbyder at generere en indkøbsliste. 
-Umiddelbartt anbefales opskrifter ikke ud fra den enkelte brugers smag og madvaner, men udelukkende på baggrund af, hvad man “har i køleskabet”. 
+Umiddelbart anbefales opskrifter ikke ud fra den enkelte brugers smag og madvaner, men udelukkende på baggrund af, hvad man “har i køleskabet”. 
 Grundet dette virker tjenesterne mere som simple filtreringer af databaseopslag, end egentlige anbefalinger, der tager højde for brugerens smag og præferencer indenfor den gastronomiske verden.
 
 
-\section{Online dagligvarebutikker}
-Når man ser på butikker, som prøver at ændre den måde danskernes vaner og arbejdsgange omkring indkøb og madlavning, så findes der nogle forskellige tilgange.
-Ud over mobilapplikationer, flytter nogle butikker over på internettet, sådan man blot kan handle ind hjemmefra, som man kender det fra almindelig nethandel.
-Andre løsninger er baseret på abonnementsordninger, som fjerner meget af planlægningen fra ordningens bruger.
-Herunder gennemgås eksempler på nogle firma der tilbyder de to ovennævnte løsninger.
+Der findes altså allerede mange applikation, i form af apps til smartphones og webapps, som kan hjælpe med indkøbsturen og planlægning af måltider. Hvis disse indeholder opskrifter som tager højde for tilbudene i en given uge, er det inden for en enkelt butikskædes tilbud. Der er altså ingen applikationer der tager højde for tilbud fra alle butikskæderne. I næste afsnit undersøges der alternativer til indkøbsturen.
 
-De seneste år har online butikker skudt frem, og selvom de er i kraftig vækst udgør de kun en lille del af det samlede dagligvareforbrug i Danmark\citep{SOTA_MP1}.
-Der findes to overordnet typer butikker indenfor online dagligvarehandel, den første er almindelige dagligvarekæder som opretter en online butik.
-Eksempler på dette er SuperBest og Irma\citep{SOTA_MP_SB, SOTA_MP_IRMA}.
+\section{Alternativer til Indkøbsturen}
+
+Ud over mobilapplikationer, flytter nogle dagligvarebutikker på internettet, sådan man kan handle ind hjemmefra, som man kender det fra almindelig nethandel.
+Andre løsninger er baseret på abonnementsordninger, som fjerner meget af planlægningen fra ordningens bruger.
+Herunder gennemgås eksempler på nogle firmaer der tilbyder de to ovennævnte løsninger.
+
+De seneste år har online dagligvare-butikker skudt frem, og selvom de er i kraftig vækst udgør de kun en lille del af det samlede dagligvareforbrug i Danmark\citep{SOTA_MP1}.
+
+\subsection{Online butikker}
+Eksempler på online dagligvarebutikker er SuperBest og Irma\citep{SOTA_MP_SB, SOTA_MP_IRMA}.
 Nogle af butikkerne har dog kun en online butik, og ingen fysisk modpart, dette er butikker som Nemlig.com og Osuma\citep{SOTA_MP_NEMLIG, SOTA_MP_OSUMA}.
 Disse butikker kan gøre det lettere at handle ind.
 Sådanne butikker giver både mulighed for at handle ind hjemmefra eller fra studiet eller arbejde i en pause.
 Ved at handle hjemmefra kan man også let overskue hvad man mangler imens man handler ind, og man kan derfor undgå at glemme at skrive noget på indkøbssedlen.
 Ligeledes undgår man at stå i supermarkedet og være i tvivl om man mangler en bestemt vare.
-Nogle af firmaerne tilbyder også opskrifter, så man kan enten finde en opskrift på noget man ikke er sikker på hvordan tilberedes, eller surfe opskrifter som inspiration til aftensmaden.
-Nemlig.com tilbyder opskrifter og hjemmesiden kan præsentere alle deres varer som indgår i ingredienslisten.
+Nogle af firmaerne tilbyder også opskrifter.
+Nemlig.com tilbyder opskrifter og hjemmesiden kan præsentere alle deres varer som indgår i listen over ingredienser.
 Dette gør at man direkte fra en given opskrift kan sammenligne tilsvarende varer, og tilføje en af dem til sin indkøbskurv.
-Andre butikker giver også mulighed for at oprette madplaner, hviklet kan gøre planlægningen af inkøb og madlavning i hjemmet, lettere.
+Andre butikker giver også mulighed for at oprette madplaner, hvilket kan gøre planlægningen af indkøb og madlavning i hjemmet, lettere.
 Disse online butikker kommer dog også med forskellige ulemper i forhold til fysiske supermarkeder.
-Det koster penge at få leveret sine varer fra disse butikker, typisk omkring 50 kr. og i nogle af butikkerne skal man købe for en minimumsbeløb.
-Ved handel gennem online butikkerne, kan du ikke få varerne med det samme, det variere butikkerne i mellem, hvor stor ventetiden er, ligesom dagens tidspunkt for hvornår man bestiller også spiller ind.
-Disse to ulemper gør ligeledes at man ikke kan benytte disse løsninger hvis man står og mangler en vare eller to, som man skal bruge umiddelbart i sutiationen.
-I sådan i situation ville man være henvist til at undvære varen, eller tage i en fysisk butik for at købe varen.
+Det koster penge at få leveret sine varer fra disse butikker, typisk omkring 50 kr. og i nogle af butikkerne skal man købe for et minimumsbeløb.
+Ved handel gennem online butikkerne, kan du ikke få varerne med det samme, det variere butikkerne i mellem, hvor stor ventetiden er
+Disse to ulemper gør ligeledes at man ikke kan benytte disse løsninger hvis man står og mangler en vare eller to.
 
-Den anden slags, er butikker der tilbyder abonnementsordninger på kasser med dagligvarer.
+
+\subsection{Abonnementsordninger}
+Ordningerne sender typisk kasser med daglivarer ud til deres kunder.
 Disse kassers indhold tilbyder ofte en varieret blanding af kød, grønt og frugt.
 I denne kategori findes udbydere som Aarstiderne og igen SuperBest\citep{SOTA_MP_AAR, SOTA_MP_SB}.
-Ideen med sådanne kasser er at nogle anstatte, typisk kokke eller ligende, ved eksempelvis Aarstiderne har sammensat kasse med ingredienser til 3-5 aftensmåltider.
-På deres hjemmeside eller mobilappikation kan man så finde guide og opskifter til hvordan maden kan laves.
-Derudover har Aarstiderne også suppleret med ydligere tre kategorier, for at tilbyde mere feksible løsninger til kunderne.
+Ideen med sådanne kasser er at nogle ansatte, typisk kokke eller lignende, ved eksempelvis Aarstiderne har sammensat kasser med ingredienser til 3-5 aftensmåltider.
+På deres hjemmeside eller mobilappikation kan man så finde guide og opskifter til hvordan maden tilberedes.
+Derudover har Aarstiderne også suppleret med ydeligere tre kategorier, for at tilbyde mere fleksible løsninger til kunderne.
 Den første kategori holder sig inde for kasse-dogmet, og er generelle kasser, hvor man eksempelvis kan købe en kødkase, fiskekasse eller en frugtkasse, i disse kategorier findes der så forskellige kasser inden for hver kategori.
 Anden kategori er supplering hvorigennem kunderne kan købe forskellige varer i løssalg, hvis ikke kasserne opfylder deres behov.
 Sidste kategori er morgenmad, her tilbyer de en blanding mellem kasser og løssalg.
 Denne model kan løse mange problemer i forhold til madlavningen for kunderne.
-Løsningen vil kunne mindske den planlægning en person behøves at foretage sig, fori kasserne indeholder alle ingredienser til flere måltider, samt opskrifter at følge.
-Dette betyder at kunden  hverken behøves at planlægge aftensmaden eller inkøbet dertil.
+Løsningen vil kunne mindske den planlægning en person behøves at foretage sig, fordi kasserne indeholder alle ingredienser til flere måltider, samt opskrifter at følge.
+Dette betyder at kunden  hverken behøves at planlægge aftensmaden eller indkøbet dertil.
 Ligeledes ville den kraftigt mindske behovet for at handle ind andre steder.
 Denne løsning kommer dog heller ikke uden ulemper.
-Dogmet med at forudbestemme flere måltider og have de eksakte ingredienser begrænser den kreativtet som en person normalt ville kunne udleve i køkkenet.
-Ydermere begræsnes ideen meget af den moderne families struktur, hvor det ofte ikke er hele familien der spiser sammen, mange dage om ugen.
-Det er også svært at tage højde for præferecer som kræsenhed eller allergier i disse forudbestemte kasser.
+Dogmet med at forudbestemme flere måltider og have de eksakte ingredienser begrænser den kreativitet som en person normalt ville kunne udleve i køkkenet.
+Ydermere begrænses ideen meget af den moderne families struktur, hvor det ofte ikke er hele familien der spiser sammen, mange dage om ugen.
+Det er også svært at tage højde for præferencer som kræsenhed eller allergier i disse forudbestemte kasser.
 Denne løsning vil heller ikke kunne fritage en bruger fra at skulle handle ind andre steder end her, da de ikke tilbyder alt.
 
+Som vi har set i ovenstående gennemgang, findes der alternativer til den klassiske indkøbstur, der er dog ingen af disse der formår at løse alle problemerne.
+Ved alle løsningerne opstår også nye ulemper og problemstillinger i forhold til almindeligt indkøb.
+Alt taget i betragtning vil det komme meget an på nuværende vaner og familiestrukturen, om disse muligheder vil være en god løsning for en given familie.
 
-Som vi har set i ovenstående gennemgang, findes der nogle fine alternativer til den klassiske indkøbstur, der er dog ingen af disse der formår at løse alle problemerne.
-Ved alle løsningerne opstår også nye ulemper og problemstilliger i forhold almindeligt indkøb.
-Alt taget i betragtning vil det komme meget an på en nuværende vaner og familiestruktur, om disse muligheder vil være en god løsning for en given familie.
-
-
-\section{Indie udviklede apps}
-Foruden de mere udbredte applikationer til hjælp med håndtering af hhv. indkøbslister og tilbud, eksisterer der foruden en længere række af apps, udviklet af mindre app-udviklere såvel som andre individuelle app udviklere.
-Hvor apps som føtex's benytter sig af både delebare indkøbslister, opskrifter, samt tilbud. Er disse andre apps typisk mere specificerede til en enkelt af førnævnte funktioner, til tider udbygget med opskriftsreferencer.
-Flere af disse er så simple at de næsten kunne erstattes af et simpelt note værktøj, hvilket gør at de knap er smartere end den simple pen and paper tilgang.(Indkøbslister/Indkøbsliste m.f.) For at finde de lidt mere avancerede applikationer som ikke er udviklet af butikskæderne dem selv, skal man se på det internationale marked, dette elimnere derimod en del af brugervenligheden, så som at sætte danske vare på, opkrifters ingrediensliste kan bruge mål så som oz. og pound, samt enhver form for integration med tilbud, forsvinder da appen fungerer på et internationalt plan,typisk med udgangspunkt i USA så her er tilbudsintegration en reel mulighed såvel som integration med deres kuponsystem.(Grocery Gadget/ OutOfMilk/GroceryIQ)
