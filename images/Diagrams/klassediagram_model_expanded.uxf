@@ -5,15 +5,16 @@
     <id>UMLClass</id>
     <coordinates>
       <x>600</x>
-      <y>50</y>
+      <y>40</y>
       <w>130</w>
-      <h>80</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>Butik
 --
 kæde
 aktuelle tilbud
-kommende tilbud</panel_attributes>
+kommende tilbud
+--</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
