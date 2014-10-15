@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>670</x>
+      <x>730</x>
       <y>0</y>
       <w>130</w>
       <h>90</h>
@@ -20,7 +20,7 @@ Kommende tilbud
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>250</x>
+      <x>320</x>
       <y>170</y>
       <w>100</w>
       <h>90</h>
@@ -36,7 +36,7 @@ Opskrift
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
+      <x>510</x>
       <y>170</y>
       <w>130</w>
       <h>110</h>
@@ -55,7 +55,7 @@ Fremgangsmåde
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
+      <x>510</x>
       <y>360</y>
       <w>130</w>
       <h>90</h>
@@ -72,7 +72,7 @@ Tilbud
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
+      <x>510</x>
       <y>530</y>
       <w>130</w>
       <h>100</h>
@@ -90,7 +90,7 @@ Købte varer
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>670</x>
+      <x>730</x>
       <y>360</y>
       <w>130</w>
       <h>140</h>
@@ -110,7 +110,7 @@ Enhed
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>670</x>
+      <x>730</x>
       <y>170</y>
       <w>130</w>
       <h>100</h>
@@ -126,7 +126,7 @@ Tilbud
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>250</x>
+      <x>310</x>
       <y>530</y>
       <w>100</w>
       <h>140</h>
@@ -145,20 +145,20 @@ Præferencer
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
+      <x>410</x>
       <y>210</y>
-      <w>130</w>
+      <w>120</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..*
 m2=1</panel_attributes>
-    <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>290</x>
+      <x>370</x>
       <y>250</y>
       <w>50</w>
       <h>300</h>
@@ -171,7 +171,7 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>490</x>
+      <x>550</x>
       <y>270</y>
       <w>50</w>
       <h>110</h>
@@ -184,7 +184,7 @@ m2=1..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>490</x>
+      <x>550</x>
       <y>440</y>
       <w>50</w>
       <h>110</h>
@@ -197,7 +197,7 @@ m2=0..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
+      <x>400</x>
       <y>570</y>
       <w>130</w>
       <h>40</h>
@@ -210,7 +210,7 @@ m2=0..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
+      <x>630</x>
       <y>400</y>
       <w>120</w>
       <h>40</h>
@@ -223,7 +223,7 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>710</x>
+      <x>770</x>
       <y>260</y>
       <w>50</w>
       <h>120</h>
@@ -236,7 +236,7 @@ m2=1..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>710</x>
+      <x>770</x>
       <y>80</y>
       <w>50</w>
       <h>110</h>
@@ -249,8 +249,8 @@ m2=0..*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>50</x>
-      <y>530</y>
+      <x>260</x>
+      <y>360</y>
       <w>100</w>
       <h>90</h>
     </coordinates>
@@ -265,14 +265,14 @@ Personer
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>140</x>
-      <y>570</y>
-      <w>130</w>
-      <h>40</h>
+      <x>320</x>
+      <y>440</y>
+      <w>50</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=-
 m2=0..*
 m1=1..*</panel_attributes>
-    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
