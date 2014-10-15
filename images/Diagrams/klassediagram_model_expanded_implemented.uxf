@@ -250,15 +250,16 @@ m2=0..*</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>260</x>
-      <y>360</y>
+      <y>340</y>
       <w>100</w>
-      <h>90</h>
+      <h>110</h>
     </coordinates>
     <panel_attributes>Gruppe
 --
 ID
 Navn
 Personer
+Indkøbslister
 --</panel_attributes>
     <additional_attributes/>
   </element>
