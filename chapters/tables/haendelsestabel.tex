@@ -1,28 +1,4 @@
-\chapter{Problemområde}
-
-Systemet har forskellige emner der skal modelleres, derfor skal problemområdet analyseres.
-Problemområdet defineres ifølge \citep{OOA&D2001} som:
-
-\textit{``Den del af omgivelserne, der administreres, overvåges eller styres ved hjælp af et system.''}
-
-Systemet skal holde styr på tilbud, generelle varer, og opskrifter. 
-Der skal registreres hvis en varer er på tilbud, hvor denne vare er på tilbud, og om brugeren ønsker at købe varen.
-Opskrifterne har en liste over ingredienser, som består af varer. 
-Opskrifterne skal også kunne blive vurderet, så systemet kan anbefale lignende opskrifter til brugeren.
-Varer skal også kunne overvåges, og systemet skal give besked til brugeren når et tilbud på varen dukker op.
-Systemet skal kunne medbringes på indkøbsturen, og her skal tilbudene og varerne fra systemet kunne indgå på en indkøbsliste.
-
-Med disse informationer kan systemet hjælpe brugeren til at finde billige varer i bestemte butikker, og samtidig anbefale opskrifter der bruger disse tilbudsvarer.
-I de følgende afsnit vil disse emner blive beskrevet vha. klassebeskrivelser, en hændelsestabel, og et klassediagram.
-
-\section{Struktur}
-Struktur
-
-\section{Klasser}
-So who make dis?
-
-\section{Hændelser}
-%\include{chapters/tables/haendelsestabel.tex} - did not work :(
+hændelsetabel
 \begin{table}[h]
 \begin{tabular}{|l|l|c|c|c|c|c|c|c|}
 \hline
@@ -35,11 +11,9 @@ Hændelser                  & Klasser                & \multicolumn{1}{l|}{Tilbu
 \multicolumn{2}{|l|}{Tilbud ankommet}               & x                           & x                          & x                                 & x                         &                               & x                         &                             \\ \hline
 \multicolumn{2}{|l|}{Tilbud udgået}                 & x                           & x                          & x                                 & x                         &                               & x                         &                             \\ \hline
 \multicolumn{2}{|l|}{Vare tilføjet til overvågning} & x                           &                            &                                   &                           &                               & x                         & x                           \\ \hline
-\multicolumn{2}{|l|}{Vare fjernet fra overvågning}  & x                           &                            &                                   &                           &                               & x                         & x                           \\ \hline
+\multicolumn{2}{|l|}{vare fjernet fra overvågning}  & x                           &                            &                                   &                           &                               & x                         & x                           \\ \hline
 \multicolumn{2}{|l|}{Del indkøbsliste}              &                             &                            & x                                 &                           &                               &                           & x                           \\ \hline
 \multicolumn{2}{|l|}{Indkøbsliste oprettet}         &                             &                            & x                                 &                           &                               &                           & x                           \\ \hline
 \multicolumn{2}{|l|}{Indkøbsliste slettet}          &                             &                            & x                                 &                           &                               &                           & x                           \\ \hline
 \end{tabular}
-Hændelsestabel. Viser hvilket klasser, problemområdets hændelser påvirker.
-\end{table}	
-
+\end{table}
