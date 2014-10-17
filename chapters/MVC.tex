@@ -1,0 +1,40 @@
+\section{-View-Controller}
+Model-View-Controller(MVC) er et designmønster som fordeler 
+objekter i en applikation ud på tre forskellige roller, 
+Model, View og Controller. Hver enkelt rolle er separeret fra 
+hinanden, hvilket gør koden lettere at håndtere, teste samt 
+at strukturerer.
+
+\textbf{Model} laget er skjult for brugeren. Dette lag bør 
+indeholde det mest grundlæggende data for applikationen, 
+dette værende diverse klasser der benyttes, data der bruges 
+gentagende gange i applikationen, ligegyldigt om dette data 
+er gemt i en database eller indeholdt i lokale filer, bør 
+være indeholdt i objekter efter dataene er indlæst. Model 
+objekter skal repræsenterer viden og erfaring inden for et 
+givet problemområde, hvilket også tillader et godt adskilt 
+modellag, at blive genbrugt i andre lignende områder. På 
+samme tid er det i dette lag hvor validerings logik, og andre 
+data beregninger på objekter skal udføres. Om muligt skal 
+et objekt i model laget ikke have nogle nogen forbindelse til 
+View laget, således der ikke er nogen direkte forbindelse til 
+brugergrænsefladen. Kommunikation mellem dette lag og hvad 
+brugeren ser, skal ske igennem Controller laget.
+
+\textbf{View} laget er hvad brugeren kan se. Et objekt i view 
+laget bruges primært til at fremvise data, samt tillade 
+brugere at ændre data i model laget. På trods af den 
+interaktion der er mellem lagende, er de frakoblet hinanden, 
+kommunikation om opdatering af data, samt ændringer brugeren 
+laver sker igennem Controller objekter. Essentielt er det en 
+visuel repræsentation af den data der ligger i model laget.
+
+\textbf{Controller}
+Controller objekter fungerer som mellemled mellem objekter i 
+model og view lagene. Derved bliver controller objekter til 
+et kommunikationsværktøj mellem model og view lag. En brugers 
+aktion på et objekt i view laget, fortæller et controller 
+objekt om bruger aktionen, hvorefter controller objektet 
+kontakter de objekter i model laget det vedrører, her 
+behandles informationen og bliver på samme måde sendt tilbage 
+til view laget og giver derved brugeren respons.
