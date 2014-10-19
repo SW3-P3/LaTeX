@@ -211,14 +211,14 @@ m2=0..*</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>540</x>
-      <y>400</y>
+      <y>390</y>
       <w>120</w>
-      <h>40</h>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-
-m2=0..*
-m1=1</panel_attributes>
-    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
+m1=0..*
+m2=1</panel_attributes>
+    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
