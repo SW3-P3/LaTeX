@@ -32,9 +32,14 @@ API'en er placeret på \textit{https://api.etilbudsavis.dk/v2/}. \citep{eTilAPI}
 For at kommunikere med API'en fra C\#-kode anvendet værktøjet RestSharp. \citep{RestSharp} 
 For at kunne bruge infomationen laves der en klasse, som svarer til det JSON som API'en sender tilbage.
 
-Eksempelvis vil apikaldet som opretter en session returnere:
+\subsection{Session}
+For at kunne bruge API'en skal man først oprette en session. 
+En session består af en API-nøgle, den tilsvaredne hemmelighed (``Secret''), en token og en signatur.
+Har man en API-nøgle kan man kalde API'et sessions og få en token.
+Den token kan man kombinere med sin hemmelighed og generere SHA-256 hashen af dette som er signaturen. 
 
-\begin{lstlisting}[language=json,firstnumber=1,caption="POST til sessions api'en med APIKEYen"]
+Eksempelvis vil apikaldet som opretter en session returnere:
+\begin{lstlisting}[language=json,firstnumber=1,caption="POST til sessions api'en med APIKEYen",label=apilst1]
 {
     "token": "00hdcx7fnysn6541",
     "expires": "2013-03-03T13:37:00+0000",
@@ -49,21 +54,111 @@ Eksempelvis vil apikaldet som opretter en session returnere:
 }
 \end{lstlisting}
 
-For at kunne hente 
+Dette svar kan oversættes til en klasse i C\#.
+\begin{lstlisting}[caption="Klassen ``Session'' som svarer til retur JSONet sendt fra /v2/sessions' APIet"]
+public class Session
+{
+    public string Token { get; set; }
+    public string Expires { get; set; }
+    public string User { get; set; }
+    public string Provider { get; set; }
+    public Permissions Permissions { get; set; } // List<string> Guest 
+}
+\end{lstlisting}
+
+Hvis dette kald skulle gøres ved brug af C\#-kode så vil det kunne gøre på følgende måde, med RestSharp.
 %[firstnumber=1,caption="Det foerste API kald"]
-\begin{lstlisting}
+\begin{lstlisting}[caption="C\#-kode som opretter en RestClient og anvender den til at oprette et objekt med felter som svarer til JSON dataet givet fra API'en"]
 /* [...] */
 /* Create a RestClient*/
 var client = new RestClient("https://api.etilbudsavis.dk");
 
 /* Initiate the first request to get a session */
 var SessionRequest = new RestRequest("v2/sessions", Method.POST);
-SessionRequest.AddParameter("api\_key", GlobalVar.Apikey);
+SessionRequest.AddParameter("api_key", Global.Apikey);
 
-/* Map the response to the class ``Session'' */
+/* Map the response to the class "Session" */
 IRestResponse<Session> response2 = client.Execute<Session>(SessionRequest);
 
 /* Save the response in an object */
 Session sessionobj = response2.Data;
+
+/* Generate a signature and set it to the global variable */
+Global.Signature = EncryptionHelper.SHA256(Global.Secret + Global.SessionToken);
 /* [...] */
 \end{lstlisting}
+Efter eksekveringen af dette kode, vil der være et objekt af datatypen ``Session'' kaldt sessionobj, som indeholder de samme felter som givet i JSON i \myref{apilst1}; derudover er signaturen (``Global.Signature'') også beregnet og gemt. 
+
+\subsection{Fællestræk for den rasterende API}
+Der findes en række fællestræk for brugen af API'en.
+Centralt sendes SessionToken'en og signaturen som http--headers.
+Derudover genanvendes de samme 3 parametre ofte: længdegrad, bredegrad og radius.
+Disse er et udtryk for en placering af og afstand til butikker.
+
+\subsection{Store, Catalog og Offer}
+Det er muligt at spørge API'en om hvilke butikker som er inden for en given radius af en placering som beskrevet ovenfor.
+Det vil med C\#-kode se ud som følger:
+\begin{lstlisting}[caption="C\#-kode som anvender ``/v2/stores'' delen af API'en til at hente butikker.",label=apistorecs]
+/* [...] */
+/* Create request for getting stores near a coordinate */ 
+var storeRequest = new RestRequest("v2/stores", Method.GET);
+storeRequest.AddParameter("r_lat", latitude);
+storeRequest.AddParameter("r_lng", longitude);
+storeRequest.AddParameter("r_radius", radius);
+storeRequest.AddHeader("X-Token", Global.SessionToken);
+storeRequest.AddHeader("X-Signature", Global.Signature);
+
+var storesResult = client.Execute<List<Store>>(storeRequest).Data;
+/* [...] */
+\end{lstlisting}
+
+storesResult er af datatypen List<Store> hvor ``Store'' er klassen som svarer til det JSON API kaldet returner. 
+Dette er udformet som følger:
+\begin{lstlisting}[caption="Klassen Store",label=apistoreclass]
+public class Store
+{
+    public string id { get; set; }
+    public string ern { get; set; }
+    public string street { get; set; }
+    public string city { get; set; }
+    public string zip_code { get; set; }
+    public Country country { get; set; }
+    public string latitude { get; set; }
+    public string longitude { get; set; }
+    public string dealer_url { get; set; }
+    public string dealer_id { get; set; }
+    public Branding branding { get; set; }
+    public string contact { get; set; }
+    public List<string> category_ids { get; set; }
+}
+\end{lstlisting}
+
+Hvor Branding, Country og Pageflip klasserne er:
+
+\begin{lstlisting}[caption="Klasserne Branding Pageflip og Country",label=apistoreclasshelpers]
+public class Branding
+{
+    public string name { get; set; }
+    public string url_name { get; set; }
+    public string website { get; set; }
+    public string logo { get; set; }
+    public string logo_background { get; set; }
+    public string color { get; set; }
+    public Pageflip pageflip { get; set; }
+}
+
+public class Pageflip
+{
+    public string logo { get; set; }
+    public string color { get; set; }
+}
+
+public class Country
+{
+    public string Id { get; set; }
+    public string UnsubscribePrintUrl { get; set; }
+}
+\end{lstlisting}
+
+Hele denne process er gentaget og tilpasset Catalog og Offer API'erne for at kunne indhente den infomation de kan give. 
+Det er hermed muligt at hente infomationer om tilbud og butikker. \fxfatal{Dette er et helvede at beskrive på en måde som giver mening, så alt det ovenståene skal nok skrives om...}
