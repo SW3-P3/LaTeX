@@ -16,42 +16,40 @@ Med disse informationer kan systemet hjælpe brugeren til at finde billige varer
 I de følgende afsnit vil disse emner blive beskrevet vha. klassebeskrivelser, en hændelsestabel, og et klassediagram.
 
 \section{Struktur}
-For at skabe et overblik over hvilke objekter der findes i problemområdet, samt hvilke klasser disse tilhører og at til sidst kunne kæde dette sammen med hændelser i problemområdet, foretages først en analyse af struktueren.\\
+For at skabe et overblik over hvilke objekter der findes i problemområdet, samt hvilke klasser disse tilhører og at til sidst kunne kæde dette sammen med hændelser i problemområdet, foretages først en analyse af strukturen.\\
 
 %__klassse-diagram indsættes her - laves ud fra drive/Billeder/2014-10-06 14.52.48.jpg___
+
+Dette er beskrevet vha. et klassediagram som ses i \fxfatal{figursomething}, dette beskriver forholdet mellem de forskellige objekter som findes i problemområdet til indkøb og madlavning. Den følgende tekst uddyber figuren.
 
 Personer i indkøbssituationer kan lave indkøbslister, disse indkøbslister kan været ejet og administreret af en enten en eller flere personer. 
 En indkøbsliste kan bestå an ingen til en højt antal varer.
 En vare kan komme fra tre forskellige steder.
-Varer kan stamme fra et tilbud, eller de kan være ingredinser fra en opskrift. 
-Hvis en vare ikke er nogle af disse ing, er varen blot generisk, det vil sige en vare uden forhold til et tilbud eller en opskrift men blot tilføjet til indkøbslisten af en person ud fra hukommelse.
+Varer kan stamme fra et tilbud, eller de kan være ingredienser fra en opskrift. 
+Hvis en vare ikke er nogle af disse ting, er varen blot generisk, det vil sige en vare uden forhold til et tilbud eller en opskrift.
 Et tilbud består som tidligere nævnt af en vare.
-Et tilbud har nogle atributter der beskriver varen, samt pris og ligende.
-En samling af tilbud, almindelige flere, men teorisk ned til et, udgør en avis. 
-En avis er altså en samling af tilbud, og en sådan avis har et tilhørsforhold der består af en butik, som udgiver avisen med tilbudene i.\\
-Som tidligere nævnt kan en være også udgøre en ingrediens i en opskrift.
+Et tilbud har nogle attributter der beskriver varen, samt pris og lignende.
+En avis består af minimum et tilbud men har oftest en samling af tilbud, og en sådan avis har et tilhørsforhold der består af en butik, som udgiver avisen med tilbudene i.\\
+Som tidligere nævnt kan en vare også udgøre en ingrediens i en opskrift.
 En opskrift består af en eller flere ingredienser, beskrevet som varer.
-En person i problemområdet kan, når denne har benyttet en opskirft, vuderer den givne opskrift, for at beskrive hvor tilfredsstillende man fandt opskriften.
-En person vil maksimalt kunne give hver opskift en vudering, men kan også undlade at vuderer en opskrift.
-
-Dette er beskrevet som klassediagrammet som ses i figur something\fxfatal{derp?}, dette beskriver forholdet mellem de forskellige objeketer som findes i problemområdet til indkøb og madlavning.
+En person i problemområdet kan, vurderer den en opskrift, for at beskrive hvor tilfredsstillende de fandt opskriften.
+En person vil maksimalt kunne give hver opskrift en vurdering, men kan også undlade at vurdere en opskrift.
 
 \section{Klasser}
 So who make dis?
 
 \section{Hændelser}
-Vi har analyseret de forskellige hændelser der sker i problemområdet. 
-Ud fra disse hændelser vil vi lave en hændelsetabel, der beskriver hvilke klasser forskellige hændelser påvirker.
-Formålet med at identificere hændelserne samt at analysere disse i en hændelsestalbel, er at forstå problemområdet bedre og dermed hjælpe give forstålese for hvordan en løsning ville kunne udarbejdes for at afhjælpe de problemer der findes i problemområdet.
+Vi har analyseret de forskellige hændelser der sker i problemområdet. \fxnote[Hvor har vi gjort det :D ?] 
+Ud fra disse hændelser vil vi lave en hændelsestabel, der beskriver hvilke klasser forskellige hændelser påvirker.
+Formålet med at identificere hændelserne samt at analysere disse i en hændelsestalbel, er at forstå problemområdet bedre og dermed hjælpe med forståelsen for hvordan en løsning ville kunne udarbejdes for at afhjælpe de problemer der findes i problemområdet. Desuden kan tabellen hjælpe med strukturen på klasserne. 
+Hvis 2 klasser har alle de samme hændelser, kan der ofte foretages ændringer og dermed opnå en bedre struktur.
 
 \input{images/Tables/haendelsestabel.tex}
 \fixme{make Troelsstyle-table}
 
 Hændelsestabellen i figur SOMETHING\fxfatal{Derp} viser både hvilke hændelser der findes i problemområdet, samt hvilke klasser de påvirker.
-Hvis tabellen læses vanret kan det ses at klasser der bliver påvirket af mange hændelser er klasser som "Indkøbsliste", "Vare" og "Bruger".
-Studeres tabellen med udgangspunkt i hændelser, ses det at mange hændelser ligeledes tilhører de førnævnte klasser.
-
+Hvis tabellen læses vandret kan det ses at klasser der bliver påvirket af mange hændelser er klasser som "Indkøbsliste", "Vare" og "Bruger".
 
 
 Ud fra denne analyse har vi et overblik og hvilke klasser der hører til hvilke hændelser.
-Dette indblik kan vi bruge når vi henholdvis skal formulere en systemdifination, fortatte kravspefikation samt modellere vores løsning. 
+Dette indblik kan vi bruge når vi henholdsvis skal formulere en systemdefinition, fortsatte kravspecifikation samt modellere vores løsning.\fxnote{Hvilket indblik? Der skal måske forklares hvilket indblik det helt konkret har givet, et eksempel på hvad det f.eks. betyder for projektet eller noget.} 

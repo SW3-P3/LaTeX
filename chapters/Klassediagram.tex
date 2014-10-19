@@ -9,11 +9,11 @@ Det skal bemærkes, at klasserne og felterne er på dansk i diagrammet, og på e
 \end{figure}
 
 \section{Klasserne}
-Vi vil gennemgå klasserne, der optræder i klassediagrammet, og beskrive deres relatoner samt de felter de indeholder. Ydermere vil deres rolle i programmet opsumeres tilsidst.
+Vi vil gennemgå klasserne, der optræder i klassediagrammet, og beskrive deres relationer samt felterne de indeholder. Ydermere vil deres rolle i programmet opsummeres tilsidst.
 
 \subsection{Person}
-Person-klassen i modellen, er den der holder styr på brugeren og dennes basale atributter - herunder brugernavn, kodeord og kaldenavn. 
-Ydermere er det vigtigt, at objektet kan indeholde informationer om personens madpræferencer og vurderinger af opskrifter; Dette er med til at give person-klassen en mere intim vinket, og så at sige bedre afspejle den virkelige person, samt fungere som grundlag for anbefaling af opskrifter. 
+Person-klassen i modellen, er den der holder styr på brugeren og dennes basale attributter - herunder brugernavn, kodeord og kaldenavn. 
+Ydermere er det vigtigt, at objektet kan indeholde informationer om personens madpræferencer og vurderinger af opskrifter; Dette er med til at give person-klassen en mere intim vinkel, og så at sige bedre afspejle den virkelige person, samt fungere som grundlag for anbefaling af opskrifter. 
 Det er naturligvis også vigtigt for et program, der omhandler bl.a. indkøbslister, at holde styr på en persons indkøbslister og lignende. 
 Til dette har person-klassen to felter der hedder henholdsvis, grupper og indkøbslister. 
 Begge felter er lister, der holder styr på personens relationer til netop grupper og indkøbslister - En person kan altså have relationer til flere grupper og flere indkøbslister, hvilket også kan ses ud fra de indtegnede relationer i klassediagrammet.
@@ -22,7 +22,7 @@ Begge felter er lister, der holder styr på personens relationer til netop grupp
 Klassen ''Gruppe'', bruges i programmet som en hjælpe-klasse, der binder flere personer sammen om en eller flere indkøbslister. 
 På den måde er det, gennem denne klasse, muligt at dele indkøbslister med andre personer; 
 Man kunne forestille sig en situation i en husstand, hvor flere personer handler ind, og det derfor ville være fordelagtigt, hvis man kunne være fælles om en indkøbsliste.
-Gruppe-klassen indeholder to atributter der muliggører identifikation: Et ID, der skal være unikt for den enkelte gruppe, så programmet kan skelne mellem grupper; og er navn, der kan sætter af personer i gruppen, så netop personerne kan se forskel på de grupper de er med i. 
+Gruppe-klassen indeholder to attributter der muliggører identifikation: Et ID, der skal være unikt for den enkelte gruppe, så programmet kan skelne mellem grupper; og et navn, så personerne kan identificere gruppen.. 
 Herudover har klassen to lister, der hver især holder styr på relationerne til henholdsvis personer i gruppen og indkøbslister delt i gruppen.
 En gruppe har relationer til en eller flere personer, og kan godt eksistere uden  indkøbslister.
 
