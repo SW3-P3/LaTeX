@@ -15,7 +15,7 @@ Systemet skal kunne medbringes på indkøbsturen, og her skal tilbudene og varer
 Med disse informationer kan systemet hjælpe brugeren til at finde billige varer i bestemte butikker, og samtidig anbefale opskrifter der bruger disse tilbudsvarer.
 I de følgende afsnit vil disse emner blive beskrevet vha. klassebeskrivelser, en hændelsestabel, og et klassediagram.
 
-\section{Struktur}
+\section{Struktur}\label{sec:struktur}
 For at skabe et overblik over hvilke objekter der findes i problemområdet, samt hvilke klasser disse tilhører og at til sidst kunne kæde dette sammen med hændelser i problemområdet, foretages først en analyse af strukturen.\\
 
 %__klassse-diagram indsættes her - laves ud fra drive/Billeder/2014-10-06 14.52.48.jpg___
@@ -36,7 +36,26 @@ En person i problemområdet kan, vurderer den en opskrift, for at beskrive hvor 
 En person vil maksimalt kunne give hver opskrift en vurdering, men kan også undlade at vurdere en opskrift.
 
 \section{Klasser}
-...\fxnote{So who make dis?}
+De forskellige klasser som beskrevet i \myref{sec:struktur} vil beskrives ydeligere i dette afsnit.
+
+\textbf{Opskrift:}
+Denne klasse indeholder en titel på opskriften, en liste over ingredienser, forberedelsestid samt en fremgangsmåde. Klassen modellerer hændelserne der sker når en bruger vurdere og vælger en opskrift.
+
+\textbf{Vare:}
+Denne klasse indeholder et navn, en kategori f.eks. kød, mejeri, grønt m.m. samt information om varen er på tilbud. Denne klasse bruges hver gang en bruger tilgår en opskrift, eller bruger indkøbslisten.
+
+\textbf{Klient:}
+Denne klasse indeholder et navn/ID såvel som en indkøbsliste, en overvågnings, grupper som klienten er medlem af, samt klientens personlige præferencer. Herudover findes der også en liste over varer, klienten kan være specielt interesseret i, og derfor overvåger for tilbud. Klassen bruges når der afgives vurderinger og valg af opskrifter, eller når indkøbslister oprettes. 
+
+\textbf{Tilbud:}
+Denne klasse indeholder alt relevant information om de enkelte tilbud, dette indebærer tilbudsperiode, tilbudspris, butikskæden hvor varen er på tilbud, hvilken vare er på tilbud, mærket på varen samt varens enhed. Klassen benyttes når en butikskæde udgiver nye tilbud, og når tilbudene føjes til indkøbslisten.
+
+\textbf{Tilbudsavis:}
+Denne klasse indeholder alle tilbud for en given kæde og består således af et kædens navn, en liste over deres aktive tilbud samt tilbudsperioden på disse tilbud. Tilbudsaviser udkommer forskellige dage på ugen, og benyttes ved hændelsen når en ny avis udkommer.
+
+\textbf{Indkøbsliste:}
+Denne klasse indeholder en liste over vare og tilbud som klienten har sat på sin liste. Desuden indeholder den også information om hvilke klienter der kan se listen, når den er delt med andre. Indkøbslisten bruges i det den bliver oprettet, slettet eller når varer tilføjes.
+
 
 \section{Hændelser}
 Vi har analyseret de forskellige hændelser der sker i problemområdet. \fxnote{Hvor har vi gjort det :D ?} \fxfatal{evt. ``Vi har fundet frem til [..]''} 
