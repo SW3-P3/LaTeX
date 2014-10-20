@@ -3,15 +3,23 @@ I dette afsnit vil løsningerne der allerrede findes på markedet bliver udforsk
 Der vil blive kigget på web services og applikationer der har til samme formål at løse nogle af de samme problemer vi undersøger nærmere.
 Løsningerne der er præsenteret, hjælper med de problemer beskrevet i \myref{chapter:indledning}
 
-\section{eTilbudsavisen}
-eTilbudsavis er en online service der kan findes på \url{http://www.eTilbudsavis.dk}. eTilbudsavis er en online avis med en høj funktionalitet og en nem brugergrænseflade.
+\section{eTilbudsavis}
+eTilbudsavis er en online service der kan findes på deres hjemmeside\footnote{\underline{https://etilbudsavis.dk}}. eTilbudsavis er en online avis med en høj funktionalitet og en nem brugergrænseflade.
 Der kan på siden oprettes et login, således der kan findes tilbage til ændringer på et senere tidspunkt eller andre enheder.
 eTilbudsavis har tre mærkbare funktioner som brugeren har adgang til, hvilket er tilbudsaviser, ønske- og indkøbslister og tilbud.
 
-Tilbudsaviser kan tilgås på siden, hvor der er mulighed for at sætte en præference på, hvor store en radius man vil lede efter sagte tilbudsavis. 
+Tilbudsaviser kan tilgås på, hvilket kan ses på \myref{ss:eTilbudsavis} hvor der er mulighed for at sætte en præference på, hvor store en radius man vil lede efter sagte tilbudsavis.
+Under hver af avis som ses på figuren er der også afstand i menter, fra ens aktuelle placering. 
 Der kan der vælges imellem alle aviser, som er tilgængelige online og inden for den valgte radius. 
 Aviserne bliver opdateret løbende, så når der er en ny tilgængelig bliver den gamle fjernet. 
 Inde i aviserne kan man trykke på en vare og den bliver tilføjet til en liste.
+
+\begin{figure}
+	\centering
+		\includegraphics[scale=0.35]{images/Images/eTilbudsavis.PNG}
+	\caption{Tilbudsaviser på eTilbudsavis.dk}
+	\label{ss:eTilbudsavis}
+\end{figure}
 
 Der er mulighed for at tilføje vare til to lister, en indkøbsliste og en ønskeliste. 
 Når en vare er valgt bliver den tilføjet til den valgte liste.
@@ -25,7 +33,7 @@ eTilbudsavis er en god online løsning som har mange gode features, derfor har v
 
 \section{Tilbudsugen}
 
-Tilbudsugen minder på mange måder om eTilbudsavis. 
+Tilbudsugen minder på mange måder om eTilbudsavis og kan findes på deres hjemmeside\footnote{\underline{http://www.tilbudsugen.dk/}}. 
 Den har samtlige dagligvareaviser, samt flere inden for bl.a. Byggemarkeder, og Autoudstyr.
 De giver et nemt overblik over diverse aviser, og man kan hurtigt og nemt læse dem på nettet. 
 Der er desuden mulighed for at lave præferencer som ved eTilbudsavis, her kan man bl.a. vælge økologi eller nøglehulsmærket.
@@ -38,15 +46,23 @@ Desuden kan man ikke ændre på antallet af varen du allerede har sat på din in
 For at opnå dette skal man slette varen, og tilføje den igen med det nye antal.
 De har desuden også en smartphone app, men denne crasher ofte når man benytter sig af deres indkøbsliste, men fungerer tilgengæld fint hvis man blot vil se på ugens tilbud i aviserne.
 
+Tilbudsugen er et lidt dårligere alternativt til eTilbudsavis, da der er problemer med deleingen af indkøbslisterne, samt den app der er stillet til rådighed ikke er stabil.
+Derimod er den nem og navigere, siden er brugervendelig og ser overskuelig ud.
+
 \section{Smartphone Apps udgivet af butikker}
 På \myref{tbl-smartphone} ses der nogle butikskæder som har udviklet android apps, og hvilke funktionaliteter disse har.  
 For at skabe et overblik er der udvalgt features og disse er blevet opsat i et skema for overskuelighed. 
 \input{images/Tables/SOTA_apps.tex}
-Vi har valgt at undersøge en af disse apps nærmere, og valget faldte på Faktas app,
-da denne bliver opdateret og har flest funktioner. 
-\subsection{Faktas Android App}\fxnote{Screenshot?}
+Vi har valgt at undersøge en af disse apps nærmere, og valget faldte på Faktas app, da denne bliver opdateret og har flest funktioner. 
+\subsection{Faktas Android App}
+\begin{figure}
+	\centering
+		\includegraphics[scale=0.15]{images/Images/MinFakta.png}
+	\caption{Tilbudsaviser på eTilbudsavis.dk}
+	\label{ss:MinFakta}
+\end{figure}
 Faktas android app kalder de for ``Mit fakta'', den er som helhed overskuelig.
-Efter åbning af appen har man mulighed for seks menupunkter og at ændre sine indstillinger.
+Efter åbning af appen har man mulighed for seks menupunkter og at ændre sine indstillinger, disse kan ses på \myref{ss:MinFakta}.
 Første menupunkt omhandler ``Coop-kortet'' og giver bruger mulighed for at indtaste sine medlemsinfomationer, da disse giver særlige tilbud.
 Andet menupunkt er deres tilbudsavis, hvilket blot er en digital kopi af den fysiske tilbudsavis. 
 Dog kan man fra den også tilføje varer til sin indkøbsliste, eller se varerne i et gitterformat.
@@ -55,7 +71,9 @@ Her kommer deres Facebook integration også i spil, og tillader nem deling af in
 Fjerde menupunkt er en madplan, hvori man kan planlægge sin egen madplan, eller se Faktas anbefalinger til en under 20 kr pr. person pr. aften.
 Femte menupunkt er deres opskrifter.
 Her findes der et stort antal af opskrifter, disse kan tilføjes direkte til sin madplan eller indkøbslister (både personlige og delte).
-Sjette menupunkt hedder ``Åbningstider'', her kan brugeren finde Faktas butikker og deres åbningstider. \fxnote{Fungerer det godt? Hvad fungerer skidt? - Søren}
+Sjette menupunkt hedder ``Åbningstider'', her kan brugeren finde Faktas butikker og deres åbningstider. 
+
+Appen virker rigtig godt, der er ingen blindgyder og derfor meget nem at navigere. Der er lagt meget fokus på den sociale del, da der kan deles med venner på facebook, hvilket simplificerer delingen af indkøbslister. Den eneste ulempe der er ved denne app, er at den kun er egnet til vare fra Fakta, og derfor sætter en del restriktion på sig selv.
 
 
 \section{Tøm køleskabet}
@@ -64,8 +82,8 @@ Mere specifikt, tilbyder de en service, hvor du som bruger, angiver hvilke varer
 Derefter får du så præsenteret en række forskellige opskrifter, der kan laves ud fra dine tilgængelige ingredienser. 
 De fleste af tjenesterne (herunder dem vi her har undersøgt) viser også opskrifter, som indeholder yderligere ingredienser. 
 Dette betyder naturligvis, at man som bruger ikke bliver fritaget fra at handle ind, hvis man mangler nogle ingredienser til lige netop den opskrift, man vælger at udføre. 
-Tjenesten \textit{MyFridgeFood} \footnote{kan findes på \underline{www.myfridgefood.com}} tilbyder, at oprette en indkøbsliste ud fra netop disse manglende ingredienser, hvilket kan lade sig gøre blandt andet fordi, alle opskrifter er interne på \textit{MyFridgeFood}. 
-I modsætning til dette er der \textit{Supercook} \footnote{kan findes på \underline{www.supercook.com}}, som linker til eksterne opskrifter, og ikke tilbyder at generere en indkøbsliste. 
+Tjenesten \textit{MyFridgeFood} \footnote{\underline{www.myfridgefood.com}} tilbyder, at oprette en indkøbsliste ud fra netop disse manglende ingredienser, hvilket kan lade sig gøre blandt andet fordi, alle opskrifter er interne på \textit{MyFridgeFood}. 
+I modsætning til dette er der \textit{Supercook} \footnote{\underline{www.supercook.com}}, som linker til eksterne opskrifter, og ikke tilbyder at generere en indkøbsliste. 
 Umiddelbart anbefales opskrifter ikke ud fra den enkelte brugers smag og madvaner, men udelukkende på baggrund af, hvad man “har i køleskabet”. 
 Grundet dette virker tjenesterne mere som simple filtreringer af databaseopslag, end egentlige anbefalinger, der tager højde for brugerens smag og præferencer indenfor den gastronomiske verden.
 
@@ -79,10 +97,10 @@ Herunder gennemgås eksempler på nogle firmaer der tilbyder de to ovennævnte l
 De seneste år har online dagligvare-butikker skudt frem, og selvom de er i kraftig vækst udgør de kun en lille del af det samlede dagligvareforbrug i Danmark\citep{SOTA_MP1}.
 
 \subsection{Online butikker}
-Eksempler på online dagligvarebutikker er SuperBest og Irma\citep{SOTA_MP_SB, SOTA_MP_IRMA}.
-Nogle af butikkerne har dog kun en online butik, og ingen fysisk modpart, dette er butikker som Nemlig.com og Osuma\citep{SOTA_MP_NEMLIG, SOTA_MP_OSUMA}.
+Eksempler på online dagligvarebutikker er SuperBest\footnote{\underline{www.superbest.dk}} og Irma\footnote{\underline{www.irma.dk}}
+Nogle af butikkerne har dog kun en online butik, og ingen fysisk modpart, dette er butikker som Nemlig.com\footnote{\underline{www.nemlig.com}} og Osuma\footnote{\underline{www.Osuma.dk}}.
 Disse butikker kan gøre det lettere at handle ind.
-Sådanne butikker giver både mulighed for at handle ind hjemmefra eller fra studiet eller arbejde i en pause.
+Sådanne butikker giver både mulighed for at handle ind hjemmefra, fra studiet eller fra arbejde i en pause.
 Ved at handle hjemmefra kan man også let overskue hvad man mangler imens man handler ind, og man kan derfor undgå at glemme at skrive noget på indkøbssedlen.
 Ligeledes undgår man at stå i supermarkedet og være i tvivl om man mangler en bestemt vare.
 Nogle af firmaerne tilbyder også opskrifter.
@@ -92,7 +110,7 @@ Andre butikker giver også mulighed for at oprette madplaner, hvilket kan gøre 
 Disse online butikker kommer dog også med forskellige ulemper i forhold til fysiske supermarkeder.
 Det koster penge at få leveret sine varer fra disse butikker, typisk omkring 50 kr. og i nogle af butikkerne skal man købe for et minimumsbeløb.
 Ved handel gennem online butikkerne, kan du ikke få varerne med det samme, det variere butikkerne i mellem, hvor stor ventetiden er.
-Disse to ulemper gør ligeledes at man ikke kan benytte disse løsninger hvis man står og mangler en vare eller to. \fxfatal{Men hvis man var hardcore bruger af disse services, ville man jo være i stand til at planlægge forud og totalt ungå denne, ellers ret normale, situaltion? - Troels}
+Disse to ulemper gør ligeledes at man ikke kan benytte disse løsninger hvis man står og mangler en vare eller to.
 
 
 \subsection{Abonnementsordninger}
