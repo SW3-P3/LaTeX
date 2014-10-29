@@ -1,0 +1,48 @@
+\section{Kravspecifikation}
+Formål: Et formelt dokument som fortæller hvilke funktioner som det endelige produkt skal have.
+
+\subsection{Krav til systemet}
+\begin{enumerate}
+	\item Systemet skal tilgås ved brug af en internetbrowser, altså skal det være en web-app.
+	\item Systemet skal benytte aktuelle tilbud fra diverse dagligvarebutikker.
+	\item Systemet skal have mulighed for at overvåge tilbud på varer valgt af slutbrugeren.
+	\item Systemet skal have mulighed for at indeholde en personlig indkøbsliste
+	\begin{enumerate}
+		\item Integreret med tilbud.
+		\item Indkøbslisten deles mellem enheder
+		\item Indkøbslisten deles mellem brugere fra samme husstand.
+	\end{enumerate}
+	\item Systemet skal kunne præsentere opskrifter for brugere.
+	\begin{enumerate}
+		\item Systemet skal kunne modtage feedback på de opskrifter brugerne giver.
+		\item Systemet skal kunne anbefale opskrifter på baggrund af:
+		\begin{enumerate}
+			\item Madvaner (varieret kost)
+			\item Bedømmelse på opskrift
+		\end{enumerate}
+	\end{enumerate}
+	\item Systemet skal have en række præferencer pr. bruger.
+	\begin{enumerate}
+		\item Systemet skal kunne fjerne forslag om eksempelvis kød til vegetarer.
+	\end{enumerate}
+\end{enumerate}
+\subsection{Krav til brugergrænsefladen (“UI”)}
+\begin{enumerate}
+	\item Systemets UI skal være på dansk.
+	\item Systemet skal kunne anvendes på forskellige enheder
+	\begin{enumerate}
+		\item Computere, >= 11” og > 768 px i højden og > 1280 px i breden.
+		\item Tablets, > 6" og < 11"
+		\item Smartphones, <= 6”
+	\end{enumerate}
+	\item Systemets UI skal være responsivt og tilpasse sig den anvendte platform.
+	\item Systemets UI skal anvende design principperne “proximity” og “consistency”.
+	\item Systemets UI skal anvende en top-menu til den øverste hierarkiske navigation.
+	\begin{enumerate}
+		\item Top-menuen skal være tilgængelig fra alle sider i applikationen.
+	\end{enumerate}
+	\item Systemets UI skal anvende direct mapping, dvs. ikoner somrepræsenterer handlinger (metafor).
+	\item Systemet skal tilbyde en fortryd-knap, i henhold til princippet “Effectiveness”.
+\end{enumerate}
+
+\input{chapters/content/moscow.tex}
