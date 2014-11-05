@@ -1,22 +1,66 @@
 \section{Problemområde}
 
-Systemet har forskellige emner der skal modelleres, derfor skal problemområdet analyseres.
-Problemområdet defineres ifølge \textit{Objekt Orienteret Analyse \& Design}\citep{OOA&D2001} som:
+Ud fra systemdefinitionen ved vi at systemet skal holde styr på følgende:
 
-\textit{``Den del af omgivelserne, der administreres, overvåges eller styres ved hjælp af et system.''}
-
-Systemet skal holde styr på tilbud, generelle varer, og opskrifter.
-Der skal registreres hvis en varer er på tilbud, hvor denne vare er på tilbud, og om brugeren ønsker at købe varen.
-Opskrifterne har en liste over ingredienser, som består af varer.
-Opskrifterne skal også kunne blive vurderet, så systemet kan anbefale lignende opskrifter til brugeren.
-Varer skal også kunne overvåges, og systemet skal give besked til brugeren når et tilbud på varen dukker op.
-Systemet skal kunne medbringes på indkøbsturen, og her skal tilbudene og varerne fra systemet kunne indgå på en indkøbsliste.
+\begin{itemize}
+	\item Tilbud
+	\item Varer
+	\item Opskrifter
+\end{itemize}
 
 Med disse informationer kan systemet hjælpe brugeren til at finde billige varer i bestemte butikker, og eventuelt anbefale opskrifter der bruger disse tilbudsvarer.
 I de følgende afsnit vil disse emner blive beskrevet vha. klassebeskrivelser, en hændelsestabel, og et klassediagram.
 
+\subsection{Klasser}
+For at kunne håndtere de 3 allerede nævnte klasser, tilbud, varer og opskrifter, skal der være flere for at danne en sammenhæng.
+Denne sammenhæng vil analyseres her.
+
+\textbf{Vare:}
+En vare indgår i opskrifter, og indkøbslister.
+Når man laver sin indkøbsliste vælger man hvilke varer man vil købe og skriver dem derpå. 
+Desuden kan en vare have et antal tilbud hver uge, hvilket betyder at der også skal laves en tilbuds klasse.
+
+\textbf{Tilbud:}
+Hver uge kommer der nye tilbud fra de fleste danske dagligvarebutikker. 
+Disse modeleres og kobles på varen og dermed dannes der en kobling fra varen til tilbudene.
+
+\textbf{Opskrift:}
+En opskrift har en liste over ingredienser, hvilket altså er varer.
+I interviewene i \myref{section:interview2}, blev det nævnt at brugerne gerne ville kunne vurdere en opskrift, og dermed få anbefalet yderligere opskrifter som minder om denne.
+Dette leder til at der laves en såkaldt vurderingsklasse.
+
+\textbf{Vurdering:}
+Vurderinger bliver foretaget når en bruger af systemet har lavet en opskrift, og vil give den en vurdering, både til at hjælpe andre, men også for at få lignende opskrifter anbefalet, hvis man nu synes den var god.
+
+\textbf[Anbefaling:]
+En anbefaling bliver givet til en person når der er givet vurderinger, således der kan laves en anbefaling af en opskrift til personen.
+
+\textbf{Person:}
+Vurderingerne skal kobles på personen som vurdere opskriften. 
+Derfor laves der en person klasse, som samtidig indholder attributter som gør det muligt at sætte personens præferencer.
+Det er desuden også personerne som har deres egne indkøbsliter.
+
+\textbf{Indkøbsliste:}
+Indkøbslisten laves af personen, og fyldes op med objekter fra vare klassen.
+Indkøbslisterne kan være delte, og derfor skal koblingen på personen klassen ikke være singulær, men altså 1..*.
+
+
+\subsection{Hændelser}
+Vi har fundet frem til de forskellige hændelser der sker i problemområdet.
+Ud fra disse laves en hændelsestabel, der beskriver hvilke klasser forskellige hændelser påvirker.
+Formålet med at identificere hændelserne samt at analysere disse i en hændelsestalbel, er at forstå problemområdet bedre og dermed hjælpe med forståelsen for hvordan en løsning ville kunne designes for at afhjælpe de problemer der findes i problemområdet. Desuden kan tabellen hjælpe med strukturen på klasserne.
+Hvis 2 klasser har alle de samme hændelser, kan der ofte foretages ændringer og dermed opnå en bedre struktur.
+
+\input{images/Tables/haendelsestabel.tex}
+
+Hændelsestabellen i Tabel \ref{tabel:haendelsestabel} viser både hvilke hændelser der findes i problemområdet, samt hvilke klasser de påvirker.
+Hvis tabellen læses vandret kan det ses at klasser der bliver påvirket af mange hændelser er klasser som "Indkøbsliste", "Vare" og "Person".
+
+Ud fra analysen indtil nu kan der dannes et overblik, over klassernes interne interaktion, såvel som hvilke hændelser, involverer hvilke klasser.
+Denne information kan vi nu bruge til at lave en struktur over klasserne i problemområdet.
+
+
 \subsection{Struktur}\label{sec:struktur}
-For at skabe et overblik over hvilke objekter der findes i problemområdet, samt hvilke klasser disse tilhører og at til sidst kunne kæde dette sammen med hændelser i problemområdet, foretages først en analyse af strukturen.\\
 
 \begin{figure}
 	\centering
@@ -25,55 +69,16 @@ For at skabe et overblik over hvilke objekter der findes i problemområdet, samt
 	\label{figur:PDklasse}
 \end{figure}
 
-Dette er beskrevet vha. et klassediagram som ses på Figur \ref{figur:PDklasse}, dette beskriver forholdet mellem de forskellige objekter som findes i problemområdet til indkøb og madlavning. Den følgende tekst uddyber figuren.
+Klassediagram som ses på Figur \ref{figur:PDklasse}, dette beskriver forholdet mellem de forskellige klasser som findes i problemområdet. Diagrammets sammenhænge er dannet ud fra hændelsestabellen, og beskrivelserne af klasserne. Følgende afsnit gennemgår diagrammets sammenhænge.
 
 Personer i indkøbssituationer kan lave indkøbslister, disse indkøbslister kan været ejet og administreret af en enten en eller flere personer.
-En indkøbsliste kan bestå an ingen til en højt antal varer.
-En vare kan komme fra tre forskellige steder.
-Varer kan stamme fra et tilbud, eller de kan være ingredienser fra en opskrift.
-Hvis en vare ikke er nogle af disse ting, er varen blot generisk, det vil sige en vare uden forhold til et tilbud eller en opskrift.
-Et tilbud består som tidligere nævnt af en vare.
-Et tilbud har nogle attributter der beskriver varen, samt pris og lignende.
-En avis består af minimum et tilbud men har oftest en samling af tilbud, og en sådan avis har et tilhørsforhold der består af en butik, som udgiver avisen med tilbudene i.\\
-Som tidligere nævnt kan en vare også udgøre en ingrediens i en opskrift.
-En opskrift består af en eller flere ingredienser, beskrevet som varer.
-En person i problemområdet kan, vurderer den en opskrift, for at beskrive hvor tilfredsstillende de fandt opskriften.
-En person vil maksimalt kunne give hver opskrift en vurdering, men kan også undlade at vurdere en opskrift.
+En indkøbsliste kan bestå af nul til mange varer.
+En vare kan være på tilbud i mere end en butik, og derfor have nul til mange tilbud.
+En vare kan desuden indgå i en opskrift, og er derfor forbundet med mul til mange.
+Desuden har opskrifterne en til mange varer på listen over ingredienser.
+Varen kan også være tilføjet til overvågningslisten hos en person, så derfor har personer og varer en nul til mange relation på hinanden.
+En person i problemområdet kan, vurderer en opskrift, men kan give mange vurderinger, og derfor kan en person give nul til mange vurderinger. 
+En vurdering gives til en opskrift alene, imens en opskrift kan have mange vurderinger, eller ingen vurderinger.
+Anbefalinger består af en opskrift, imens personen kan have nul til mange anbefalinger.
 
-\subsection{Klasser}
-De forskellige klasser som beskrevet i \myref{sec:struktur} vil beskrives ydeligere i dette afsnit.
-
-\textbf{Opskrift:}
-Denne klasse indeholder en titel på opskriften, en liste over ingredienser, forberedelsestid samt en fremgangsmåde. Klassen modellerer hændelserne der sker når en bruger vurdere og vælger en opskrift.
-
-\textbf{Vare:}
-Denne klasse indeholder et navn, en kategori f.eks. kød, mejeri, grønt m.m. samt information om varen er på tilbud. Denne klasse bruges hver gang en bruger tilgår en opskrift, eller bruger indkøbslisten.
-
-\textbf{Klient:}
-Denne klasse indeholder et navn/ID såvel som en indkøbsliste, en overvågnings, grupper som klienten er medlem af, samt klientens personlige præferencer. Herudover findes der også en liste over varer, klienten kan være specielt interesseret i, og derfor overvåger for tilbud. Klassen bruges når der afgives vurderinger og valg af opskrifter, eller når indkøbslister oprettes.
-
-\textbf{Tilbud:}
-Denne klasse indeholder alt relevant information om de enkelte tilbud, dette indebærer tilbudsperiode, tilbudspris, butikskæden hvor varen er på tilbud, hvilken vare er på tilbud, mærket på varen samt varens enhed. Klassen benyttes når en butikskæde udgiver nye tilbud, og når tilbudene føjes til indkøbslisten.
-
-\textbf{Tilbudsavis:}
-Denne klasse indeholder alle tilbud for en given kæde og består således af et kædens navn, en liste over deres aktive tilbud samt tilbudsperioden på disse tilbud. Tilbudsaviser udkommer forskellige dage på ugen, og benyttes ved hændelsen når en ny avis udkommer.
-
-\textbf{Indkøbsliste:}
-Denne klasse indeholder en liste over vare og tilbud som klienten har sat på sin liste. Desuden indeholder den også information om hvilke klienter der kan se listen, når den er delt med andre. Indkøbslisten bruges i det den bliver oprettet, slettet eller når varer tilføjes.
-
-
-\subsection{Hændelser}
-Vi har fundet frem til de forskellige hændelser der sker i problemområdet.
-Ud fra disse laves en hændelsestabel, der beskriver hvilke klasser forskellige hændelser påvirker.
-Formålet med at identificere hændelserne samt at analysere disse i en hændelsestalbel, er at forstå problemområdet bedre og dermed hjælpe med forståelsen for hvordan en løsning ville kunne udarbejdes for at afhjælpe de problemer der findes i problemområdet. Desuden kan tabellen hjælpe med strukturen på klasserne.
-Hvis 2 klasser har alle de samme hændelser, kan der ofte foretages ændringer og dermed opnå en bedre struktur.
-
-\input{images/Tables/haendelsestabel.tex}
-
-Hændelsestabellen i Tabel \ref{tabel:haendelsestabel} viser både hvilke hændelser der findes i problemområdet, samt hvilke klasser de påvirker.
-Hvis tabellen læses vandret kan det ses at klasser der bliver påvirket af mange hændelser er klasser som "Indkøbsliste", "Vare" og "Bruger".
-
-
-Ud fra denne analyse dannes et overblik, over klassernes interne interaktion, såvel som hvilke hændelser, involverer hvilke klasser.
-Denne information kan vi bruge som udgangspunkt til at lave klassediagram, og tilstandsdiagram i anvendelsesområdet.
-I sidste ende giver dette en beskrivelse af systemets overordnede struktur.
+På baggrund af denne analyse kan systemets implementation designes, men først skal der foretages en analyse af anvendelsesområdet.
