@@ -15,7 +15,6 @@ I de følgende afsnit vil disse emner blive beskrevet vha. klassebeskrivelser, e
 For at kunne håndtere de 3 allerede nævnte klasser, tilbud, varer og opskrifter, skal der være flere for at danne en sammenhæng.
 Denne sammenhæng vil analyseres her.
 
-
 \textbf{Vare:}
 En vare indgår i opskrifter, og indkøbslister.
 Når man laver sin indkøbsliste vælger man hvilke varer man vil købe og skriver dem derpå. 
@@ -32,6 +31,9 @@ Dette leder til at der laves en såkaldt vurderingsklasse.
 
 \textbf{Vurdering:}
 Vurderinger bliver foretaget når en bruger af systemet har lavet en opskrift, og vil give den en vurdering, både til at hjælpe andre, men også for at få lignende opskrifter anbefalet, hvis man nu synes den var god.
+
+\textbf[Anbefaling:]
+En anbefaling bliver givet til en person når der er givet vurderinger, således der kan laves en anbefaling af en opskrift til personen.
 
 \textbf{Person:}
 Vurderingerne skal kobles på personen som vurdere opskriften. 
@@ -77,3 +79,4 @@ Desuden har opskrifterne en til mange varer på listen over ingredienser.
 Varen kan også være tilføjet til overvågningslisten hos en person, så derfor har personer og varer en nul til mange relation på hinanden.
 En person i problemområdet kan, vurderer en opskrift, men kan give mange vurderinger, og derfor kan en person give nul til mange vurderinger. 
 En vurdering gives til en opskrift alene, imens en opskrift kan have mange vurderinger, eller ingen vurderinger.
+Anbefalinger består af en opskrift, imens personen kan have nul til mange anbefalinger.
