@@ -1,0 +1,84 @@
+\section{Analyse af anvendelsesområdet}
+Dette afsnit tager udgangspunk i metoder fra ''Objektorienteret Analyse og Design'' og benytter disse til at analyserer anvendelsområdet, dette omfatter brug af systemet, funktioner i systemet samt grænsefladen der er tilknyttet.\citep{OOA&D2001} 
+Afsnittet skal give et overblik over funktionaliteten af systemet, samt formidle hvordan brugeren interagere med systemet.
+
+\subsection{Brug}
+Denne del af analysen har til form at fastlægge interaktion mellem systemet og aktører.
+Dette gøres ved at identificere brugsmønstre for aktørerernes aktioner i systemet.
+\subsubsection*{Aktører}
+I dette IT-system er der blevet identificeret to aktører. 
+Den første værende datakilden, eTilbudsavisens API, hvor tilbudende hentes fra og den anden værende de brugere, som benytter systemet.
+For disse to aktører er der således udarbejdet en aktørtabel \myref{aktortabel}, der giver overblik over hvilke brugsmønstre der er, vertikalt opsat, samt hvilke aktører er relevant for disse, opsat horisontalt.
+
+\begin{table}[h]
+\begin{tabular}{r|cc}
+\hline
+\textbf{Aktører}    & Bruger               & eTilbudsavis         \\ \hline
+Login               & x                    & \multicolumn{1}{l}{} \\
+Listehåndtering     & x                    & \multicolumn{1}{l}{} \\
+Søgning             & x                    & \multicolumn{1}{l}{} \\
+Indstil præferencer & x                    &                      \\
+Vurder opskrift     & x                    &                      \\
+Se anbefalinger     & x                    &                      \\
+Hent tilbud         & \multicolumn{1}{l}{} & x                    \\ \hline
+\end{tabular}
+\end{table}\caption{Aktørtabel for systemet}\label{aktortabel}
+
+\paragraph*{Bruger}
+\textbf{Formål:} En person, som ønsker at bruge en eller flere af IT-systemets funktionaliteter, til at hjælpe med planlægning af mad og indkøb.
+\textbf{Karakteristik:} Systemets brugere har meget varierende erfaring med IT-systemer, samt er bredt ud over mange forskellige aldersgrupper, majoriteten er dog  mellem 18 - 30 år og har middel erfaring med IT.
+\textbf{Eksempler:} Bruger A er en 47-årig familiefar, der kun har smartphone, da det er arbejdstelefonen på givet af arbejdet. 
+A benytter systemet til at handle ind på vej hjem fra arbejde, hvor indkøbslisten lavet af konen eller datteren bruges som guide i supermarkedet. 
+A vil således gerne kunne tilgå listen fra telefonen, så der ikke er behov for at kører hjem og hente den på papirsformat.
+
+Bruger B er en 21-årig universitetsstuderende, som for nyligt er flyttet hjemmefra. B har meget erfaring med IT, og bruger de dagligt til at navigere rundt på internettet. 
+B har let ved at navigerer rundt i systemet og bruge dets funktionaliteter til at lave besparelser på det allerede lave budget, samt at undgå at få pasta til aftensmad hver dag.
+
+\paragraph*{eTilbudsavisen}
+\textbf{Formål:} eTilbudsavisen har til formål at gøre tilbudsdata tilgængelig for systemet, dette sker igennem API.
+Dette giver information om navnet på tilbuddet, pris, periode og butik. 
+Da dataene der hentes igennem API'en kan være af meget svingende kvalitet, filtreres det, så kun forståeligt tilbudsdata kommer igennem.
+\textbf{Karakteristik:} eTilbudsavisen er pålidelig med dataene der sendes, kvaliteten af dataene kan dog svinge meget, og eTilbudsavisen tilbyder ingen fleksibilitet i dets arbejde, hvilket resulterer i noget ubrugligt data som filtreres fra.
+\textbf{Eksempel:} eTilbudsavisen gør 2.000 tilbud tilgængelig, heri er nogle på et format der ikke klargøre hvad der er på tilbud, men blot giver en række mærkenavne som er på tilbud.
+En sådan uforståelig række bliver filtreret ud såvel som andre uforståelige tilbud, og systemet ender tilbage med 1.337 brugbare tilbud, der kan vises til brugeren.
+
+\subsubsection*{Brugsmønstre}
+For en yderligere beskrivelse af de funktionaliteter i systemet, som vedrører en given aktør, modelleres en række brugsmønstre, dette er de samme brugsmønstre som ses i aktørtabellen på \myref{aktortabel}. 
+Hver enkelt af disse mønstre vil blive beskrevet igennem en brugsmønstrespecifikation. 
+Det er ikke alle mønstre som ses på denne liste, nogle af disse er sammentrækninger af flere andre mønstre, som alene virker simple og repetitive at beskrive. 
+Andre er udeladt da de ikke passer helt ind i en sammentrækning, men variationen fra det mønster og andre brugsmønstre ellers beskrevet, er så minimal, at mønstret er anset som værende ubetydeligt at beskrive.
+
+\paragraph*{Brugeridentifikation}
+\textbf{Brugsmønster:}
+\textbf{Objekter:}
+\textbf{Funktioner:}
+
+\paragraph*{Listehåndtering}
+\textbf{Brugsmønster:}
+\textbf{Objekter:}
+\textbf{Funktioner:}
+
+\paragraph*{Søgning}
+\textbf{Brugsmønster:}
+\textbf{Objekter:}
+\textbf{Funktioner:}
+
+\paragraph*{Tilpas præferencer}
+\textbf{Brugsmønster:}
+\textbf{Objekter:}
+\textbf{Funktioner:}
+
+\paragraph*{Vurder opskrift}
+\textbf{Brugsmønster:}
+\textbf{Objekter:}
+\textbf{Funktioner:}
+
+\paragraph*{Se anbefalinger}
+\textbf{Brugsmønster:}
+\textbf{Objekter:}
+\textbf{Funktioner:}
+
+\paragraph*{Hent tilbud}
+\textbf{Brugsmønster:}
+\textbf{Objekter:}
+\textbf{Funktioner:}
