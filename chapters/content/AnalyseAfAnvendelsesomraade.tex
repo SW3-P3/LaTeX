@@ -12,8 +12,10 @@ For disse to aktører er der således udarbejdet en aktørtabel \myref{aktortabe
 
 \begin{table}[h]
 \centering
-\begin{tabular}{r|c|c}
-\hline
+    \colorlet{shadecolor}{gray!40}
+    \rowcolors{1}{white}{shadecolor}
+\begin{tabular}{rcc}
+%\hline
 \textbf{Aktører}    & Bruger               		& eTilbudsavis  \\ \hline
 Login               & \cmark                    & 		 		\\
 Listehåndtering     & \cmark                    & 		 		\\
@@ -104,3 +106,63 @@ Andre er udeladt da de ikke passer helt ind i en sammentrækning, men variatione
 \textbf{Objekter:}
 
 \textbf{Funktioner:}
+
+\subsubsection{Funktioner}
+
+I dette afsnit beskrives funktionerne der skal bruges for at kunne håndtere hændelserne fra problemområdet, og brugsmønstrene beskrevet ovenfor. 
+Der findes fire typer funktioner: Aflæsnings-, opdaterings-, beregnings-, og signaleringsfunktioner.\citep{OOA&D2001}
+Først identificeres funktionerne, hvorefter der gives en kategori til funktionerne, og en bedømmelse af deres kompleksitet. Herefter gives en kortfattet beskrivelse af funktionen hvor dette er tilstrækkeligt, ellers gives en dybere beskrivelse.
+
+\begin{table}[H]
+  \centering
+    \colorlet{shadecolor}{gray!40}
+    \rowcolors{1}{white}{shadecolor}
+      \begin{tabular}{l|lcccc}
+      %\hline
+      \textbf{Funktioner}			& {Kompleksitet}	& {Kategori}  	\\ \hline
+      Tilføje varer til lister		& Simpel       		& Opdatering	\\ 
+      Fjerne varer fra lister		& Simpel       		& Opdatering	\\ 
+      Oprette og slette lister		& Simpel       		& Opdatering	\\ 
+      Dele lister					& Medium       		& Opdatering	\\ 
+      Søgning på tilbud for varer   & Medium     		& Beregning		\\ 
+      Sætte præferencer				& Simpel       		& Opdatering	\\ 
+      Filtrere for præferencer		& Kompleks     		& Beregning		\\ 
+      Give vurdering				& Simpel       		& Opdatering	\\ 
+      Sende anbefaling				& Meget kompleks	& Aflæsning, signalering, beregning		\\ 
+      Meddele tilbud på varer		& Medium      		& Signalering	\\ 
+	  Se opskrifter					& Simpel       		& Aflæsning		\\ 
+	  Se tilbud						& Simpel       		& Aflæsning		\\ 
+      Hente tilbud					& Simpel	       	& Opdatering	\\           
+    \end{tabular}
+  \caption{Funktionstabel. Viser de forskellige funktioner der skal bruges, samt deres kompleksitet og kategori.}\label{tabel:haendelsestabel}
+\end{table}
+
+\textbf{Tilføje varer til lister:} Denne funktion skal tilføje et objekt af vare klassen til en indkøbsliste, eller en overvågningsliste.
+
+\textbf{Fjerne varer fra lister:} Funktionen her skal så fjerne disse objekter igen.
+
+\textbf{Oprette og slette lister:} Denne funktion bruges når en indkøbsliste skal oprettes således man kan tilføje varer til denne.
+
+\textbf{Dele lister:} Skal opdatere modellen således en anden bruger kan tilgå samme indkøbsliste som brugeren der deler sin liste. 
+
+\textbf{Søgning på tilbud for varer:} Søger efter tilbud som passer til varen der søges for.
+
+\textbf{Sætte præferencer:} Funktionen skal sætte forskellige præferencer som vælges af brugeren, således brugerens oplevelse rettes efter brugerens præferencer.
+
+\textbf{Filtrere for præferencer:} Funktionen skal findes i to udgaver. Der skal være filtrering i forhold til præferencer for både tilbud, og opskrifter.
+
+\textbf{Give vurdering:} Funktionen skal modtage en vurdering fra brugeren og gemme denne i modellaget.
+
+\textbf{Sende anbefaling:} Funktionen her er meget kompleks da der indgår mange forskellige typer handlinger. 
+Brugerne har vurderet forskellige opskrifter, og der beregnes en anbefaling ud fra disse.
+Når anbefalingen er lavet skal den gives eller signaleres til brugeren.
+
+\textbf{Meddele tilbud på varer:} Når en varer på overvågningslisten kommer på tilbud sender denne funktion et signal til brugeren derom.
+
+\textbf{Se opskrifter:} Funktionen skal hente opskrifterne fra modellaget.
+
+\textbf{Se tilbud:} Funktionen henter tilbudene fra modellaget.
+
+\textbf{Hente tilbud:} Denne funktion henter tilbud, vha. API'et fra eTilbudsavis, disse skal derefter gemmes i modellaget.
+
+Denne analyse af funktionerne hjælper med at danne et overblik over hvilke funktionaliteter der skal designes, samt hjælper det til at stille krav til det endelige produkt.
