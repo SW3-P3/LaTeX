@@ -7,7 +7,7 @@ En indlogget \textit{bruger} vil kunne tilgå bruger-specifik information såsom
 
 \textbf{Objekter:} User.
 
-\textbf{Funktioner:} RegisterUser, Login, Logout, ChangePreferences.
+\textbf{Funktioner:} RegisterUser, Login, Logout.
 
 \subsubsection*{Listehåndtering}
 \textbf{Brugsmønster:} Dette brugsmønster dækker over indkøbslisten såvel som overvågningslisten. 
@@ -41,24 +41,24 @@ I denne del af systemet har \textit{brugeren} mulighed for at indstille sine pr�
 
 \textbf{Objekter:} Blacklist.
 
-\textbf{Funktioner:} PreferenceFilterStore, PreferenceFilterRecipie.
+\textbf{Funktioner:} PreferenceFilterStore, PreferenceFilterRecipe.
 
 \subsubsection*{Vurder opskrift}
 \textbf{Brugsmønster:} Dette brugsmønster kan først igangsættes af \textit{brugeren}, efter at den givne opskrift er blevet markeret som prøvet.
 Dette er for såvidt som muligt at undgå fejlagtig vurderinger fra diverse \textit{brugere}.
 Efter en opskrift er vurderet, kan andre \textit{brugere} se den gennemsnitlige vurdering af en opskrift, og de \textit{brugere} som har vurderet opskrifter, vil få anbefalet opskrifter som ligner.
 
-\textbf{Objekter:} RecipieTried, Recipie.
+\textbf{Objekter:} RecipeTried, Recipe.
 
-\textbf{Funktioner:} RecipieSuggest, RecipieRating.
+\textbf{Funktioner:} RecipeSuggest, RecipeRating.
 
 \subsubsection*{Se anbefalinger}
 \textbf{Brugsmønster:} \textit{Brugeren} kan se hvilke opskrfiter, som er foreslåget ud fra tidligere vurderede, såvel som afprøvede, opksrifter.
 Ydermer kan \textit{brugeren} få foreslåget dagligdagsvare, som ofte købes, baseret på tidligere indkøbsvaner.
 
-\textbf{Objekter:} Recipie, Ware.
+\textbf{Objekter:} Recipe, Ware.
 
-\textbf{Funktioner:} RecipieSuggest, RecipieRating, BoughtWares.
+\textbf{Funktioner:} RecipeSuggest, RecipeRating, BoughtWares.
 
 \subsubsection*{Hent tilbud}
 \textbf{Brugsmønster:} Dette brugsmønster igangsættes af systemet, der efter et specifikt tidsinterval kalder \textit{eTilbudsavisen}.
