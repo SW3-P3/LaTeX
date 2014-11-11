@@ -1,0 +1,12 @@
+Tilstandsdiagrammet, \myref{}, viser de forskellige stadier systemet kan være i, samt hvilke aktioner er tilgægngelige fra disse stadier.
+Markeret med grønt, ses de fire hovedmenuer hvorfra en bruger arbejder ud fra, efter en bruger er logget ind, kan disse til hver en tid tilgås gennem en menu.
+Menuen er indikeret gennem den længere sorte centerlinje, på trods af pilene ud fra denne ikke har nogen brugerinteraktionbeskrevet, er alle disse sekvenser menuvalg.\fxnote{Udelukkende login burde fører til dette stadie, hvis nogen overhovedet}
+Indikeret med pile, kan man se hvilke funktionaliteter der i tilgængelig fra en given tilstand, en linje uden beskrivelse, følges automatisk da denne aktivitet ikke kræver noget input, hvorefter stadiet skiftes..
+Eksempelvis den grønne menu-boks ''Præferencer''.
+Herfra vælges nogle præferencer, systemet tildeler præferencerne, indikeret ved den gule boks ''Præferencer tildelt'', hvorefter pilen følges videre til sit næste stadie, da der kun er en enkelt pil herfra, og sekvensen her ikke kræver nogen brugerinteraktion.\fxnote{burde denne pil ikke vende tilbage til præferencer? Faktisk kan jeg ikke se formålet med denne boks, hvorfor ikke bare en itterativ aktion sæte præferencer?}
+I diagrammet kan ses to typer opdatering af systemet, sekventiel og iterative.
+Iterative er vist som en pil der går til samme tilstand, her udføres en funktion der ikke bringer systemet til en ny tilstand, men blot opdatere.
+Eksempelvis boksen ''Liste Delt'', her er der ingen grund til at et tilstandskift, en simpel konfirmation af at processen er udført.
+Dette gøres eftersom at ''Liste Delt'' ikke ændrer på funktionaliteterne der er tilgængelige, i modsætning til en aktivitet som ''Tilføj/fjern vare'' fra menu'en ''Indkøbslister''.
+Dette input åbner brugerens muligheder i systemet, når en vare eksisterer på en indkøbsliste, kan tilbud på den givne vare vises, i tilfælde af et tilbud eksitsterer kan det tilføjes som en erstatning for varen, hvis et tilbud ikke eksisterer, eller ikke vælges, beholdes den givne vare på listen og man kommer tilbage til indkøbsliste tilstanden, hvorfor en ny vare kan tilføjes.\fxnote{faktisk kan et tilbud jo altid vises, så måske denne burde have inkøbsliste boks som source?}
+Mangler: Registrer bruger og overvågningslister(eller indgår den i præferencer? i så fald skal det klargøres)?
