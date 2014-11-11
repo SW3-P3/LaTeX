@@ -1,14 +1,14 @@
 \section{Analyse af anvendelsesområdet}
-Dette afsnit tager udgangspunk i metoder fra ''Objektorienteret Analyse og Design'' og benytter disse til at analyserer anvendelsområdet, dette omfatter brug af systemet, funktioner i systemet samt grænsefladen der er tilknyttet.\citep{OOA&D2001} 
+Dette afsnit tager udgangspunkt i metoder fra ''Objektorienteret Analyse og Design'' og benytter disse til at analyserer anvendelsområdet, dette omfatter brug af systemet, funktioner i systemet samt grænsefladen der er tilknyttet.\citep{OOA&D2001} 
 Afsnittet skal give et overblik over funktionaliteten af systemet, samt formidle hvordan brugeren interagere med systemet.
 
 \subsection{Brug}
-Denne del af analysen har til form at fastlægge interaktion mellem systemet og aktører.
+Denne del af analysen har til formål at fastlægge interaktion mellem systemet og aktører.
 Dette gøres ved at identificere brugsmønstre for aktørerernes aktioner i systemet.
 \subsubsection*{Aktører}
 I dette IT-system er der blevet identificeret to aktører. 
 Den første værende datakilden, eTilbudsavisens API, hvor tilbudende hentes fra og den anden værende de brugere, som benytter systemet.
-For disse to aktører er der således udarbejdet en aktørtabel \myref{aktortabel}, der giver overblik over hvilke brugsmønstre der er, vertikalt opsat, samt hvilke aktører er relevant for disse, opsat horisontalt.
+For disse to aktører er der således udarbejdet en aktørtabel \myref{aktortabel}, der giver overblik over hvilke brugsmønstre der er, samt hvilke aktører der er relevante for disse.
 
 \begin{table}[h]
 \centering
@@ -16,7 +16,7 @@ For disse to aktører er der således udarbejdet en aktørtabel \myref{aktortabe
     \rowcolors{1}{white}{shadecolor}
 \begin{tabular}{rcc}
 %\hline
-\textbf{Aktører}    & Bruger               		& eTilbudsavis  \\ \hline
+				    & Bruger               		& eTilbudsavis  \\ \hline
 Login               & \cmark                    & 		 		\\
 Listehåndtering     & \cmark                    & 		 		\\
 Søgning             & \cmark                    & 				\\
@@ -32,28 +32,28 @@ Hent tilbud         &  						    & \cmark 		\\ \hline
 
 \textbf{Formål:} En person, som ønsker at bruge en eller flere af IT-systemets funktionaliteter, til at hjælpe med planlægning af mad og indkøb.
 
-\textbf{Karakteristik:} Systemets brugere har meget varierende erfaring med IT-systemer, samt er bredt ud over mange forskellige aldersgrupper, majoriteten er dog  mellem 18 - 30 år og har middel erfaring med IT.
+\textbf{Karakteristik:} Systemets brugere har meget varierende erfaring med IT-systemer, samt er bredt ud over mange forskellige aldersgrupper, majoriteten er dog mellem 18 - 30 år og har middel erfaring med IT.
 
-\textbf{Eksempler:} Bruger A er en 47-årig familiefar, der kun har smartphone, da det er arbejdstelefonen på givet af arbejdet. 
-A benytter systemet til at handle ind på vej hjem fra arbejde, hvor indkøbslisten lavet af konen eller datteren bruges som guide i supermarkedet. 
-A vil således gerne kunne tilgå listen fra telefonen, så der ikke er behov for at kører hjem og hente den på papirsformat.
+\textbf{Eksempler:}Bruger A er en 21-årig universitetsstuderende, som for nyligt er flyttet hjemmefra. A har meget erfaring med IT, og bruger det dagligt til at navigere rundt på internettet. 
+A har let ved at navigerer rundt i systemet og bruge dets funktionaliteter til at lave besparelser på det allerede lave budget, samt at undgå at få pasta med ketchup til aftensmad hver dag.
 
-Bruger B er en 21-årig universitetsstuderende, som for nyligt er flyttet hjemmefra. B har meget erfaring med IT, og bruger de dagligt til at navigere rundt på internettet. 
-B har let ved at navigerer rundt i systemet og bruge dets funktionaliteter til at lave besparelser på det allerede lave budget, samt at undgå at få pasta til aftensmad hver dag.
+Bruger B er en 47-årig familiefar, der kun har smartphone, da det er arbejdstelefonen på givet af arbejdet. 
+B benytter systemet til at handle ind på vej hjem fra arbejde, hvor indkøbslisten lavet af konen eller datteren bruges som guide i supermarkedet. 
+B vil således gerne kunne tilgå listen fra telefonen, så der ikke er behov for at kører hjem og hente den på papirsformat.
 
 \subsubsection*{eTilbudsavisen}
 
 \textbf{Formål:} eTilbudsavisen har til formål at gøre tilbudsdata tilgængelig for systemet, dette sker igennem API.
-Dette giver information om navnet på tilbuddet, pris, periode og butik. 
-Da dataene der hentes igennem API'en kan være af meget svingende kvalitet, filtreres det, så kun forståeligt tilbudsdata kommer igennem.
+Dette giver information om navnet på tilbudet, pris, periode, butik og meget andet.
+Da dataene der hentes igennem API'et kan være af meget svingende kvalitet, filtreres det, så kun forståeligt tilbudsdata kommer igennem.
 
-\textbf{Karakteristik:} eTilbudsavisen er pålidelig med dataene der sendes, kvaliteten af dataene kan dog svinge meget, og eTilbudsavisen tilbyder ingen fleksibilitet i dets arbejde, hvilket resulterer i noget ubrugligt data som filtreres fra.
+\textbf{Karakteristik:} eTilbudsavisen er pålidelig med dataene der sendes, kvaliteten af dataene kan dog svinge meget, og eTilbudsavisen tilbyder ingen fleksibilitet i dets arbejde, hvilket resulterer i noget ubrugeligt data som filtreres fra.
 
 \textbf{Eksempel:} eTilbudsavisen gør 2.000 tilbud tilgængelig, heri er nogle på et format der ikke klargøre hvad der er på tilbud, men blot giver en række mærkenavne som er på tilbud.
 En sådan uforståelig række bliver filtreret ud såvel som andre uforståelige tilbud, og systemet ender tilbage med 1.337 brugbare tilbud, der kan vises til brugeren.
 
 \subsubsection*{Brugsmønstre}
-For en yderligere beskrivelse af de funktionaliteter i systemet, som vedrører en given aktør, modelleres en række brugsmønstre, dette er de samme brugsmønstre som ses i aktørtabellen på \myref{aktortabel}. 
+For en yderligere beskrivelse af de funktionaliteter i systemet, som vedrører en given aktør, modelleres en række brugsmønstre, dette er de samme brugsmønstre som ses i aktørtabellen i \myref{aktortabel}. 
 Hver enkelt af disse mønstre vil blive beskrevet igennem en brugsmønstrespecifikation. 
 Det er ikke alle mønstre som ses på denne liste, nogle af disse er sammentrækninger af flere andre mønstre, som alene virker simple og repetitive at beskrive. 
 Andre er udeladt da de ikke passer helt ind i en sammentrækning, men variationen fra det mønster og andre brugsmønstre ellers beskrevet, er så minimal, at mønstret er anset som værende ubetydeligt at beskrive.
@@ -70,9 +70,12 @@ Først identificeres funktionerne, hvorefter der gives en kategori til funktione
   \centering
     \colorlet{shadecolor}{gray!40}
     \rowcolors{1}{white}{shadecolor}
-      \begin{tabular}{l|lcccc}
+      \begin{tabular}{l|lllll}
       %\hline
       \textbf{Funktioner}			& {Kompleksitet}	& {Kategori}  	\\ \hline
+      Log ind						& Medium			& Beregning, Opdatering		\\
+      Log ud						& Simpel			& Opdatering	\\
+      Registrer bruger				& Simpel			& Opdatering	\\
       Tilføje varer til lister		& Simpel       		& Opdatering	\\ 
       Fjerne varer fra lister		& Simpel       		& Opdatering	\\ 
       Oprette og slette lister		& Simpel       		& Opdatering	\\ 
@@ -87,8 +90,15 @@ Først identificeres funktionerne, hvorefter der gives en kategori til funktione
 	  Se tilbud						& Simpel       		& Aflæsning		\\ 
       Hente tilbud					& Simpel	       	& Opdatering	\\           
     \end{tabular}
-  \caption{Funktionstabel. Viser de forskellige funktioner der skal bruges, samt deres kompleksitet og kategori.}\label{tabel:haendelsestabel}
+  \caption{Funktionstabel. Viser de forskellige funktioner der skal bruges, samt deres kompleksitet og kategori.}\label{tabel:functionstable}
 \end{table}
+
+\textbf{Log ind:} Her bliver sendt brugerinformationer, som verificeres med brugerne registreret i systemet. 
+Hvis dette fuldføres, opdateres modellen således brugeren er registreret som værende logget ind.
+
+\textbf{Log ud:} Brugeren der før var logget ind, opdateres til at være logget ud.
+
+\textbf{Registrer bruger:} En ny bruger sender sine brugerinformationer, og et nyt login oprettes i modellaget.
 
 \textbf{Tilføje varer til lister:} Denne funktion skal tilføje et objekt af vare klassen til en indkøbsliste, eller en overvågningsliste.
 
