@@ -17,33 +17,32 @@ Denne sammenhæng vil analyseres her.
 
 \textbf{Vare:}
 En vare indgår i opskrifter, og indkøbslister.
-Når man laver sin indkøbsliste vælger man hvilke varer man vil købe og skriver dem derpå. 
-Desuden kan en vare have et antal tilbud hver uge, hvilket betyder at der også skal laves en tilbuds klasse.
+Når man laver sin indkøbsliste kan man vælge varer man vil købe, og tilføje dem til indkøbslisten.
+Desuden kan en vare have et antal tilbud hver uge, hvilket betyder at der også skal laves en tilbudsklasse.
 
 \textbf{Tilbud:}
-Hver uge kommer der nye tilbud fra de fleste danske dagligvarebutikker. 
+Hver uge kommer der nye varer på tilbud fra de fleste danske dagligvarebutikker. 
 Disse modeleres og kobles på varen og dermed dannes der en kobling fra varen til tilbudene.
 
 \textbf{Opskrift:}
-En opskrift har en liste over ingredienser, hvilket altså er varer.
+En opskrift har en liste over ingredienser, hvilket altså er varer, samt mængden af varen. 
 I interviewene i \myref{section:interview2}, blev det nævnt at brugerne gerne ville kunne vurdere en opskrift, og dermed få anbefalet yderligere opskrifter som minder om denne.
 Dette leder til at der laves en såkaldt vurderingsklasse.
 
 \textbf{Vurdering:}
-Vurderinger bliver foretaget når en bruger af systemet har lavet en opskrift, og vil give den en vurdering, både til at hjælpe andre, men også for at få lignende opskrifter anbefalet, hvis man nu synes den var god.
+Vurderinger bliver foretaget når en bruger af systemet har udført en opskrift, og vil give den en vurdering, både til at hjælpe andre, men også for at få lignende opskrifter anbefalet, hvis man nu synes den var god.
 
-\textbf[Anbefaling:]
+\textbf{Anbefaling:}\fxfatal{Meget forvirende sætning, forslag: ``En anbefaling, af en opskrift, kan gives til personer når de har vurderet andre opskrifter, som minder om den, på en eller flere måder.'' - Troels}
 En anbefaling bliver givet til en person når der er givet vurderinger, således der kan laves en anbefaling af en opskrift til personen.
 
 \textbf{Person:}
-Vurderingerne skal kobles på personen som vurdere opskriften. 
-Derfor laves der en person klasse, som samtidig indholder attributter som gør det muligt at sætte personens præferencer.
-Det er desuden også personerne som har deres egne indkøbsliter.
+Personklassen gør det muligt at hold styr på forskellige personer, da disse tilsluttes andre aspekter af systemet.
+Disse er opskrifter og vurderinger. 
+Derudover vil en person også have præferencer som vil være attributter. 
 
 \textbf{Indkøbsliste:}
-Indkøbslisten laves af personen, og fyldes op med objekter fra vare klassen.
-Indkøbslisterne kan være delte, og derfor skal koblingen på personen klassen ikke være singulær, men altså 1..*.
-
+Indkøbslisten laves af en person, og fyldes op med objekter fra vareklassen.
+Indkøbslisterne kan deles mellem flere brugere, og derfor skal koblingen på personenklassen ikke være singulær, men altså 1..*.
 
 \subsection{Hændelser}
 Vi har fundet frem til de forskellige hændelser der sker i problemområdet.
@@ -53,15 +52,13 @@ Hvis 2 klasser har alle de samme hændelser, kan der ofte foretages ændringer o
 
 \input{images/Tables/haendelsestabel.tex}
 
-Hændelsestabellen i Tabel \ref{tabel:haendelsestabel} viser både hvilke hændelser der findes i problemområdet, samt hvilke klasser de påvirker.
-Hvis tabellen læses vandret kan det ses at klasser der bliver påvirket af mange hændelser er klasser som "Indkøbsliste", "Vare" og "Person".
+Hændelsestabellen i \myref{tabel:haendelsestabel} viser både hvilke hændelser der findes i problemområdet, samt hvilke klasser de påvirker.
+Hvis tabellen læses vandret kan det ses at klasser der bliver påvirket af mange hændelser er klasser som ``Indkøbsliste'', ``Vare'' og ``Person''.
 
-Ud fra analysen indtil nu kan der dannes et overblik, over klassernes interne interaktion, såvel som hvilke hændelser, involverer hvilke klasser.
+Ud fra analysen indtil nu kan der dannes et overblik, over klassernes interne interaktion, såvel som hvilke hændelser der involverer hvilke klasser.
 Denne information kan vi nu bruge til at lave en struktur over klasserne i problemområdet.
 
-
 \subsection{Struktur}\label{sec:struktur}
-
 \begin{figure}
 	\centering
 		\includegraphics[scale=0.6]{images/Diagrams/klassediagram_model_simple.pdf}
@@ -69,16 +66,18 @@ Denne information kan vi nu bruge til at lave en struktur over klasserne i probl
 	\label{figur:PDklasse}
 \end{figure}
 
-Klassediagram som ses på Figur \ref{figur:PDklasse}, dette beskriver forholdet mellem de forskellige klasser som findes i problemområdet. Diagrammets sammenhænge er dannet ud fra hændelsestabellen, og beskrivelserne af klasserne. Følgende afsnit gennemgår diagrammets sammenhænge.
+Klassediagram som ses på \myref{figur:PDklasse}, dette beskriver forholdet mellem de forskellige klasser som findes i problemområdet. 
+Diagrammets sammenhænge er dannet ud fra hændelsestabellen, og beskrivelserne af klasserne. 
+Følgende afsnit gennemgår diagrammets sammenhænge.
 
 Personer i indkøbssituationer kan lave indkøbslister, disse indkøbslister kan været ejet og administreret af en enten en eller flere personer.
 En indkøbsliste kan bestå af nul til mange varer.
 En vare kan være på tilbud i mere end en butik, og derfor have nul til mange tilbud.
-En vare kan desuden indgå i en opskrift, og er derfor forbundet med mul til mange.
+En vare kan desuden indgå i en opskrift, og er derfor forbundet med nul til mange.
 Desuden har opskrifterne en til mange varer på listen over ingredienser.
 Varen kan også være tilføjet til overvågningslisten hos en person, så derfor har personer og varer en nul til mange relation på hinanden.
-En person i problemområdet kan, vurderer en opskrift, men kan give mange vurderinger, og derfor kan en person give nul til mange vurderinger. 
+En person i problemområdet kan give hver opskrift en vurdering, derfor kan personen give nul til mange vurderinger.
 En vurdering gives til en opskrift alene, imens en opskrift kan have mange vurderinger, eller ingen vurderinger.
-Anbefalinger består af en opskrift, imens personen kan have nul til mange anbefalinger.
+Anbefalinger består af en opskrift, imens personen kan modtage nul til mange anbefalinger.
 
 På baggrund af denne analyse kan systemets implementation designes, men først skal der foretages en analyse af anvendelsesområdet.
