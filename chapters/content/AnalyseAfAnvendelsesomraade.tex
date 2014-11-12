@@ -7,7 +7,7 @@ Denne del af analysen har til formål at fastlægge interaktion mellem systemet 
 Dette gøres ved at identificere brugsmønstre for aktørerernes aktioner i systemet.
 \subsubsection*{Aktører}
 I dette IT-system er der blevet identificeret to aktører. 
-Den første værende datakilden, eTilbudsavisens API, hvor tilbudende hentes fra og den anden værende de brugere, som benytter systemet.
+Den første værende datakilden, eTilbudsaviss API, hvor tilbudende hentes fra og den anden værende de brugere, som benytter systemet.
 For disse to aktører er der således udarbejdet en aktørtabel \myref{aktortabel}, der giver overblik over hvilke brugsmønstre der er, samt hvilke aktører der er relevante for disse.
 
 \begin{table}[h]
@@ -41,15 +41,15 @@ Bruger B er en 47-årig familiefar, der kun har smartphone, da det er arbejdstel
 B benytter systemet til at handle ind på vej hjem fra arbejde, hvor indkøbslisten lavet af konen eller datteren bruges som guide i supermarkedet. 
 B vil således gerne kunne tilgå listen fra telefonen, så der ikke er behov for at kører hjem og hente den på papirsformat.
 
-\subsubsection*{eTilbudsavisen}
+\subsubsection*{eTilbudsavis}
 
-\textbf{Formål:} eTilbudsavisen har til formål at gøre tilbudsdata tilgængelig for systemet, dette sker igennem API.
+\textbf{Formål:} eTilbudsavis har til formål at gøre tilbudsdata tilgængelig for systemet, dette sker igennem API.
 Dette giver information om navnet på tilbudet, pris, periode, butik og meget andet.
 Da dataene der hentes igennem API'et kan være af meget svingende kvalitet, filtreres det, så kun forståeligt tilbudsdata kommer igennem.
 
-\textbf{Karakteristik:} eTilbudsavisen er pålidelig med dataene der sendes, kvaliteten af dataene kan dog svinge meget, og eTilbudsavisen tilbyder ingen fleksibilitet i dets arbejde, hvilket resulterer i noget ubrugeligt data som filtreres fra.
+\textbf{Karakteristik:} eTilbudsavis er pålidelig med dataene der sendes, kvaliteten af dataene kan dog svinge meget, og eTilbudsavis tilbyder ingen fleksibilitet i dets arbejde, hvilket resulterer i noget ubrugeligt data som filtreres fra.
 
-\textbf{Eksempel:} eTilbudsavisen gør 2.000 tilbud tilgængelig, heri er nogle på et format der ikke klargøre hvad der er på tilbud, men blot giver en række mærkenavne som er på tilbud.
+\textbf{Eksempel:} eTilbudsavis gør 2.000 tilbud tilgængelig, heri er nogle på et format der ikke klargøre hvad der er på tilbud, men blot giver en række mærkenavne som er på tilbud.
 En sådan uforståelig række bliver filtreret ud såvel som andre uforståelige tilbud, og systemet ender tilbage med 1.337 brugbare tilbud, der kan vises til brugeren.
 
 \subsubsection*{Brugsmønstre}
