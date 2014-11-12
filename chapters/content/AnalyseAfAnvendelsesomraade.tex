@@ -60,7 +60,20 @@ Andre er udeladt da de ikke passer helt ind i en sammentrækning, men variatione
 
 \input{chapters/content/Brugsmonstre.tex}
 
-\subsubsection{Funktioner}
+\subsubsection*{Tilstands af system}
+\begin{wrapfigure}{o}{0.68\textwidth}
+\vspace{-20pt}
+	\begin{center}
+		\includegraphics[width=0.66\textwidth]{images/Diagrams/Tilstandsdiagram.PNG}
+	\end{center}
+	\vspace{-20pt}
+	\caption{Tilstandsdiagram for systemet}\label{tilstandsdiagram}
+	\vspace{-20pt}
+\end{wrapfigure}
+
+\input{chapters/content/Tilstandsdiagrambeskrivelse.tex}
+
+\subsection{Funktioner}
 
 I dette afsnit beskrives funktionerne der skal bruges for at kunne håndtere hændelserne fra problemområdet, og brugsmønstrene beskrevet ovenfor. 
 Der findes fire typer funktioner: Aflæsnings-, opdaterings-, beregnings-, og signaleringsfunktioner.\citep{OOA&D2001}
@@ -129,3 +142,5 @@ Når anbefalingen er lavet skal den gives eller signaleres til brugeren.
 \textbf{Hente tilbud:} Denne funktion henter tilbud, vha. API'et fra eTilbudsavis, disse skal derefter gemmes i modellaget.
 
 Denne analyse af funktionerne hjælper med at danne et overblik over hvilke funktionaliteter der skal designes, samt hjælper det til at stille krav til det endelige produkt.
+
+
