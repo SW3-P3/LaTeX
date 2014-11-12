@@ -1,9 +1,9 @@
 \subsubsection*{Brugeridentifikation}
-\textbf{Brugsmønster:} Brugeridentifikation sker ved at en \textit{bruger} logger ind i systemet. 
-\textit{Brugeren} vil blive præsenteret for en side hvor e-mail og password kan indtastes.
-Herefter godkender eller afviser systemet den opgivne data og håndterer resultatet, enten ved at logge \textit{brugeren} ind, eller bede om informationen igen.
-Alternativt kan \textit{brugeren} oprette en ny konto i systemet, \textit{brugeren} vil blive bedt om samme information som login, men håndterer i stedet informationen ved at oprette en bruger med dataene, der er blevet opgivet.
-Når en \textbf{bruger} er logget vil den kunne tilgå bruger-specifik information såsom præferencer og indkøbslister såvel som ændre på disse.
+\textbf{Brugsmønster:} Brugeridentifikation sker ved at en \textbf{bruger} logger ind i systemet. 
+Brugeren vil blive præsenteret for en side hvor e-mail og password kan indtastes.
+Herefter godkender eller afviser systemet den opgivne data og håndterer resultatet, enten ved at logge brugeren ind, eller bede om informationen igen.
+Alternativt kan brugeren oprette en ny konto i systemet, brugeren vil blive bedt om samme information som login, men håndterer i stedet informationen ved at oprette en bruger med dataene, der er blevet opgivet.
+Når en bruger er logget vil den kunne tilgå bruger-specifik information såsom præferencer og indkøbslister såvel som ændre på disse.
 
 \textbf{Objekter:} Person.
 
@@ -11,24 +11,24 @@ Når en \textbf{bruger} er logget vil den kunne tilgå bruger-specifik informati
 
 \subsubsection*{Listehåndtering}
 \textbf{Brugsmønster:} Dette brugsmønster dækker over indkøbslisten såvel som overvågningslisten. 
-\textit{Brugeren} kan inden for listens brugsmønstre tilgå alle funktionaliteter i vilkårlig rækkefølge, givet der er oprettet en liste på forhånd. 
-En \textit{bruger} kan altid oprette en indkøbsliste, ved at oprette en tom liste.
-Ligeledes kan en \textit{bruger} slette lister igen.
+Brugeren kan inden for listens brugsmønstre tilgå alle funktionaliteter i vilkårlig rækkefølge, givet der er oprettet en liste på forhånd. 
+En bruger kan altid oprette en indkøbsliste, ved at oprette en tom liste.
+Ligeledes kan en bruger slette lister igen.
 Overvågningslisten på den anden hånd, eksisterer altid og kan hverken oprettes eller slettes.
-\textit{Brugeren} kan på begge lister tilføje eller fjerne vare.
-Varerne på overvågningslisten er varer som \textit{brugeren} er interesserede i at få tilbud om. 
-Når en varer på denne liste kommer på tilbud modtager \textit{brugeren} en notifikation derom.
+Brugeren kan på begge lister tilføje eller fjerne vare.
+Varerne på overvågningslisten er varer som brugeren er interesserede i at få tilbud om. 
+Når en varer på denne liste kommer på tilbud modtager brugeren en notifikation derom.
 Ved indkøbslisten er der tre funktionaliteter til at tilføje ting til listen.
 Man kan tilføje varer, tilbud, eller ingredienser fra en opskrift.
-Ydermere kan en \textit{bruger} aftjekke eller fjerne vare fra listen, såvel som dele deres liste med andre \textit{brugere}.
+Ydermere kan en bruger aftjekke eller fjerne vare fra listen, såvel som dele deres liste med andre brugere.
 
-\textbf{Objekter:} Indkøbliste, Overvågningsliste, Varer, Tilbud, Personer, Opskrifter.
+\textbf{Objekter:} Indkøbsliste, Overvågningsliste, Varer, Tilbud, Personer, Opskrifter.
 
 \textbf{Funktioner:} Opret liste, Fjern liste, Tilføj til liste, Fjern fra liste, Aftjek på liste, Del liste.
 
 \subsubsection*{Søgning}
-\textbf{Brugsmønster:} Dette brugsmønster igangsættes af \textit{brugeren}.
-\textit{Brugeren} kan søge efter varer, hvorefter systemet filtrerer efter søgestrengen for at finde relevante resultater.
+\textbf{Brugsmønster:} Dette brugsmønster igangsættes af brugeren.
+Brugeren kan søge efter varer, hvorefter systemet filtrerer efter søgestrengen for at finde relevante resultater.
 Dette brugsmønster benyttes flere steder, både til at finde vare og tilbud til at tilføje til lister, såvel som at finde opskrifter.
 
 
@@ -37,10 +37,10 @@ Dette brugsmønster benyttes flere steder, både til at finde vare og tilbud til
 \textbf{Funktioner:} Søg efter tilbud, Søg efter opskrifter.
 
 \subsubsection*{Tilpas præferencer}
-\textbf{Brugsmønster:} Brugsmønstret benyttes af en \textit{bruger}.
-I denne del af systemet har \textit{brugeren} mulighed for at indstille sine præferencer vedrørende madtyper.
-\textit{Brugeren} kan blackliste forskellige typer af mad såsom fisk, resulterende i at opskrifter indeholdende fisk vil være sorteret fra under opskrifter, samt fjernelse af tilbud med fisk. 
-Ligeledes er det muligt for \textit{brugeren} at fjerne bestemte butikker, hvor der ikke ønskes at ses tilbud fra.
+\textbf{Brugsmønster:} Brugsmønstret benyttes af en bruger.
+I denne del af systemet har brugeren mulighed for at indstille sine præferencer vedrørende madtyper.
+Brugeren kan blackliste forskellige typer af mad såsom fisk, resulterende i at opskrifter indeholdende fisk vil være sorteret fra under opskrifter, samt fjernelse af tilbud med fisk. 
+Ligeledes er det muligt for brugeren at fjerne bestemte butikker, hvor der ikke ønskes at ses tilbud fra.
 
 \textbf{Objekter:} Blacklist.
 
@@ -48,23 +48,23 @@ Ligeledes er det muligt for \textit{brugeren} at fjerne bestemte butikker, hvor 
 
 \subsubsection*{Vurder opskrift}
 \textbf{Brugsmønster:} 
-Efter en opskrift er vurderet, kan andre \textit{brugere} se den gennemsnitlige vurdering af en opskrift, og de \textit{brugere} som har vurderet opskrifter, vil få anbefalet opskrifter som ligner.
+Efter en opskrift er vurderet, kan andre brugere se den gennemsnitlige vurdering af en opskrift, og de brugere som har vurderet opskrifter, vil få anbefalet opskrifter som ligner.
 
 \textbf{Objekter:} Opskrift, Vurderinger, Liste af vurderinger.
 
 \textbf{Funktioner:} Vurder opskrift.
 
 \subsubsection*{Se anbefalinger}
-\textbf{Brugsmønster:} \textit{Brugeren} kan se hvilke opskrifter, som er foreslået ud fra tidligere vurderede, såvel som afprøvede, opskrifter.
-Ydermere kan \textit{brugeren} få foreslået dagligdagsvare, som ofte købes, baseret på tidligere indkøbsvaner.
+\textbf{Brugsmønster:} Brugeren kan se hvilke opskrifter, som er foreslået ud fra tidligere vurderede, såvel som afprøvede, opskrifter.
+Ydermere kan brugeren få foreslået dagligdagsvarer, som ofte købes, baseret på tidligere indkøbsvaner.
 
 \textbf{Objekter:} Opskrift, Vare.
 
 \textbf{Funktioner:} Send anbefaling.
 
 \subsubsection*{Hent tilbud}
-\textbf{Brugsmønster:} Dette brugsmønster igangsættes af systemet, der efter et specifikt tidsinterval kalder \textit{eTilbudsavisen}.
-\textit{eTilbudsavisen} henter som følge deraf, tilbud fra en API, og opdaterer systemets database med nye tilbud.
+\textbf{Brugsmønster:} Dette brugsmønster igangsættes af systemet, der efter et specifikt tidsinterval kalder \textbf{eTilbudsavisen}.
+eTilbudsavisen henter som følge deraf, tilbud fra en API, og opdaterer systemets database med nye tilbud.
 
 \textbf{Objekter:} Tilbud.
 

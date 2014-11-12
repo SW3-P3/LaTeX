@@ -2,6 +2,7 @@
 
 På baggrund af analysen af problemområdet, anvendelsesområdet og interviewene beskrevet i  \myref{section:interview2} kan der nu opstilles krav til systemet, samt hvad det skal kunne.
 Følgende user stories er baseret på brugsmønstrene og funktionerne fra \myref{sec:anvendelses}, samt svarene fra de interviewede.
+Valget, at lavet user stories, kommer da der benyttes Scrum som udviklingsmetode af systemet.
 
 \begin{enumerate}
 	\item Som en bruger vil jeg kunne oprette indkøbslister.
@@ -24,11 +25,11 @@ Følgende user stories er baseret på brugsmønstrene og funktionerne fra \myref
 \end{enumerate}
 
 Disse user stories vil blive designet og implementeret i systemet.
-Desuden er der stillet yderligere krav til projektet og systemet, og de krævede funktionaliteter sætter nogle af disse op.\fxnote{Desuden er der stillet yderligere krav til projektet og systemet, som resultat af disse krav er der behov for yderligere funktionaliteter i systemet.}
-Valget, at lavet user stories, kommer da der benyttes Scrum til udviklingsprocessen af systemet.
+Desuden stilles der yderligere krav til projektet og systemet, bl.a. fra funktionaliteter fundet i \myref{subsec:funktioner}, og fra studieordningen.
 
 \subsection{Krav til systemet}
 \begin{enumerate}
+\item Der skal benyttes C\# til programmering af systemet.
 \item Systemet skal kunne tilgås via forskellige enheder, og gemme information fra enhed til enhed.
 \item Systemet skal benytte aktuelle tilbud fra diverse dagligvarebutikker.
 \item Systemet skal kunne modtage feedback på de opskrifter brugerne prøver.
@@ -44,11 +45,6 @@ Valget, at lavet user stories, kommer da der benyttes Scrum til udviklingsproces
 \begin{enumerate}
 	\item Systemets UI skal være på dansk.
 	\item Systemet skal kunne anvendes på forskellige enheder
-	\begin{enumerate}
-		\item Computere, >= 11” og > 768 px i højden og > 1280 px i breden.
-		\item Tablets, > 6" og < 11"
-		\item Smartphones, <= 6”
-	\end{enumerate}
 	\item Systemets UI skal være responsivt og tilpasse sig den anvendte platform.
 	\item Brugerne skal synes det er nemt at skabe sig overblik over systemet og navigering heri.
 \end{enumerate}
@@ -57,4 +53,3 @@ Alle kravene i dette afsnit vil blive taget i betragtning, under design og imple
 Slutteligt i rapporten konkluderes der på hvor vidt disse krav er opfyldt, og desuden vil der udføres endnu en række interviews med brugere for at teste deres tilfredsstillelse med systemet. 
 I de følgende afsnit vil udviklingsprocessen yderligere beskrives, samt designet og implementationerne af løsninger til kravene stillet i dette afsnit.
 
-\input{chapters/content/moscow.tex}
