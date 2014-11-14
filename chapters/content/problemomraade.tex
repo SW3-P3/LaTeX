@@ -21,24 +21,24 @@ Når man laver sin indkøbsliste kan man vælge varer man vil købe, og tilføje
 Desuden kan en vare have et antal tilbud hver uge, hvilket betyder at der også skal laves en tilbudsklasse.
 
 \textbf{Tilbud:}
-Hver uge kommer der nye varer på tilbud fra de fleste danske dagligvarebutikker. 
+Hver uge kommer der nye varer på tilbud fra de fleste danske dagligvarebutikker.
 Disse modeleres og kobles på varen og dermed dannes der en kobling fra varen til tilbudene.
 
 \textbf{Opskrift:}
-En opskrift har en liste over ingredienser, hvilket altså er varer, samt mængden af varen. 
+En opskrift har en liste over ingredienser, hvilket altså er varer, samt mængden af varen.
 I interviewene i \myref{section:interview2}, blev det nævnt at brugerne gerne ville kunne vurdere en opskrift, og dermed få anbefalet yderligere opskrifter som minder om denne.
 Dette leder til at der laves en såkaldt vurderingsklasse.
 
 \textbf{Vurdering:}
-Vurderinger bliver foretaget når en bruger af systemet har udført en opskrift, og vil give den en vurdering, både til at hjælpe andre, men også for at få lignende opskrifter anbefalet, hvis man nu synes den var god.
+Vurderinger bliver foretaget når en bruger af systemet har udført en opskrift, og vil give den en vurdering, både til at hjælpe andre, men også for at få lignende opskrifter anbefalet, hvis en bruger fandt en opskrift god.
 
 \textbf{Anbefaling:}
 En anbefaling, af en opskrift, kan gives til personer når de har givet positive vurderinger af andre opskrifter, som minder om den vurderede opskrift.
 
 \textbf{Person:}
 Personklassen gør det muligt at hold styr på forskellige personer, da disse tilsluttes andre aspekter af systemet.
-Disse er opskrifter og vurderinger. 
-Derudover vil en person også have præferencer som vil være attributter. 
+Disse er opskrifter og vurderinger.
+Derudover vil en person også have præferencer som vil være attributter.
 
 \textbf{Indkøbsliste:}
 Indkøbslisten laves af en person, og fyldes op med objekter fra vareklassen.
@@ -48,7 +48,7 @@ Indkøbslisterne kan deles mellem flere brugere, og derfor skal koblingen på pe
 Vi har fundet frem til de forskellige hændelser der sker i problemområdet.
 Ud fra disse laves en hændelsestabel, der beskriver hvilke klasser forskellige hændelser påvirker.
 Formålet med at identificere hændelserne samt at analysere disse i en hændelsestalbel, er at forstå problemområdet bedre og dermed hjælpe med forståelsen for hvordan en løsning ville kunne designes for at afhjælpe de problemer der findes i problemområdet. Desuden kan tabellen hjælpe med strukturen på klasserne.
-Hvis 2 klasser har alle de samme hændelser, kan der ofte foretages ændringer og dermed opnå en bedre struktur.
+Hvis to klasser har samme hændelser, kan disse klasser ofte tilpasses under en klasse og dermed opnå en bedre struktur.
 
 \input{images/Tables/haendelsestabel.tex}
 
@@ -66,8 +66,8 @@ Denne information kan vi nu bruge til at lave en struktur over klasserne i probl
 	\label{figur:PDklasse}
 \end{figure}
 
-Klassediagram som ses på \myref{figur:PDklasse}, dette beskriver forholdet mellem de forskellige klasser som findes i problemområdet. 
-Diagrammets sammenhænge er dannet ud fra hændelsestabellen, og beskrivelserne af klasserne. 
+Klassediagram som ses på \myref{figur:PDklasse}, dette beskriver forholdet mellem de forskellige klasser som findes i problemområdet.
+Diagrammets sammenhænge er dannet ud fra hændelsestabellen, og beskrivelserne af klasserne.
 Følgende afsnit gennemgår diagrammets sammenhænge.
 
 Personer i indkøbssituationer kan lave indkøbslister, disse indkøbslister kan været ejet og administreret af en enten en eller flere personer.

@@ -1,12 +1,12 @@
 \section{Analyse af anvendelsesområdet}\label{sec:anvendelses}
-Dette afsnit tager udgangspunkt i metoder fra ''Objektorienteret Analyse og Design'' og benytter disse til at analyserer anvendelsområdet, dette omfatter brug af systemet, funktioner i systemet samt grænsefladen der er tilknyttet.\citep{OOA&D2001} 
-Afsnittet skal give et overblik over funktionaliteten af systemet, samt formidle hvordan brugeren interagere med systemet.
+Dette afsnit tager udgangspunkt i metoder fra ''Objektorienteret Analyse og Design'' og benytter disse til at analyserer anvendelsområdet, dette omfatter brug af systemet, funktioner i systemet samt grænsefladen der er tilknyttet.\citep{OOA&D2001}
+Afsnittet skal give et overblik over funktionaliteten af systemet, samt formidle hvordan brugeren interagerer med systemet.
 
 \subsection{Brug}
 Denne del af analysen har til formål at fastlægge interaktion mellem systemet og aktører.
 Dette gøres ved at identificere brugsmønstre for aktørerernes aktioner i systemet.
 \subsubsection*{Aktører}
-I dette IT-system er der blevet identificeret to aktører. 
+I dette IT-system er der blevet identificeret to aktører.
 Den første værende datakilden, eTilbudsaviss API, hvor tilbudende hentes fra og den anden værende de brugere, som benytter systemet.
 For disse to aktører er der således udarbejdet en aktørtabel \myref{aktortabel}, der giver overblik over hvilke brugsmønstre der er, samt hvilke aktører der er relevante for disse.
 
@@ -34,12 +34,12 @@ Hent tilbud         &  						    & \cmark 		\\ \hline
 
 \textbf{Karakteristik:} Systemets brugere har meget varierende erfaring med IT-systemer, samt er bredt ud over mange forskellige aldersgrupper, majoriteten er dog mellem 18 - 30 år og har middel erfaring med IT.
 
-\textbf{Eksempler:}Bruger A er en 21-årig universitetsstuderende, som for nyligt er flyttet hjemmefra. A har meget erfaring med IT, og bruger det dagligt til at navigere rundt på internettet. 
-A har let ved at navigerer rundt i systemet og bruge dets funktionaliteter til at lave besparelser på det allerede lave budget, samt at undgå at få pasta med ketchup til aftensmad hver dag.
+\textbf{Eksempler:}Bruger A er en 21-årig universitetsstuderende, som for nyligt er flyttet hjemmefra. A har meget erfaring med IT, og bruger det dagligt til at navigere rundt på internettet.
+A har let ved at navigere rundt i systemet og bruge dets funktionaliteter til at lave besparelser på det allerede lave budget, samt at undgå at få pasta med ketchup til aftensmad hver dag.
 
-Bruger B er en 47-årig familiefar, der kun har smartphone, da det er arbejdstelefonen på givet af arbejdet. 
-B benytter systemet til at handle ind på vej hjem fra arbejde, hvor indkøbslisten lavet af konen eller datteren bruges som guide i supermarkedet. 
-B vil således gerne kunne tilgå listen fra telefonen, så der ikke er behov for at kører hjem og hente den på papirsformat.
+Bruger B er en 47-årig familiefar, der kun har smartphone, da dette er arbejdstelefonen givet af hans arbejdsgiver.
+B benytter systemet til at handle ind på vej hjem fra arbejde, hvor indkøbslisten lavet af konen eller datteren bruges som guide i supermarkedet.
+B vil således gerne kunne tilgå listen fra telefonen, så der ikke er behov for at køre hjem og hente den på papirsformat.
 
 \subsubsection*{eTilbudsavis}
 
@@ -53,9 +53,9 @@ Da dataene der hentes igennem API'et kan være af meget svingende kvalitet, filt
 En sådan uforståelig række bliver filtreret ud såvel som andre uforståelige tilbud, og systemet ender tilbage med 1.337 brugbare tilbud, der kan vises til brugeren.
 
 \subsubsection*{Brugsmønstre}
-For en yderligere beskrivelse af de funktionaliteter i systemet, som vedrører en given aktør, modelleres en række brugsmønstre, dette er de samme brugsmønstre som ses i aktørtabellen i \myref{aktortabel}. 
-Hver enkelt af disse mønstre vil blive beskrevet igennem en brugsmønstrespecifikation. 
-Det er ikke alle mønstre som ses på denne liste, nogle af disse er sammentrækninger af flere andre mønstre, som alene virker simple og repetitive at beskrive. 
+For en yderligere beskrivelse af de funktionaliteter i systemet, som vedrører en given aktør, modelleres en række brugsmønstre, dette er de samme brugsmønstre som ses i aktørtabellen i \myref{aktortabel}.
+Hver enkelt af disse mønstre vil blive beskrevet igennem en brugsmønstrespecifikation.
+Det er ikke alle mønstre som ses på denne liste, nogle af disse er sammentrækninger af flere andre mønstre, som alene virker simple og repetitive at beskrive.
 Andre er udeladt da de ikke passer helt ind i en sammentrækning, men variationen fra det mønster og andre brugsmønstre ellers beskrevet, er så minimal, at mønstret er anset som værende ubetydeligt at beskrive.
 
 \input{chapters/content/Brugsmonstre.tex}
@@ -72,7 +72,7 @@ Andre er udeladt da de ikke passer helt ind i en sammentrækning, men variatione
 
 \subsection{Funktioner}\label{subsec:funktioner}
 
-I dette afsnit beskrives funktionerne der skal bruges for at kunne håndtere hændelserne fra problemområdet, og brugsmønstrene beskrevet ovenfor. 
+I dette afsnit beskrives funktionerne der skal bruges for at kunne håndtere hændelserne fra problemområdet, og brugsmønstrene beskrevet ovenfor.
 Der findes fire typer funktioner: Aflæsnings-, opdaterings-, beregnings-, og signaleringsfunktioner.\citep{OOA&D2001}
 Først identificeres funktionerne, hvorefter der gives en kategori til funktionerne, og en bedømmelse af deres kompleksitet. Herefter gives en kortfattet beskrivelse af funktionen hvor dette er tilstrækkeligt, ellers gives en dybere beskrivelse.
 
@@ -86,24 +86,24 @@ Først identificeres funktionerne, hvorefter der gives en kategori til funktione
       Log ind						& Medium			& Beregning, Opdatering		\\
       Log ud						& Simpel			& Opdatering	\\
       Registrer bruger				& Simpel			& Opdatering	\\
-      Tilføje varer til lister		& Simpel       		& Opdatering	\\ 
-      Fjerne varer fra lister		& Simpel       		& Opdatering	\\ 
-      Oprette og slette lister		& Simpel       		& Opdatering	\\ 
-      Dele lister					& Medium       		& Opdatering	\\ 
-      Søgning på tilbud for varer   & Medium     		& Beregning		\\ 
-      Sætte præferencer				& Simpel       		& Opdatering	\\ 
-      Filtrere for præferencer		& Kompleks     		& Beregning		\\ 
-      Give vurdering				& Simpel       		& Opdatering	\\ 
-      Sende anbefaling				& Meget kompleks	& Aflæsning, signalering, beregning		\\ 
-      Meddele tilbud på varer		& Medium      		& Signalering	\\ 
-	  Se opskrifter					& Simpel       		& Aflæsning		\\ 
-	  Se tilbud						& Simpel       		& Aflæsning		\\ 
-      Hente tilbud					& Simpel	       	& Opdatering	\\           
+      Tilføje varer til lister		& Simpel       		& Opdatering	\\
+      Fjerne varer fra lister		& Simpel       		& Opdatering	\\
+      Oprette og slette lister		& Simpel       		& Opdatering	\\
+      Dele lister					& Medium       		& Opdatering	\\
+      Søgning på tilbud for varer   & Medium     		& Beregning		\\
+      Sætte præferencer				& Simpel       		& Opdatering	\\
+      Filtrere for præferencer		& Kompleks     		& Beregning		\\
+      Give vurdering				& Simpel       		& Opdatering	\\
+      Sende anbefaling				& Meget kompleks	& Aflæsning, signalering, beregning		\\
+      Meddele tilbud på varer		& Medium      		& Signalering	\\
+	  Se opskrifter					& Simpel       		& Aflæsning		\\
+	  Se tilbud						& Simpel       		& Aflæsning		\\
+      Hente tilbud					& Simpel	       	& Opdatering	\\
     \end{tabular}
   \caption{Funktionstabel. Viser de forskellige funktioner der skal bruges, samt deres kompleksitet og kategori.}\label{tabel:functionstable}
 \end{table}
 
-\textbf{Log ind:} Her bliver sendt brugerinformationer, som verificeres med brugerne registreret i systemet. 
+\textbf{Log ind:} Her bliver sendt brugerinformationer, som verificeres med brugerne registreret i systemet.
 Hvis dette fuldføres, opdateres modellen således brugeren er registreret som værende logget ind.
 
 \textbf{Log ud:} Brugeren der før var logget ind, opdateres til at være logget ud.
@@ -116,7 +116,7 @@ Hvis dette fuldføres, opdateres modellen således brugeren er registreret som v
 
 \textbf{Oprette og slette lister:} Denne funktion bruges når en indkøbsliste skal oprettes således man kan tilføje varer til denne.
 
-\textbf{Dele lister:} Skal opdatere modellen således en anden bruger kan tilgå samme indkøbsliste som brugeren der deler sin liste. 
+\textbf{Dele lister:} Skal opdatere modellen således en anden bruger kan tilgå samme indkøbsliste som brugeren der deler sin liste.
 
 \textbf{Søgning på tilbud for varer:} Søger efter tilbud som passer til varen der søges for.
 
@@ -126,7 +126,7 @@ Hvis dette fuldføres, opdateres modellen således brugeren er registreret som v
 
 \textbf{Give vurdering:} Funktionen skal modtage en vurdering fra brugeren og gemme denne i modellaget.
 
-\textbf{Sende anbefaling:} Funktionen her er meget kompleks da der indgår mange forskellige typer handlinger. 
+\textbf{Sende anbefaling:} Funktionen her er meget kompleks da der indgår mange forskellige typer handlinger.
 Brugerne har vurderet forskellige opskrifter, og der beregnes en anbefaling ud fra disse.
 Når anbefalingen er lavet skal den gives eller signaleres til brugeren.
 
@@ -138,7 +138,5 @@ Når anbefalingen er lavet skal den gives eller signaleres til brugeren.
 
 \textbf{Hente tilbud:} Denne funktion henter tilbud, vha. API'et fra eTilbudsavis, disse skal derefter gemmes i modellaget.
 
-Denne analyse af funktionerne hjælper med at danne et overblik over hvilke funktionaliteter der skal designes, samt hjælper det til at stille krav til det systemet. 
+Denne analyse af funktionerne hjælper med at danne et overblik over hvilke funktionaliteter der skal designes, samt hjælper det til at stille krav til det systemet.
 I det følgende afsnit stilles der krav til systemet.
-
-
