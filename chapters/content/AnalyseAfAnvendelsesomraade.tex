@@ -76,6 +76,8 @@ I dette afsnit beskrives funktionerne der skal bruges for at kunne håndtere hæ
 Der findes fire typer funktioner: Aflæsnings-, opdaterings-, beregnings-, og signaleringsfunktioner.\citep{OOA&D2001}
 Først identificeres funktionerne, hvorefter der gives en kategori til funktionerne, og en bedømmelse af deres kompleksitet. Herefter gives en kortfattet beskrivelse af funktionen hvor dette er tilstrækkeligt, ellers gives en dybere beskrivelse.
 
+På figur \ref{tabel:functionstable} ses en tabel over de forskellige funktioner smat deres kompleksitet og kategori.
+Kategorien beskriver hvilke type handling funktioner udfører og  kompleksistetssøjlen beskriver hvor kompleks en given funktion er, dette fastsættes på baggrund af om en given funktion har mere end en kategori, samt en vurdering af hvor kompleks funktionens arbejde er.
 \begin{table}[H]
   \centering
     \colorlet{shadecolor}{gray!40}
@@ -96,8 +98,11 @@ Først identificeres funktionerne, hvorefter der gives en kategori til funktione
       Give vurdering				& Simpel       		& Opdatering	\\
       Sende anbefaling				& Meget kompleks	& Aflæsning, signalering, beregning		\\
       Meddele tilbud på varer		& Medium      		& Signalering	\\
-	  Se opskrifter					& Simpel       		& Aflæsning		\\
-	  Se tilbud						& Simpel       		& Aflæsning		\\
+	    Se opskrifter					& Simpel       		& Aflæsning		\\
+      Oprette opskrift      & Simpel          & Opdatering  \\
+      Ændre opskrift        & Simpel          & Opdatering \\
+      Kopier opskrift       & Simpel          & Opdatering \\
+	    Se tilbud						& Simpel       		& Aflæsning		\\
       Hente tilbud					& Simpel	       	& Opdatering	\\
     \end{tabular}
   \caption{Funktionstabel. Viser de forskellige funktioner der skal bruges, samt deres kompleksitet og kategori.}\label{tabel:functionstable}
