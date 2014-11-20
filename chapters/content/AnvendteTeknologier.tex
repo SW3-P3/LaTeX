@@ -1,46 +1,34 @@
-\section{Anvendte teknologier}
-I dette afsnit bliver de forskellige teknologier brugt til udvikling af systemet, de teknologier der dækkes er:
+\section{Anvendte teknologier}\fxnote{Her er ingen kilder? Der er nogle i bunden af kildefilen, derudover kunne den ikke compile (husk at breake et \#) og den var ikke inkluderet? wtf - Troels}
+I dette afsnit bliver de forskellige teknologier brugt til udvikling af systemet, de teknologier der dækkes er:\fxnote{Vi skriver ikke hvorfor vi har valgt disse. Måske vi skulle skrive noget om at det passer godt ind til C\# backend, er veltestet og dokumenteret? - Troels}
 \begin {itemize}
   \item Bootstrap
   \item ASP.NET
   \item Entity Framework
-  \item MVC
+  \item MVC\fxnote{MVC er vel ikke nogen ``teknologi'' nærmere en metode, eller tæller det også? - Troels}
   \item eTilbudsavis API
 \end {itemize}
 
-\subsection{Bootstrap}
-Bootstrap er et udbredt open source front-end web application framework, designed til det formål at gøre web development hurtigere, lettere samt mere overskueligt.
-Bootstrap tilbyder diverse funktionaliteter til at designe en web application ved at gøre HTML og CSS komponenter tilgængelig, såvel som jQuery plugins.
+\subsection{Bootstrap}\fxnote{Måske skal dette afsnit skrives helt om? - Troels}
+Bootstrap er et udbredt\fxnote{Kilde? (Der står over 1M på deres forside) - Troels} open source front-end web application framework, designet til det formål at gøre web development hurtigere, lettere samt mere overskueligt.
+Bootstrap tilbyder diverse funktionaliteter til at designe en web applikation ved at gøre HTML\fxnote{Der er ingen HTML i Bootstrap ... (kun i den udgave visualstudio giver) Det er kun CSS, JS og skrifttyper (til glyphicons) - Troels} og CSS komponenter\fxnote{Det er vel css klasser (el. classes) - Troels} tilgængelig, såvel som jQuery plugins.
 Disse er på forhånd lavet, og klar til brug, således der ikke er behov for at skrive egne jQuerys.
-Værktøjerne som bootstrap gør tilgængelig, eksempelvis tilgængelige klasser som \textit{warning}, \textit{label},\textit{label-important}, giver en overskuelighed i koden såvel som giver en base for simpel funktionalitet at arbejde med, uden at den først skal udarbejdes.
-Ydermere skalerer bootstrap web applicationen alt efter hvilken platform der bruges til at tilgå applicationen, en funktionalitet, som er et krav for systemet.
+Værktøjerne som Bootstrap gør tilgængelig, eksempelvis tilgængelige klasser som \textit{warning}, \textit{label}, \textit{label-important}, som giver en overskuelighed\fxnote{Hvilken overskuelighed giver disse over at lave sit eget CSS? Måske kan man argumentere for at den bliver ensformlig, altså kan samme klasse bruges til både knap, tekst osv. men ikke nødvendigvis overskuelighed - Troels} i koden såvel som giver en base for simpel funktionalitet at arbejde med, uden at den først skal udarbejdes.\fxnote{Hvordan vil klassen warning påvirke et tekstfelt eller en klap forskelligt? Hvad gør det ved HTML objekterne? - Troels}
+Ydermere skalerer Bootstrap web applikationen alt efter hvilken enhed der anvendes til at tilgå applikation, en funktionalitet, som er et krav for vores system.
 
 \subsection{ASP.NET}
-ASP.NET er et open source server-side web application framework designet til webudvikling.
-ASP.NET supporter flere forskellige tilgange til webudvikling, heriblandt MVC mønsteret beskrevet på \myref{MVC}.
-Hertil tilbydes templates og funktionaliteter såvel som en opdeling af filer lavet på forhånd, denne opdeling stemmer overens med MVC mønsterets konventioner.
+ASP.NET er et open source server-side web applikation framework designet til webudvikling, der som navnet antyder er en del af Microsofts ``.NET Framework''.
+ASP.NET supporter flere forskellige tilgange til webudvikling, heriblandt MVC mønsteret beskrevet i \myref{MVC}, en anden er webapi.
+Hertil tilbydes skabeloner og funktionaliteter såvel som en opdeling af filer lavet på forhånd, denne opdeling stemmer overens med MVC mønsterets konventioner.
 En anden funktionalitet ASP.NET tilbyder er Razor syntax.
-Denne syntax anvendes til udvikling af systemet, og er baseret på C# sproget.
-Razor syntaxen tillader at store dele af systemet skrives i C# sproget, razor oversætter dette til en html syntax, som benyttes til at danne web applicationen.
+Denne syntax anvendes til udvikling af systemet, og er baseret på C\# sproget.
+Razor syntaxen tillader at store dele af systemet\fxnote{Her omtales vel frontend, som generes ved runtime baseret på modellens nuværene stadie, og den infomation kontrolleren giver, i et MVC scenarie? - Troels} skrives i C\# sproget, razor oversætter dette til HTML syntaxen, som browseren oversætter til grafik.
 
 \subsection{Entity Framework}
-EF(Entity Framework) er et open source (ORM) object-relational mapping framework, og en del af .NET frameworket.
-Et ORM er en måde at konvertere data mellem  objekter i objekt orienterede sprog og en relationel database, essentielt oprettes der en database af virtualle objekter, som så kan tilgås fra sproget.
+Entity Framework (``EF'') er et open source object-relational mapping (``ORM'') framework, og en del af Microsofts ``.NET Framework''.
+Et ORM er en måde at konvertere data mellem  objekter i objekt orienterede sprog og en relationel database, essentielt oprettes der en database af objekter, som så kan tilgås fra sproget.\fxnote{Hvilket sprog? CLI, C\#? - Troels}
 Til udvikling af systemet er benyttet en code-first tilgang til EF.
-Denne tilgang tillader at objekter først designes i modelklasser, ud fra disse opretter EF de nødvendige tabeller og relationer i databasen.
-Disse tabeller og relationer ændres når der laves ændringer i modelen af systemet, igennem migrations.
-
-
-
-
-
-
-
-
-
-
-
-
+Denne tilgang tillader at klasser først designes i modelklasser, ud fra disse opretter EF de nødvendige tabeller og relationer i databasen.
+Disse tabeller og relationer ændres når der laves ændringer i modelen af systemet, denne operation kaldes en migrering.
 
 % http://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)
 % http://getbootstrap.com/
