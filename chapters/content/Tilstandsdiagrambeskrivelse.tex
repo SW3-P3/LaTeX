@@ -2,11 +2,12 @@ Tilstandsdiagrammet, \myref{tilstandsdiagram}, viser de forskellige stadier syst
 Diagrammet hjælper med at danne overblik over hvad man kan hvor i systemet, og hvilken process der opstår under udførelse af diverse brugsmønstre.
 Markeret med grønt, ses de fem hovedmenuer.
 Efter en bruger er logget ind, kan disse til hver en tid tilgås gennem en menu.
-Menuen er repræsenteret gennem den længere sorte centerlinje,  alle pile der går ind her, giver adgang til alle de pile der går ud, pilene repræsentere brugerinput.
-Dvs. at et menuskifte gennem denne linje altid foretages.
+Menuen er repræsenteret gennem den længere sorte centerlinje,  alle pile der går ind her, giver adgang til alle de pile der går ud, pilene repræsentere en hændelse igangsat af brugeren.
+En klynge kan  til hver en tid uanset tilstand, tilgå hændelser der går ud af klynges boks, herfra kan man således se, at menuen altid er tilgængelig, såvel som logud funktionen.
+%Dvs. at et menuskifte gennem denne linje altid foretages.
 Indikeret med pile, kan man se hvilke funktionaliteter der er tilgængelig fra en given tilstand, samt om disse er sekventielle eller iterative.
 En sekventiel funktion skifter tilstanden på systemet, mens en iterativ blot opdatere systemets information, mens den forbliver i tilstanden.
 Eksempelvis den grønne menu-boks ''Præferencer''.
 Denne har en iterativ funktion på sig, da denne blot opdaterer information i systemet, frem for at skifte tilstand i modsætning til funktionen ''Vælg opskrift'', som er sekventiel.
 Hvis brugeren fra menuen ''Se opskrifter'' giver brugerinputtet ''Vælg opskrift'' følges sekvensen til en ny tilstand ''Opskrift valgt'' Herfra åbnes således op for nye funktionaliteter for brugeren.
-Hele diagrammet følger disse to processer, som er gældende for alle tilstande og funktioner.
+Hele diagrammet følger disse to processer, som er gældende for alle tilstande og funktioner.\label{tdiabeskriv}
