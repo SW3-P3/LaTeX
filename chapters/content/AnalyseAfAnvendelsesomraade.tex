@@ -1,5 +1,5 @@
 \section{Analyse af anvendelsesområdet}\label{sec:anvendelses}
-Dette afsnit tager udgangspunkt i metoder fra ''Objektorienteret Analyse og Design'' og benytter disse til at analyserer anvendelsområdet, dette omfatter brug af systemet, funktioner i systemet samt grænsefladen der er tilknyttet.\citep{OOA&D2001}
+Dette afsnit tager udgangspunkt i metoder fra ''Objektorienteret Analyse og Design'' og benytter metoder herfra til at analyserer anvendelsområdet, dette omfatter brug af systemet, funktioner i systemet samt grænsefladen der er tilknyttet.\citep{OOA&D2001}
 Afsnittet skal give et overblik over funktionaliteten af systemet, samt formidle hvordan brugeren interagerer med systemet.
 
 \subsection{Brug}
@@ -55,7 +55,7 @@ Da eTilbudsavis altid sender dataene på samme måde, kan ubrugeligt data sorter
 En sådan uforståelig række bliver filtreret ud såvel som andre uforståelige tilbud, og systemet ender tilbage med 1.337 brugbare tilbud, der kan vises til brugeren.
 
 \subsubsection*{Brugsmønstre}
-For en yderligere beskrivelse af de funktionaliteter i systemet, som vedrører en given aktør, modelleres en række brugsmønstre, dette er de samme brugsmønstre som ses i aktørtabellen i \myref{aktortabel}.
+For en yderligere beskrivelse af de funktionaliteter i systemet, som vedrører en given aktør, modelleres en række brugsmønstre lavet på baggrund af hændelserne repræsenteret på \myref{handelser}, dette er de samme brugsmønstre som ses i aktørtabellen \myref{aktortabel}.
 Hver enkelt af disse mønstre vil blive beskrevet igennem en brugsmønstrespecifikation.
 Det er ikke alle mønstre som ses på denne liste, nogle af disse er sammentrækninger af flere andre mønstre, som alene virker simple og repetitive at beskrive.
 Andre er udeladt da de ikke passer helt ind i en sammentrækning, men variationen fra det mønster og andre brugsmønstre ellers beskrevet, er så minimal, at mønstret er anset som værende ubetydeligt at beskrive.
@@ -67,7 +67,7 @@ Andre er udeladt da de ikke passer helt ind i en sammentrækning, men variatione
 	\centering
 	\includegraphics[scale=0.6, angle=90]{images/Diagrams/Tilstandsdiagram.PNG}
 	\caption{Tilstandsdiagram for systemet}
-	\label{tilstandsdiagram}
+	\caption{Grønne bokse indikerer menupunkter, gule bokser indikere tilstande, den sorte centerlinje indikere menutilgang, pile indikere hændelsessekvenser, nærmere beskrivelese ses på \myref{tdiabeskriv}}\label{tilstandsdiagram}
 \end{figure}
 
 \input{chapters/content/Tilstandsdiagrambeskrivelse.tex}
