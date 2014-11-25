@@ -1,0 +1,28 @@
+\section{Anvendte teknologier}
+I dette afsnit vil de teknologier, som gruppen har valgt at anvende til udviklingen af projektet blive beskrevet.
+Disse er valgt grundet studieordningen, her at C\# skal være den anvendte programmeringssprog.
+\subsection{Bootstrap}
+``Bootstrap'' er navnet på et front-end web udviklings framework, oprindeligt udviklet af Twitter til eget brug, men senere frigivet som open source. 
+Bootstrap er i følge dem selv ``[...] the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.'' \cite{GETBOOTSTRAP}
+Som de selv skriver så giver Bootstrap mulighed for at bruge den samme teknologi på tværs at enheder, dette gør det nemmere for udviklere at give brugeren en mere konsistent oplevelse.
+Et af de vigtigste koncepter bag Bootstrap er at hver side består af et gitter som er 12 koloner. 
+På den måde er det nemt at bestemme bredden på et givent element, ved at indgrænse det til en del af sidens bredde, dette vil også automatisk tilpasse sin en mobil oplevelse tilsvarende i en alm. browser. 
+Anvendelsen af Bootstrap sker når man påklæder sine HTML elementer med de givne CSS klasser som Bootstrap udgiver. 
+Det er herunder muligt at anvende flere klasser på samme element, samt den samme klasse på tværs af forskellige HTML elementer. 
+Dette bidrager til at øge konsistensen i layoutet.
+
+En anden del af Bootstrap, nemlig JavaScript delen kan bruges til at animere siden. 
+Dette øger brugeren interaktion, og bringer Bootstraps elementer til live. \cite{GETBOOTSTRAP}
+
+\subsection{ASP.NET MVC 5}
+``ASP.NET MVC 5'' er navnet på Microsofts open source implementering af MVC mønsteret (beskrevet i \myref{MVC}). 
+ASP.NET MVC er baseret på grundtanken om at opdele de forskellige logiske lag i applikationen: Modellen (``business layer''), Viewet (``display layer'') og Controlleren (``input kontrol''). 
+Brugen af ASP.NET giver mulighed for at bruge den såkaldte ``Razor syntax'', som er en del af ``ASP.NET Razor view engine''.
+Den gør det muligt at anvende C\#-kode (Eller Visual Basic .NET) i front-enden, til at genere dynamiske hjemmesider. 
+Disse udtryk evalueres serverside ved runtime, derfor er alle datatyperne dynamiske, og ikke typesikre, det antages altså ved compiletime at alle operationer er mulige på objekter at typen ``dynamic''. \footnote{http://msdn.microsoft.com/en-us/library/dd264736.aspx}
+
+\subsection{Entity Framework}
+Entity Framework (``EF'') er et Object-relational mapping (``ORM'') framework til .NET frameworket, udviklet af Microsoft. \citep{EF}
+EF bruges i programmet til at opbevare data på tværs at kørsler, altså er det data persistens. 
+EF er valgt til dels grundet at det er muligt at udvikle ``Code-first'', hvilket vil sige at udvikleren først skriver modellen som klasser, hvorefter database strukturen kan opbygges. 
+Der understøttes ikke trivielle relationer såsom mange-til-mange og en-til-mange, ved brug af en relationsdatabase, som er en tabel der kæder 2, eller flere, informationer sammen på tværs af tabeller.
