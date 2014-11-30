@@ -1,6 +1,24 @@
 \section{Opskrifter}
-\subsection{Teori}
 \input{chapters/content/anbefaling.tex}
 \subsection{Design}
+Idéen ved opskrifter, er at give brugeren mulighed for nemt at finde opskrifter som har en pæn vurdering af andre brugere, hvorefter ingredienserne fra disse, nemt kan tilføjes til deres indkøbsliste(r).
+Når man først går ind på opskrifterne, bliver man mødt af alle offentliggjorte opskritfer, som er blevet tilføjet af brugerne af systemet. 
+Opskrifterne er opstillet således der på forsiden for opskrifter kan ses den mest nødvendige information om hver enktle opskrift.
+Opkrifterne er opstillet som cards for at give en klar opdeling og en gøre det overskueligt. 
+Opskrifterne indeholder alle sammen en titel, tid, antal personer, bedømmelse, ingredienser og en fremgangsmåde.
+
+
+Hver opskrift er gemt under den bruger som har oprettet den, denne bruger har senere mulighed for at redigere eller slette opskriften efter valg.
+Er man ikke den bruger der har oprettet opskriften, har man mulighed for at kunne klone opskriften.
+Når en opskrift bliver klonet, bliver alt data fra den tidligere opskrift kopieret og derefter kan man foretage ændringer til opskriften, gemme den under et nyt navn, således der kan personliggøres.
+Ingredienser på opskriften er opstillet således de nemt kan tilføjes til brugerens indkøbslister.
+Det er muligt kun at vælge de ting man mangler, således man ikke er tvunget til at tilføje alle ingredienser fra hele opskriften.
+Der kan inde på den enkle opskrift vælges hvor mange personer man ønsker at opskriften skal skaleres til.
+Der er taget udgangspunkt i fire personer, men der er mulighed for at både sænke og hæve denne værdi for at tilpasse mængden på ingredienserne.
+Hver opskrift har den mulighed, at en bruger kan vurdere dem på en skala fra 1 til 5, i form af stjerner. Brugerne kan så se den gennemsnitlige vurdering på den enkelte opskrift, og ud fra dette taget en beslutning om hvorvidt man skal prøve den ene eller den anden opskrift.
+\iffalse
+Opskrifter der er blevet vurderet højst kommer da til at ligge i toppen af listen af opskrifter, således dårlige eller useriøse opskrifter bliver sorteret til bunden.
+\fi
+
 \subsection{Implementation}
 \subsection{Konklusion}
