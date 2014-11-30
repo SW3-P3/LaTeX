@@ -1,4 +1,16 @@
 \section{Arkitektur}
+Dette kapitel beskriver arkitekturen der benyttes i implementationen for systemet.
+Først gennemgås design mønsteret der benyttes, derefter systemets klasser, samt dets komponenter.
+
+
+\input{chapters/content/mvc.tex}
+
 \input{chapters/content/klassediagram.tex}
 
 \fxnote{De resterende komponeneter}
+
+Her tænker jeg at dele use cases op i forskellige dele.
+F.eks. et UserManagement Komponent, der sørger for at man kan logge ind og have præferencer osv.
+Og et shoppingliste komponent der styrer indkøbslisten, tilføjelse og deling af varer her. Der vil så være en forbindelse imellem user management og shoppingliste, til at forbinde disse til de rigtige personer osv. og forklarer det ud på den måde og endelig med et UML diagram som viser forbindelserne imellem komponenterne.
+
+User forbinder sig jo til -> Indkøbslister, Opskrifter(her indgår vurdering også i opskrifts komponentet), hvor tilbud forbinder sig til varer som så forbinder sig til shoppinglisterne hvor i varerne også indgår. Vil jeg tro. Dette skal vi diskutere, hvilke komponenter findes der, når vi ser på det fra user stories. Dette vil danne og vise sammenhæng i implementationen af systemet.
