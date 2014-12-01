@@ -1,14 +1,41 @@
-\subsection{Anbefalingssystem}
+\section{Anbefalingssystem}\label{anbefaling}
+
+\subsection{Teori}
 Inden for anbefalingssystemer findes der mange forskellige retninger.
-Hvilken retning et givent projekt benytter sig af ender ud i nogle valg om hvilke typer anbefalinger man ønsker, samt hvilke data man er i besiddelse af, eller kan skaffe.
-I følgende afsnit gennemgåes kort nogle forskellige grene og designs indenfor anbefalingssystemer og afslutningsvis præsenteres vores valg og argumentation herfor, på baggrund af den føromtalte gennemgang.
+Hvilken retning et givent projekt benytter sig af ender ud i nogle valg om hvilke typer anbefalinger man ønsker, samt hvilke data man er i besiddelse af, hvorpå man kan basere sine anbefalinger.
+I følgende afsnit gennemgåes kort nogle forskellige grene og designs indenfor anbefalingssystemer.
 
 Nogle af de simpleste anbefalingssystemer, er upersonlige anbefalinger.
-Eksempler på dette kan være en sotering af objekter, baseret på popularitet, gennem salg, sidevisninger eller ligende.
-Den anden overordnede retning indenfor anbefaling er personlig anbefaling, dette vil sige at du benytter noget data som du har om en bruger, til at anbefale en ting, der kunne være særlig interessant for brugeren.
-Der findes mange forskellige metoder til at genere personlige anbefalinger, vi vil herunder kort fortælle om to af de mest af almindelige.
+Eksempler på dette kan være en simpel sotering af objekter.
+Sådanne sorteringer vil ofte være baseret på ting som popularitet, salg, sidevisninger eller ligende.
+Den anden overordnede retning indenfor anbefaling er personlig anbefaling, dette vil sige at systemet benytter noget data som det har om en bruger, til at anbefale ting, der kunne være særlig interessant for brugeren.
+Ved sådanne personlige anbefalinger skal systemet bruge en smagsprofil af dets brugere, for at personliggøre afbefalingerne ud fra.
+Der findes flere forskellige metoder til at genere personlige anbefalinger, vi vil herunder kort fortælle om to af de mest af almindelige hovedretninger\citep{RecommenderSystems}.
 
-\textbf{Contentbased}
-something
+\subsubsection{Indholdsbaserede anbefalinger}
+Indholdsbaserede anbefalinger anbefaler en bruger ting, ud fra en brugers tidligere handlinger i et system.
+For hver bruger i et sådan system kan man tilskrive denne en smagsprofil, der beskriver hvor godt en bruger synes om forskellige attributter, baseret på tidligere handlinger af brugeren.
+Sådanne smagsprofiler kan genereres ud fra handlinger, som vurderinger, sidevisninger, eller tidligere køb.
+Hver objekt i sådan et system vil så have nogle attributter, og ud fra disse, vil man kunne udregne en brugers smagsprofil.
+Når systemet så har en smagsprofil for en person, vil man kunne sammenligne et objekts attributter med smagsprofilen, for at se om objektets attributter består af noget brugeren synes om.
 
+Denne anbefalingsimplementation kræver at man har nogle attributter tilhørende de objekter man gerne vil anbefale brugerne.
+Den største fordel ved denne metode  er at man kan lave personlige anbefalinger lige så snart en bruger har generet data, til en smagsprofil.
+Ulemperne er man skal have gode attributter til sit data, for denne metode virker. Ligeledes kan denne implementation heller ikke tage højde for betingede regler, eksempelvis hvis kun kan lide attribut1 i forbindelse med atrribut2 men ikke kan fordrage attribut1 i forbindelse med attribut3.
+
+
+\subsubsection{Kollaborativ anbefalinger}
+Kollabrativ anbefalinger er også bygget op om smagsprofiler.
+Denne implementation kræver, modsat den indholdsbaserede, ingen data om de objekter som systemet skal anbefale. I denne metode tager man i stedet brugernes smagsprofiler og holder op mod hinanden for at finde anbefalinger til en bruger. I myref{tabel:kollabrativ} ses et eksempel på hvordan denne implementation kan fungerer i praksis.
+
+Fordelene ved denne er som nævt for at den kan bruges på mangelfuld data, hvortil dårlig eller ingen attributter er tilgængelige.
+Ligeledes slipper man også for problemet om betingede regler.
+Dog er en stor ulempe ved denne metode det man betegner som ‘cold start’-problemet, hvor man mangler brugeres vurderinger, for at kunne abefale dem ting\citep{RecommenderSystems}.
+
+\subsection{Design}
+Vi har valgt
 \input{images/Tables/opskriftanbefaling.tex}
+
+\subsection{Implementation}
+
+\subsection{Konklusion}
