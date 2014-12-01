@@ -1,4 +1,5 @@
 \subsection{MVC-mønsteret}\label{MVC}
+
 Et af de standardiserede design mønstre, som bruges af mange udviklere er MVC-mønsteret - som står for \textit{Model-View-Controller}.
 MVC-mønsteret har til formål, at dele systemet op i tre komponenter, nemlig \textit{Model}, \textit{View} og \textit{Controller}.
 Denne segregering adskiller således ''forretnings-logik'', ''input-logik'' og ''UI-logik'', og gør herved systemet mere fleksibelt, samt fremmer muligheden for at udvikle parallelt på de forskellige komponenter.
@@ -30,4 +31,8 @@ Et eksempel på dette ville være visning af en liste af objekter ud fra en mode
 
 \textbf{Controller}\\
 Når det kommer til interaktionen mellem brugeren og systemet, er det controlleren der påtager sig opgaven.
-Derfor er det også i de forskellige controllerere, at vi finder ''input-logikken''. Her bestemmes ud fra input fra brugeren hvilke data der skal arbejdes med i hvilken model og også hvilket view, der skal præsenteret for brugeren. Med dette kan vi også se, at viewet ikke indeholder nogenb logik og al manipulation af data altså foregår gennem controller komponenten.
+Derfor er det også i de forskellige controllerere, at vi finder ''input-logikken''. Her bestemmes ud fra input fra brugeren hvilke data der skal arbejdes med i hvilken model og også hvilket view, der skal præsenteret for brugeren. Med dette kan vi også se, at viewet ikke indeholder nogen logik og al manipulation af data altså foregår gennem controller komponenten.
+
+
+Der benyttes altså MVC til systemet for at danne denne segregering imellem brugergrænsefladen og det bagvedliggende modellag og logik dertil.
+Denne fordeling gør det også nemmere at teste, grundet den større abstraktion. 
