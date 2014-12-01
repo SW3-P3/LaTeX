@@ -1,0 +1,21 @@
+\begin{table}[H]
+  \centering
+    \colorlet{shadecolor}{gray!40}
+    \rowcolors{1}{white}{shadecolor}
+      \begin{tabular}{l|lccccccc}
+      %\hline
+      \textbf{Objekter}                 & A        & B       & C       & D  \\ \hline
+      Bruger1                           & +        & -       & +       & +  \\
+      Bruger2                           &          & +       & -       & -  \\
+      Bruger3                           & +        & +       & -       &    \\
+      Bruger4  		                      & -        &         & +       &    \\ \hline
+      Bruger5  		                      & +        & +       &         & -  \\ \hline
+      Systems forudsigelse for bruger5  &          &         & +       &    \\
+
+
+    \end{tabular}
+  \caption{Kollabrativ anbefaling. Tabellen viser hvordan et kollabrativt system ville anbefale bruger5 objekt C.
+            Denne anbefaling fortages ved at sammenlige bruger5 smagsprofil med de andre brugeres.
+            Da bruger2 og bruger3's smagsprofiler passer bedst, benyttes deres vudering til at antage at bruger5 vil kunne lide (+) objekt C.
+            \citep{kollabrativEksempel}}\label{tabel:kollabrativ}
+\end{table}
