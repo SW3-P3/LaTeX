@@ -25,18 +25,18 @@ Begge felter er lister\fxfatal{Som nævnt tidligere er dette ikke klart fra diag
 Indkøbslister repræsenteres i systemet som klassen ´´Indkøbsliste'', og indeholder ID, titel og to lister med varer.
 ID'et garanterer, at alle indkøbslister er unikke og kan skelnes fra hinanden på systemsiden.
 Indkøbsliste-klassen har et titel felt, så brugeren også kan navigere mellem forskellige instanser.
-De to lister af varer, holder styr på henholdsvis; varer som bliver tilføjet til listen, og varer som har været tilføjet men er blever markeret som købt.
+De to lister af varer, holder styr på henholdsvis; varer som bliver tilføjet til listen, og varer som har været tilføjet men er blevet markeret som købt.
 Der er således kun styr på ''overstregede'' varer - altså dem der er købt, og ikke varer som bliver slettet fra listen.
 En indkøbsliste kan godt eksisterer uden varer, idet brugeren skal kunne oprette lister, inden der er taget stilling til, hvilke varer der skal bruges.
 Indkøbsliste har kun relation til en gruppe, men kan godt have relationer til flere personer.\fxnote{Findes der stadig to lister - Bruger vi dem ?}
 
 \subsubsection{Vare}
 Vare-klassen indeholder tre felter: Et navn på varen, som er generisk, for eksempel ''Letmælk'' og ''Cola'' istedet for ''Arla Letmælk'' og ''Pepsi''; en kategori, der beskriver varen, for eksempel ''Mejeri'' eller ''Pålæg''; og en liste over tilbud, der holder styr på, hvis og hvor varen eventuelt er på tilbud.
-En vare behøver ikke være på en indkøbsliste eller opskrift for at eksistere \fixme{kan det passe?}, og kan have relationer til nul til mange tilbud.
+En vare behøver ikke være på en indkøbsliste eller opskrift for at eksistere, og kan have relationer til nul til mange tilbud.
 
 \subsubsection{Tilbud}
 Et tilbud som instans af Tilbud-klassen, indeholder felter der beskriver: Varen, mærket, hvilken butik tilbuddet befinder sig i, hvilken periode tilbuddet gælder i, prisen på tilbudet, og hvilken enhed/mængde tilbudet er i.
-Ud fra disse atributter er det muligt at identificere tilbudet, og brugeren kan tage stilling til, om det er relevant.
+Ud fra disse attributter er det muligt at identificere tilbudet, og brugeren kan tage stilling til, om det er relevant.
 
 
 \subsubsection{Opskrifter}
