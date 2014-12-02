@@ -1,4 +1,9 @@
 \section{Anbefalingssystem}\label{anbefaling}
+At udvikle og implemtere et anbefalingsystem vil opfylde user story 9.
+For at lave dette kræves implementering af stories 7 og 10.
+Først vil der gennemgåes lidt teori om anbefalingssystemer, efterføgede beskrives vores design og implementering.
+Til sidst konkluderes på denne del af vores system.
+Anbefalingssystemet har ikke været en kerneområde dette projekt, og derfor foreslår vi også en del forbedringer i konklusionen, som vi ikke har prioteret at implemterer i projektets forløb.
 
 \subsection{Teori}
 Inden for anbefalingssystemer findes der mange forskellige retninger.
@@ -62,3 +67,10 @@ Den simple anbefaling, der viser det højest vurderet, er en god funktion for at
 Problemerne ved denne er dog at vi ingen nedre grænse har, for hvor mange bedømmelser der skal være, derfor vil en opskrift med én vurdering på 5 ligge højere end en med 49 på 5 og én på 5.
 Dette er en tydelig svaghed, som kunne forbedres uden store ændringer i koden.
 Ligeledes ville en forbedring også være at sikre sig, at hvis to eller flere opskrifter har samme gennemsnitlige vurdering, så ville opskriften med flest vurderinger vægtes højest.
+
+Vores anbefalinger baseret på ingredienser, fungerer også til dels efter hensigten, dog kunne algoritmen godt bruge noget forfinelse som ikke lagde så stor vægt på ingredienser man ikke har bedømt.
+Hvis dette skulle gøres kunne man evenuelt vægte ingredienser efter hvor mange gange en bruger har bedømt denne varer.
+Ligeledes kunne vi også godt forestille os at en højere vægtning af sjældent forkomne ingredienser ville kunne præcisere anbefalingerne.
+Til dette kunne man benytte 'term frequency inverse document frequency' (tf-idf), som vægter et term, efter hvor sjælden det er i datamængden.
+
+Disse forbedringer har vi valgt ikke at implementere da dette ikke er en kerneområde i dette projektforløb.
