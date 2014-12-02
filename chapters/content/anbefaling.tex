@@ -26,16 +26,39 @@ Ulemperne er man skal have gode attributter til sit data, for denne metode virke
 
 \subsubsection{Kollaborativ anbefalinger}
 Kollabrativ anbefalinger er også bygget op om smagsprofiler.
-Denne implementation kræver, modsat den indholdsbaserede, ingen data om de objekter som systemet skal anbefale. I denne metode tager man i stedet brugernes smagsprofiler og holder op mod hinanden for at finde anbefalinger til en bruger. I myref{tabel:kollabrativ} ses et eksempel på hvordan denne implementation kan fungerer i praksis.
+Denne implementation kræver, modsat den indholdsbaserede, ingen data om de objekter som systemet skal anbefale. I denne metode tager man i stedet brugernes smagsprofiler og holder op mod hinanden for at finde anbefalinger til en bruger. I \myref{tabel:kollabrativ} ses et eksempel på hvordan denne implementation kan fungerer i praksis.
 
 Fordelene ved denne er som nævt for at den kan bruges på mangelfuld data, hvortil dårlig eller ingen attributter er tilgængelige.
 Ligeledes slipper man også for problemet om betingede regler.
 Dog er en stor ulempe ved denne metode det man betegner som ‘cold start’-problemet, hvor man mangler brugeres vurderinger, for at kunne abefale dem ting\citep{RecommenderSystems}.
+\input{images/Tables/kollabrativ.tex}
 
 \subsection{Design}
-Vi har valgt
+Vi har valgt at implementere to forskellige anbefalinger.
+Den første er en simpel, ikke personliggjort anbefaling, som blot er de gennemsnitlige bedømmelser, soteret faldende.
+Ligeledes har vi valgt at implemtentere en personlig anbefaling, her har vi valgt en indholdsbaseret anbefaling.
+Dette valg har vi foretaget af hovedsageligt af to årsager, den første er fordi vi mener at ingredienserne på hver opskrift kan bruges som attributter til at genere smagsprofiler og derfor også anbefalinger udfra.
+Den anden årsag, til at valget er faldet på denne løgning, er at vil gerne ville undgå ‘cold-start’ problemet.
+
+I implementationen har som tidligere nævnt at basere anbefalingerne på inredienserne.
+Når en bruger har bedømt en opskrift, får hver ingrediens til opskriften tildelt samme bedømmelse.
+Hvis en ingrediens er bedømt på mere end en opskrift, bruges gennemsnittet af de samlede bedømmelser for ingrediensen.
+Hvis en ingrediens ikke har nogen bedømmelse, bliver denne ingrediens tildelt gennemsnittet af alle brugerens bedømmelser.
+Ud fra disse data opretter vi så en smagsprofil for hver bruger, som indeholder en værdi mellem 1-5, for hver ingrediens.
+
+Derefter tager vi blot gennemsnittet af alle værdierne for hver opskrift, for at estimere hvor godt en bruger ville kunne lide en opskrift.
+Modellen fungerer som vist på figur \myref{tabel:opskriftanbefaling}.
 \input{images/Tables/opskriftanbefaling.tex}
+
+I UI’et har brugeren mulighed for at vælge hvordan opskrifter skal soteres.
+De kan vælge mellem de to beskrevet her, samt, at få soteret dem efter nyeste eller ældste.
 
 \subsection{Implementation}
 
+
 \subsection{Konklusion}
+Implementationen af anbefalingerne virker efter hensigten.
+Den simple anbefaling, der viser det højest vurderet, er en god funktion for at soterer opskrifter og derved få vist de højest vurderet først.
+Problemerne ved denne er dog at vi ingen nedre grænse har, for hvor mange bedømmelser der skal være, derfor vil en opskrift med én vurdering på 5 ligge højere end en med 49 på 5 og én på 5.
+Dette er en tydelig svaghed, som kunne forbedres uden store ændringer i koden.
+Ligeledes ville en forbedring også være at sikre sig, at hvis to eller flere opskrifter har samme gennemsnitlige vurdering, så ville opskriften med flest vurderinger vægtes højest.
