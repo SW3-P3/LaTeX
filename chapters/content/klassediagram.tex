@@ -13,7 +13,8 @@ Recipe har en liste over Items, som bruges som ingredienser.
 På denne måde kan de tilføjes til ShoppingList gennem RecipeController, uden at skulle lave nye objekter, som indkøbslisten kan læse.
 User har en liste over ShoppingLists, samt en liste over Prefs, eller præferencer, for at gøre hjemmesiden mere personlig og fokuseret på brugeren som er logget ind.
 Der er relationstabeller mellem many-to-many forholdene, som gør det muligt at gemme ekstra værdier ved et af forholdene. 
-F.eks. når man tilføjer et Item til en ShoppingList eller en Recipe, kan man angive mængder af disse Items, dette gøres igennem relationstabellen.
+F.eks. når man tilføjer et Item til en ShoppingList eller en Recipe, kan man angive mængder af disse Items.
+Dette gøres igennem relationsklasserne, Recipe_Ingredient, og ShoppingList_item.
 
 I de følgende afsnit, vil der gives en gennemgang af udvalgte dele af komponenterne fra \myref{subsec:komp}.
 
