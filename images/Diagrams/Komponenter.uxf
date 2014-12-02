@@ -9,7 +9,7 @@
       <w>180</w>
       <h>140</h>
     </coordinates>
-    <panel_attributes>Indkøbsliste Komponent
+    <panel_attributes>Indkøbslistekomponent
 --
 User Story 1
 User Story 2
@@ -28,7 +28,7 @@ halign=left</panel_attributes>
       <w>180</w>
       <h>80</h>
     </coordinates>
-    <panel_attributes>Tilbuds Komponent
+    <panel_attributes>Tilbudskomponent
 --
 User Story 7
 User Story 8
@@ -43,7 +43,7 @@ halign=left</panel_attributes>
       <w>180</w>
       <h>80</h>
     </coordinates>
-    <panel_attributes>Overvågnings Komponent
+    <panel_attributes>Overvågningskomponent
 --
 User Story 9
 halign=left</panel_attributes>
@@ -57,7 +57,7 @@ halign=left</panel_attributes>
       <w>180</w>
       <h>80</h>
     </coordinates>
-    <panel_attributes>Bruger Komponent
+    <panel_attributes>Brugerkomponent
 --
 User Story 10
 User Story 11
@@ -73,7 +73,7 @@ halign=left</panel_attributes>
       <w>180</w>
       <h>120</h>
     </coordinates>
-    <panel_attributes>Opskrifts Komponent
+    <panel_attributes>Opskriftskomponent
 --
 User Story 13
 User Story 14

@@ -5,26 +5,34 @@ Først gennemgås design mønsteret der benyttes, derefter systemets klasser, sa
 
 \input{chapters/content/mvc.tex}
 
-\input{chapters/content/klassediagram.tex}
+\subsection{Program komponenter}
 
-\fxnote{De resterende komponeneter}
+Der kan dannes forskellige komponenter i programmet ud fra de user stories der blev opgivet på \myref{sec:krav}. 
+Disse kan ses på figur \myref{figure:komp}.
+Figuren viser hvordan de forskellige user stories kan deles op i komponenter, og hvordan disse komponenter afhænger og bruger hinanden som beskrevet ud fra vores user stories.
 
-Der kan dannes forskellige komponenter i systemet ud fra de user stories der blev opgivet på \myref{sec:krav}. 
-Disse kan ses på figur \myref{figure:komp}
-
-\begin{wrapfigure}{r}{0.6\textwidth}
+\begin{figure}
+	
 	\vspace{-20pt}
 	\begin{center}
-		\includegraphics[width=0.6\textwidth]{images/Diagrams/Komponenter.png}
+		\includegraphics[scale=0.6]{images/Diagrams/Komponenter.png}
 	\end{center}
 	\vspace{-20pt}
-	\caption{Komponeneter i systemet.}
+	\caption{UML 2 Komponent diagram }
 	\label{figure:komp}
 	\vspace{-20pt}
-\end{wrapfigure}
+\end{figure}
 
-Her tænker jeg at dele use cases op i forskellige dele.
-F.eks. et UserManagement Komponent, der sørger for at man kan logge ind og have præferencer osv.
-Og et shoppingliste komponent der styrer indkøbslisten, tilføjelse og deling af varer her. Der vil så være en forbindelse imellem user management og shoppingliste, til at forbinde disse til de rigtige personer osv. og forklarer det ud på den måde og endelig med et UML diagram som viser forbindelserne imellem komponenterne.
+\textbf{Indkøbslistekomponentet} står for at lave indkøbslister, og tilføje varer og tilbud til disse.
+Tilbudene skal importeres fra \textbf{tilbudskomponentet}, for at lave koblingen imellem varerne og tilbud.
+Det er afhængigt af \textbf{brugerkomponentet} da indkøbslisterne hører til en bruger for at danne personlige lister. Brugerkomponentet er ansvarlig for alt der har med en bruger at gøre. Det indebærer at registrere hvem der er logget på, håndtere brugerens personlige indstillinger. Det er altså dette komponent der sørger for den personlige oplevelse på hjemmesiden.
 
-User forbinder sig jo til -> Indkøbslister, Opskrifter(her indgår vurdering også i opskrifts komponentet), hvor tilbud forbinder sig til varer som så forbinder sig til shoppinglisterne hvor i varerne også indgår. Vil jeg tro. Dette skal vi diskutere, hvilke komponenter findes der, når vi ser på det fra user stories. Dette vil danne og vise sammenhæng i implementationen af systemet.
+\textbf{Opskriftskomponentet} er afhængig af brugerkomponentet, da det er brugerene i systemet der tilføjer opskrifter, samt giver opskrifterne en rating. 
+Dog er det opskriftskomponentet der står for dette, men det skal dog vide hvem der er logget ind på hjemmesiden. 
+Der er en adgang her fra til indkøbslisterne for at kunne tilføje ingredienser fra opskrifterne til indkøbslister.
+
+\textbf{Overvågningskomponentet} står for at overvågningen af tilbud for en specifik varer kan foregå. 
+Der dannes en afhængighed herfra og til indkøbslistekomponentet da overvågningslisten gør brug af de metoder som der stilles til rådighed i dette komponenet, såsom tilføje varer, og finde tilbud.
+
+
+\input{chapters/content/klassediagram.tex}
