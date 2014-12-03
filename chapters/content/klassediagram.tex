@@ -9,12 +9,11 @@ For at illustrere modellaget i vores MVC-mønster, har vi produceret et klassedi
 
 Der er mange relationer mellem klasserne, da de forskellige klasse indeholder lister af hinanden.
 En ShoppingList har en liste over Items, og disse Items har en liste over tilbud, for at binde tilbudene til det pågældende Item.
-Recipe har en liste over Items, som bruges som ingredienser. 
+Recipe har en liste over Items, som bruges som ingredienser.
 På denne måde kan de tilføjes til ShoppingList gennem RecipeController, uden at skulle lave nye objekter, som indkøbslisten kan læse.
 User har en liste over ShoppingLists, samt en liste over Prefs, eller præferencer, for at gøre hjemmesiden mere personlig og fokuseret på brugeren som er logget ind.
-Der er relationstabeller mellem many-to-many forholdene, som gør det muligt at gemme ekstra værdier ved et af forholdene. 
+Der er relationstabeller mellem many-to-many forholdene, som gør det muligt at gemme ekstra værdier ved et af forholdene.
 F.eks. når man tilføjer et Item til en ShoppingList eller en Recipe, kan man angive mængder af disse Items.
-Dette gøres igennem relationsklasserne, Recipe_Ingredient, og ShoppingList_item.
+Dette gøres igennem relationsklasserne, Recipe\textunderscore Ingredient, og ShoppingList\textunderscore item.
 
 I de følgende afsnit, vil der gives en gennemgang af udvalgte dele af komponenterne fra \myref{subsec:komp}.
-

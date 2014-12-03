@@ -1,5 +1,5 @@
 \section{Arkitektur}
-Dette kapitel beskriver arkitekturen der benyttes i implementationen for systemet.
+Dette afsnit beskriver arkitekturen der benyttes i implementationen for systemet.
 Først gennemgås design mønsteret der benyttes, derefter systemets klasser, samt dets komponenter.
 
 
@@ -7,12 +7,12 @@ Først gennemgås design mønsteret der benyttes, derefter systemets klasser, sa
 
 \subsection{Program komponenter}\label{subsec:komp}
 
-Der kan dannes forskellige komponenter i programmet ud fra de user stories der blev opgivet på \myref{sec:krav}. 
+Der kan dannes forskellige komponenter i programmet ud fra de user stories der blev opgivet på \myref{sec:krav}.
 Disse kan ses på figur \myref{figure:komp}.
 Figuren viser hvordan de forskellige user stories kan deles op i komponenter, og hvordan disse komponenter afhænger og bruger hinanden som beskrevet ud fra vores user stories.
 
 \begin{figure}
-	
+
 	\vspace{-20pt}
 	\begin{center}
 		\includegraphics[scale=0.6]{images/Diagrams/Komponenter.png}
@@ -27,11 +27,11 @@ Figuren viser hvordan de forskellige user stories kan deles op i komponenter, og
 Tilbudene skal importeres fra \textbf{tilbudskomponentet}, for at lave koblingen imellem varerne og tilbud.
 Det er afhængigt af \textbf{brugerkomponentet} da indkøbslisterne hører til en bruger for at danne personlige lister. Brugerkomponentet er ansvarlig for alt der har med en bruger at gøre. Det indebærer at registrere hvem der er logget på, håndtere brugerens personlige indstillinger. Det er altså dette komponent der sørger for den personlige oplevelse på hjemmesiden.
 
-\textbf{Opskriftskomponentet} er afhængig af brugerkomponentet, da det er brugerene i systemet der tilføjer opskrifter, samt giver opskrifterne en rating. 
-Dog er det opskriftskomponentet der står for dette, men det skal dog vide hvem der er logget ind på hjemmesiden. 
+\textbf{Opskriftskomponentet} er afhængig af brugerkomponentet, da det er brugerene i systemet der tilføjer opskrifter, samt giver opskrifterne en rating.
+Dog er det opskriftskomponentet der står for dette, men det skal dog vide hvem der er logget ind på hjemmesiden.
 Der er en adgang her fra til indkøbslisterne for at kunne tilføje ingredienser fra opskrifterne til indkøbslister.
 
-\textbf{Overvågningskomponentet} står for at overvågningen af tilbud for en specifik varer kan foregå. 
+\textbf{Overvågningskomponentet} står for at overvågningen af tilbud for en specifik varer kan foregå.
 Der dannes en afhængighed herfra og til indkøbslistekomponentet da overvågningslisten gør brug af de metoder som der stilles til rådighed i dette komponenet, såsom tilføje varer, og finde tilbud.
 
 
