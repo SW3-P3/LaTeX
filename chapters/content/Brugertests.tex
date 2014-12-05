@@ -1,13 +1,14 @@
 \section{Brugertests}
-For at kvalitetssikre systemet, er det blevet afprøvet af slutbrugere i udviklingsforløbet såvel som endeligt.
-Dette gøres for at få brugerens indsigt i hvordan systemet bør se ud og agere ifølge brugerne.
-Dette hjælper med at udvikle et system der giver mening for den almene bruger, frem for udelukkende ekspertbrugere, som har været involveret i udvikling af systemet.
-Følgende i dette afsnit gennemgås formål, udførsel såvel som resultater for de forskellige brugertests lavet på systemet, i de respektive stadier systemet har været i.
+For at kvalitetssikre systemet, er det blevet afprøvet af slutbrugere i udviklingsforløbet såvel som det endelige produkt, i slutningen af projektet.
+Dette gøres for at få brugernes indsigt i hvordan systemet bør se ud og agere ifølge brugerne.
+Dette hjælper med at udvikle et system den almene bruger har forståelse for, frem for udelukkende ekspertbrugere, som vi i projektgruppen afspejler.
+I dette afsnit gennemgåes formål, udførsel, såvel som resultater for de to brugertests lavet på systemet, henholdvis midt i udviklingen og ved det endelige program.
 
 
 \subsection{Brugertest alpha}
-Dette var den første række af brugertests udført på systemet.
-På tidspunkt for testning har systemet haft de fleste funktionaliteter tilgængelige, af de opstillede krav har brugerne i denne omgang ikke kunnet:
+Dette var den første brugertest udført på systemet.
+På tidspunkt for testning har systemet haft de fleste funktionaliteter tilgængelige.
+Af de opstillede krav har brugerne i denne omgang ikke kunnet:
 \begin{itemize}
    \item{Modtage anbefalinger af opskrifter}
    \item{Overvåge eller modtage notifikationer om tilbudsvare}
@@ -17,7 +18,7 @@ Formålet med brugertesten var at få feedback om, hvorvidt systemet kunne benyt
 Hertil blev der udvalgt en række personer fra hovedmålgruppen, som blev fundet igennem tidligere interviews, 4 unge kvinder såvel som 4 unge mænd.
 Hver enkelt bruger blev introduceret til de samme opgaver, som kan findes i bilag på \myref{b:brugertest1}, denne process blev filmet og derefter analyseret.
 Ud fra testene, blev der gjort opmærksom på en række af problemer som slutbrugerne stødte ind i, en opsummering af de problemer anset for at være de vigtigste for hvert punkt, indkøbsliste, tilbud, opskrifter, præferencer samt design, ses her.
-De fravalgte kommentar til systemet, består af enten ting kun enkelte har nævnt, eller små kosmetiske kommentar til systemet, disse er ikke blevet ignoreret, men en forklaring af dem menes overflødig.	
+De fravalgte kommentar til systemet, består af enten ting kun enkelte har nævnt, eller små kosmetiske kommentar til systemet, disse er ikke blevet ignoreret, men en forklaring af dem menes overflødig.
 En komplet liste over resultatet af testen kan findes på \myref{b:brugertestrespons}.
 \begin{enumerate}
    \item \textbf{Indkøbsliste} \begin{itemize}
@@ -30,7 +31,7 @@ En komplet liste over resultatet af testen kan findes på \myref{b:brugertestres
    							   \end{itemize}
    \item \textbf{Opskrifter}\begin{itemize}
    								  \item En absolut kritisk fejl der ramte samtlige testpersoner, var at navigere ind på en individuel opskrift. Som følge af mangel på highlighting, var det ikke klart for brugeren at man kunne trykke på en opskrift, løsningen her, bliver således at implementere highlighting.
-   								  \item Som en del af opgaverne skulle man tilføje ingredienser til sin indkøbsliste, her ønskede de fleste en ''Tilføj Alle Vare'' funktion, da det var lidt træls at trykke på vare enkeltvis. 
+   								  \item Som en del af opgaverne skulle man tilføje ingredienser til sin indkøbsliste, her ønskede de fleste en ''Tilføj Alle Vare'' funktion, da det var lidt træls at trykke på vare enkeltvis.
    								  En mindre gruppe ønskede yderligere at der ligeledes kunne fjernes vare fra sin indkøbsliste, igennem opskrift sektionen af systemet.
    								  \item Nogle ønskede yderligere at indkøbsliste funktionaliteten med at se tilbud blev sat ind på opskrifter, såvel som en samlet pris på opskrifterne.
    								  Det er dog ikke muligt at tilføje en totalpris, da der både eksistere mange tilbud på samme vare på et givent tidspunkt, samt en mangel på priser på varer, som ikke er på tilbud.
@@ -38,13 +39,13 @@ En komplet liste over resultatet af testen kan findes på \myref{b:brugertestres
    							   \end{itemize}
    \item \textbf{Præferencer}\begin{itemize}
    								  \item Samtlige personer mente at ''Præferencer'', var en dårlig navngivning for en funktionalitet der blacklister varer såvel som butikker.
-   								  \item Denne sektion af systemet benytter sig af checkboxe, testpersonerne vidste ikke hvorvidt deres information blev gemt, som følge heraf implementeres snackbars med det formål at opdatere brugeren om gemt information. 
+   								  \item Denne sektion af systemet benytter sig af checkboxe, testpersonerne vidste ikke hvorvidt deres information blev gemt, som følge heraf implementeres snackbars med det formål at opdatere brugeren om gemt information.
    							   \end{itemize}
    \item \textbf{Generel design og funktionalitet}\begin{itemize}
    								  \item Aftjekningsfunktionaliteten i indkøbslisten blev fuldstændig overset, en ændring her vil være at gøre opmærksom på dens eksistens, fremtidig test kan derefter bedømme, hvor nyttig den er, eftersom den både er overset, og ikke efterspurgt i denne omgang.
    								  \item Det var ikke kun under ''Præferencer'' der opstod forvirring om hvorvidt information blev gemt, derfor implementeres snackbars flere steder i systemet.
-   								  \item Under både tilbud og opskrifter, vælger brugeren en indkøbsliste at arbejde på. 
-   								  Denne funktionalitet er på tidspunkt for udførsel af forsøg, placeret i øverst højre hjørne. 
+   								  \item Under både tilbud og opskrifter, vælger brugeren en indkøbsliste at arbejde på.
+   								  Denne funktionalitet er på tidspunkt for udførsel af forsøg, placeret i øverst højre hjørne.
    								  Dette er fuldstændig overset af alle brugerne, som oprettede flere lister.
    								  Gennemgang af videoerne viser at brugerne fokusere det meste af deres opmærksomhed når de kommer ind på en side, i den venstre del af siden.
    								  For at gøre mere opmærksom på denne funktionalitet, som gerne skal være noget af det første der benyttes, vil denne blive venstrecentreret.
