@@ -20,36 +20,41 @@ Med et delvist færdigt produkt ville vi gerne se en indikation om, i hvor høj 
 Hertil blev der udvalgt en række personer fra hovedmålgruppen, som blev fundet igennem gruppemedlemmernes netværk, 4 kvinder såvel som 4 mænd, alle brugerne var i alderen 20-24.
 Hver enkelt bruger blev introduceret til de samme opgaver, disse kan findes i bilag på \myref{b:brugertest1}, denne process blev filmet vha. SilverBack, og derefter analyseret.
 Som resultat af testen identificerede vi en række af problemer som brugerne stødte ind i.
-En opsummering af disse problemer for de forskellige komponentdele, indkøbsliste, tilbud, opskrifter, præferencer samt design, som analyse fandt vigtige, ses her.
-De fravalgte resultater fra testen af systemet, består af enten ting kun enkelte har nævnt, eller små kosmetiske kommentarer til systemet.
-Disse bemærkninger og fejl er ikke blevet ignoreret, men er enten vurderet til ikke være fejl, eller fejl som var rettet for analysen af testen var færdiggjort.
-En komplet liste over resultatet af testen kan findes i \myref{b:brugertestrespons}.
+En opsummering af disse problemer for de forskellige komponentdele, indkøbsliste, tilbud, opskrifter og brugerkomponent findes nedenfor.
+Resultater som ikke er nævnt fra testen af systemet, består enten af problemer kun enkelte har nævnt, eller små kosmetiske kommentarer til systemet.
+Disse bemærkninger og fejl er ikke blevet ignoreret, men en forklaring af dem virker overflødigt, f.eks. at de ikke kunne lide farven. 
+Dette betyder dog ikke at de ikke tages med i overvejelserne, og evt. ændres.
+En komplet liste over resultatet af testen kan findes på \myref{b:brugertestrespons}.
 \begin{enumerate}
    \item \textbf{Indkøbsliste} \begin{itemize}
-   								  \item Til indkøbslisten var der få kommentar, den primære respons herom var til ''Se Tilbud'' funktionaliteten. Hvis en given vare ikke matchede nogle tilbud, blev der ikke vist noget ikon. Som følge heraf gik det ikke op for alle at denne funktionalitet overhovedet eksisterede, derfor ønskes det at tydeliggøres hvis der ikke er fundet nogle tilbud på en vare, frem for at intet vises.
+   								  \item Til indkøbslisten var der få kommentarer, den primære respons herom var til ''Se Tilbud'' funktionaliteten. Hvis en given vare ikke matchede nogle tilbud, blev der ikke vist noget ikon. Som følge heraf gik det ikke op for alle at denne funktionalitet overhovedet eksisterede før de havde søgt på en vare som havde et tilbud. Derfor ønskes det at tydeliggøres hvis der ikke er fundet nogle tilbud på en vare, frem for at intet vises.
    							   \end{itemize}
    \item \textbf{Tilbud}\begin{itemize}
-   								  \item Flere var i tvivl om hvorvidt tilbuddene var aktuelle på tidspunktet programmet blev anvendt, således kunne en informativ tekst omkring tilbuddene tilføjes til denne sektion af systemet, for at give brugeren mere præcis information, om hvad der ses på skærmen.
-   								  \item En anden ønsket funktionalitet var at vare blev kategoriseret, eksempelvis som mejeri, pålæg, kød osv. Dette problem er desværre ikke løsbart med den valgte løsning.
+   								  \item Flere var i tvivl om hvorvidt tilbudene var aktuelle på tidspunktet programmet blev anvendt, således kunne en informativ tekst omkring tilbudene tilføjes til denne sektion af systemet, for at give brugeren mere præcis information, om hvad der ses på skærmen.
+   								  
+   								  \item En anden ønsket funktionalitet var at varer blev kategoriseret, eksempelvis som mejeri, pålæg, kød osv. Dette problem er desværre uløseligt med den valgte løsning.
    								  Dette er som følge af den information, der tildeles systemet igennem eTilbudsavis' API.\fxnote{hvis vi beskriver dette et andet sted, henvis til det, ellers skal denne forklaring nok lige uddybes lidt - Marc}
    							   \end{itemize}
    \item \textbf{Opskrifter}\begin{itemize}
    								  \item En absolut kritisk fejl der ramte samtlige testpersoner, var at navigere ind på en individuel opskrift. Som følge af mangel på highlighting, var det ikke klart for brugeren at man kunne trykke på en opskrift, løsningen her, bliver således at implementere highlighting.
-   								  \item Som en del af opgaverne skulle man tilføje ingredienser til sin indkøbsliste, her ønskede de fleste en ''Tilføj Alle Vare'' funktion, da det var lidt træls at trykke på vare enkeltvis.
-   								  En mindre gruppe ønskede yderligere at der ligeledes kunne fjernes vare fra sin indkøbsliste, igennem opskrift sektionen af systemet.
+   								  
+   								  \item Som en del af opgaverne skulle man tilføje ingredienser til sin indkøbsliste, her ønskede de fleste en ''Tilføj Alle Varer'' funktion, da det var træls at trykke på varerne enkeltvis.
+   								  En mindre gruppe ønskede yderligere at der ligeledes kunne fjernes vare fra sin indkøbsliste, gennem opskrift sektionen af systemet.
+   								  
    								  \item Nogle ønskede yderligere at indkøbsliste funktionaliteten med at se tilbud blev sat ind på opskrifter, såvel som en samlet pris på opskrifterne.
    								  Det er dog ikke muligt at tilføje en totalpris, da der både eksistere mange tilbud på samme vare på et givent tidspunkt, samt en mangel på priser på varer, som ikke er på tilbud.
    								  At kunne se tilbud, er ligeledes ikke formålet med opskrifter, derfor vil den funktionalitet være forbeholdt indkøbslisten, for at holde funktionaliteten i de enkelte sektioner, minimalistisk og konsistent.
    							   \end{itemize}
    \item \textbf{Præferencer}\begin{itemize}
    								  \item Samtlige personer mente at ''Præferencer'', var en dårlig navngivning for en funktionalitet der blacklister varer såvel som butikker.
-   								  \item Denne sektion af systemet benytter sig af checkboxe, testpersonerne vidste ikke hvorvidt deres information blev gemt, som følge heraf implementeres snackbars med det formål at opdatere brugeren om gemt information.
+   								  
+   								  \item Denne sektion af systemet benytter sig af checkboxes, testpersonerne vidste ikke hvorvidt deres information blev gemt, som følge heraf implementeres snackbars med det formål at opdatere brugeren om gemt information.
    							   \end{itemize}
    \item \textbf{Generel design og funktionalitet}\begin{itemize}
-   								  \item Aftjekningsfunktionaliteten i indkøbslisten blev fuldstændig overset, en ændring her vil være at gøre opmærksom på dens eksistens, fremtidig test kan derefter bedømme, hvor nyttig den er, eftersom den både er overset, og ikke efterspurgt i denne omgang.
+   								  \item Aftjekningsfunktionaliteten i indkøbslisten blev fuldstændig overset, en ændring her vil være at gøre opmærksom på dens eksistens, en fremtidig test kan derefter bedømme, hvor nyttig den er, eftersom den både er overset, og ikke efterspurgt i denne omgang.
    								  \item Det var ikke kun under ''Præferencer'' der opstod forvirring om hvorvidt information blev gemt, derfor implementeres snackbars flere steder i systemet.
    								  \item Under både tilbud og opskrifter, vælger brugeren en indkøbsliste at arbejde på.
-   								  Denne funktionalitet er på tidspunkt for udførsel af forsøg, placeret i øverst højre hjørne.
+   								  Denne funktionalitet er på tidspunktet for udførelsen af testene, placeret i øverste højre hjørne.
    								  Dette er fuldstændig overset af alle brugerne, som oprettede flere lister.
    								  Gennemgang af videoerne viser at brugerne fokusere det meste af deres opmærksomhed når de kommer ind på en side, i den venstre del af siden.
    								  For at gøre mere opmærksom på denne funktionalitet, som gerne skal være noget af det første der benyttes, vil denne blive venstrecentreret.
