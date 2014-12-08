@@ -1,9 +1,15 @@
 \section{eTilbudsavis API}\label{api}
-\fxfatal{Dette afsnit er under udvikling ... - Troels + Sæt op efter Design - Implementation - konklusion sektioner}
-For at kunne indhente infomationer om placering af butikker og deres tilbud, anvendes der et API.
+I dette afsnit beskrives først teori om hvad et API er, og hvordan sådan et er struktureret.
+Herefter gennemgåes design og implementation for brug af eTilbudsavis' API, til sidst konkluderes samles alt dette op i en konklusion.
+
+For at kunne indhente infomationer om butikker og deres tilbud, anvendes der et API.
 Dette API udbydes af den danske virksomhed eTilbudsavis.dk, og er af typen REST.
 
-\subsection{REST}
+\subsection{Teori}
+REST er en abstraktion for arkitekturen af internettet, den simplificer den måde som applikationer kan kommunikerer med hinanden.
+Dette bruges ofte til API'er for at skabe en simpel og god struktureret måde at kommunikerer med en service\citep{REST}.
+
+\subsubsection{REST}
 REST står for: \textit{Representational state transfer}.
 Det er en metode hvorved man opbygger måden som et API.
 Der findes fire metoder som svarer til de fire som findes i CRUD (``CREATE, READ, UPDATE, DELETE'').
@@ -26,12 +32,15 @@ Svarer til UPDATE i CRUD.
 bruges til at fjerne ressourcer.
 Svarer til DELETE i CRUD.
 
-\subsection{Brug af API}
+\subsection{Design}
 eTilbudsavis' API er kun et halv-offentligt API, dvs. at man skal have en API-nøgle (``APIKEY'') og dertilhørende hemmelighed (``Secret'').
 API'en er placeret på \textit{https://api.etilbudsavis.dk/v2/}. \citep{eTilAPI}
 
-For at kommunikere med API'en fra C\#-kode anvendet værktøjet RestSharp. \citep{RestSharp}
+For at kommunikere med API'en fra C\#-kode anvendes værktøjet RestSharp. \citep{RestSharp}
 For at kunne bruge infomationen laves der en klasse, som svarer til det JSON som API'en sender tilbage.
+
+
+\subsection{Implementation}
 
 \subsubsection{Session}
 For at kunne bruge API'en skal man først oprette en session.
@@ -163,3 +172,5 @@ public class Country
 
 Hele denne process er gentaget og tilpasset Catalog og Offer API'erne for at kunne indhente den infomation de kan give.
 Det er hermed muligt at hente infomationer om tilbud og butikker. \fxfatal{Dette er et helvede at beskrive på en måde som giver mening, så alt det ovenståene skal nok skrives om...}
+
+\subsection{Konklusion}
