@@ -1,1 +1,65 @@
-\section{Black-box Testing}
+\section{Black Box Testing}\label{BBtest}
+For at sikre systemets funktionalitet, er systemet blevet testet, ikke kun af brugere, men også af projektgruppen.
+En af de metoder, som er taget i brug, er Black Box Testing eller Behavioral Testing.
+En sådan test udføres ved at give et input til et kørbart system, og så få et output.
+Det eneste i denne process der er kendt af testpersonen er input og output, selve funktionaliteten er således gemt i en ``Black Box''. %http://softwaretestingfundamentals.com/black-box-testing/
+
+Til dette formål anvendes .NET's unit testing.
+I denne metode brydes metoder og properties med logik, op i så små dele som overhovedet muligt, for at teste de enkelte logik sammenligninger og teste resultatet.
+Efter tests er lavet på mindste dele af systemet, kan metoder med flere depencies, så testes, med en sikkerhed om, at deres dependencies er funktionelle. %http://msdn.microsoft.com/en-us/library/aa292197%28v=vs.71%29.aspx
+For at oprette diverse tests, følges AAA(Act, Assert, Arrange) mønsteret, detter er en måde hvorpå unit tests kan konstrueres, for at give bedre overblik over de forskellige dele af testen.
+De tre dele af AAA mønsteret repræsentere respektivt:
+\begin{itemize}
+  \item \textbf{Arrange:} Alt setup krævet for at køre det testede kode. Dette inkluderer initialisering af data, objecter og dependencies, eftersom Test delen er et Mock af det rigtige system, og derved ikke er initialiseret.
+  \item \textbf{Act:} Her kaldes den kode som ønskes testet, såvel som gemmer eventuelle resultater i variabler, hvilke bruges i Assert.
+  \item \textbf{Assert:} Her specificeres hvad der skal være sket i act, og tjekkes om ændringer i data og eventuelle resultater, stemmer overens med det forventede.
+\end{itemize}
+Givet at testen er skrevet korrekt kan der ved brug af dette system finde ud af potentielle fejl i systemets metoder.
+I projektet benyttes yderligere NUnit.
+NUnit er et unit-testing framework for .NET hvilket tillader yderligere features, som kan benyttes til unit testing.
+NUnit frameworket bliver benyttet til det formål at kun oprette en Arrange for alle tests som indeholder det mest generelle brugte data.
+Dette sker i en ``SetUp'', dataene i denne bliver kaldt før hver enkelt test, på den måde sikre man sig yderligere at det samme Mock data er tilgængelig, for hver test.
+I en given test kan der så oprettes yderligere mock data om nødvendigt.
+
+Til hver enkelt testede funktionalitet oprettes tests for hver enkelt sti ud af funktionen igen, for at være sikker på hver enkelt logik tjek agerer som det forventes.
+På \myref{lsttest} ses et eksempel for en oprettet test i systemet.
+
+\begin{lstlisting}
+{
+    [TestFixture]
+    public class TestShoppingListsController
+    {
+		[SetUp]
+        public void Initialize()
+        {
+          //Some Mock Data
+        }
+        [Test]
+        public void ShareList_ShouldShare()
+        {
+            //Arrange
+            _user.Username = "DemoMail";
+            var user2 = DemoGetMethods.GetDemoUser(2);
+            _mockdata.Users.Add(user2); 
+            user2.Username = "DemoMail2";
+            //Act
+            Assert.IsTrue(_mockdata.Users.First(i => i.Username == "DemoMail").ShoppingLists.First().ID == 1);
+            Assert.IsTrue(_mockdata.Users.First(i => i.Username == "DemoMail2").ShoppingLists.FirstOrDefault() == null);
+            var result = _controller.ShareList(1, "DemoMail2");
+            //Assert
+            Assert.IsNotNull(result);
+            Assert.IsTrue(_mockdata.Users.First(i => i.Username == "DemoMail2").ShoppingLists.First().ID == 1);
+            Assert.IsTrue(_mockdata.Users.First(i => i.Username == "DemoMail2").ShoppingLists.First().ID == 
+                _mockdata.Users.First(i => i.Username == "DemoMail").ShoppingLists.First().ID);
+        }
+    }
+}        
+\end{lstlisting}\label{lsttest}
+\fixme{make dis caption twerk [caption="En test for ``ShareList'' metodern i ``ShoppingListController'', heri tjekkes hvorom den bruger listen deles med, får listen sat ind på brugerens liste over shoppinglister."]}
+Til testen på \myref{lsttest} oprettes en lignende test som kaldes ``ShareList_ShouldNotSHare'', som ikke opfylder alle metodens kriterier, og derfor fejler, hvilket så tjekkets igennem asserts.
+
+Fordelen ved at bruge denne type af Black Box tests frem for andre, er muligheden for at køre tests igen på et senere tidspunkt.
+Dette er en mulighed der ellers ikke nødvendigvis er tilgængelig for alle typer af Black Box tests, eksempelvis hvis systemet testes igennem brug, disse tests ville skulle oprettes hver gang, hvor ved brug af en metode som unit testing er mulighed for at gennemgå testen, efter den er lavet første gang.
+Dette kommer til gavn når der laves eventuelle ændringer i systemet, alle tests lavet forhen kan køres for at se om ændringerne har haft nogen effekt på funktionalitet andre steder i systemet. 
+En funktion som test igennem brug, ikke nødvendigvis ville opfange.
+
