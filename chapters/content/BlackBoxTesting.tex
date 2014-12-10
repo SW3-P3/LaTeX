@@ -24,7 +24,7 @@ I en given test kan der så oprettes yderligere mock data om nødvendigt.
 Til hver enkelt testede funktionalitet oprettes tests for hver enkelt sti ud af funktionen igen, for at være sikker på hver enkelt logik tjek agerer som det forventes.
 På \myref{lsttest} ses et eksempel for en oprettet test i systemet.
 
-\begin{lstlisting}
+\begin{lstlisting}[caption="En test for ``ShareList'' metodern i ``ShoppingListController''\, heri tjekkes hvorom den bruger listen deles med\, får listen sat ind på brugerens liste over shoppinglister.", label=lsttest]
 {
     [TestFixture]
     public class TestShoppingListsController
@@ -55,7 +55,7 @@ På \myref{lsttest} ses et eksempel for en oprettet test i systemet.
     }
 }        
 \end{lstlisting}\label{lsttest}
-\fixme{make dis caption twerk [caption="En test for ``ShareList'' metodern i ``ShoppingListController'', heri tjekkes hvorom den bruger listen deles med, får listen sat ind på brugerens liste over shoppinglister."]}
+\fxnote{make dis caption twerk [caption="En test for ``ShareList'' metodern i ``ShoppingListController'', heri tjekkes hvorom den bruger listen deles med, får listen sat ind på brugerens liste over shoppinglister."]}
 Til testen på \myref{lsttest} oprettes en lignende test som kaldes ``ShareList\_ShouldNotShare'', som ikke opfylder alle metodens kriterier, og derfor fejler, hvilket så tjekkets igennem asserts.
 Fordelen ved at bruge denne type af Black Box tests frem for andre, er muligheden for at køre tests igen på et senere tidspunkt.
 Dette er en mulighed der ellers ikke nødvendigvis er tilgængelig for alle typer af Black Box tests, eksempelvis hvis systemet testes igennem brug, disse tests ville skulle oprettes hver gang, hvor ved brug af en metode som unit testing er mulighed for at gennemgå testen, efter den er lavet første gang.
