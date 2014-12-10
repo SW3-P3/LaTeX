@@ -3,6 +3,22 @@
 Dette kapitel vil gennemgå og evaluere på de metoder som benyttes i forbindelse med projektet.
 Slutteligt vil der være en kort beskrivelse af metodernes sammenhæng, samt hvordan de benyttes i gruppen.
 
+\section{Udviklingsmetode}
+Fra OOA\&D, ved vi at der eksistere to primære perspektiver på systemudvikling, det mekanistiske og det romantiske.
+Det mekaniske perspektiv er en rationel holdning til udvikling der bygger på deduktion og matematisk problemløsning, hertil følges en på forhånd lavet plan, med meget få ændringer undervejs.
+I dette perspektiv konstrueres hele systemudviklingen således på forhånd.
+Det romantiske perspektiv er en diametral modsætning hertil, som ser hverden på en evolutionær måde.
+I dette perspektiv er problemer sjældent klare og præcise, eksperimenter og empirisk viden er måden at løse et problem, perspektivet følger en evolutionær trial and error process.
+Det to perspektiver munder ud i henholdsvis hver deres udviklingsmetode, konstruktion og evolution, som håndterer problemer efter hvert sit perspektiv.\citep{OOA&D2001}
+
+\textbf{Konstruktion:}
+Denne udviklingsmetode bygger på en rationel holdning til problemer, i den forstand kan alt planlægges på forhånd, denne type af arbejdsmetode kendes også som vandfaldsmodellen.
+
+\textbf{Evolution:}
+Denne udviklingsmetode bygger på at en problem ikke kan præciseres på forhånd, og benytter sig af ``trial and error'' konceptet for dets arbejdsmetode, denne type af arbejdsmetode kendes også som en iterativ arbejdsmetode.
+
+På gruppen besluttes det at benytte den evolutionære arbejdsmetode for udvikling af et system.
+
 \section{Scrum}
 
 Scrum er en process som bruges i forbindelse med udarbejdelse af komplekse problemer som løbende kan udvikle sig. 
@@ -27,11 +43,12 @@ Men hvordan forholder Scrum sig i forhold til projektet?
     \rowcolors{1}{white}{shadecolor}
       \begin{tabular}{p{5cm}p{5cm}p{5cm}p{5cm}}
       %\hline
-	       				 & Scrum  & Vores Projekt & Kommentarer  \\ \hline
+	       				 & Scrum  & Vores Projekt & Kommentarer  \\ \hline++
+
 	   Iterationslængde  		
 	   		& 30 dage 
-	   		& Der er ikke meget tid til udvikling cirka 2 måneder. 
-	   		& Hvis der skulle bruges 30 dages iterationer ville der måske kun kunne laves 2 iterationer\\
+	   		& 7 - 14 dage. 
+	   		& Hvis der skulle bruges 30 dages iterationer ville der måske kun kunne laves 2 iterationer, på denne baggrund besluttes det at reducere iterationslængden, for at tilpasse modellen til projektmiljøet.\\
 	   		
 	   Team størrelse    		
 	   		& 7 personer
@@ -41,12 +58,12 @@ Men hvordan forholder Scrum sig i forhold til projektet?
 	   Kunde involvering 		
 	   		& Meget kunde involvering, fremvisning af produkt ofte.
 	   		& Vi har ikke en kunde, men der er potentielle brugere som kan interviewes for at finde frem til deres krav til et produkt.
-	   		& Vi kan selv finde kravene og danne user stories, og har derfor svært ved at have en Product Owner, så vi skal selv styre product backlog på gruppen istedet.\\
+	   		& Det er op til gruppen at finde krav og danne userstories, hertil kan lave brugerundersøgelser. Product Owner er gruppen, da det er vores produkt, derfor styres product backlog af gruppen.\\
 	   		
 	   Kommunikationsmetoder	
 	   		& Daily Scrum, Sprint review meeting, Sprint reflection meeting, Scrum master, kontakt med kunder og administration fra virksomheden.
 	   		& Gruppen har ikke nogen kontakt med adiministration, men kan have opgaver fra kurser som kan distrahere. 
-	   		& Scrum master rollen kan gå på runde fra sprint til sprint eller fra uge til uge. Review meeting kan holdes uden kunder, og fungerer som et godt tidspunkt at gennemgå koden sammen med resten af gruppen. \\
+	   		& Da det er Scrum Masterens rolle at håndtere det administrative omkring metoden frem for selve udviklingen, går rollen på runde fra uge til uge, og udelukker sammentidig ikke involvering i udvikling. Review meeting kan holdes uden kunder, og fungerer som et godt tidspunkt at gennemgå koden sammen med resten af gruppen. \\
     \end{tabular}
   \caption{Sammenligningstabel over Scrum og vores projekt.}\label{tabel:sammenligningstabel}
 \end{sidewaystable}
@@ -78,7 +95,7 @@ De andre analyse dele er meget centrale og hjælper med at beskrive systemet og 
 
 Scrum og OOA\&D hjælper projektet på hver sin måde.
 Scrum som projektstyring og for at overskueliggøre projektets opgaver. 
-En user story ved navn "Rapport" laves, og ud fra denne dannes der opgaver som skal laves i hvert sprint. 
+En user story ved navn ``Rapport'' laves, og ud fra denne dannes der opgaver som skal laves i hvert sprint. 
 Dette sørger for at rapporten ikke falder bagud i forhold til systemet udvikling.
 OOA\&D hjælper derimod med at organisere og strukturere analysen som beskrevet i dette afsnit, og derfor komplimentere de to metoder hinanden udemærket.
 Dog fordi Scrum benytter user stories, vil den endelige kravspecifikation ikke være beskrevet på traditionel OOA\&D vis, men i stedet vha. user stories.
