@@ -24,6 +24,10 @@ Sådanne smagsprofiler kan genereres ud fra handlinger, såsom vurderinger, side
 Hvert objekt i sådan et system vil så have nogle attributter, og ud fra disse, vil man kunne udregne en brugers smagsprofil.
 Når systemet så har en smagsprofil på en bruger, vil det kunne sammenligne et objekts attributter med smagsprofilen, for at se om objektets attributter består af noget brugeren synes om.
 
+Ved brug af denne anbefalingsmetode benytter man ofte 'term frequency inverse document frequency' (tf-idf), som vægter et term, efter hvor sjælden det er i datamængden.
+Dette hælper til at skælne mellem termer der optræder ofte, og termer der optræder sjældent.
+Hvis et term ikke forekommer så ofte tillægges det derfor en højere betydning end et term med oftere forekomst.
+
 Denne anbefalingsimplementation kræver at man har nogle attributter tilhørende de objekter man gerne vil anbefale brugerne.
 Den største fordel ved denne metode  er at man kan lave personlige anbefalinger lige så snart en bruger har generet data, til en smagsprofil.
 Ulemperne er man skal have gode attributter til sine data, for denne metode virker. Ligeledes kan denne implementation heller ikke tage højde for betingede regler, eksempelvis hvis man kun kan lide attribut1 i forbindelse med atrribut2 men ikke kan fordrage attribut1 i forbindelse med attribut3.
@@ -45,8 +49,9 @@ Den første er en simpel, ikke personliggjort anbefaling, som blot er de gennems
 Ligeledes har vi valgt at implementere en personlig anbefaling, her har vi valgt en indholdsbaseret anbefaling.
 Dette valg har vi foretaget af hovedsageligt af to årsager, den første er fordi vi mener at ingredienserne på hver opskrift kan bruges som attributter til at genere smagsprofiler og derfor også anbefalinger udefra.
 Den anden årsag, til at valget er faldet på denne løsning, er at vil gerne ville undgå ‘cold-start’ problemet.
+Vi har valgt ikke at implementere tf-idf af det inholdsbaserede anbefalingssystem.
 
-Implementationen metoden, som tidligere nævnt, basere anbefalingerne på ingredienserne .
+Implementationen, som tidligere nævnt, baserer anbefalingerne på opskrifters ingredienser.
 Når en bruger har bedømt en opskrift, får hver ingrediens til opskriften tildelt samme bedømmelse.
 Hvis en ingrediens er bedømt på mere end en opskrift, bruges gennemsnittet af de samlede bedømmelser for ingrediensen.
 Hvis en ingrediens ikke har nogen bedømmelse, bliver denne ingrediens tildelt gennemsnittet af alle brugerens bedømmelser.
@@ -71,7 +76,6 @@ Ligeledes ville en forbedring også være at sikre sig, at hvis to eller flere o
 
 Vores anbefalinger baserede på ingredienser, fungerer også til dels efter hensigten, dog kunne algoritmen godt bruge forfinelse, eftersom der ikke er lagde så stor vægt på ingredienser man ikke har bedømt.
 Hvis dette skulle gøres kunne der eventuelt vægte ingredienser efter hvor mange gange en bruger har bedømt denne varer.
-Ligeledes kunne vi også godt forestille os at en højere vægtning af sjældent forkomne ingredienser ville kunne præcisere anbefalingerne.
-Til dette kunne man benytte 'term frequency inverse document frequency' (tf-idf), som vægter et term, efter hvor sjælden det er i datamængden. \fixme{tf-idf - er det noget der er beksrevet før.}
+Ligeledes kunne vi også godt forestille os at en højere vægtning af sjældent forkomne ingredienser ville kunne præcisere anbefalingerne ved at bruge tf-idf.
 
 Disse forbedringer har vi fravalgt at implementere, da de ikke er en del af kerneområde i dette projektforløb.
