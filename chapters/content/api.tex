@@ -41,7 +41,7 @@ For at kunne bruge infomationen laves der en klasse, som svarer til det JSON som
 
 
 \subsection{Implementation}
-
+Denne implementation er en del af controlleren: ``OfferControler.cs'' placeret i ``ProjectFood/Controlers'', i metoden ``ImportOffers''.
 \subsubsection{Session}
 For at kunne bruge API'en skal man først oprette en session.
 En session består af en API-nøgle, den tilsvaredne hemmelighed (``Secret''), en token og en signatur.
@@ -64,21 +64,10 @@ Eksempelvis vil apikaldet som opretter en session returnere:
 }
 \end{lstlisting}
 
-Dette svar kan oversættes til en klasse i C\#.
-\begin{lstlisting}[caption="Klassen ``Session'' som svarer til retur JSONet sendt fra /v2/sessions' APIet"]
-public class Session
-{
-    public string Token { get; set; }
-    public string Expires { get; set; }
-    public string User { get; set; }
-    public string Provider { get; set; }
-    public Permissions Permissions { get; set; } // List<string> Guest
-}
-\end{lstlisting}
+Dette svar kan oversættes til en klasse i C\#, som har tilsvarende felter, så den kan indlæses med RestSharp som vist i \myref{lst:session}.
 
-Hvis dette kald skulle gøres ved brug af C\#-kode så vil det kunne gøre på følgende måde, med RestSharp.
 %[firstnumber=1,caption="Det foerste API kald"]
-\begin{lstlisting}[caption="C\#-kode som opretter en RestClient og anvender den til at oprette et objekt med felter som svarer til JSON dataet givet fra API'en"]
+\begin{lstlisting}[caption="C\#-kode som opretter en RestClient og anvender den til at oprette et objekt med felter som svarer til JSON dataet givet fra API'en", label=lst:session]
 /* [...] */
 /* Create a RestClient*/
 var client = new RestClient("https://api.etilbudsavis.dk");
@@ -97,80 +86,64 @@ Session sessionobj = response2.Data;
 Global.Signature = EncryptionHelper.SHA256(Global.Secret + Global.SessionToken);
 /* [...] */
 \end{lstlisting}
-Efter eksekveringen af dette kode, vil der være et objekt af datatypen ``Session'' kaldt sessionobj, som indeholder de samme felter som givet i JSON i \myref{apilst1}; derudover er signaturen (``Global.Signature'') også beregnet og gemt.
+Efter eksekveringen af dette kode, vil der være et objekt af datatypen ``Session'' kaldt sessionobj, som indeholder de samme felter som givet i JSON i \myref{apilst1}; derudover er signaturen, en SHA256 hash af hemmeligheden og sessiontokenen, (``Global.Signature'') også beregnet og gemt.
 
-\subsubsection{Fællestræk for den rasterende API}
-Der findes en række fællestræk for brugen af API'en.
-Centralt sendes SessionToken'en og signaturen som http--headers.
-Derudover genanvendes de samme 3 parametre ofte: længdegrad, bredegrad og radius.
-Disse er et udtryk for en placering af og afstand til butikker.
+\subsubsection{Indlæsning af tilbud}
+API'ens anvendlse i programmet er at indhente akutelle tilbud.
+For at kunne modtage tilbud skal der konstrueres et ``request'', som minder om det, vist i \myref{lst:session}, men anmoder tilbud.
+Der er en øvre grænse sat af eTilbudsavis.dk på at maksimalt 100 tilbud kan hentes af gangen, da der vil skulle hentes mere end 100 tilbud af gangen, er det nødvendigt at fortage flere anmodninger.
+Derfor skrives der en do..while løkke som gentages så længe der returneres 100 tilbud fra API'en, denne er vist i \myref{apiofferscs}.
 
-\subsubsection{Store, Catalog og Offer}
-Det er muligt at spørge API'en om hvilke butikker som er inden for en given radius af en placering som beskrevet ovenfor.
-Det vil med C\#-kode se ud som følger:
-\begin{lstlisting}[caption="C\#-kode som anvender ``/v2/stores'' delen af API'en til at hente butikker.",label=apistorecs]
+\begin{lstlisting}[caption="C\#-kode som anvender ``/v2/offers'' delen af API'en til at hente tilbud.", label=apiofferscs]
 /* [...] */
-/* Create request for getting stores near a coordinate */
-var storeRequest = new RestRequest("v2/stores", Method.GET);
-storeRequest.AddParameter("r_lat", latitude);
-storeRequest.AddParameter("r_lng", longitude);
-storeRequest.AddParameter("r_radius", radius);
-storeRequest.AddHeader("X-Token", Global.SessionToken);
-storeRequest.AddHeader("X-Signature", Global.Signature);
-
-var storesResult = client.Execute<List<Store>>(storeRequest).Data;
+var listofApiOffers = new List<ApiOffer>();
+do {
+    var nextOffersRequest = new RestRequest("v2/offers", Method.GET);
+    nextOffersRequest.AddParameter("r_lat", Global.Latitude);
+    nextOffersRequest.AddParameter("r_lng", Global.Longitude);
+    nextOffersRequest.AddParameter("r_radius", Global.Radius);
+    nextOffersRequest.AddHeader("X-Token", Global.Session.Token);
+    nextOffersRequest.AddHeader("X-Signature", Global.Session.Signature);
+    nextOffersRequest.AddParameter("limit", "100");
+    nextOffersRequest.AddParameter("dealer_ids", "9ba51,8c4da,bdf5A,11deC,c1edq,71c90,101cD,0b1e8,ecddz,8c4da,1e1eB");
+    nextOffersRequest.AddParameter("offset", listofApiOffers.Count);
+    offersResult = client.Execute<List<ApiOffer>>(nextOffersRequest).Data;
+    listofApiOffers.AddRange(offersResult);
+} while (offersResult.Count == 100)
 /* [...] */
 \end{lstlisting}
 
-storesResult er af datatypen List<Store> hvor ``Store'' er klassen som svarer til det JSON API kaldet returner.
-Dette er udformet som følger:
-\begin{lstlisting}[caption="Klassen Store",label=apistoreclass]
-public class Store
+Dette kode skal oversættes til vores model af et tilbud, dette gøres i en foreach løkke, som vist i \myref{apiofferstooffercs}.
+
+\begin{lstlisting}[caption="C\#-kode som bruger API-data til at oprette instancer af Offer-klassen\, og tilføjer dem til databasen", label=apiofferstooffercs]
+/* [...] */
+foreach (var o in listofApiOffers)
 {
-    public string id { get; set; }
-    public string ern { get; set; }
-    public string street { get; set; }
-    public string city { get; set; }
-    public string zip_code { get; set; }
-    public Country country { get; set; }
-    public string latitude { get; set; }
-    public string longitude { get; set; }
-    public string dealer_url { get; set; }
-    public string dealer_id { get; set; }
-    public Branding branding { get; set; }
-    public string contact { get; set; }
-    public List<string> category_ids { get; set; }
+    var newOffer = new Offer
+    {
+        eTilbudsavisID = o.id,
+        Heading = o.heading,
+        Begin = o.run_from,
+        End = o.run_till,
+        Store = o.branding.name,
+        Price = o.pricing.price,
+        Unit = o.quantity.unit != null ? o.quantity.size.@from + " " + o.quantity.unit.symbol : " "
+    };
+
+    // If the offer doesn't already exist in the database add it.
+    if (!_db.Offers.Any(x => x.eTilbudsavisID == newOffer.eTilbudsavisID))
+    {
+        _db.Offers.Add(newOffer);
+    }
 }
+/* [...] */
 \end{lstlisting}
 
-Hvor Branding, Country og Pageflip klasserne er:
-
-\begin{lstlisting}[caption="Klasserne Branding Pageflip og Country",label=apistoreclasshelpers]
-public class Branding
-{
-    public string name { get; set; }
-    public string url_name { get; set; }
-    public string website { get; set; }
-    public string logo { get; set; }
-    public string logo_background { get; set; }
-    public string color { get; set; }
-    public Pageflip pageflip { get; set; }
-}
-
-public class Pageflip
-{
-    public string logo { get; set; }
-    public string color { get; set; }
-}
-
-public class Country
-{
-    public string Id { get; set; }
-    public string UnsubscribePrintUrl { get; set; }
-}
-\end{lstlisting}
-
-Hele denne process er gentaget og tilpasset Catalog og Offer API'erne for at kunne indhente den infomation de kan give.
-Det er hermed muligt at hente infomationer om tilbud og butikker. \fxfatal{Dette er et helvede at beskrive på en måde som giver mening, så alt det ovenståene skal nok skrives om...}
-
-\subsection{Konklusion}
+Foruden dette er det også muligt at importere tilbud direkte fra JSON-filer, dette sker via metoden ``ImportOffersFromFiles'' fra controlleren ``AdminPanelController.cs''.
+Denne metode henter filer fra stien ``ProjectFood/App_Data/jsonData/'', og oversætter dem til instanser af klassen Offer og tilføjer dem til databasen. 
+Grunden til at begge metoder findes er, at denne gør det muligt at indhente data hurtigere og over en længere periode, da den ikke begrænses af: API'ens udløbstid (det er kun mulige at hente nuværende og fremtidige tilbud), API'ens hastighed og evt. offline brug. 
+For at kalde denne metode skal man tilgå administrator kontrolpanelet, som findes på stien ``/AdminPanel''.
+\subsection{Konklusion} \fxnote{This sux, men jeg ved ikke hvad jeg skal skrive i konklusionen - Troels}
+Ved brug af frameworket RestSharp er det muligt at indhente data omkring tilbud fra eTilbudsavis' API. 
+Dette gør programmet mere virkelighedstro, da alle tilbud vist i det vil være faktiske tilbud i butikker.
+Der er også mulighed for at importere tilbud fra lokale JSON-filer. 
