@@ -2,12 +2,15 @@
 For at sikre systemets funktionalitet, er systemet blevet testet, ikke kun af brugere, men også af projektgruppen.
 En af de metoder, som er taget i brug, er Black Box Testing eller Behavioral Testing.
 En sådan test udføres ved at give et input til et kørbart system, og så få et output.
-Det eneste i denne process der er kendt af testpersonen er input og output, selve funktionaliteten er således gemt i en ``Black Box''. %http://softwaretestingfundamentals.com/black-box-testing/
+Det eneste i denne process der er kendt af testpersonen er input og output, selve funktionaliteten er således gemt i en ``Black Box''. \citep{Black_Box}
 
-Til dette formål anvendes .NET's unit testing.
+Til dette formål anvendes NUnit frameworket, som er et unit-testing framework til alle .Net sprogene.
 I denne metode brydes metoder og properties med logik, op i så små dele som overhovedet muligt, for at teste de enkelte logik sammenligninger og teste resultatet.
-Efter tests er lavet på mindste dele af systemet, kan metoder med flere depencies, så testes, med en sikkerhed om, at deres dependencies er funktionelle. %http://msdn.microsoft.com/en-us/library/aa292197%28v=vs.71%29.aspx
-For at oprette diverse tests, følges AAA(Act, Assert, Arrange) mønsteret, detter er en måde hvorpå unit tests kan konstrueres, for at give bedre overblik over de forskellige dele af testen.
+Efter tests er lavet på mindste dele af systemet, kan metoder med flere dependencies, så testes, med en sikkerhed om, at deres dependencies er funktionelle.
+\citep{Unit_Testing}
+
+For at oprette diverse tests, følges AAA(Act, Assert, Arrange) mønsteret, dette er en måde hvorpå unit tests kan konstrueres, for at give et bedre overblik over de forskellige dele af testen.
+\citep{Writing_Your_Tests}
 De tre dele af AAA mønsteret repræsentere respektivt:
 \begin{itemize}
   \item \textbf{Arrange:} Alt setup krævet for at køre det testede kode. Dette inkluderer initialisering af data, objecter og dependencies, eftersom Test delen er et Mock af det rigtige system, og derved ikke er initialiseret.
@@ -15,13 +18,11 @@ De tre dele af AAA mønsteret repræsentere respektivt:
   \item \textbf{Assert:} Her specificeres hvad der skal være sket i act, og tjekkes om ændringer i data og eventuelle resultater, stemmer overens med det forventede.
 \end{itemize}
 Givet at testen er skrevet korrekt kan der ved brug af dette system finde ud af potentielle fejl i systemets metoder.
-I projektet benyttes yderligere NUnit.
-NUnit er et unit-testing framework for .NET hvilket tillader yderligere features, som kan benyttes til unit testing.
-NUnit frameworket bliver benyttet til det formål at kun oprette en Arrange for alle tests som indeholder det mest generelle brugte data.
-Dette sker i en ``SetUp'', dataene i denne bliver kaldt før hver enkelt test, på den måde sikre man sig yderligere at det samme Mock data er tilgængelig, for hver test.
-I en given test kan der så oprettes yderligere mock data om nødvendigt.
+NUnit frameworket benyttes til at kunne oprette en Arrange for alle tests som indeholder det mest generelle brugte data.
+Dette sker i en ``SetUP'' med en Initialize() metode, dataene i denne bliver kaldt før hver enkelt test, på den måde sikre man sig yderligere at det samme Mock-data er tilgængelig, for hver test.
+I en given test kan der så oprettes yderligere mock-data om nødvendigt.
 
-Til hver enkelt testede funktionalitet oprettes tests for hver enkelt sti ud af funktionen igen, for at være sikker på hver enkelt logik tjek agerer som det forventes.
+Til hver enkelt testede funktionalitet oprettes tests der går igennem mange af stierne i funktionen, for at være sikker på at logik tjekkene agerer som det forventes.
 På \myref{lsttest} ses et eksempel for en oprettet test i systemet.
 
 \begin{lstlisting}[caption="En test for ``ShareList'' metodern i ``ShoppingListController''\, heri tjekkes hvorom den bruger listen deles med\, får listen sat ind på brugerens liste over shoppinglister.", label=lsttest]
@@ -35,7 +36,7 @@ På \myref{lsttest} ses et eksempel for en oprettet test i systemet.
           //Some Mock Data
         }
         [Test]
-        public void ShareList_ShouldShare()
+        public void ShoppingListShareList_DemoMail2UserAsInput_ShouldShare()
         {
             //Arrange
             _user.Username = "DemoMail";
@@ -43,23 +44,24 @@ På \myref{lsttest} ses et eksempel for en oprettet test i systemet.
             _mockdata.Users.Add(user2); 
             user2.Username = "DemoMail2";
             //Act
-            Assert.IsTrue(_mockdata.Users.First(i => i.Username == "DemoMail").ShoppingLists.First().ID == 1);
-            Assert.IsTrue(_mockdata.Users.First(i => i.Username == "DemoMail2").ShoppingLists.FirstOrDefault() == null);
+            Assert.IsTrue(_mockdata.Users.First(i => i.Username == "DemoMail").ShoppingLists.Any(x=>x.ID == 1));
+            Assert.IsFalse(_mockdata.Users.First(i => i.Username == "DemoMail2").ShoppingLists.Any(x=>x.ID == 1));
             var result = _controller.ShareList(1, "DemoMail2");
             //Assert
             Assert.IsNotNull(result);
-            Assert.IsTrue(_mockdata.Users.First(i => i.Username == "DemoMail2").ShoppingLists.First().ID == 1);
-            Assert.IsTrue(_mockdata.Users.First(i => i.Username == "DemoMail2").ShoppingLists.First().ID == 
-                _mockdata.Users.First(i => i.Username == "DemoMail").ShoppingLists.First().ID);
+            Assert.IsTrue(_mockdata.Users.First(i => i.Username == "DemoMail").ShoppingLists.Any(x => x.ID == 1));
+            Assert.IsTrue(_mockdata.Users.First(i => i.Username == "DemoMail2").ShoppingLists.Any(x => x.ID == 1));
         }
-    }
 }        
 \end{lstlisting}\label{lsttest}
-\fxnote{make dis caption twerk [caption="En test for ``ShareList'' metodern i ``ShoppingListController'', heri tjekkes hvorom den bruger listen deles med, får listen sat ind på brugerens liste over shoppinglister."]}
-Til testen på \myref{lsttest} oprettes en lignende test som kaldes ``ShareList\_ShouldNotShare'', som ikke opfylder alle metodens kriterier, og derfor fejler, hvilket så tjekkets igennem asserts.
-Fordelen ved at bruge denne type af Black Box tests frem for andre, er muligheden for at køre tests igen på et senere tidspunkt.
-Dette er en mulighed der ellers ikke nødvendigvis er tilgængelig for alle typer af Black Box tests, eksempelvis hvis systemet testes igennem brug, disse tests ville skulle oprettes hver gang, hvor ved brug af en metode som unit testing er mulighed for at gennemgå testen, efter den er lavet første gang.
-Dette kommer til gavn når der laves eventuelle ændringer i systemet, alle tests lavet forhen kan køres for at se om ændringerne har haft nogen effekt på funktionalitet andre steder i systemet. 
-En funktion som test igennem brug, ikke nødvendigvis ville opfange.
+Til testen på \myref{lsttest} oprettes en lignende test som kaldes ``...\_ShouldNotShare'', som ikke opfylder alle metodens kriterier, og derfor fejler, hvilket så tjekkes igennem asserts.
+Fordelen ved at bruge denne type af Black Box tests frem for andre, er muligheden for at køre tests nemt igen og igen.
+Dette er en stor fordel når man arbejder iterativt som vi gør.
+Dette er en mulighed der ellers ikke nødvendigvis er tilgængelig for alle typer af Black Box tests, eksempelvis hvis systemet testes igennem brug.
+Disse tests ville skulle udføres manuelt hver gang, hvor dette ikke er tilfældet ved brug af unit testing.
+Dette kommer til gavn når der laves eventuelle ændringer i systemet, alle tests lavet førhen kan køres for at se om ændringerne har haft nogen effekt på funktionalitet andre steder i systemet. 
+Hvor en funktion som testes igennem brug, ikke nødvendigvis ville opfange.
 Der benyttes yderligere et library kaldet moq, dette er et library lavet for kunne oprette mock data, samt de dependencies der nu må høre til.
-I test systemet benyttes dette til at simulere hvorom en bruger er authenticated eller ej, dette tillader at teste funktionaliteter der kræver at en bruger er authenticated, såvel som at teste hvad der sker, hvis en bruger ikke er authenticated.
+I vores testproject benyttes dette til at simulere hvorom en bruger er authenticated eller ej, dette tillader at teste funktionaliteter der kræver at en bruger er authenticated, såvel som at teste hvad der sker, hvis en bruger ikke er authenticated.
+
+\fxnote{Tilføj noget om Code Coverage når der er klar til dette.}
