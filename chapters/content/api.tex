@@ -1,22 +1,22 @@
 \section{eTilbudsavis API}\label{api}
 I dette afsnit beskrives først teori om hvad et API er, og hvordan sådan et er struktureret.
-Herefter gennemgåes design og implementation for brug af eTilbudsavis' API, til sidst konkluderes samles alt dette op i en konklusion.
+Herefter gennemgås design og implementation for brug af eTilbudsavis' API, til sidst konkluderes samles alt dette op i en konklusion.
 
-For at kunne indhente infomationer om butikker og deres tilbud, anvendes der et API.
+For at kunne indhente infomation om butikker og deres tilbud, anvendes der et API.
 Dette API udbydes af den danske virksomhed eTilbudsavis.dk, og er af typen REST.
 
 \subsection{Teori}
-REST er en abstraktion for arkitekturen af internettet, den simplificer den måde som applikationer kan kommunikerer med hinanden.
-Dette bruges ofte til API'er for at skabe en simpel og god struktureret måde at kommunikerer med en service\citep{REST}.
+REST er en abstraktion for arkitekturen af internettet, den simplificerer den måde som applikationer kan kommunikere med hinanden.
+Dette bruges ofte til API'er for at skabe en simpel og struktureret måde at kommunikere med en service\citep{REST}.
 
 \subsubsection{REST}
 REST står for: \textit{Representational state transfer}.
-Det er en metode hvorved man opbygger måden som et API.
+REST er er måden man kommunikerer med API'et.
 Der findes fire metoder som svarer til de fire som findes i CRUD (``CREATE, READ, UPDATE, DELETE'').
 Disse metoder er: GET, POST, PUT og DELETE.
 
 \textbf{GET}
-returnerer data typisk som JSON eller XML og med HTTP svarkoden 200 (OK).
+returnerer data, typisk som JSON eller XML og med HTTP svarkoden 200 (OK).
 eTilbudsavis' API sender JSON.
 Svarer til READ i CRUD.
 
@@ -25,7 +25,7 @@ bruges til at oprette nye ressourcer.
 Svarer til CREATE i CRUD.
 
 \textbf{PUT}
-bruges til at opdatere infomationer, eksmpelvis til at forlænge en session.
+bruges til at opdatere infomation, eksempelvis til at forlænge en session.
 Svarer til UPDATE i CRUD.
 
 \textbf{DELETE}
@@ -36,15 +36,15 @@ Svarer til DELETE i CRUD.
 eTilbudsavis' API er kun et halv-offentligt API, dvs. at man skal have en API-nøgle (``APIKEY'') og dertilhørende hemmelighed (``Secret'').
 API'en er placeret på \textit{https://api.etilbudsavis.dk/v2/}. \citep{eTilAPI}
 
-For at kommunikere med API'en fra C\#-kode anvendes værktøjet RestSharp. \citep{RestSharp}
-For at kunne bruge infomationen laves der en klasse, som svarer til det JSON som API'en sender tilbage.
+For at kommunikere med API'en fra C\#-kode anvendes værktøjet RestSharp. RestSharp er en simpel REST og HTTP API klient for et .NET miljø. \citep{RestSharp}
+For at kunne bruge informationen laves der en klasse, som svarer til det JSON som API'en sender tilbage.
 
 
 \subsection{Implementation}
 Denne implementation er en del af controlleren: ``OfferControler.cs'' placeret i ``ProjectFood/Controlers'', i metoden ``ImportOffers''.
 \subsubsection{Session}
 For at kunne bruge API'en skal man først oprette en session.
-En session består af en API-nøgle, den tilsvaredne hemmelighed (``Secret''), en token og en signatur.
+En session består af en API-nøgle, den tilsvarende hemmelighed (``Secret''), en token og en signatur.
 Har man en API-nøgle kan man kalde API'et sessions og få en token.
 Den token kan man kombinere med sin hemmelighed og generere SHA-256 hashen af dette som er signaturen.
 
@@ -89,9 +89,9 @@ Global.Signature = EncryptionHelper.SHA256(Global.Secret + Global.SessionToken);
 Efter eksekveringen af dette kode, vil der være et objekt af datatypen ``Session'' kaldt sessionobj, som indeholder de samme felter som givet i JSON i \myref{apilst1}; derudover er signaturen, en SHA256 hash af hemmeligheden og sessiontokenen, (``Global.Signature'') også beregnet og gemt.
 
 \subsubsection{Indlæsning af tilbud}
-API'ens anvendlse i programmet er at indhente akutelle tilbud.
+API'ens anvendelse i programmet er at indhente aktuelle tilbud.
 For at kunne modtage tilbud skal der konstrueres et ``request'', som minder om det, vist i \myref{lst:session}, men anmoder tilbud.
-Der er en øvre grænse sat af eTilbudsavis.dk på at maksimalt 100 tilbud kan hentes af gangen, da der vil skulle hentes mere end 100 tilbud af gangen, er det nødvendigt at fortage flere anmodninger.
+Der er en øvre grænse sat af eTilbudsavis.dk på at maksimalt 100 tilbud kan hentes ad gangen, da der vil skulle hentes mere end 100 tilbud ad gangen, er det nødvendigt at fortage flere anmodninger.
 Derfor skrives der en do..while løkke som gentages så længe der returneres 100 tilbud fra API'en, denne er vist i \myref{apiofferscs}.
 
 \begin{lstlisting}[caption="C\#-kode som anvender ``/v2/offers'' delen af API'en til at hente tilbud.", label=apiofferscs]
@@ -139,9 +139,9 @@ foreach (var o in listofApiOffers)
 /* [...] */
 \end{lstlisting}
 
-Foruden at indhente data fra eTilbudsavis.dks API er det også muligt at importere tilbud direkte fra JSON-filer (på samme format som eTilbudsavis'), dette sker via metoden ``ImportOffersFromFiles'' fra controlleren ``AdminPanelController.cs''.
+Foruden at indhente data fra eTilbudsavis' API, er det også muligt at importere tilbud direkte fra JSON-filer (på samme format som eTilbudsavis'), dette sker via metoden ``ImportOffersFromFiles'' fra controlleren ``AdminPanelController.cs''.
 Denne metode henter filer fra stien ``ProjectFood\/App\_Data\/jsonData\/'', og oversætter dem til instanser af klassen Offer og tilføjer dem til databasen. 
-Grunden til at begge metoder findes er, at denne gør det muligt at indhente data hurtigere og over en længere periode, da den ikke begrænses af: API'ens udløbstid (det er kun mulige at hente nuværende og fremtidige tilbud), API'ens hastighed og evt. offline brug. 
+Grunden til at begge metoder findes er, at denne gør det muligt at indhente data hurtigere og over en længere periode, da den ikke begrænses af: API'ens udløbstid (det er kun mulig at hente nuværende og fremtidige tilbud), API'ens hastighed og evt. offline brug. 
 For at kalde denne metode skal man tilgå administrator kontrolpanelet, som findes på stien ``\/AdminPanel''.
 \subsection{Konklusion} \fxnote{This sux, men jeg ved ikke hvad jeg skal skrive i konklusionen - Troels}
 Ved brug af frameworket RestSharp er det muligt at indhente data omkring tilbud fra eTilbudsavis' API. 
