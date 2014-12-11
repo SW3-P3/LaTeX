@@ -1,6 +1,6 @@
 \section{eTilbudsavis API}\label{api}
 I dette afsnit beskrives først teori om hvad et API er, og hvordan sådan et er struktureret.
-Herefter gennemgås design og implementation for brug af eTilbudsavis' API, til sidst konkluderes samles alt dette op i en konklusion.
+Herefter gennemgås design og implementation for brug af eTilbudsavis' API, samt motivationen for at bruge API'en. Til sidst vil der blive konkluderet på API'ens betydning for projektet
 
 For at kunne indhente infomation om butikker og deres tilbud, anvendes der et API.
 Dette API udbydes af den danske virksomhed eTilbudsavis.dk, og er af typen REST.
@@ -39,6 +39,14 @@ API'en er placeret på \textit{https://api.etilbudsavis.dk/v2/}. \citep{eTilAPI}
 For at kommunikere med API'en fra C\#-kode anvendes værktøjet RestSharp. RestSharp er en simpel REST og HTTP API klient for et .NET miljø. \citep{RestSharp}
 For at kunne bruge informationen laves der en klasse, som svarer til det JSON som API'en sender tilbage.
 
+\subsection{Motivation}
+Grundet til, at vi har valgt at benytte os af en API, og især eTilbudavis' API, er, at det giver os mulighed for at vise og arbejde med realistiske tilbud. 
+Derudover tillader det os at overvåge butikkernes tilbud, og på den måde bliver systemet også mere virkelighedtro.
+Der er dog visse ulemper ved, at vi benytter os af eTilbudavis' API. 
+Det data vi modtager er ikke, hvad vi ville betegne som ``optimal''. 
+Med dette menes der, at dataet for eksempel ikke indeholder; informationer om grupperede tilbud, kategori-inddeling eller forekomster af allergener i varerne. 
+Hvis disse tre atributter havde været tilstede, ville systemet for eksempel være i stand til at frasortere tilbud, der indeholder spor af jordnødder eller lignende, hvis den pågældende bruger eksempelvis er allergisk overfor peanuts. 
+Ligeledes ville det med kategori-inddeling være muligt at sortere mere intuitivt i tilbud, og information om grupperede tilbud ville give systemet mulighed for at præsentere visse tilbud bedre for brugeren, så der ikke opstår forvirring.
 
 \subsection{Implementation}
 Denne implementation er en del af controlleren: ``OfferControler.cs'' placeret i ``ProjectFood/Controlers'', i metoden ``ImportOffers''.
@@ -143,7 +151,8 @@ Foruden at indhente data fra eTilbudsavis' API, er det også muligt at importere
 Denne metode henter filer fra stien ``ProjectFood\/App\_Data\/jsonData\/'', og oversætter dem til instanser af klassen Offer og tilføjer dem til databasen. 
 Grunden til at begge metoder findes er, at denne gør det muligt at indhente data hurtigere og over en længere periode, da den ikke begrænses af: API'ens udløbstid (det er kun mulig at hente nuværende og fremtidige tilbud), API'ens hastighed og evt. offline brug. 
 For at kalde denne metode skal man tilgå administrator kontrolpanelet, som findes på stien ``\/AdminPanel''.
-\subsection{Konklusion} \fxnote{This sux, men jeg ved ikke hvad jeg skal skrive i konklusionen - Troels}
+
+\subsection{Konklusion}
 Ved brug af frameworket RestSharp er det muligt at indhente data omkring tilbud fra eTilbudsavis' API. 
-Dette gør programmet mere virkelighedstro, da alle tilbud vist i det vil være faktiske tilbud i butikker.
-Der er også mulighed for at importere tilbud fra lokale JSON-filer. 
+Dette gør programmet i stand til at opføre sig mere realistisk, da alle tilbud vist i det vil være faktiske tilbud i butikker.
+Der er også mulighed for at importere tilbud fra lokale JSON-filer, så der lettere kan testes på overvågning og forekomst af nye tilbud. Dog er eTilbudavis' API data ikke detaljeret nok til at implementere visse funktionaliteter, som ville kunne udvide systemet i en positiv retning.
