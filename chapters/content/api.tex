@@ -40,9 +40,9 @@ For at kommunikere med API'en fra C\#-kode anvendes værktøjet RestSharp. RestS
 For at kunne bruge informationen laves der en klasse, som svarer til det JSON som API'en sender tilbage.
 
 \subsection{Motivation}
-Grundet til, at vi har valgt at benytte os af en API, og især eTilbudavis' API, er, at det giver os mulighed for at vise og arbejde med realistiske tilbud. 
+Grundet til, at vi har valgt at benytte os af en API, og især eTilbudsavis' API, er, at det giver os mulighed for at vise og arbejde med realistiske tilbud. 
 Derudover tillader det os at overvåge butikkernes tilbud, og på den måde bliver systemet også mere virkelighedtro.
-Der er dog visse ulemper ved, at vi benytter os af eTilbudavis' API. 
+Der er dog visse ulemper ved, at vi benytter os af eTilbudsavis' API. 
 Det data vi modtager er ikke, hvad vi ville betegne som ``optimal''. 
 Med dette menes der, at dataet for eksempel ikke indeholder; informationer om grupperede tilbud, kategori-inddeling eller forekomster af allergener i varerne. 
 Hvis disse tre atributter havde været tilstede, ville systemet for eksempel være i stand til at frasortere tilbud, der indeholder spor af jordnødder eller lignende, hvis den pågældende bruger eksempelvis er allergisk overfor peanuts. 
@@ -155,4 +155,5 @@ For at kalde denne metode skal man tilgå administrator kontrolpanelet, som find
 \subsection{Konklusion}
 Ved brug af frameworket RestSharp er det muligt at indhente data omkring tilbud fra eTilbudsavis' API. 
 Dette gør programmet i stand til at opføre sig mere realistisk, da alle tilbud vist i det vil være faktiske tilbud i butikker.
-Der er også mulighed for at importere tilbud fra lokale JSON-filer, så der lettere kan testes på overvågning og forekomst af nye tilbud. Dog er eTilbudavis' API data ikke detaljeret nok til at implementere visse funktionaliteter, som ville kunne udvide systemet i en positiv retning.
+Der er også mulighed for at importere tilbud fra lokale JSON-filer, så der lettere kan testes på overvågning og forekomst af nye tilbud. 
+Dog er eTilbudsavis' API data ikke detaljeret nok til at implementere visse funktionaliteter, som ville kunne udvide systemet i en positiv retning.
