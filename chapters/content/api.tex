@@ -1,6 +1,6 @@
 \section{eTilbudsavis API}\label{api}
 I dette afsnit beskrives først teori om hvad et API er, og hvordan sådan et er struktureret.
-Herefter gennemgås design og implementation for brug af eTilbudsavis' API, samt motivationen for at bruge API'en. Til sidst vil der blive konkluderet på API'ens betydning for projektet
+Herefter gennemgås design og implementering for brug af eTilbudsavis' API, samt motivationen for at bruge API'en. Til sidst vil der blive konkluderet på API'ens betydning for projektet
 
 For at kunne indhente infomation om butikker og deres tilbud, anvendes der et API.
 Dette API udbydes af den danske virksomhed eTilbudsavis.dk, og er af typen REST.
@@ -40,21 +40,21 @@ For at kommunikere med API'en fra C\#-kode anvendes værktøjet RestSharp. RestS
 For at kunne bruge informationen laves der en klasse, som svarer til det JSON som API'en sender tilbage.
 
 \subsection{Motivation}
-Grundet til, at vi har valgt at benytte os af en API, og især eTilbudsavis' API, er, at det giver os mulighed for at vise og arbejde med realistiske tilbud. 
-Derudover tillader det os at overvåge butikkernes tilbud, og på den måde bliver systemet også mere virkelighedtro.
+Vi har valgt at benytte et API, især eTilbudsavis' API, da det giver os muligheden for at arbejde med og vise faktiske tilbud.
 Der er dog visse ulemper ved, at vi benytter os af eTilbudsavis' API. 
-Det data vi modtager er ikke, hvad vi ville betegne som ``optimal''. 
+Det data vi modtager er ikke, hvad vi ville betegne som ``optimalt''. 
 Med dette menes der, at dataet for eksempel ikke indeholder; informationer om grupperede tilbud, kategori-inddeling eller forekomster af allergener i varerne. 
-Hvis disse tre atributter havde været tilstede, ville systemet for eksempel være i stand til at frasortere tilbud, der indeholder spor af jordnødder eller lignende, hvis den pågældende bruger eksempelvis er allergisk overfor peanuts. 
+Dette er funktioner vores testpersoner har adspurgt. 
+Hvis disse tre atributter havde været tilstede, ville systemet for eksempel være i stand til at frasortere tilbud, der indeholder spor af jordnødder eller lignende, hvis den pågældende bruger eksempelvis er allergisk overfor jordnødder. 
 Ligeledes ville det med kategori-inddeling være muligt at sortere mere intuitivt i tilbud, og information om grupperede tilbud ville give systemet mulighed for at præsentere visse tilbud bedre for brugeren, så der ikke opstår forvirring.
 
-\subsection{Implementation}
-Denne implementation er en del af controlleren: ``OfferControler.cs'' placeret i ``ProjectFood/Controlers'', i metoden ``ImportOffers''.
+\subsection{implementering}
+Denne implementering er en del af controlleren: ``OfferController.cs'' placeret i ``ProjectFood/Controllers'', i metoden ``ImportOffers''.
 \subsubsection{Session}
-For at kunne bruge API'en skal man først oprette en session.
+For at kunne bruge API'et skal man først oprette en session.
 En session består af en API-nøgle, den tilsvarende hemmelighed (``Secret''), en token og en signatur.
 Har man en API-nøgle kan man kalde API'et sessions og få en token.
-Den token kan man kombinere med sin hemmelighed og generere SHA-256 hashen af dette som er signaturen.
+Den token kan man kombinere med sin hemmelighed og generere SHA-256 hashen af dette som er signaturen, der brugers til at underskrive requests.
 
 Eksempelvis vil apikaldet som opretter en session returnere:
 \begin{lstlisting}[language=json,firstnumber=1,caption="POST til sessions api'en med APIKEYen",label=apilst1]
@@ -94,15 +94,15 @@ Session sessionobj = response2.Data;
 Global.Signature = EncryptionHelper.SHA256(Global.Secret + Global.SessionToken);
 /* [...] */
 \end{lstlisting}
-Efter eksekveringen af dette kode, vil der være et objekt af datatypen ``Session'' kaldt sessionobj, som indeholder de samme felter som givet i JSON i \myref{apilst1}; derudover er signaturen, en SHA256 hash af hemmeligheden og sessiontokenen, (``Global.Signature'') også beregnet og gemt.
+Efter eksekveringen af denne kode, vil der være et objekt af datatypen ``Session'' kaldet sessionobj, som indeholder de samme felter som givet i JSON i \myref{apilst1}; derudover er signaturen, en SHA256 hash af hemmeligheden og sessiontokenen, (``Global.Signature'') også beregnet og gemt.
 
 \subsubsection{Indlæsning af tilbud}
-API'ens anvendelse i programmet er at indhente aktuelle tilbud.
+API'ets anvendelse i programmet er at indhente aktuelle tilbud.
 For at kunne modtage tilbud skal der konstrueres et ``request'', som minder om det, vist i \myref{lst:session}, men anmoder tilbud.
 Der er en øvre grænse sat af eTilbudsavis.dk på at maksimalt 100 tilbud kan hentes ad gangen, da der vil skulle hentes mere end 100 tilbud ad gangen, er det nødvendigt at fortage flere anmodninger.
-Derfor skrives der en do..while løkke som gentages så længe der returneres 100 tilbud fra API'en, denne er vist i \myref{apiofferscs}.
+Derfor bruges en do..while løkke som gentages så længe der returneres 100 tilbud fra API'et, denne er vist i \myref{apiofferscs}.
 
-\begin{lstlisting}[caption="C\#-kode som anvender ``/v2/offers'' delen af API'en til at hente tilbud.", label=apiofferscs]
+\begin{lstlisting}[caption="C\#-kode som anvender ``/v2/offers'' delen af API'et til at hente tilbud.", label=apiofferscs]
 /* [...] */
 var listofApiOffers = new List<ApiOffer>();
 do {
@@ -121,7 +121,7 @@ do {
 /* [...] */
 \end{lstlisting}
 
-Dette kode skal oversættes til vores model af et tilbud, dette gøres i en foreach løkke, som vist i \myref{apiofferstooffercs}.
+Denne kode skal oversættes til vores model af et tilbud, dette gøres i en foreach løkke, som vist i \myref{apiofferstooffercs}.
 
 \begin{lstlisting}[caption="C\#-kode som bruger API-data til at oprette instancer af Offer-klassen\, og tilføjer dem til databasen", label=apiofferstooffercs]
 /* [...] */
@@ -147,9 +147,9 @@ foreach (var o in listofApiOffers)
 /* [...] */
 \end{lstlisting}
 
-Foruden at indhente data fra eTilbudsavis' API, er det også muligt at importere tilbud direkte fra JSON-filer (på samme format som eTilbudsavis'), dette sker via metoden ``ImportOffersFromFiles'' fra controlleren ``AdminPanelController.cs''.
+Foruden at indhente data fra eTilbudsavis' API, er det også muligt at importere tilbud direkte fra JSON-filer (på samme format som eTilbudsavis'), dette sker via metoden ``ImportOffersFromFiles'' fra controlleren ``AdminPanelController.cs''. \fxnote{Indsæt infomation om adminpanellet i generel info.}
 Denne metode henter filer fra stien ``ProjectFood\/App\_Data\/jsonData\/'', og oversætter dem til instanser af klassen Offer og tilføjer dem til databasen. 
-Grunden til at begge metoder findes er, at denne gør det muligt at indhente data hurtigere og over en længere periode, da den ikke begrænses af: API'ens udløbstid (det er kun mulig at hente nuværende og fremtidige tilbud), API'ens hastighed og evt. offline brug. 
+Grunden til at begge metoder findes er, at denne gør det muligt at indhente data hurtigere og over en længere periode, da den ikke begrænses af: API'ets udløbstid (det er kun mulig at hente nuværende og fremtidige tilbud), API'ens hastighed og evt. offline brug. 
 For at kalde denne metode skal man tilgå administrator kontrolpanelet, som findes på stien ``\/AdminPanel''.
 
 \subsection{Konklusion}
