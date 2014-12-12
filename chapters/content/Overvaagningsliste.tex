@@ -1,5 +1,90 @@
 \section{Overvågningslisten}
-\subsection{Teori}
+% Forklar hvorfor det er nødvendigt at have overvågningslisten med.
+% Forklar hvilke userstories denne opfylder
+I vores prototype interviews, \myref{section:interview2}, blev det etableret, at brugere ønsker muligheden for at overvåge diverse varer, og modtage en notifikation når de kommer på tilbud.
+Dette er også med i vores user stories i \myref{sec:krav}.
+Specifikt er der her tale om user story nr. 9: ``Som en bruger vil jeg kunne overvåge specifikke varer, og få en notifikation når disse varer kommer på tilbud.''
+% \subsection{Teori}
+% Mønstre brugt??
+% Teknologier brugt (E-Mail?)
 \subsection{Design}
-\subsection{Implementation}
+% Forklar hvilke andre komponenter denne interagerer med
+Da overvågningslisten rent teknisk minder meget om en indkøbsliste, det er en liste af varer som hver har tilbud.
+Den vil derfor også blive implementeret som en indkøbsliste. 
+Der oprettes en overvågningsliste, når en bruger oprettes og den kan kun blive slettet hvis brugeren fjernes.
+Hvis programmet finder tilbud på nogle af de varer som er på en brugers indkøbsliste, når tilbud hentes fra eTilbudsavis' API (\myref{api}, så vil de modtage en e-mail som fortæller dem dette. 
+\subsection{Implementering} \fxnote{Screenshots? - Vi skal lige aftale størrelse og lign. - Troels}
+% Website first
+For at tilgå overvågningslisten trykker brugeren på ``Overvågningsliste'' i menubaren øverst på hjemmesiden.
+Derefter vil de blive presenteret med:
+\begin{itemize} 
+	\item En overskrift med glyphicon
+	\item Ca. 50 ord forklarende tekst,
+	\item En dropdown-boks med indkøbslister
+	\item Et tekstfelt med knap
+	\item En tabel over overvågede varer.
+\end{itemize}
+Her kan brugere indtaste navnet på en vare som de er intresseret i, i tekstfeltet og trykke enter eller på knappen.
+Derefter vil den blive til tilføjet til tabellen, og en blå knap med antallet af varer fundet vil opstå.
+Ved at klikke på denne knap kan brugeren tilføje et eller flere tilbud på denne vare til den indkøbsliste de har valgt i dropdown-boksen.
+
+% Mobil layout
+Tilgåes siden fra en enhed som identificerer som en telefon, via user-agent, eller blot ændrer vinduets størrelse, så vil siden tilpasse sig den nye skærm opløsning og størrelse.
+Mere specifikt vil den forklarende tekst blive fjernet, og menubaren vil blive lavet om til en knap med 3 horisontale linjer, som ved et klik bliver til en menu.
+Denne side er dog ikke fuld optimeret til mobil brugere, da knappen til at se tilbud producerer en tabel i fuldstørrelse. \fxnote{Vi kunne fjerne knappen på mobil??}
+% Backend (for ui og for e-mail)
+\subsubsection{Backend}
+Da overvågningslisten er en indkøbsliste bliver der genbrugt meget kode derfra, herunder logikken til at finde tilbud som svarer til en vare og tilføje et tilbud til en indkøbsliste. 
+En overvågnignsliste er tilsluttet en bruger som et felt af typen ``ShoppingList'' og navnet WatchList. %Watchlist er det en liste af ure?
+Denne shoppinglist bliver oprettet når brugeren bliver oprettet.
+I databasen, bliver overvågningslistens id gemt i tabellen ``Users'', og får sit navn ``watchList'' i tabellen ``ShoppingLists''.
+
+For at kunne sende e-mails til brugerene når varene på deres overvågningsliste kommer på tilbud er metoden ``NotifyWatchers'' lavet i ``Controllers/OfferControler.cs'' se \myref{notifywatcherlisting}. 
+\begin{lstlisting}[caption="Metoden ``NotifyWatcher som finder de tilbud som skal sendes til hver user og sender dem.''",label=notifywatcherlisting]
+public void NotifyWatchers()
+{
+    // Get all the users who have a watchlist with items.
+    var users = _db.Users.Include(u => u.RelevantOffers.Items).Include(w => w.WatchList.Items).Where(u => u.WatchList != null && u.WatchList.Items.Count > 0);
+
+    foreach (var user in users.Include(x => x.SentOffers))
+    {
+        var dt = (DateTime)user.LastSentNotification;
+        // Only sent notification if non have been sent for 1 day unless a preference is set.
+        if (dt.AddDays(user.MaxSendEmailsEveryDays ?? 1) < DateTime.Now)
+        {
+            var relevantOffers = new List<Offer>();
+            // Add every offer that maybe should be sent. 
+            foreach (var item in user.WatchList.Items)
+            {
+                relevantOffers.AddRange(GetOffersForItem(item.Name));
+            }
+
+            var output = new List<Offer>();
+
+            // Add offers not yet sent to the user to a list of item to send and to the list of offers sent.
+            foreach (var offer in relevantOffers.Where(offer => !user.SentOffers.Contains(offer)))
+            {
+                output.Add(offer);
+                user.SentOffers.Add(offer);
+                offer.SentToUsers.Add(user);
+            }
+
+            // If there are new offers send them to the user.
+            if (output.Count > 0)
+            {
+                SendEmailToUser(output, user);
+                user.LastSentNotification = DateTime.Now;
+
+            }
+        }
+    }
+    _db.SaveChanges();
+}
+\end{lstlisting}
+I \myref{notifywatcherlisting} bliver alle brugernes indkøbslister genneløbet og tjekket mod listen over tilbud som er blevet sent til brugeren (``SentOffers''). 
+Hvis der er tilbud som ikke allerede er blevet sent til en given bruger, som angår varer de overvåger, så vil en e-mail blive sendt til dem. \fxnote{Denne forklaring er måske dublikat af den før listingen, skal den udvides når koden er kommenteret som den er. - Troels}
+E-mail notifikationen kan i princippet godt udskiftes med andre typer notifikationer, så som push notifikationer. % SÅ FIK VI OGSÅ PUSH NOTIFIKATIONER MED!!!
 \subsection{Konklusion}
+% Forklar hvorfor userstoriesne er opfyldt, referer evt. til interviews og test.
+Overvågningslisten giver brugeren mulighed for at tilføje varer til en liste og se om de er på tilbud. 
+Derudover vil programmet også sende en e-mail notifikation, med relevante tilbud til brugeren. 
