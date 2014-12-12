@@ -5,7 +5,7 @@ En sådan test udføres ved at give et input til et kørbart system, og derefter
 Det eneste i denne process der er kendt af testpersonen er input og output, selve funktionaliteten er således gemt i en ``Black Box''. \citep{Black_Box}
 
 Til dette formål anvendes NUnit frameworket, som er et unit-testing framework til alle .Net sprogene.
-I denne metode brydes metoder og properties med logik, op i så små dele som overhovedet muligt, for at teste de enkelte logik sammenligninger og teste resultatet.
+I dette framework brydes metoder og properties med logik, op i så små dele som overhovedet muligt, for at teste de enkelte logiske sammenligninger og teste resultatet.
 Efter tests er lavet på mindste dele af systemet, kan metoder med flere dependencies, så testes, med en sikkerhed om, at deres dependencies er funktionelle.
 \citep{Unit_Testing}
 
@@ -21,8 +21,8 @@ Der benyttes i nogle tests også et \textbf{PreCondition}, felt der sikre at de 
 Dermed sikres der at \textbf{Assert} ikke blot giver positive resultater fordi det som tjekkes for allerede var sandt før \textbf{Act}.
 Givet at testen er skrevet korrekt kan der ved brug af dette system finde ud af potentielle fejl i systemets metoder.
 NUnit frameworket benyttes til at kunne oprette en Arrange for alle tests som indeholder det mest generelle brugte data.
-Dette sker i en ``SetUP'' med en Initialize() metode, dataene i denne bliver kaldt før hver enkelt test, på den måde sikre man sig yderligere at det samme Mock-data er tilgængelig, for hver test.
-I en given test kan der så oprettes yderligere mock-data om nødvendigt.
+Dette sker i en ``SetUp'' med en Initialize() metode, dataene i denne bliver kaldt før hver enkelt test, på den måde sikre man sig yderligere at det samme Mock-data er tilgængelig, for hver test.
+I en given test kan der så oprettes yderligere mock-data i \textbf{Arrange} sprogenementet om nødvendigt.
 
 Til hver enkelt testede funktionalitet oprettes tests der går igennem mange af stierne i funktionen, for at være sikker på at logik tjekkene agerer som det forventes.
 På \myref{lsttest} ses et eksempel for en oprettet test i systemet.
@@ -32,7 +32,7 @@ På \myref{lsttest} ses et eksempel for en oprettet test i systemet.
     [TestFixture]
     public class TestShoppingListsController
     {
-		[SetUp]
+    	[SetUp]
         public void Initialize()
         {
           //Some Mock Data
@@ -60,23 +60,24 @@ På \myref{lsttest} ses et eksempel for en oprettet test i systemet.
             Assert.IsTrue(_mockdata.ShoppingLists.First(x => x.ID == 1).Users.Count == 2);
         }
 }        
-\end{lstlisting}\label{lsttest}
+\end{lstlisting}
 Til testen på \myref{lsttest} oprettes en lignende test som kaldes ``...\_ShouldNotShare'', som ikke opfylder alle metodens kriterier, og derfor fejler, hvilket så tjekkes igennem asserts.
 Fordelen ved at bruge denne type af Black Box tests frem for andre, er muligheden for at køre tests nemt igen og igen.
-Dette er en stor fordel når man arbejder iterativt som vi gør.
+Dette er en stor fordel når man arbejder iterativt.
 Dette er en mulighed der ellers ikke nødvendigvis er tilgængelig for alle typer af Black Box tests, eksempelvis hvis systemet testes igennem brug.
 Disse tests ville skulle udføres manuelt hver gang, hvor dette ikke er tilfældet ved brug af unit testing.
 Dette kommer til gavn når der laves eventuelle ændringer i systemet, alle tests lavet førhen kan køres for at se om ændringerne har haft nogen effekt på funktionalitet andre steder i systemet. 
-Hvor en funktion som testes igennem brug, ikke nødvendigvis ville opfange.
+Hvor en funktion som testes igennem brug, ikke nødvendigvis ville opfange fejl forårsaget af ændringer andre steder i systemet.
 Der benyttes yderligere et library kaldet moq, dette er et library lavet for kunne oprette mock data, samt de dependencies der nu må høre til.
-I vores testproject benyttes dette til at simulere hvorom en bruger er authenticated eller ej, dette tillader at teste funktionaliteter der kræver at en bruger er authenticated, såvel som at teste hvad der sker, hvis en bruger ikke er authenticated.
+I det oprettede testproject benyttes dette til at simulere hvorom en bruger er authenticated eller ej, dette tillader at teste funktionaliteter der kræver at en bruger er authenticated, såvel som at teste hvad der sker, hvis en bruger ikke er authenticated.
 
 Der benyttes desuden et NCover Bolt extension til Visual Studio. 
 Dette hjælper med at vise hvilke code paths tages igennem testen, hvilket giver os testenes code coverage.
 Oftest sigter man efter 80\% code coverage i projekter. \citep{Code_Coverage}
-De testede komponenter består af komponenterne beskrevet i \myref{subsec:komp}, detter er altså filerne: ``RecipesController'', ``ShoppingListsController'', ``OfferController'', ``UserController'',  og en lille del af ``AccountController''.
+De testede komponenter består af komponenterne beskrevet i \myref{subsec:komp}, dette er altså filerne: ``RecipesController'', ``ShoppingListsController'', ``OfferController'', ``UserController'',  og en lille del af ``AccountController''.
 
-AccountController testes kun for Register() metoden da dette er det eneste sted vi selv har kodet i denne controller. Dette giver dermed kun 10\% code coverage i denne fil, imens de resterende filer pånær ``OfferController''  har 80\% eller mere.
+AccountController testes kun for Register() metoden da dette er det eneste sted vi selv har kodet i denne controller. 
+Dette giver dermed kun 10\% code coverage i denne fil, imens de resterende filer foruden ``OfferController''  har 80\% eller mere.
 ``OfferController'' er kun på 73\% da denne indeholder APIkaldet der henter tilbudene fra Etilbudsavis.dk. 
 Denne metode er ikke testet da den tager op imod 8 minutter før den afsluttes, hvilket er problematisk når unit tests skal være hurtige og effektive.
 
