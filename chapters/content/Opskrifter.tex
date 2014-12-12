@@ -31,7 +31,7 @@ Brugen af disse vurderinger, bliver beskrevet i \myref{anbefaling}.
 
 \subsection{Implementation}
 \textbf{Opskrift}
-Selve opskriften er en klasse set på \myref{} Objektet bliver instanitseret når en bruger prøver at oprettet en ny opskrift eller prøver at oprette en kopi af en allerrede eksiterene opskrift.
+Selve opskriften er en klasse set på \myref{diagram:klassediagram} Objektet bliver instanitseret når en bruger prøver at oprettet en ny opskrift eller prøver at oprette en kopi af en allerrede eksiterene opskrift.
 
 
 \begin{lstlisting}[caption="Klassen Recipe som svarer til objektet\, opskrift"]
@@ -53,8 +53,59 @@ public class Recipe
     }
 }
 \end{lstlisting}
-\fixme{Der er ingen spændene kode til opskrifter? - og gider vi have noget med der ikke er vildt fedt?}
+
+\textbf{AddIngredient}
+AddIngredient som ses på  er en metode til at tilføje generiske vare til opskrifterne, således de kan skaleres med antallet af personer valgt. AddIngredient er en metode der ligner AddItem fra ShoppingListsController. AddItem udskiller sig så på er at der ikke bliver fundet tilbud på varen, og den varen bliver lagt til en opskrift i stedet for en indkøbsliste.
+
+
+\begin{lstlisting}[caption="AddIngredient som opretter og tilføjer ingredienser til en specifik opskrift"]
+ public ActionResult AddIngredient(int id, string name, double? amountPerPerson, string unit, int numPersons)
+ {
+ 	var recipe = _db.Recipes.Include(r => r.Ingredients).First(x => x.ID == id);
+ 	
+ 	if (name.Trim() == string.Empty)
+ 	{
+ 		return RedirectToAction("Ingredients/" + id);
+ 	}
+ 	//allows for ingredienst with no amount and unit
+ 	if (amountPerPerson == null)
+ 	{
+ 		amountPerPerson = 0;
+ 	}
+ 	
+ 	// If numpersons is set to zero, this value shouldn't be infinity (will give db exception)
+ 	amountPerPerson = numPersons > 0 ? (double)amountPerPerson / numPersons : 0;
+ 	
+ 	//Search in GenericLItems for item
+ 	Item knownItem = null;
+ 	if (_db.Items.Any())
+ 	{
+ 		knownItem = _db.Items.FirstOrDefault(i => i.Name.CompareTo(name) == 0);
+ 	}
+ 	
+ 	var tmpIngredient = knownItem ?? new Item { Name = name };
+ 	
+ 	// If recipe contains tempIngredient add ingredient, else initiate ingredient and then add it.
+ 	if (recipe.Ingredients.Contains(tmpIngredient))
+ 	{
+ 		_db.Recipe_Ingredient.First(i => i.Recipe == recipe && i.Ingredient == tmpIngredient).AmountPerPerson = (double)amountPerPerson;
+ 	}
+ 	else
+ 	{
+ 		var recipeIngredient = new Recipe_Ingredient { RecipeID = id, Ingredient = tmpIngredient, AmountPerPerson = (double)amountPerPerson, Unit = unit };
+ 		recipe.Ingredients.Add(tmpIngredient);
+ 		_db.Recipe_Ingredient.Add(recipeIngredient);
+ 	}
+ 	
+ 	_db.SaveChanges();
+ 	return RedirectToAction("Ingredients/" + id);
+ }
+\end{lstlisting}
 
 
 \subsection{Konklusion}
-Implementationen af opskrifter virker efter hensigten. Alle userstories vedrøredne opskrifter bliver opfyldt. Opskrifter er skrevet sammen med indkøbslisten og der er funktionalitet til at tilføje vare dertil. Brugeren kan ændre på enge opskrifter eller oprette egen version af andres opskrifter. Opskrifterne kan skalere efter antal personer og har en vurdering. Alle opskrifter med dets information bliver gemt i databasen på en hensigtmæssig måde.
+Implementationen af opskrifter virker efter hensigten. 
+Alle user stories vedrørende opskrifter bliver opfyldt. 
+Opskrifter er skrevet sammen med indkøbslisten og der er funktionalitet til at tilføje vare dertil. Brugeren kan ændre på enge opskrifter eller oprette egen version af andres opskrifter. 
+Opskrifterne kan skalere efter antal personer og har en vurdering. 
+Alle opskrifter med dets information bliver gemt i databasen på en hensigtsmæssig måde.
