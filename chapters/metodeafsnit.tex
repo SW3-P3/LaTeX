@@ -20,9 +20,9 @@ Denne udviklingsmetode bygger på at en problem ikke kan præciseres på forhån
 På gruppen besluttes det at benytte den evolutionære arbejdsmetode for udvikling af et system. 
 Denne udviklingsmetode er valgt netop for at opnå de iterationer der hører til denne udviklingsmetode. 
 Med et system designet til almen brug, er det nødvendigt at brugerne inddrages i udviklingen for at finde ud af hvilke funktioner er essentielle, såvel som hvordan designet for systemet skal være. 
-Igennem iterationer kan dette opnås ved gentagende brugertests. 
+Igennem iterationer kan dette opnås ved gentagende brugertests, for at højne kvaliteten af systemet. 
 Yderligere værdsættes indragelse af brugere i den evolutionlære model, hvor konstruktions modellen bibeholder brugere i en mere passiv rolle.
-I en model, der benytter iterationer gør det desuden lettere at arbejde parallelt, da opgaver på forskellige dele af programmet kan oprettes på samme tid.
+I en model, der benytter iterationer gør det desuden lettere at arbejde parallelt, da opgaver på forskellige dele af systemet kan udvikles på samme tid.
 På trods af parallelt arbejde kommer hele gruppen også stadig igennem hele systemet, da arbejde lavet af en eller to personer refaktoreres og udvides over flere gange af forskellige gruppemedlemmer.
 
 Efter at have forsøgt denne udviklingsmetod i begyndelsen af udviklingsfasen, gik det op for gruppen at det ikke var lige til.
@@ -81,6 +81,7 @@ Men hvordan forholder Scrum sig i forhold til projektet?
 \end{sidewaystable}
 
 Der skal laves ændringer på den traditionelle Scrum process  for at tilpasse det til projektet, disse kan håndteres og ændres, som \myref{tabel:sammenligningstabel} også viser.
+
 Brugen af Scrum er begrænset til enkelte udsnit af Scrum modellen, valgt ud fra det grundlag at sådanne værktøjer ville gavne gruppens udviklingsprocess.
 På \myref{s:udviklingsmetode} er det her blevet besluttet at der arbejdes ud fra en evolutionær model, en model som indeholder iterationer.
 Foruden at udviklingen skal foregå i iterationer, er der ikke yderligere nogle krav eller værktøjer specifik til denne model.
@@ -93,7 +94,10 @@ For hver aktiv story i en sprint, oprettes ved start af sprint, en række af for
 For at gøre parallel udvikling en mulighed, oprettes user stories såvel som tasks gerne så isoleret, at de kan laves for sig, og senere samles.
 Ydermere oprettes en statisk userstory under navnet ``rapport'', hvortil der ved hver sprint start skrives nye tasks, dette sikre at udviklingen i en sprint ikke går foruden udarbejdelse af rapporten.
 For at holde styr på sprinten benyttes et Scrum task board, dette giver overblik over status på hver enkelt task.
-En task sættes i projektets anvendelse af metoden i 4 stadier, ``To Do'', ``In Progress'', ``Review'' samt ``Done''.
+En task sættes i projektets anvendelse af metoden i 4 stadier, ``To Do'', ``In Progress'', ``To Verify'' samt ``Done''.
+Under ``To Verify'' sektionen bliver en given task stillet op imod ``Definition of Done''(DoD) kriterier, før den flyttes til done.
+På gruppen er der blevet aftalt DoD, som værende anerkendelse af andre gruppemedlemmer, som har været uafhængige i færdiggørelsen af den enkelte task.
+Der bliver her gået over korrektheden af materialet samt hvorom det kan refaktoreres til en mere effektiv løsning.
 
 Et andet værktøj fra Scrum der tages i brug i projektet er Daily Scrum.
 Dette værktøj benyttes for at opnå kommunikation i gruppen omkring projektet, det tvinger desuden medlemmerne til at deltage aktivt på daglig basis, såvel som at spørge om hjælp hvis der stødes ind i et eventuelt problem.
@@ -105,8 +109,8 @@ Omkring mødet er der visse regler der skal overholdes, som hjælper med at opn�
 \end{itemize}
 Til mødet bliver hvert medlem således stillet tre spørgsmål af Scrum Master.
 \begin{itemize}
-  \item Hvad lavede du igår for at løse tasks på sprint backloggen?
-  \item Hvad vil du lave idag for at løse tasks på sprint backloggen?
+  \item Hvad lavede du i går for at løse tasks på sprint backloggen?
+  \item Hvad vil du lave i dag for at løse tasks på sprint backloggen?
   \item Er der noget der forhindre dig i at lave det arbejde?
 \end{itemize}
 Ved overholdelse af disse regler, såvel som besvarelse af spørgsmålene er alle i gruppen altid opdateret omkring hvad der laves i gruppen.
