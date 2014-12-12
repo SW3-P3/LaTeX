@@ -58,48 +58,23 @@ public class Recipe
 AddIngredient som ses på  er en metode til at tilføje generiske vare til opskrifterne, således de kan skaleres med antallet af personer valgt. AddIngredient er en metode der ligner AddItem fra ShoppingListsController. AddItem udskiller sig så på er at der ikke bliver fundet tilbud på varen, og den varen bliver lagt til en opskrift i stedet for en indkøbsliste.
 
 
-\begin{lstlisting}[caption="AddIngredient som opretter og tilføjer ingredienser til en specifik opskrift"]
- public ActionResult AddIngredient(int id, string name, double? amountPerPerson, string unit, int numPersons)
- {
- 	var recipe = _db.Recipes.Include(r => r.Ingredients).First(x => x.ID == id);
- 	
- 	if (name.Trim() == string.Empty)
- 	{
- 		return RedirectToAction("Ingredients/" + id);
- 	}
- 	//allows for ingredienst with no amount and unit
- 	if (amountPerPerson == null)
- 	{
- 		amountPerPerson = 0;
- 	}
- 	
- 	// If numpersons is set to zero, this value shouldn't be infinity (will give db exception)
- 	amountPerPerson = numPersons > 0 ? (double)amountPerPerson / numPersons : 0;
- 	
- 	//Search in GenericLItems for item
- 	Item knownItem = null;
- 	if (_db.Items.Any())
- 	{
- 		knownItem = _db.Items.FirstOrDefault(i => i.Name.CompareTo(name) == 0);
- 	}
- 	
- 	var tmpIngredient = knownItem ?? new Item { Name = name };
- 	
- 	// If recipe contains tempIngredient add ingredient, else initiate ingredient and then add it.
- 	if (recipe.Ingredients.Contains(tmpIngredient))
- 	{
- 		_db.Recipe_Ingredient.First(i => i.Recipe == recipe && i.Ingredient == tmpIngredient).AmountPerPerson = (double)amountPerPerson;
- 	}
- 	else
- 	{
- 		var recipeIngredient = new Recipe_Ingredient { RecipeID = id, Ingredient = tmpIngredient, AmountPerPerson = (double)amountPerPerson, Unit = unit };
- 		recipe.Ingredients.Add(tmpIngredient);
- 		_db.Recipe_Ingredient.Add(recipeIngredient);
- 	}
- 	
- 	_db.SaveChanges();
- 	return RedirectToAction("Ingredients/" + id);
- }
+\begin{lstlisting}[caption="Udklip fra AddIngredient som opretter og tilføjer ingredienser til en specifik opskrift - Her er vist hvad der er forskel fra AddItem i ShoppingListsController"]
+.....
+            var tmpIngredient = knownItem ?? new Item { Name = name };
+            
+            // If recipe contains tempIngredient add ingredient, else initiate ingredient and then add it.
+            if (recipe.Ingredients.Contains(tmpIngredient))
+            {
+            _db.Recipe_Ingredient.First(i => i.Recipe == recipe && i.Ingredient == tmpIngredient).AmountPerPerson = (double)amountPerPerson;
+            }
+            else
+            {
+            var recipeIngredient = new Recipe_Ingredient { RecipeID = id, Ingredient = tmpIngredient, AmountPerPerson = (double)amountPerPerson, Unit = unit };
+            recipe.Ingredients.Add(tmpIngredient);
+            _db.Recipe_Ingredient.Add(recipeIngredient);
+            }
+            
+.....
 \end{lstlisting}
 
 
