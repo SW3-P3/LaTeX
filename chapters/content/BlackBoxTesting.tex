@@ -1,7 +1,7 @@
 \section{Black Box Testing}\label{BBtest}
 For at sikre systemets funktionalitet, er systemet blevet testet, ikke kun af brugere, men også af projektgruppen.
 En af de metoder, som er taget i brug, er Black Box Testing eller Behavioral Testing.
-En sådan test udføres ved at give et input til et kørbart system, og så få et output.
+En sådan test udføres ved at give et input til et kørbart system, og derefter verificere ens output.
 Det eneste i denne process der er kendt af testpersonen er input og output, selve funktionaliteten er således gemt i en ``Black Box''. \citep{Black_Box}
 
 Til dette formål anvendes NUnit frameworket, som er et unit-testing framework til alle .Net sprogene.
@@ -13,10 +13,12 @@ For at oprette diverse tests, følges AAA(Act, Assert, Arrange) mønsteret, dett
 \citep{Writing_Your_Tests}
 De tre dele af AAA mønsteret repræsentere respektivt:
 \begin{itemize}
-  \item \textbf{Arrange:} Alt setup krævet for at køre det testede kode. Dette inkluderer initialisering af data, objecter og dependencies, eftersom Test delen er et Mock af det rigtige system, og derved ikke er initialiseret.
+  \item \textbf{Arrange:} Alt setup krævet for at køre det testede kode. Dette inkluderer initialisering af data, objekter og dependencies, eftersom Test delen er et Mock af det rigtige system, og derved ikke er initialiseret.
   \item \textbf{Act:} Her kaldes den kode som ønskes testet, såvel som gemmer eventuelle resultater i variabler, hvilke bruges i Assert.
   \item \textbf{Assert:} Her specificeres hvad der skal være sket i act, og tjekkes om ændringer i data og eventuelle resultater, stemmer overens med det forventede.
 \end{itemize}
+Der benyttes i nogle tests også et \textbf{PreCondition}, felt der sikre at de ændringer der foretages i \textbf{Act} ikke er foretaget inden Act. 
+Dermed sikres der at \textbf{Assert} ikke blot giver positive resultater fordi det som tjekkes for allerede var sandt før \textbf{Act}.
 Givet at testen er skrevet korrekt kan der ved brug af dette system finde ud af potentielle fejl i systemets metoder.
 NUnit frameworket benyttes til at kunne oprette en Arrange for alle tests som indeholder det mest generelle brugte data.
 Dette sker i en ``SetUP'' med en Initialize() metode, dataene i denne bliver kaldt før hver enkelt test, på den måde sikre man sig yderligere at det samme Mock-data er tilgængelig, for hver test.
@@ -25,7 +27,7 @@ I en given test kan der så oprettes yderligere mock-data om nødvendigt.
 Til hver enkelt testede funktionalitet oprettes tests der går igennem mange af stierne i funktionen, for at være sikker på at logik tjekkene agerer som det forventes.
 På \myref{lsttest} ses et eksempel for en oprettet test i systemet.
 
-\begin{lstlisting}[caption="En test for ``ShareList'' metodern i ``ShoppingListController''\, heri tjekkes hvorom den bruger listen deles med\, får listen sat ind på brugerens liste over shoppinglister.", label=lsttest]
+\begin{lstlisting}[caption="En test for ``ShareList'' metoden i ``ShoppingListController''\, heri tjekkes hvorom den User listen deles med\, får listen sat ind på sin liste over ShoppingLists\, samt at ShoppingListen får tilføjet endnu en user.", label=lsttest]
 {
     [TestFixture]
     public class TestShoppingListsController
@@ -39,18 +41,23 @@ På \myref{lsttest} ses et eksempel for en oprettet test i systemet.
         public void ShoppingListShareList_DemoMail2UserAsInput_ShouldShare()
         {
             //Arrange
-            _user.Username = "DemoMail";
             var user2 = DemoGetMethods.GetDemoUser(2);
-            _mockdata.Users.Add(user2); 
             user2.Username = "DemoMail2";
-            //Act
-            Assert.IsTrue(_mockdata.Users.First(i => i.Username == "DemoMail").ShoppingLists.Any(x=>x.ID == 1));
+            _mockdata.Users.Add(user2); 
+
+            //PreCondition
+            Assert.IsFalse(_mockdata.ShoppingLists.First(x=>x.ID == 1).Users.Count == 2);
+            Assert.IsTrue(_mockdata.Users.First(i => i.Username == "DemoUser").ShoppingLists.Any(x=>x.ID == 1));
             Assert.IsFalse(_mockdata.Users.First(i => i.Username == "DemoMail2").ShoppingLists.Any(x=>x.ID == 1));
+
+            //Act
             var result = _controller.ShareList(1, "DemoMail2");
+
             //Assert
             Assert.IsNotNull(result);
-            Assert.IsTrue(_mockdata.Users.First(i => i.Username == "DemoMail").ShoppingLists.Any(x => x.ID == 1));
+            Assert.IsTrue(_mockdata.Users.First(i => i.Username == "DemoUser").ShoppingLists.Any(x => x.ID == 1));
             Assert.IsTrue(_mockdata.Users.First(i => i.Username == "DemoMail2").ShoppingLists.Any(x => x.ID == 1));
+            Assert.IsTrue(_mockdata.ShoppingLists.First(x => x.ID == 1).Users.Count == 2);
         }
 }        
 \end{lstlisting}\label{lsttest}
@@ -64,4 +71,14 @@ Hvor en funktion som testes igennem brug, ikke nødvendigvis ville opfange.
 Der benyttes yderligere et library kaldet moq, dette er et library lavet for kunne oprette mock data, samt de dependencies der nu må høre til.
 I vores testproject benyttes dette til at simulere hvorom en bruger er authenticated eller ej, dette tillader at teste funktionaliteter der kræver at en bruger er authenticated, såvel som at teste hvad der sker, hvis en bruger ikke er authenticated.
 
-\fxnote{Tilføj noget om Code Coverage når der er klar til dette.}
+Der benyttes desuden et NCover Bolt extension til Visual Studio. 
+Dette hjælper med at vise hvilke code paths tages igennem testen, hvilket giver os testenes code coverage.
+Oftest sigter man efter 80\% code coverage i projekter. \citep{Code_Coverage}
+De testede komponenter består af komponenterne beskrevet i \myref{subsec:komp}, detter er altså filerne: ``RecipesController'', ``ShoppingListsController'', ``OfferController'', ``UserController'',  og en lille del af ``AccountController''.
+
+AccountController testes kun for Register() metoden da dette er det eneste sted vi selv har kodet i denne controller. Dette giver dermed kun 10\% code coverage i denne fil, imens de resterende filer pånær ``OfferController''  har 80\% eller mere.
+``OfferController'' er kun på 73\% da denne indeholder APIkaldet der henter tilbudene fra Etilbudsavis.dk. 
+Denne metode er ikke testet da den tager op imod 8 minutter før den afsluttes, hvilket er problematisk når unit tests skal være hurtige og effektive.
+
+Med denne code coverage samt brugertestene, er ProjectFood altså blevet en gennemtest og solid hjemmeside.
+Dette gør det mere sikkert at tilføje ny kode, og vha. testene være sikker på intet er ødelagt ved at køre dem en gang til.
