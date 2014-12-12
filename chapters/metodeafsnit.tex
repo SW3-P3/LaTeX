@@ -3,7 +3,7 @@
 Dette kapitel vil gennemgå og evaluere på de metoder som benyttes i forbindelse med projektet.
 Slutteligt vil der være en kort beskrivelse af metodernes sammenhæng, samt hvordan de benyttes i gruppen.
 
-\section{Udviklingsmetode}
+\section{Udviklingsmetode}\label{s:udviklingsmetode}
 Fra OOA\&D, ved vi at der eksistere to primære perspektiver på systemudvikling, det mekanistiske og det romantiske.
 Det mekaniske perspektiv er en rationel holdning til udvikling der bygger på deduktion og matematisk problemløsning, hertil følges en på forhånd lavet plan, med meget få ændringer undervejs.
 I dette perspektiv konstrueres hele systemudviklingen således på forhånd.
@@ -27,7 +27,7 @@ På trods af parallelt arbejde kommer hele gruppen også stadig igennem hele sys
 
 Efter at have forsøgt denne udviklingsmetod i begyndelsen af udviklingsfasen, gik det op for gruppen at det ikke var lige til.
 Det blev på denne baggrund besluttet at der måtte tages et organisatorisk værktøj i brug for at organisere iterationer såvel som opgaver med mulighed for parallel udførelse.
-Til dette blev valgt at benytte Scrum, beskrevet på \myref{scrum}. med det primære formål at benytte sig af Scrum Task Board for uddelegering af opgaver.
+Til dette blev valgt at benytte Scrum, beskrevet på \myref{scrum}. med det primære formål at benytte sig af Scrum Task Board for uddelegering af opgaver, såvel som Daily Scrum, således at ingen gruppemedlemmer var i tvivl om hvad der blev arbejdet på.
 I samme stil blev der opstillet et dependency tree for systemet, for at se hvilke sektioner af systemet kunne udvikles parallelt, og hvilke var afhængige af andre sektioner, før udvikling ville være en mulighed.
 Ud fra dette dependency tree blev oprettet en priotering for hvilke user stories, kan ses på \myref{sec:krav}, skulle udvikles først.
 
@@ -73,7 +73,7 @@ Men hvordan forholder Scrum sig i forhold til projektet?
 	   		& Det er op til gruppen at finde krav og danne userstories, hertil kan lave brugerundersøgelser. Product Owner er gruppen, da det er vores produkt, derfor styres product backlog af gruppen.\\
 	   		
 	   Kommunikationsmetoder	
-	   		& Daily Scrum, Sprint review meeting, Sprint reflection meeting, Scrum master, kontakt med kunder og administration fra virksomheden.
+	   		& Daily Scrum, Sprint review meeting,  Scrum master, kontakt med kunder og administration fra virksomheden.
 	   		& Gruppen har ikke nogen kontakt med adiministration, men kan have opgaver fra kurser som kan distrahere. 
 	   		& Da det er Scrum Masterens rolle at håndtere det administrative omkring metoden frem for selve udviklingen, går rollen på runde fra uge til uge, og udelukker sammentidig ikke involvering i udvikling. Review meeting kan holdes uden kunder, og fungerer som et godt tidspunkt at gennemgå koden sammen med resten af gruppen. \\
     \end{tabular}
@@ -81,6 +81,39 @@ Men hvordan forholder Scrum sig i forhold til projektet?
 \end{sidewaystable}
 
 Der skal laves ændringer på den traditionelle Scrum process  for at tilpasse det til projektet, disse kan håndteres og ændres, som \myref{tabel:sammenligningstabel} også viser.
+Brugen af Scrum er begrænset til enkelte udsnit af Scrum modellen, valgt ud fra det grundlag at sådanne værktøjer ville gavne gruppens udviklingsprocess.
+På \myref{s:udviklingsmetode} er det her blevet besluttet at der arbejdes ud fra en evolutionær model, en model som indeholder iterationer.
+Foruden at udviklingen skal foregå i iterationer, er der ikke yderligere nogle krav eller værktøjer specifik til denne model.
+Derfor er det valgt at nogle Scrum værktøjer tages i brug, da Scrum følger samme iterative mønster, med yderligere organisatoriske værktøjer og roller.
+Valget, at bruge udsnit af Scrum modellen, blev taget på baggrund af manglende organisering og koordination af arbejde i gruppen, det er således værktøjer med sådanne egenskaber fra Scrum, som benyttes.
+
+De valgte værktøjer blev således for organisering af opgaver, at benytte sig af Sprints.
+For at kunne benytte sig af en sprint, kræves det yderligere at der oprettes en product backlog af userstories, som en sprint backlog kan bygges ud fra.
+For hver aktiv story i en sprint, oprettes ved start af sprint, en række af forskellige tasks tilhørende den givne userstory.
+For at gøre parallel udvikling en mulighed, oprettes user stories såvel som tasks gerne så isoleret, at de kan laves for sig, og senere samles.
+Ydermere oprettes en statisk userstory under navnet ``rapport'', hvortil der ved hver sprint start skrives nye tasks, dette sikre at udviklingen i en sprint ikke går foruden udarbejdelse af rapporten.
+For at holde styr på sprinten benyttes et Scrum task board, dette giver overblik over status på hver enkelt task.
+En task sættes i projektets anvendelse af metoden i 4 stadier, ``To Do'', ``In Progress'', ``Review'' samt ``Done''.
+
+Et andet værktøj fra Scrum der tages i brug i projektet er Daily Scrum.
+Dette værktøj benyttes for at opnå kommunikation i gruppen omkring projektet, det tvinger desuden medlemmerne til at deltage aktivt på daglig basis, såvel som at spørge om hjælp hvis der stødes ind i et eventuelt problem.
+Omkring mødet er der visse regler der skal overholdes, som hjælper med at opnå det førnævnte.
+\begin{itemize}
+  \item Alle møder forberedt op til mødet.
+  \item Mødet starter altid på samme tid af dagen.
+  \item Mødet sker altid samme sted, og hver dag.
+\end{itemize}
+Til mødet bliver hvert medlem således stillet tre spørgsmål af Scrum Master.
+\begin{itemize}
+  \item Hvad lavede du igår for at løse tasks på sprint backloggen?
+  \item Hvad vil du lave idag for at løse tasks på sprint backloggen?
+  \item Er der noget der forhindre dig i at lave det arbejde?
+\end{itemize}
+Ved overholdelse af disse regler, såvel som besvarelse af spørgsmålene er alle i gruppen altid opdateret omkring hvad der laves i gruppen.
+
+Der er mange flere værktøjer tilgængelig i Scrum, værktøjer som benyttes hvis man følger Scrum modellen, dette er dog ikke den model der følges af denne projektgruppe.
+Gruppen har ladet sig inspirere af organisatoriske metoder fra Scrum og benytter sig af nogle af disse, da det er en udbredt og anderkendt model.
+Værktøjer, som har været til stor gavn for gruppen, og derved systemets udvikling.
 
 \section{Objekt Orienteret Analyse \& Design}
 
