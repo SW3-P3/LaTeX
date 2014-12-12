@@ -1,10 +1,10 @@
 \section{Opskrifter}
-I dette afsnit beskrives hvordan implementeringen af opskrifter er designet of udført, og hvordan denne har opfyldt userstory 13, 15, 16, 17, og 18. User story 14, hører også til opskrifts komponentet, men vil blive uddybet i \myref{anbefaling}. Til sidst samles alt dette op i en konklusion. Opskrifter i dette projekt har som udgangspunkt rødder i user story 13, som beskriver at brugeren ville have mulighed for at kunne finde opskrifter.
+I dette afsnit beskrives hvordan implementeringen af opskrifter er designet of udført, og hvordan denne har opfyldt user story 13, 15, 16, 17, og 18. User story 14, hører også til opskrifts komponentet, men vil blive uddybet i \myref{anbefaling}. Til sidst samles alt dette op i en konklusion. Opskrifter i dette projekt har som udgangspunkt rødder i user story 13, som beskriver at brugeren ville have mulighed for at kunne finde opskrifter.
 \subsection{Design}
 Idéen er at give brugeren mulighed for nemt at finde opskrifter, hvorefter ingredienserne fra disse, nemt kan tilføjes til deres indkøbsliste(r).
 Når man først går ind på opskrifterne, bliver man mødt af alle offentliggjorte opskrifter, som er blevet tilføjet af brugerne af systemet.
 Opskrifterne er opstillet således der på forsiden for opskrifter kan ses den mest nødvendige information om hver enkelt opskrift.
-Opkrifterne er opstillet vha. css bootstrap klassen panels for at give en klar opdeling og en gøre det overskueligt.
+Opskrifterne er opstillet vha. css bootstrap klassen panels for at give en klar opdeling og en gøre det overskueligt.
 Opskrifterne indeholder alle sammen en titel, tid, antal personer, bedømmelse, ingredienser og en fremgangsmåde.
 
 Hver opskrift er gemt under brugeren som har oprettet den, denne bruger har senere mulighed for at redigere eller slette opskriften efter valg.
@@ -29,7 +29,7 @@ Brugerne kan se den gennemsnitlige vurdering på den enkelte opskrift, og ud fra
 Brugen af disse vurderinger, bliver beskrevet i \myref{anbefaling}.
 
 
-\subsection{Implementation}
+\subsection{Implementering}
 \textbf{Opskrift}
 Selve opskriften er en klasse set på \myref{diagram:klassediagram} Objektet bliver instantieret når en bruger prøver at oprette en ny opskrift eller prøver at oprette en kopi af en allerrede eksisterende opskrift.
 
@@ -79,7 +79,7 @@ AddIngredient som ses på er en metode til at tilføje generiske varer til opskr
 
 
 \subsection{Konklusion}
-Implementationen af opskrifter virker efter hensigten. 
+Implementeringen af opskrifter virker efter hensigten. 
 Alle user stories vedrørende opskrifter bliver opfyldt. 
 Opskrifter er skrevet sammen med indkøbslisten og der er funktionalitet til at tilføje varer dertil. Brugeren kan ændre på enkelte opskrifter eller oprette sin egen version af andres opskrifter. 
 Opskrifterne kan skaleres efter antal personer og har et etableret vurderingssystem. 
