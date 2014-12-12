@@ -12,6 +12,8 @@ Hver opskrift er gemt under den bruger som har oprettet den, denne bruger har se
 Dette er gjort da user storie 18 ligger til grundlag for dette.
 Er man ikke den bruger der har oprettet opskriften, har man mulighed for at kunne klone opskriften.
 Når en opskrift bliver klonet, bliver alt data fra den tidligere opskrift kopieret og derefter kan man foretage ændringer til opskriften, gemme den under et nyt navn, således der kan personliggøres.
+
+
 Brugerne har efterspurgt mulighed for at kunne tilføje ingridienser fra opskriften til deres indkøbs liste, i følge user storie 16.
 Ingredienser på opskriften er opstillet således de nemt kan tilføjes til brugerens indkøbslister.
 Det er muligt kun at vælge de ting man mangler, således man ikke er tvunget til at tilføje alle ingredienser fra hele opskriften.
@@ -20,14 +22,40 @@ Der kan ved hjælp af UI'et vælges hvilket indkøbsliste varene skal tilføjes 
 
 Der er på baggrund af user storie 17 gjort det muligt at der inde på den enkle opskrift kan vælges hvor mange personer man ønsker at opskriften skal skaleres til.
 Der er taget udgangspunkt i fire personer, men der er mulighed for at både sænke og hæve denne værdi for at tilpasse mængden på ingredienserne, så ledes den passer til det valgte antal mennesker.
+
+
 Hver opskrift har den mulighed, at en bruger kan vurdere dem på en skala fra 1 til 5, i form af stjerner. Dette er gjort da der i følge user stories 15 er en efterspørgesel på at kunne vuderes opskrifter.
 Brugerne kan se den gennemsnitlige vurdering på den enkelte opskrift, og ud fra dette taget en beslutning om hvorvidt man skal prøve den ene eller den anden opskrift.
 Brugen af disse vurderinger, bliver beskrevet i \myref{anbefaling}.
 
 
 \subsection{Implementation}
-Denne implementation er en del af controlleren: 
+\textbf{Opskrift}
+Selve opskriften er en klasse set på \myref{} Objektet bliver instanitseret når en bruger prøver at oprettet en ny opskrift eller prøver at oprette en kopi af en allerrede eksiterene opskrift.
+
+
+\begin{lstlisting}[caption="Klassen Recipe som svarer til objektet\, opskrift"]
+public class Recipe
+{
+    public int ID { get; set; }
+    public string OriginalAuthorName { get; set; }
+    public string AuthorName { get; set; }
+    public string Title { get; set; }
+    public ICollection<Item> Ingredients { get; set; }
+    public int Minutes { get; set; }
+    public string Instructions { get; set; }
+    public ICollection<Rating> Ratings { get; set; }
+>>>>>>> origin/master
+
+    public Recipe()
+    {
+        Ingredients = new List<Item>();
+        Ratings = new List<Rating>();
+    }
+}
+\end{lstlisting}
+\fixme{Der er ingen spændene kode til opskrifter? - og gider vi have noget med der ikke er vildt fedt?}
+
 
 \subsection{Konklusion}
-
-\input{chapters/content/anbefaling.tex}
+Implementationen af opskrifter virker efter hensigten. Alle userstories vedrøredne opskrifter bliver opfyldt. Opskrifter er skrevet sammen med indkøbslisten og der er funktionalitet til at tilføje vare dertil. Brugeren kan ændre på enge opskrifter eller oprette egen version af andres opskrifter. Opskrifterne kan skalere efter antal personer og har en vurdering. Alle opskrifter med dets information bliver gemt i databasen på en hensigtmæssig måde.

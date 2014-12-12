@@ -65,11 +65,9 @@ I UI’et har brugeren mulighed for at vælge hvordan opskrifter skal sorteres.
 De kan vælge mellem de to beskrevet her, samt at få sorteret dem efter nyeste og ældste.
 
 \subsection{Implementation}
-
-
 \subsection{Konklusion}
 Implementationen af anbefalingerne virker efter hensigten.
-Den simple anbefaling, der viser det højst vurderet, er en god funktion for at sorterer opskrifter og derved få vist de højst vurderet først.
+Den simple anbefaling, der viser det højst vurderet, er en god metode for at sorterer opskrifter og derved få vist de højst vurderet først.
 Problemerne ved denne er dog at vi ingen nedre grænse har, for hvor mange bedømmelser der skal være, derfor vil en opskrift med én vurdering på 5 ligge højere end en opskrift med 49 vurderinger på 5 og én vurdering på 4.
 Dette er en tydelig svaghed, som kunne forbedres uden store ændringer i koden.
 Ligeledes ville en forbedring også være at sikre sig, at hvis to eller flere opskrifter har samme gennemsnitlige vurdering, så ville opskriften med flest vurderinger vægtes højest.
