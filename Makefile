@@ -15,5 +15,6 @@ pdflatex: master.tex
 	pdflatex --synctex=1 master.tex
 	pdflatex --synctex=1 master.tex
 	pdflatex --synctex=1 master.tex
+	open master.pdf
 clean:
 	git clean -x -f -e master.pdf
