@@ -1,6 +1,6 @@
 \section{Analyse af problemområde}
 
-Ud fra systemdefinitionen ved vi at systemet skal holde styr på følgende:
+Ud fra systemdefinitionen på \myref{Sysdef} ved vi at systemet skal holde styr på følgende:
 
 \begin{itemize}
 	\item Tilbud
@@ -22,7 +22,7 @@ Desuden kan en vare have et antal tilbud hver uge, hvilket betyder at der også 
 
 \textbf{Tilbud:}
 Hver uge kommer der nye varer på tilbud fra de fleste danske dagligvarebutikker.
-Disse modelleres og kobles på varen og dermed dannes der en kobling fra varen til tilbudene.
+Disse modelleres og kobles på varen vha. en association dermed dannes der en kobling fra varen til tilbudene.
 
 \textbf{Opskrift:}
 En opskrift har en liste over ingredienser, hvilket altså er varer, samt mængden af varen.
@@ -42,11 +42,10 @@ Derudover vil en person også have præferencer som vil være attributter.
 
 \textbf{Indkøbsliste:}
 Indkøbslisten laves af en person, og fyldes op med objekter fra vareklassen.
-Indkøbslisterne kan deles mellem flere brugere, og derfor skal koblingen på personenklassen ikke være singulær, men altså 1..*.
+Indkøbslisterne kan deles mellem flere brugere, og derfor skal koblingen på personenklassen ikke være singulær, men altså 1..*. \fxnote{Dette har vi ikke nævnt ved de ovenstående eksempler. Er det fint? Eller skal det evt. slettet hvilken kobling der er?}
 
 \subsection{Hændelser}\label{handelser}
-På baggrund af de nævnte funktionaliteter i prototype interviewene (\myref{section:interview2}), er opnået forskellige hændelser, relevante for funktionaliteterne.
-%Vi har fundet frem til de forskellige hændelser der sker i problemområdet.
+På baggrund af de nævnte funktionaliteter i prototype interviewene (\myref{section:interview2}), er der opnået forskellige hændelser, relevante for funktionaliteterne.
 Ud fra disse laves en hændelsestabel, der beskriver hvilke klasser forskellige hændelser påvirker.
 Formålet med at identificere hændelserne samt at analysere disse i en hændelsestabel, er at forstå problemområdet bedre og dermed hjælpe med forståelsen for hvordan en løsning ville kunne designes for at afhjælpe de problemer der findes i problemområdet. Desuden kan tabellen hjælpe med strukturen på klasserne.
 Hvis to klasser har samme hændelser, kan disse klasser ofte tilpasses under en klasse og dermed opnå en bedre struktur.
@@ -58,7 +57,7 @@ Hvis tabellen læses vandret kan det ses at klasser der bliver påvirket af mang
 
 Ud fra analysen indtil nu kan der dannes et overblik, over klassernes interne interaktion, såvel som hvilke hændelser der involverer hvilke klasser.
 Denne information kan vi nu bruge til at lave en struktur over klasserne i problemområdet.
-
+\fxnote{Vi bruger denne osm værktøj til at analysere os frem til en struktur. Dette beskriver vi endda. Dvs. det eneste det gør er at vise os evt. fejl i vores klasseopgivelse. Skal vi evt. slette det, og blot nævne vi har brugt den, og fortælle hvad den viste? - Søren}
 \subsection{Struktur}\label{sec:struktur}
 \begin{figure}
 	\centering
@@ -67,11 +66,10 @@ Denne information kan vi nu bruge til at lave en struktur over klasserne i probl
 	\label{figur:PDklasse}
 \end{figure}
 
-Klassediagram som ses på \myref{figur:PDklasse}, dette beskriver forholdet mellem de forskellige klasser som findes i problemområdet.
-Diagrammets sammenhænge er dannet ud fra hændelsestabellen, og beskrivelserne af klasserne.
-Følgende afsnit gennemgår diagrammets sammenhænge.
+Klassediagrammet som ses på \myref{figur:PDklasse}, beskriver forholdet mellem de forskellige klasser som findes i problemområdet.
+Diagrammets sammenhænge er dannet ud fra hændelsestabellen, og beskrivelserne af klasserne.\fxnote{Sørg for at denne model stemmer over ens med modellen vi ender ud med i programmet. I programmet kan vi så henvise til at denne model over klasserne blev brugt til at danne associationerne, imellem klasserne. Der er nemlig ingen henvendelse lige pt, og det kan helt klart bruges. Beskrivelsen nedenfor er næsten identisk med den man finder i Arkitektur - Søren}
 
-Personer i indkøbssituationer kan lave indkøbslister, disse indkøbslister kan være ejet og administreret af en enten en eller flere personer.
+Personer kan lave indkøbslister, disse indkøbslister kan være ejet og administreret af en enten en eller flere personer.
 En indkøbsliste kan bestå af nul til mange varer.
 En vare kan være på tilbud i mere end en butik, og derfor have nul til mange tilbud.
 En vare kan desuden indgå i en opskrift, og er derfor forbundet med nul til mange.
@@ -81,5 +79,5 @@ En person i problemområdet kan give hver opskrift en vurdering, derfor kan pers
 En vurdering gives til en opskrift alene, imens en opskrift kan have mange vurderinger, eller ingen vurderinger.
 Anbefalinger består af en opskrift, imens personen kan modtage nul til mange anbefalinger.
 
-%På baggrund af denne analyse kan systemets implementation designes, men først skal der foretages en analyse af anvendelsesområdet.
+
 Ovenstående analyse vil hjælpe til at designe systemets implementering, først foretages dog en analyse af anvendelsesområdet, for at undersøge hvad der er muligt at foretage sig i systemet.
