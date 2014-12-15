@@ -9,7 +9,7 @@ Det mekaniske perspektiv er en rationel holdning til udvikling, der bygger på d
 I dette perspektiv konstrueres hele systemudviklingen således på forhånd.
 Det romantiske perspektiv er en diametral modsætning hertil, som ser verden på en evolutionær måde.
 I dette perspektiv er problemer sjældent klare og præcise, eksperimenter og empirisk viden er måden at løse et problem, perspektivet følger en evolutionær ``trial and error'' proces.
-De to perspektiver munder ud i hver deres udviklingsmetode; henholdsvis konstruktion og evolution, som håndterer problemer efter hvert sit perspektiv.\citep{OOA&D2001}
+De to perspektiver munder ud i hver deres udviklingsmetode; henholdsvis konstruktion og evolution, som håndterer problemer efter hvert sit perspektiv.\citep{OOA&D2001} \fxnote{Det kommer altså ikke fra den bog, det kommer fra en artikel vi havde i faget, det skal lige skrives om så det ikke nævner OOA&D}
 
 \textbf{Konstruktion:}
 Denne udviklingsmetode bygger på en rationel holdning til problemer, i den forstand kan alt planlægges på forhånd, denne type af arbejdsmetode kendes også som vandfaldsmodellen.
@@ -19,8 +19,8 @@ Denne udviklingsmetode bygger på, at et problem ikke kan præciseres på forhå
 
 På gruppen besluttes det at benytte den evolutionære arbejdsmetode for udvikling af vores system. 
 Udviklingsmetoden er valgt netop for at opnå de iterationer, der hører til den evolutionære udviklingsmetode. 
-Med et system designet til almen brug, er det nødvendigt, at brugerne inddrages i udviklingen for at finde ud af, hvilke funktioner der er essentielle, såvel som hvordan designet for systemet skal være. 
-Igennem iterationer kan dette opnås ved gentagende brugertests, for at højne kvaliteten af systemet. 
+Med et system designet til almen brug, er det nødvendigt, at brugerne inddrages i udviklingen for at finde frem til hvilke funktioner der er essentielle, såvel som hvordan designet for systemet skal være. 
+Gennem iterationer kan dette opnås ved gentagende brugertests, for at højne kvaliteten af systemet. 
 Yderligere værdsættes indragelse af brugere i den evolutionlære model, hvor konstruktions modellen bibeholder brugere i en mere passiv rolle.
 I en model, der benytter iterationer, er det desuden lettere at arbejde parallelt, da opgaver på forskellige dele af systemet kan udvikles på samme tid.
 På trods af parallelt arbejde kommer hele gruppen også stadig igennem hele systemet, da arbejde lavet af en eller to personer, verificeres, refaktoreres og udvides over flere gange af forskellige gruppemedlemmer.
@@ -29,7 +29,7 @@ Efter at have forsøgt at arbejde efter den evolutionære udviklingsmetode i beg
 Der blev på denne baggrund besluttet, at der måtte tages et organisatorisk værktøj i brug for at organisere iterationer, såvel som opgaver med mulighed for parallel udførelse.
 Til dette blev valgt at benytte Scrum, beskrevet på \myref{scrum}. med det primære formål at benytte sig af Scrum Task Board til uddelegering af opgaver, såvel som Daily Scrum; dette medførte at ingen gruppemedlemmer var i tvivl om, hvad der blev arbejdet på.
 I samme stil blev der opstillet et ``dependency tree'' for systemet, for at se hvilke sektioner af systemet, der kunne udvikles parallelt, og hvilke der var afhængige af andre sektioner, før udvikling ville være en mulighed.
-Ud fra dette ``dependency tree'' blev der oprettet en priotering for hvilke user stories (kan ses på \myref{sec:krav}), der skulle udvikles først.
+Ud fra dette ``dependency tree'' blev der oprettet en prioritering for hvilke user stories (kan ses på \myref{sec:krav}), der skulle udvikles først.
 
 \section{Scrum}\label{scrum}
 Scrum er en process, som kan bruges i forbindelse med udarbejdelse af løsninger til komplekse problemer, som løbende kan udvikle sig. 
@@ -39,7 +39,7 @@ Disse krav forstås og holdes styr på af en Product Owner, som så styrer en \t
 Dette er en liste over opgaver, der skal løses, og disse skrives ofte som en user story på formen:\\ \\ \textit{``Som en <rolle> vil jeg kunne <mål>''. }\\ \\
 Disse user stories vil derefter vælges til et såkaldt sprint, som varer 30 dage. 
 I disse 30 dage arbejdes der i grupper af normalt 7 for at få alle user stories, der er valgt i sprintet til at blive færdige og testet.
-Der kan laves et scrumboard for at holde styr på hvilke opgaver, der skal laves til hver enkelt user story. 
+Der kan laves et scrumboard\fxnote{DailyTaskBoard eller Scrumboards?} for at holde styr på hvilke opgaver, der skal laves til hver enkelt user story. 
 På denne måde skaber man overblik over opgaverne, og man kan hele tiden se, hvad der mangler at blive lavet.
 Hver dag når man mødes holder men at Daily Scrum, som er et kort møde, hvorpå man fortæller de andre i gruppen: hvad man har lavet, hvad man vil lave den givne dag, samt problemer med arbejdet.
 En Scrum master sørger for, at gruppen følger Scrum, og at Daily Scrum forbliver på sporet. 
@@ -87,11 +87,12 @@ Foruden at udviklingen skal foregå i iterationer, er der ikke yderligere nogle 
 Derfor er det valgt, at nogle Scrum værktøjer tages i brug, da Scrum følger samme iterative mønster, med yderligere organisatoriske værktøjer og roller.
 Valget, at bruge udsnit af Scrum modellen, blev taget på baggrund af manglende organisering og koordination af arbejde i gruppen, det er således værktøjer med sådanne egenskaber fra Scrum, som benyttes.
 
-Det valgte værktøjer blev således, for organisering af opgaver, at benytte sig af Sprints.
+De valgte værktøjer blev således, for organisering af opgaver, at benytte sig af Sprints.
 For at kunne benytte sig af en sprint, kræves det yderligere, at der oprettes en product backlog af userstories, som en sprint backlog kan opbygges ud fra.
 For hver aktiv story i en sprint, oprettes ved start af sprinten, en række forskellige tasks tilhørende den givne user story.
 For at gøre parallel udvikling en mulighed, oprettes user stories, såvel som tasks, gerne så isoleret, at de kan laves for sig og senere samles.
-Ydermere oprettes en statisk user story under navnet ``rapport'', hvortil der ved hver sprint start skrives nye tasks, dette sikrer, at udviklingen i en sprint ikke går foruden udarbejdelse af rapporten.
+Ydermere oprettes en statisk user story under navnet ``rapport'', hvortil der ved hver sprint start skrives nye tasks der skal udfomres i sprintet. 
+Dette sikrer, at udviklingen i en sprint ikke går foruden udarbejdelse af rapporten.
 For at holde styr på sprinten benyttes et Scrum task board, dette giver overblik over status på hver enkelt task.
 En task sættes i projektets anvendelse af metoden i 4 stadier, ``To Do'', ``In Progress'', ``To Verify'' samt ``Done''.
 Under ``To Verify'' sektionen bliver en given opgave, eller task, stillet op imod ``Definition of Done''(DoD) kriterier, før den flyttes til ``Done''.
@@ -116,11 +117,11 @@ Ved overholdelse af disse regler, såvel som besvarelse af spørgsmålene, er al
 
 Der er mange flere værktøjer tilgængelig i Scrum, værktøjer som benyttes, hvis man følger Scrum modellen.
 Dette er dog ikke den model, der følges af denne projektgruppe.
-Gruppen har ladet sig inspirere af organisatoriske metoder fra Scrum og benytter sig af nogle af disse, da det er en udbredt og anderkendt model.
+Gruppen har ladet sig inspirere af organisatoriske metoder fra Scrum og benytter sig af nogle af disse, da det er en udbredt og anerkendt model.
 Værktøjer, som har været til stor gavn for gruppen, og derved systemets udvikling.
 
 \section{Objekt Orienteret Analyse \& Design}
-OOA\&D er en analysemtode, som har til formål at finde krav til et system, fastlægge design, og at danne en forståelse for et system, dets omgivelser, og hvilke krav der skal til for at implementere det.
+OOA\&D er en analysemetode, som har til formål at finde krav til et system, fastlægge design, og at danne en forståelse for et system, dets omgivelser, og hvilke krav der skal til for at implementere det.
 Metoden stammer fra bogen af samme navn.\citep{OOA&D2001}
 Den gør brug af UML til at beskrive struktur og klasser indenfor området.
 Herudover finder metoden:
@@ -140,6 +141,8 @@ Dog har vi valgt ikke at finde adfærd for klasserne, da dette var set som være
 Det beskriver klasserne, hvornår de laves i systemet, og gennemgangen af alle klassernes hændelser. 
 Dokumentationen for disse fylder utroligt meget og selve adfærden er et mellemtrin i metoden, til at danne en god struktur, derfor dokumenteres strukturen i stedet.
 De andre analyse dele er meget centrale og hjælper med at beskrive systemet, og er derfor taget med. 
+
+\fxnote{Skal vi skrive hvilke dele vi ikke bruger? Vi kan omformulere det til at vi har valgt dele af metoden, so, behjælper os i analysen af projektet, hvad skal man kunne i programmet og hvordan det skal hænge sammen osv?}
 
 Scrum og OOA\&D hjælper projektet på hver sin måde.
 Scrum som projektstyring og for at overskueliggøre projektets opgaver. 
