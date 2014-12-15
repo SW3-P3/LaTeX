@@ -27,7 +27,7 @@ Dette betyder dog ikke at de ikke tages med i overvejelserne, og evt. ændres.
 En komplet liste over resultatet af testen kan findes på \myref{b:brugertestrespons}.
 \begin{enumerate}
    \item \textbf{Indkøbsliste} \begin{itemize}
-   								  \item Til indkøbslisten var der få kommentarer, den primære respons herom var til ''Se Tilbud'' funktionaliteten. Hvis en given vare ikke matchede nogle tilbud, blev der ikke vist noget ikon. Som følge heraf gik det ikke op for alle at denne funktionalitet overhovedet eksisterede før de havde søgt på en vare som havde et tilbud. Derfor ønskes det at tydeliggøres hvis der ikke er fundet nogle tilbud på en vare, frem for at intet vises.
+   								  \item Til indkøbslisten var der få kommentarer, den primære respons herom var til ``Se Tilbud'' funktionaliteten. Hvis en given vare ikke matchede nogle tilbud, blev der ikke vist noget ikon. Som følge heraf gik det ikke op for alle at denne funktionalitet overhovedet eksisterede før de havde søgt på en vare som havde et tilbud. Derfor ønskes det at tydeliggøres hvis der ikke er fundet nogle tilbud på en vare, frem for at intet vises.
    							   \end{itemize}
    \item \textbf{Tilbud}\begin{itemize}
    								  \item Flere var i tvivl om hvorvidt tilbudene var aktuelle på tidspunktet programmet blev anvendt, således kunne en informativ tekst omkring tilbudene tilføjes til denne sektion af systemet, for at give brugeren mere præcis information, om hvad der ses på skærmen.
@@ -38,7 +38,7 @@ En komplet liste over resultatet af testen kan findes på \myref{b:brugertestres
    \item \textbf{Opskrifter}\begin{itemize}
    								  \item En absolut kritisk fejl der ramte samtlige testpersoner, var at navigere ind på en individuel opskrift. Som følge af mangel på highlighting, var det ikke klart for brugeren at man kunne trykke på en opskrift, løsningen her, bliver således at implementere highlighting.
    								  
-   								  \item Som en del af opgaverne skulle man tilføje ingredienser til sin indkøbsliste, her ønskede de fleste en ''Tilføj Alle Varer'' funktion, da det var træls at trykke på varerne enkeltvis.
+   								  \item Som en del af opgaverne skulle man tilføje ingredienser til sin indkøbsliste, her ønskede de fleste en ``Tilføj Alle Varer'' funktion, da det var træls at trykke på varerne enkeltvis.
    								  En mindre gruppe ønskede yderligere at der ligeledes kunne fjernes vare fra sin indkøbsliste, gennem opskrift sektionen af systemet.
    								  
    								  \item Nogle ønskede yderligere at indkøbsliste funktionaliteten med at se tilbud blev sat ind på opskrifter, såvel som en samlet pris på opskrifterne.
@@ -46,13 +46,13 @@ En komplet liste over resultatet af testen kan findes på \myref{b:brugertestres
    								  At kunne se tilbud, er ligeledes ikke formålet med opskrifter, derfor vil den funktionalitet være forbeholdt indkøbslisten, for at holde funktionaliteten i de enkelte sektioner, minimalistisk og konsistent.
    							   \end{itemize}
    \item \textbf{Præferencer}\begin{itemize}
-   								  \item Samtlige personer mente at ''Præferencer'', var en dårlig navngivning for en funktionalitet der blacklister varer såvel som butikker.
+   								  \item Samtlige personer mente at ``Præferencer'', var en dårlig navngivning for en funktionalitet der blacklister varer såvel som butikker.
    								  
    								  \item Denne sektion af systemet benytter sig af checkboxes, testpersonerne vidste ikke hvorvidt deres information blev gemt, som følge heraf implementeres snackbars med det formål at opdatere brugeren om gemt information.
    							   \end{itemize}
    \item \textbf{Generel design og funktionalitet}\begin{itemize}
    								  \item Aftjekningsfunktionaliteten i indkøbslisten blev fuldstændig overset, en ændring her vil være at gøre opmærksom på dens eksistens, en fremtidig test kan derefter bedømme, hvor nyttig den er, eftersom den både er overset, og ikke efterspurgt i denne omgang.
-   								  \item Det var ikke kun under ''Præferencer'' der opstod forvirring om hvorvidt information blev gemt, derfor implementeres snackbars flere steder i systemet.
+   								  \item Det var ikke kun under ``Præferencer'' der opstod forvirring om hvorvidt information blev gemt, derfor implementeres snackbars flere steder i systemet.
    								  \item Under både tilbud og opskrifter, vælger brugeren en indkøbsliste at arbejde på.
    								  Denne funktionalitet er på tidspunktet for udførelsen af testene, placeret i øverste højre hjørne.
    								  Dette er fuldstændig overset af alle brugerne, som oprettede flere lister.
@@ -90,15 +90,15 @@ I testen fandt vi ud af at vi ud af hvor lettte de forskellige programdele og fu
    \begin{itemize}
       \item De fleste oprettede sin egen indkøbsliste, nogle personer benyttede sig dog af den autogenereret indkøbsliste. 
       Fire personer benytter indkøbslisten funktionalitet unden nogle problemer.
-      \item Tre testbrugere udtrykker utilfredshed eller forvirring over hvordan der skelnes mellem personlige og delte indkøbslister.
-      Dette problem anses som kritisk. 
-      \item Desuden blev der fundet følgende tre kosmetiske problemer
-      \begin{itemize}
-         \item En bruger opdager ikke til at starte med at man kan ændre enheder, på de varer man tilføjer til indkøbslisten.
-         \item En bruger er i kort i tvivl om man benytter ''+'' fr at tilføje et tilbud til sin vare på indkøbslisten.
-         \item En bruger finder først ud f hvordan man ser tilbud efter et stykke tid.
-      \end{itemize}
-      \item Samtlige testpersoner bruger funktionaliteten fjern vare, hvor det var meningen de skulle overstrege varen, dette er yderst kritisk.
+      \item Tre testbrugere udtrykker utilfredshed eller forvirring over hvorledes en indkøbsliste flyttes til en anden tabel når den deles.
+      Dette problem anses som værend seriøs, da enkelte blev så forvirret at de ikke kunne finde listen. 
+      \item Desuden blev der fundet følgende tre kosmetiske problemer, som er at finde i appendix \myref{b:brugertestrespons2}.
+      \item Samtlige testpersoner benytter funktionaliteten fjern vare, frem for overstregning af varen. 
+      En person nævner her at de gerne ville kunne strege varen af, men var ikke klar over denne funktionalitet.
+      To andre brugere nævner derimod at det er rart, og giver mening.
+      ``Og jeg registrerer når jeg afkryder forsvinder det fra sedlen, det var jo fantastisk dejligt.''
+      ``Jeg trykker på krydset når jeg har lagt en vare i kurven og kan se det forsvinder. Det giver helt fint mening''
+      Er begge udtalelser fra brugere, i forbindelse med at benytte sig af fjern vare funktionaliteten.
    \end{itemize}
    \item \textbf{Tilbud}
    \begin{itemize}
