@@ -1,5 +1,5 @@
 \section{Anbefalingssystem}\label{anbefaling}
-At udvikle og implementere et anbefalingsystem vil opfylde user story 14.
+At udvikle og implementere et anbefalingssystem vil opfylde user story 14.
 For at lave dette kræves implementering af stories 13 og 15.
 Først vil der gennemgås teori om anbefalingssystemer, efterfølgende beskrives vores design og implementering.
 Til sidst konkluderes på denne del af vores system.
@@ -14,7 +14,7 @@ Nogle af de simpleste anbefalingssystemer, er upersonlige anbefalinger.
 Eksempler på dette kan være en simpel sortering af objekter.
 Sådanne sorteringer vil ofte være baseret på ting som popularitet, salg, sidevisninger eller lignende.
 Den anden overordnede retning inden for anbefaling er personlig anbefaling, dette vil sige at systemet benytter noget data om en bruger, til at anbefale ting, der kunne være særlig interessant for brugeren.
-Ved sådanne personlige anbefalinger skal systemet bruge en smagsprofil af dets brugere, for at personliggøre afbefalingerne.
+Ved sådanne personlige anbefalinger skal systemet bruge en smagsprofil af dets brugere, for at personliggøre anbefalingerne.
 Der findes flere forskellige metoder til at generere personlige anbefalinger, vi vil herunder kort fortælle om to af de mest brugte hovedretninger\citep{RecommenderSystems}.
 
 \subsubsection{Indholdsbaserede anbefalinger}
@@ -25,21 +25,21 @@ Hvert objekt i sådan et system vil have nogle attributter, og ud fra disse, vil
 Når systemet så har en smagsprofil på en bruger, vil det kunne sammenligne et objekts attributter med smagsprofilen, for at se om objektets attributter består af noget brugeren synes om.
 
 Ved brug af denne anbefalingsmetode kan 'term frequency inverse document frequency' (tf-idf) benyttes, som vægter hver faktor, efter den reciprokke hyppighed den er i datamængden.
-Dette hælper til at skælne mellem termer der optræder ofte, og termer der optræder sjældent.
+Dette hjælper til at skælne mellem termer der optræder ofte, og termer der optræder sjældent.
 Hvis et term ikke forekommer så ofte tillægges det derfor en højere betydning end et term med oftere forekomst.
 
-Denne anbefalingsimplementation kræver at man har nogle attributter tilhørende de objekter man gerne vil anbefale brugerne.
+Denne implementering af anbefaling kræver at man har nogle attributter tilhørende de objekter man gerne vil anbefale brugerne.
 Den største fordel ved denne metode  er at man kan lave personlige anbefalinger lige så snart en bruger har generet data, til en smagsprofil.
 Ulemperne er man skal have gode attributter til sine data, for denne metode virker. 
-Ligeledes kan denne implementatering heller ikke tage højde for betingede regler, eksempelvis hvis man kun kan lide attribut1 i forbindelse med atrribut2 men ikke kan fordrage attribut1 i forbindelse med attribut3.
+Ligeledes kan denne implementering heller ikke tage højde for betingede regler, eksempelvis hvis man kun kan lide attribut1 i forbindelse med atrribut2 men ikke kan fordrage attribut1 i forbindelse med attribut3.
 
 \subsubsection{Kollaborativ anbefalinger}
-Kollabrativ anbefalinger er også bygget op om smagsprofiler.
+Kollaborativ anbefalinger er også bygget op om smagsprofiler.
 Denne implementation kræver, modsat den indholdsbaserede, ingen data om de objekter som systemet skal anbefale. 
 I denne metode tager man i stedet brugernes smagsprofiler og holder op mod andre brugeres for at finde anbefalinger til en bruger.
 I \myref{tabel:kollabrativ} ses et eksempel på hvordan denne implementation kan fungere i praksis.
 
-Fordelene ved denne er som nænvte, at den kan bruges på mangelfulde data, hvortil dårlig eller ingen attributter er tilgængelige.
+Fordelene ved denne er som nævnt, at den kan bruges på mangelfulde data, hvortil dårlige eller ingen attributter er tilgængelige.
 Ligeledes slipper man også for problemet om betingede regler.
 Dog er en stor ulempe ved denne metode, det man betegner som ‘cold start’-problemet, hvor man mangler mange brugeres vurderinger, for at kunne give dem anbefalinger.\citep{RecommenderSystems}.
 \input{images/Tables/kollabrativ.tex}
@@ -62,14 +62,14 @@ Derefter tager vi blot gennemsnittet af alle værdierne for hver opskrift, for a
 Modellen fungerer som vist på figur \myref{tabel:opskriftanbefaling}.
 \input{images/Tables/opskriftanbefaling.tex}
 
-I UI’et har brugeren mulighed for at vælge hvordan opskrifter skal sorteres.
+I brugergrænsefladen har brugeren mulighed for at vælge hvordan opskrifter skal sorteres.
 De kan vælge mellem de to beskrevet her, samt at få sorteret dem efter nyeste og ældste.
 På forsiden præsenteres ligeledes de opskrifter som systemet regner højest forventede score ud på.
 
-\subsection{Implementation}
-Kernen i denne funktionalitet liggger i en metode, metoden med navnet \texttt{ReccomendRecipes()}.
-Denne metode findes i controlleren RecipesController.
-Metoden gennmgår de alle opskrifter for den givne bruger, og regner på baggrund af  indgredienserne i disse, en forventede vurdering ud, som beskrevet i forrige afsnit.
+\subsection{Implementering}
+Kernen i denne funktionalitet ligger i en metode, metoden \texttt{ReccomendRecipes()}.
+Denne metode findes i RecipesController.
+Metoden gennemgår alle opskrifter for den givne bruger, og regner på baggrund af ingredienserne i disse, en forventet vurdering ud, som beskrevet i forrige afsnit.
 
 \begin{lstlisting}[caption=Metoden RecommendRecipes. Sorterer opskrifter efter forventede vurdering for en given bruger.", label=recommendrecipes]
 public IEnumerable<Recipe> RecommendRecipes(User user)
@@ -109,10 +109,10 @@ public IEnumerable<Recipe> RecommendRecipes(User user)
 }
 \end{lstlisting}
 
-Metoden returner en liste af alle opskrifterne, hvori de er soteret efter forventede vurdering, bemærk at vurderet opskrifter ligger i samme liste, og har værdien, som brugeren har vurderet disse.
+Metoden returner en liste af alle opskrifterne, hvori de er sorteret efter deres forventede vurdering, bemærk at vurderede opskrifter ligger i samme liste, og har værdien, som brugeren har vurderet disse.
 
 \subsection{Konklusion}
-Implementationen af anbefalingerne virker efter hensigten.
+Implementeringen af anbefalingerne virker efter hensigten.
 Den simple anbefaling, der sorterer efter højest gennemsnitlige vurderinger, er meget simpel men kan være brugbar.
 Problemerne ved denne er dog at vi ingen nedre grænse har, for hvor mange bedømmelser der skal være, derfor vil en opskrift med én vurdering på 5 ligge højere end en opskrift med 49 vurderinger på 5 og én vurdering på 4.
 Dette er en tydelig svaghed, som kunne forbedres uden store ændringer i koden.
