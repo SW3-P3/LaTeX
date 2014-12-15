@@ -20,10 +20,10 @@ Dette øger brugerens interaktion, og bringer Bootstraps elementer til live. \ci
 ASP.NET MVC er baseret på grundtanken om at opdele de forskellige logiske lag i applikationen: Modellen (``business layer''), Viewet (``display layer'') og Controlleren (``input kontrol'').
 Brugen af ASP.NET giver mulighed for at bruge den såkaldte ``Razor syntax'', som er en del af ``ASP.NET Razor view engine''.
 Den gør det muligt at anvende C\#-kode (Eller Visual Basic .NET) i front-enden, til at genere dynamiske hjemmesider.
-Disse udtryk evalueres serverside ved runtime, derfor er alle datatyperne dynamiske, og ikke typesikre, det antages altså ved compiletime at alle operationer er mulige på objekter at typen ``dynamic''. \footnote{http://msdn.microsoft.com/en-us/library/dd264736.aspx}
+Disse udtryk evalueres serverside ved runtime, derfor er alle datatyperne dynamiske, og ikke typesikre, det antages altså ved compiletime at alle operationer er mulige på objekter at typen ``dynamic'' \citep{UsingTypeDynamic}.
 Dette framework har også indbygget forskellige typiske delkomponenter, som man som udvikler kan benytte sig af, for at fokusere på andre ting i sit udvikling.
 
 \subsection{Entity Framework}
-Entity Framework (``EF'') er et Object-relational mapping (``ORM'') framework til .NET frameworket, udviklet af Microsoft, og er databasen der bruges i projektet. \citep{EF}
+Entity Framework (``EF'') er et Object-relational mapping (``ORM'') framework til .NET frameworket, udviklet af Microsoft, og er databasen der bruges i projektet \citep{EF}.
 EF er valgt til dels grundet at det er muligt at udvikle ``Code-first'', hvilket vil sige at udvikleren først skriver modellen som klasser, hvorefter databasestrukturen kan opbygges.
 Der understøttes komplicerede relationer såsom mange-til-mange og en-til-mange, ved brug af en relationsdatabase, som er en tabel der kæder 2, eller flere, informationer sammen på tværs af tabeller.
