@@ -95,9 +95,10 @@ I testen fandt vi ud af at vi ud af hvor lettte de forskellige programdele og fu
       \item Desuden blev der fundet følgende tre kosmetiske problemer
       \begin{itemize}
          \item En bruger opdager ikke til at starte med at man kan ændre enheder, på de varer man tilføjer til indkøbslisten.
-         \item En bruger er i kort i tvivl om man benytter ''+'' fr at tilføje et tilbud til sinvare på indkøbslisten.
+         \item En bruger er i kort i tvivl om man benytter ''+'' fr at tilføje et tilbud til sin vare på indkøbslisten.
          \item En bruger finder først ud f hvordan man ser tilbud efter et stykke tid.
       \end{itemize}
+      \item Samtlige testpersoner bruger funktionaliteten fjern vare, hvor det var meningen de skulle overstrege varen, dette er yderst kritisk.
    \end{itemize}
    \item \textbf{Tilbud}
    \begin{itemize}
@@ -114,15 +115,23 @@ I testen fandt vi ud af at vi ud af hvor lettte de forskellige programdele og fu
       \item Ved funktionalitet med at lave sin egen udgave af en opskrift, har nogle brugere lidt forskellige problemer.
       \begin{itemize}
          \item En bruger havde problmer med at mængde skulle være et tal.
-         \item En bruger komme
+         \item En bruger kommenterer at det er lidt svært at se felterne ingrediens, mængde og enhed, hører sammen.
+         \item En bruger bliver distraheret af, at man skal oprette en opskrift gennem to views.
       \end{itemize} 
    \end{itemize}
    \item \textbf{Præferencer}
    \begin{itemize}
-      \item 
+      \item En bruger  trykker på gem kanppen, ved vist navn-funktionen. 
+      Dette ændre ikke noget, men er forkert.
+      \item En bruger tror til at starte med at butikker er fravalgte, og han skal tilvælge.
+      \item Navngerer til det forkerete view, foreslår at butikker og varer-indstillinger ikke hører sammen med de andre brugerindstillinger.
    \end{itemize}
    \item \textbf{Generel design og funktionalitet}
    \begin{itemize}
-      \item
+      \item Flere af testpersonerne udtrykte et ønske om billeder i programmet, især i forindelse med opskrifter.
+      \item Flere testpersoner udtrykte også et ønske om at velkomstteksten på forsiden var for stor, samt at det var ulogisk at link'sne heri førte til login-viewet, hvis man ikke er logget ind.
    \end{itemize}
 \end{enumerate}
+
+Som følge af disse reslutater kan vi konkludere at alle problemerne der blev identificeret i første brugertest, enten er blevet elimineret eller stærkt reduceret i alvorligheden af disse. 
+Programmet indeholder dog stadig et par kritiske fejl, samt en samling af mindre alvorligheder, som kunne forbedre brugeroplevelsen for enkelte brugere.
