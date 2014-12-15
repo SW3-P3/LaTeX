@@ -9,11 +9,11 @@ eTilbudsavis er en online service, der kan findes på deres hjemmeside\footnote{
 Der kan på siden oprettes et login, således der kan findes tilbage til ændringer på et senere tidspunkt eller andre enheder.
 eTilbudsavis har tre mærkbare funktioner, som brugeren har adgang til, hvilket er tilbudsaviser, ønske- og indkøbslister og tilbud.
 
-Tilbudsavis-funktionen, hvilket kan ses på \myref{ss:eTilbudsavis}, indeholder også den mulighed at sætte en præference på, hvor store en radius man vil lede i efter butikkers tilbudsaviser.
+Tilbudsavis-funktionen, hvilket kan ses på \myref{ss:eTilbudsavis}, indeholder også den mulighed at sætte en præference på, hvor stor en radius man vil lede i efter butikkers tilbudsaviser.
 Under hver avis, som det ses på figuren, er der også angivet afstand i meter fra ens aktuelle placering.
 Der kan vælges imellem alle aviser, som er tilgængelige online og inden for den valgte radius.
 Aviserne bliver opdateret løbende, så når der er en ny tilgængelig, bliver den gamle fjernet.
-Inde i aviserne kan man trykke på en vare, og den bliver tilføjet til en liste.
+Inde i aviserne kan man trykke på en tilbud, og denne tilføjes til en liste.
 
 \begin{wrapfigure}{o}{0.68\textwidth}
 \vspace{-20pt}
@@ -34,7 +34,7 @@ Hvis der ikke ønskes at skulle bladres tilbudsaviser igennem, er der den muligh
 Alle aktuelle tilbud fra aviserne, er da vist som elementer med navn, beskrivelse, pris, butik og afstand. Disse tilbud kan på samme måde nemt tilføjes til listerne.
 
 eTilbudsavis er en god online løsning, som har mange gode features, derfor har vi også brugt dem som kilde til vores tilbud gennem deres API.
-Dette API er beskrevet i \myref{api}.
+Dette API er beskrevet i \myref{api}. \fxnote{Skal vi nævne det allerede her ?}
 
 \subsection{Tilbudsugen}
 Tilbudsugen minder på mange måder om eTilbudsavis, og kan findes på deres hjemmeside\footnote{\underline{www.tilbudsugen.dk}}.
@@ -58,7 +58,7 @@ Derimod er den nem at navigere, siden er brugervenlig og ser overskuelig ud.
 På \myref{tbl-smartphone} ses der nogle butikskæder, som har udviklet android apps, samt hvilke funktionaliteter disse har.
 For at skabe et overblik, er der udvalgt features, og disse er blevet opsat i et skema for overskuelighedens skyld.
 \input{images/Tables/SOTA_apps.tex}
-Vi har valgt at undersøge en af disse apps nærmere, og valget faldt på Faktas app, MitFakta, da denne bliver opdateret og har flest funktioner.
+Vi har valgt at beskrive en af disse apps nærmere, og valget faldt på Faktas app, MitFakta, da denne bliver opdateret og har flest funktioner.
 \subsubsection{Faktas Android App}
 
 \begin{wrapfigure}{o}{0.4\textwidth}
@@ -72,7 +72,7 @@ Vi har valgt at undersøge en af disse apps nærmere, og valget faldt på Faktas
 	\label{ss:MitFakta}
 \end{wrapfigure}
 
-Faktas android app kalder de for ``Mit fakta'', den er som helhed overskuelig.
+Faktas android app er som helhed overskuelig.
 Efter åbning af appen kan man vælge mellem seks menupunkter eller ændre sine indstillinger, disse kan ses på \myref{ss:MitFakta}.
 Første menupunkt omhandler ``Coop-kortet'', og giver brugeren mulighed for at indtaste sine medlemsinfomationer, da disse giver særlige tilbud.
 Andet menupunkt er deres tilbudsavis, hvilket er en digital kopi af den fysiske tilbudsavis.
@@ -84,9 +84,9 @@ Femte menupunkt er deres opskrifter.
 Her findes der et stort antal af opskrifter, disse kan tilføjes direkte til ens madplan eller indkøbslister (både personlige og delte).
 Sjette menupunkt hedder ``Åbningstider'', og her kan brugeren finde Faktas butikker samt deres forskellige åbningstider.
 
-Appen virker rigtigt godt, der er ingen blindgyder, og derfor er den meget nem at navigere rundt i. Der er lagt meget fokus på den sociale del, da der kan deles med venner på facebook, hvilket simplificerer delingen af indkøbslister. Den eneste ulempe, der er ved denne app, er, at den kun er egnet til vare fra Fakta, og derfor sætter en del restriktioner på sig selv.
+Appen virker rigtig godt, der er ingen blindgyder, og derfor er den meget nem at navigere rundt i. Der er lagt megetxnote{Meget alligevel?} fokus på den sociale del, da der kan deles med venner på facebook, hvilket simplificerer delingen af indkøbslister. Den eneste ulempe, der er ved denne app, er, at den kun er egnet til vare fra Fakta, og derfor sætter en del restriktioner på sig selv.
 
-\subsection{Tøm køleskabet} \fxnote{Er dette afsnit relevant længere, vi bruger det jo ikke senere? - Troels}
+\subsection{Tøm køleskabet} \fxnote{Er dette afsnit relevant længere, vi bruger det jo ikke senere? - Troels Jeg tænker vi kan prøve at bruge det senere, vi afgrænser os vel fra at lave lagerstyrring eller tøm køleskabet, det var nok tanken at det var det vi ville da dette blev skrevet? - Søren}
 Der findes talrige tjenester, der tilbyder ``at tømme dit køleskab''.
 Mere specifikt, tilbyder de en service, hvor du som bruger, angiver hvilke varer dit køleskab pt. indeholder, samt hvilke andre ingredienser du har til rådighed.
 Derefter får du så præsenteret en række forskellige opskrifter, der kan laves ud fra dine tilgængelige ingredienser.
