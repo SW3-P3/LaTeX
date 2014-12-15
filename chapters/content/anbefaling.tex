@@ -64,47 +64,28 @@ Modellen fungerer som vist på figur \myref{tabel:opskriftanbefaling}.
 
 I UI’et har brugeren mulighed for at vælge hvordan opskrifter skal sorteres.
 De kan vælge mellem de to beskrevet her, samt at få sorteret dem efter nyeste og ældste.
+På forsiden præsenteres ligeledes de opskrifter som systemet regner højest forventede score ud på.
 
 \subsection{Implementation}
 Kernen i denne funktionalitet liggger i en metode, metoden med navnet \texttt{ReccomendRecipes()}.
 Denne metode findes i controlleren RecipesController.
+Metoden gennmgår de alle opskrifter for den givne bruger, og regner på baggrund af  indgredienserne i disse, en forventede vurdering ud, som beskrevet i forrige afsnit.
 
 \begin{lstlisting}[caption=Metoden RecommendRecipes. Sorterer opskrifter efter forventede vurdering for en given bruger.", label=recommendrecipes]
 public IEnumerable<Recipe> RecommendRecipes(User user)
 {
-    // Get all recipies rated by the user
-    var recipiesRatedByUser = _db.Recipes.Include(x => x.Ratings).Include(x => x.Ingredients).Where(x => x.Ratings.Select(y => y.User.ID).Contains(user.ID));
-
-    if (!recipiesRatedByUser.Any())
-        return _db.Recipes.Include(x => x.Ratings).Include(x => x.Ingredients);
-
+    [...]
     // Pair the ingrdients with the rating given
     // If two ingredients are the same, take the avg of both ratings.
     var itemsWithRatings = new List<Tuple<Item, List<decimal>>>();
-
     foreach (var recipie in recipiesRatedByUser.ToList())
     {
         var score = recipie.Ratings.FirstOrDefault(x => x.User.Username == user.Username).Score;
-        foreach (var ingredient in recipie.Ingredients)
-        {
-            // If the element is already rated, add the new rating to the list of ratings
-            if (itemsWithRatings.Select(x => x.Item1).Contains(ingredient))
-            {
-                itemsWithRatings.FirstOrDefault(x => x.Item1 == ingredient).Item2.Add(score);
-            }
-            else
-            {
-                var tmp = new Tuple<Item, List<Decimal>>(ingredient, new List<decimal>());
-                tmp.Item2.Add(score);
-                itemsWithRatings.Add(tmp);
-            }
-        }
+        [...]
     }
 
-    var avgRating = 2;// recipiesRatedByUser.Average(x => x.Ratings.FirstOrDefault(y => y.User.ID == user.ID).Score);
-
-    var recipiesRated = new List<Tuple<Recipe, decimal>>();
-
+    var avgRating = recipiesRatedByUser.Average(x => x.Ratings.FirstOrDefault(y => y.User.ID == user.ID).Score);
+    [...]
     // Calculate the score for every recipie
     foreach (var recipie in _db.Recipes.Include(x => x.Ingredients).Include(x => x.Ratings))
     {
@@ -122,15 +103,13 @@ public IEnumerable<Recipe> RecommendRecipes(User user)
             }
             recipiesRated.Add(new Tuple<Recipe, decimal>(item1: recipie, item2: score.Any() ? score.Average() : 0M));
         }
-
     }
-
-    // Sort the recipies descending
-    // return itz
+    // Sort the recipies descending and return itz
     return recipiesRated.OrderByDescending(x => x.Item2).Select(x => x.Item1);
 }
 \end{lstlisting}
 
+Metoden returner en liste af alle opskrifterne, hvori de er soteret efter forventede vurdering, bemærk at vurderet opskrifter ligger i samme liste, og har værdien, som brugeren har vurderet disse.
 
 \subsection{Konklusion}
 Implementationen af anbefalingerne virker efter hensigten.
