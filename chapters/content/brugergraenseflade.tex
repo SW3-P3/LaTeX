@@ -1,5 +1,5 @@
 \section{Brugergrænsefladen} \label{brugergraenseflade}
-I dette afsnit udvides der på brugergrænsefladen på hjemmesiden.
+I dette afsnit forklares der om brugergrænsefladen på hjemmesiden.
 Først vil der beskrives en række forskellige guidelines der ofte benyttes på hjemmesider, både til mobilt og desktop brugergrænseflader.
 Derefter diskuteres valg der er taget ved nogle af hjemmesidens elementer, samt hvordan det opfylder de nævnte guidelines.
 Derefter fremvises hvordan den responsive brugergrænseflade er implementeret vha. Twitter Bootstrap, med kodeeksempler. 
@@ -18,16 +18,16 @@ Learnability kan opfyldes vha. \textbf{affordance} og \textbf{consistency}.
 Affordance betyder at noget er designet så det er tydeligt hvad det skal bruges til.
 F.eks. at en knap er designet så det ligner den kan trykkes på. 
 Consistency betyder at hvis en opgave udføres på en måde et sted, bør den også udføres sådan et andet sted.
-Der findes også flere måder at opnå learnability, men dette er to gode metoder, der mindsker mængden af viden der skal indlæres før brug af hjemmesiden.
+Der findes flere måder at opnå learnability på, men dette er to gode metoder, der mindsker mængden af viden der skal indlæres før brug af hjemmesiden.
 
 Effectiveness kan opfyldes vha. \textbf{recovery}, eller \textbf{constraints}.
-Recovery gør at hvis man laver en fejl, eller farer vild skal det være nemt at komme tilbage, eller fjerne fejlen man lavede.
+Recovery gør at hvis man laver en fejl, eller farer vild skal det være nemt at komme tilbage, eller rette fejlen man lavede.
 Constraints betyder at undgå brugeren gør noget de ikke burde, såsom at lave store fejl. 
 Dette kan undgås ved at mindske mulighederne i forskellige skærmvinduer, eller f.eks. ved at spørge: ``Er du sikker på du vil slette''.
 
 Ease of use kan opfyldes vha. \textbf{navigation} og \textbf{feedback}.
-Navigation hjælper brugeren md at forstå hvor de befinder sig.
-Feedback, får brugeren til at føle at deres handlinger har gjort noget, og er derfor ikke i tvivl om hvorvidt de f.eks. skal trykke på en knap en gang mere f.eks.
+Navigation hjælper brugeren med at forstå hvor de befinder sig.
+Feedback, får brugeren til at føle at deres handlinger har gjort noget, og er derfor ikke i tvivl om hvorvidt de f.eks. skal trykke på en knap en gang mere.
 
 Det er desuden relevant at gruppere felter på en brugergrænseflade, for at vise de hænger sammen. Her kan benyttes en af Getalts love om perception, f.eks. proximity, eller continuity.
 
@@ -37,13 +37,13 @@ En hjemmeside falder ind under begrebet WIMP, som er en type brugergrænseflade.
 Vinduerne indelukker forskellige data og aktioner man kan gøre på hjemmesiden, som f.eks. at tilgå opskrifter, eller en indkøbsliste.
 Ikoner bruges til at fortælle og vise handlinger eller emner.
 Her kan benyttes forskellige designs til ikonerne, såsom direct-mapping, mataforer, eller convention.
-Menuer bruges til at navigerer på hjemmesider f.eks. imellem vinduerne, eller forskellige handlinger der skal udføres.
+Menuer bruges til at navigere på hjemmesider f.eks. imellem vinduerne, eller forskellige handlinger der skal udføres.
 Pointeren er redskabet der bruges til hjemmesiden, og er på en standard pc ofte en markør, og på mobiltelefoner bruges touch-skærme, hvor ens fingre fungerer som pointer.
 
 
 \textbf{Mobilt interface}
 
-PÅ en enheder som f.eks. en smartphone er skærmen meget mindre, der er derfor plads til mindre information på skærmen. 
+PÅ en enhed som f.eks. en smartphone er skærmen meget mindre, der er derfor plads til mindre information på skærmen. 
 En række principper er udgivet af google\citep{Mobil}, og deres hovedpunkter er:
 \begin{itemize}
 	\item Design hele hjemmesiden til at være mobilvenlig.
@@ -59,19 +59,20 @@ For at kunne øge hjemmesidens ease of use, skal der bruges et godt redskab til 
 Dette kan f.eks. gøres vha. menuer med hierarkier, eller vha. en toolbar i toppen.
 Der vælges at bruge en toolbar, af bootstrap klassen navbar. 
 En hjemmeside på mobilen er svær at bruge med menu hierarkier, derfor er en navbar med direkte links til komponenterne god at bruge. 
-Den er vist over alt på hjemmesiden, og det er derfor nemt at navigere imellem de forskellige komponenter.
+Den er vist overalt på hjemmesiden, og det er derfor nemt at navigere imellem de forskellige komponenter.
+Ud for alle emner på toolbaren er der tilsat et ikon for brugeren nemmere kan genkende funktionerne på menupunkterne.
 Dette hjælper desuden også på sidens consistency, da denne altid er vist.
 
 For at være sikre på at siden er nem at lære, er det de samme klasser fra bootstrap der benyttes rundt om på siden. 
 Knapperne der har samme funktion, f.eks. som at tilføje noget til en indkøbsliste er ens over det hele. 
-Det er et plus ikon, som ændre sig til et flueben når der trykkes på den.
-Denne feedback forsikrer brugeren om at deres handling gjorde noget, og at handlingen er udført.
-Dette er konventionen, et plus lægger noget til, og et flueben viser at det er gjort.
+Det er et plus ikon, som ændrer sig til et flueben når der trykkes på den.
+Denne feedback forsikrer brugeren om at deres handlingen er udført.
+Dette er konventionen, et plus lægger noget til, og et flueben viser at hændelsen er sket.
 På samme måde angiver et kryds i en rød firkant at man lukker noget ned, eller sletter noget.
 Derfor for at recover fra en fejl lavet i programmet, er det nemt at slette forskellige elementer for brugeren ved at f.eks. trykke på krydset i den røde firkant.
 
 Det er dog ikke muligt at ``undo'' en sletning, så brugeren må derfor angive varen igen.
-Der er desuden sat forskellige constraints for brugeren såsom at angive en mængde i bogstaver, eller kalde en opskrift det samme som en anden opskrift.
+Der er desuden sat forskellige constraints for brugeren, således at en mængder ikke kan angives i bogstaver, eller kalde en opskrift det samme som en allerrede eksisterende opskrifter.
 
 For at hjælpe med forståelsen af de forskellige komponenter, bruges ikoner der er direct-mapping, for at fremme forståelsen af hvad komponenten er.
 
