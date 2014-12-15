@@ -6,22 +6,21 @@ Denne segregering adskiller således ''forretnings-logik'', ''input-logik'' og '
 Dette kan være nyttigt i udviklingen af systemet, men også efter udgivelsen, idet blandt andet ''UI-logik''kan blive ændret oftere end for eksempel ''forretnings-logik''.
 Opdelingen hjælper også til at skabe overblik over koden, og gør det nemmere at udføre tests på systemet. \citep{MVC_Overview}
 
-\begin{wrapfigure}{r}{0.4\textwidth}
-	\vspace{-20pt}
-	\begin{center}
-		\includegraphics[width=0.38\textwidth]{images/Images/mvc.png}
-	\end{center}
-	\vspace{-20pt}
-	\caption{MVC-mønsteret}
-	\vspace{-20pt}
-\end{wrapfigure}
-
-
 Nedenfor beskriver vi de tre komponenter.
 
 \textbf{Model}\\
 De objekter, der udgør model-laget skal indeholde den føromtalte ''forretnings-logik'', samt alle data der skal modelleres i systemet.
 Dataen, i form af objekter, gemmes oftest i en database eller fil, og er helt skjult for brugeren i den forstand, at al repræsentation af modellen foregår igennem view-delen af MVC-mønsteret.
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+	\vspace{0pt}
+	\begin{center}
+		\includegraphics[width=0.38\textwidth]{images/Images/mvc.png}
+	\end{center}
+	\vspace{-20pt}
+	\caption{MVC-mønsteret}
+	\vspace{-30pt}
+\end{wrapfigure}
 
 \textbf{View}\\
 Der er igennem forskellige views, at brugeren får præsenteret brugergrænsefladen - også kaldet UI(user-interface).
