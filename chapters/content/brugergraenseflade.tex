@@ -1,82 +1,91 @@
 \section{Brugergrænsefladen} \label{brugergraenseflade}
-I dette afsnit forklares der om brugergrænsefladen på hjemmesiden.
-Først vil der beskrives en række forskellige guidelines der ofte benyttes på hjemmesider, både til mobilt og desktop brugergrænseflader.
-Derefter diskuteres valg der er taget ved nogle af hjemmesidens elementer, samt hvordan det opfylder de nævnte guidelines.
-Derefter fremvises hvordan den responsive brugergrænseflade er implementeret vha. Twitter Bootstrap, med kodeeksempler. 
+I dette afsnit forklares de generelle designprincipper, som brugergrænsefladen er pålagt på vores hjemmeside.
+Først vil vi beskrive en række forskellige guidelines, der ofte benyttes på hjemmesider, både til mobilt og desktop brugergrænseflader.
+Derefter diskuterer vi de valg, der er taget ved nogle af hjemmesidens elementer, samt hvordan det opfylder de nævnte guidelines.
+Derefter fremvises det, hvordan den responsive brugergrænseflade er implementeret vha. Twitter Bootstrap, med kodeeksempler. 
 
 \subsection{Teori}
-
-Der er forskellige teknikker at designe efter, og hermed også forskellige begreber der benyttes i forbindelse med design af en brugergrænseflade.
+Der findes forskellige teknikker til at designe efter, og hermed også forskellige begreber, der benyttes i forbindelse med design af en brugergrænseflade.
 Ifølge \citep{DIS2014} er de følgende 3 elementer vigtige i denne forbindelse:
-\begin{itemize}
+\begin{itemize}[nolistsep,noitemsep]
 	\item \textbf{Learnability}
 	\item \textbf{Effectiveness}
 	\item \textbf{Ease of use}
 \end{itemize}
 
 Learnability kan opfyldes vha. \textbf{affordance} og \textbf{consistency}.
-Affordance betyder at noget er designet så det er tydeligt hvad det skal bruges til.
-F.eks. at en knap er designet så det ligner den kan trykkes på. 
-Consistency betyder at hvis en opgave udføres på en måde et sted, bør den også udføres sådan et andet sted.
-Der findes flere måder at opnå learnability på, men dette er to gode metoder, der mindsker mængden af viden der skal indlæres før brug af hjemmesiden.
+Affordance betyder, at noget er designet, så det er tydeligt hvad det skal bruges til.
+For eksempel at en knap er designet, så det ser ud som om, den kan trykkes på. 
+På den måde giver affordance et intuitivt design, hvor brugeren ``kan regne ud'', hvordan ting skal inteageres med.
+Consistency betyder, at hvis en opgave udføres på en måde et sted, bør den også udføres sådan et andet sted.
+Der findes flere måder at opnå learnability på, men dette er to gode metoder, der mindsker mængden af viden, der skal indlæres før brug af hjemmesiden.
 
-Effectiveness kan opfyldes vha. \textbf{recovery}, eller \textbf{constraints}.
-Recovery gør at hvis man laver en fejl, eller farer vild skal det være nemt at komme tilbage, eller rette fejlen man lavede.
-Constraints betyder at undgå brugeren gør noget de ikke burde, såsom at lave store fejl. 
+Effectiveness kan opfyldes vha. \textbf{recovery}, og/eller \textbf{constraints}.
+Recovery gør, at hvis man laver en fejl, eller farer vild, skal det være nemt at komme tilbage, eller rette fejlen man lavede.
+Constraints betyder at forhindre brugeren, i at gøre noget de ikke burde, såsom at lave store fejl. 
 Dette kan undgås ved at mindske mulighederne i forskellige skærmvinduer, eller f.eks. ved at spørge: ``Er du sikker på du vil slette''.
 
 Ease of use kan opfyldes vha. \textbf{navigation} og \textbf{feedback}.
-Navigation hjælper brugeren med at forstå hvor de befinder sig.
-Feedback, får brugeren til at føle at deres handlinger har gjort noget, og er derfor ikke i tvivl om hvorvidt de f.eks. skal trykke på en knap en gang mere.
+Navigation hjælper brugeren med at forstå, hvor de befinder sig.
+Dette kan f.eks. opnås med såkaldte ``breadcrumbs'', der viser stien, som brugeren har bevæget sig ud af.
+Feedback, får brugeren til at føle, at deres handlinger har gjort noget; derved er de ikke i tvivl om hvorvidt det f.eks. er nødvendigt at trykke på den samme knap en gang til.
 
-Det er desuden relevant at gruppere felter på en brugergrænseflade, for at vise de hænger sammen. Her kan benyttes en af Getalts love om perception, f.eks. proximity, eller continuity.
+Det er desuden relevant at gruppere felter på en brugergrænseflade, for at vise de hænger sammen. 
+Her kan benyttes en af Getalts love om perception, f.eks. proximity, eller continuity.\citep{DIS2014}
 
 \textbf{WIMP}
-
-En hjemmeside falder ind under begrebet WIMP, som er en type brugergrænseflade. Det står for Windows, Icons, Menus og Pointers.
-Vinduerne indelukker forskellige data og aktioner man kan gøre på hjemmesiden, som f.eks. at tilgå opskrifter, eller en indkøbsliste.
-Ikoner bruges til at fortælle og vise handlinger eller emner.
-Her kan benyttes forskellige designs til ikonerne, såsom direct-mapping, mataforer, eller convention.
-Menuer bruges til at navigere på hjemmesider f.eks. imellem vinduerne, eller forskellige handlinger der skal udføres.
-Pointeren er redskabet der bruges til hjemmesiden, og er på en standard pc ofte en markør, og på mobiltelefoner bruges touch-skærme, hvor ens fingre fungerer som pointer.
+En generel hjemmeside falder ind under begrebet WIMP, som er en type brugergrænseflade. Det står for \textit{Windows}, \textit{Icons}, \textit{Menus} og \textit{Pointers}.
+Vinduerne(\textit{Windows}) indelukker forskellige data og aktioner, man kan inteagere med på hjemmesiden, som f.eks. at tilgå opskrifter, eller en indkøbsliste.
+Ikoner(\textit{Icons}) bruges til at fortælle og vise handlinger eller emner.
+Her kan benyttes forskellige designs til ikonerne, såsom direct-mapping, metaforer, eller convention.
+Menuer(\textit{Menus}) bruges til at navigere på hjemmesider f.eks. imellem vinduerne, eller forskellige handlinger der skal udføres.
+Pointeren(\textit{Pointers}) er redskabet, der bruges til hjemmesiden, og er på en almindelig pc ofte en markør, og på mobiltelefoner bruges touch-skærme, hvor ens fingre fungerer som pointere.
 
 
 \textbf{Mobilt interface}
-
-PÅ en enhed som f.eks. en smartphone er skærmen meget mindre, der er derfor plads til mindre information på skærmen. 
+PÅ en enhed som f.eks. en smartphone er skærmen meget mindre, der er derfor mindre plads til information på skærmen. 
 En række principper er udgivet af google\citep{Mobil}, og deres hovedpunkter er:
-\begin{itemize}
+\begin{itemize}[nolistsep,noitemsep]
 	\item Design hele hjemmesiden til at være mobilvenlig.
 	\item Benyt et responsivt design så domænet forbliver det samme.
 	\item Brugere på en mobilside vil have opnået deres mål hurtigt. Design derfor efter konteksten hvori mobilsiden bruges, og design efter dette, uden det går udover indholdet.
 \end{itemize}
 
-I næste sektion diskuteres hvordan disse elementer skal benyttes på hjemmesiden, for at udvikle en brugervenlig hjemmeside.
+I næste sektion vil vi diskutere, hvordan disse elementer skal benyttes på hjemmesiden, for at udvikle en brugervenlig hjemmeside.
 
 \subsection{Design}
-
-For at kunne øge hjemmesidens ease of use, skal der bruges et godt redskab til at navigere på hjemmesiden.
-Dette kan f.eks. gøres vha. menuer med hierarkier, eller vha. en toolbar i toppen.
-Der vælges at bruge en toolbar, af bootstrap klassen navbar. 
+For at kunne øge hjemmesidens ease of use, skal der bruges et godt redskab til at navigere rundt på hjemmesiden.
+Dette kan f.eks. gøres vha. menuer med hierarkier, eller vha. en navigerings-bar i toppen.
+Der vælges at bruge en navigerings-bar, af bootstrap klassen navbar. 
 En hjemmeside på mobilen er svær at bruge med menu hierarkier, derfor er en navbar med direkte links til komponenterne god at bruge. 
 Den er vist overalt på hjemmesiden, og det er derfor nemt at navigere imellem de forskellige komponenter.
-Ud for alle emner på toolbaren er der tilsat et ikon for brugeren nemmere kan genkende funktionerne på menupunkterne.
+Ud for alle emner på toolbaren er der tilsat et ikon, for brugeren nemmere kan genkende funktionerne på menupunkterne.
 Dette hjælper desuden også på sidens consistency, da denne altid er vist.
 
-For at være sikre på at siden er nem at lære, er det de samme klasser fra bootstrap der benyttes rundt om på siden. 
+For at være sikre på, at siden er nem at lære, er det de samme klasser fra bootstrap, der benyttes rundt om på siden. 
 Knapperne der har samme funktion, f.eks. som at tilføje noget til en indkøbsliste er ens over det hele. 
 Det er et plus ikon, som ændrer sig til et flueben når der trykkes på den.
-Denne feedback forsikrer brugeren om at deres handlingen er udført.
+Denne feedback forsikrer brugeren om, at deres handlingen er udført.
 Dette er konventionen, et plus lægger noget til, og et flueben viser at hændelsen er sket.
-På samme måde angiver et kryds i en rød firkant at man lukker noget ned, eller sletter noget.
-Derfor for at recover fra en fejl lavet i programmet, er det nemt at slette forskellige elementer for brugeren ved at f.eks. trykke på krydset i den røde firkant.
+På samme måde angiver et kryds i en rød firkant, at man lukker noget ned, eller sletter noget.
+Derfor for at ``recover'' fra en fejl lavet i programmet, er det nemt at slette forskellige elementer for brugeren, ved at f.eks. trykke på krydset i den røde firkant.
 
 Det er dog ikke muligt at ``undo'' en sletning, så brugeren må derfor angive varen igen.
-Der er desuden sat forskellige constraints for brugeren, således at en mængder ikke kan angives i bogstaver, eller kalde en opskrift det samme som en allerrede eksisterende opskrifter.
+Vælger brugeren derimod at slette hele indkøbslisten eller en opskrift, bliver de præsenteret for en besked, der advarer dem om sletningen og den manglende mulighed for at gendanne.
+Der er desuden sat forskellige constraints for brugeren, således at en mængde ikke kan angives i bogstaver, eller kalde en opskrift det samme som en allerrede eksisterende opskrifter.
 
-For at hjælpe med forståelsen af de forskellige komponenter, bruges ikoner der er direct-mapping, for at fremme forståelsen af hvad komponenten er.
-
-	
+For at hjælpe med forståelsen af de forskellige komponenter, bruges ikoner, der er direct-mapping, for at fremme forståelsen af hvad komponenten er.
 	
 \subsection{Implementation}
+I dette afsnit vil vi opsumere og beskrive en række design principper og teknologier, samt deres konkrete brug i implementationen af vores generelle brugergrænseflade. Derudover vil vi vurdere på betydning af disse for systememts brugervenlighed og kæde det sammen med ovenstående teori.
+
+Hele hjemmesiden er sikret et ens grund design, vha. det der kaldes et \textit{layout view}.
+Når en bruger beder om at få vist en side fra systemet, er det \textit{layout view'et} der står for brugergrænsefladen.
+Det sørger for at indlæse de rigtige scripts, stylesheets, navigerings-baren og til sidst det konkrete view, som brugeren har forespørgt.
+På denne måde sikres et ens ``look'', og systemet consistency hæves, i og med at brugeren altid har adgang til den ``bekendte'' navigerings-bar.
+
+For at sikre en god mobil oplevelse, har vi først og fremmest tilladt, at der præsenteres en ``fuldskærms-oplevelse'' for brugeren, når hjemmesiden tilgås fra en mobiltelefon.
+Det følgende meta-tag sørger for at vi udnytter hele mobilens skærmbredde: \texttt{<meta name="viewport" content="width-device-width, initial-scale=1.0" />}.
+Som en lille detalje, har vi valgt at bruge følgende meta-tag, der muliggøre det på android enheder at gemme en genvej på hjemmeskærmen, og på den måde vil hjemmesiden optræde som en app, uden url-baren, der normalt optræder i browseren: \texttt{<meta name="mobile-web-app-capable" content="yes" />}.
+
 \subsection{Konklusion}
