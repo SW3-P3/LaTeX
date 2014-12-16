@@ -71,7 +71,7 @@ Denne information kan vi nu bruge til at lave en struktur over klasserne i probl
 Klassediagrammet som ses på \myref{figur:PDklasse}, beskriver forholdet mellem de forskellige klasser som findes i problemområdet.
 Diagrammets sammenhænge er dannet ud fra hændelsestabellen, og beskrivelserne af klasserne.\fxnote{Sørg for at denne model stemmer over ens med modellen vi ender ud med i programmet. I programmet kan vi så henvise til at denne model over klasserne blev brugt til at danne associationerne, imellem klasserne. Der er nemlig ingen henvendelse lige pt, og det kan helt klart bruges. Beskrivelsen nedenfor er næsten identisk med den man finder i Arkitektur - Søren}
 
-Personer kan lave indkøbslister, disse indkøbslister kan være ejet og administreret af en enten en eller flere personer.
+Personer kan lave indkøbslister, disse indkøbslister kan være ejet og administreret af enten en eller flere personer.
 En indkøbsliste kan bestå af nul til mange varer.
 En vare kan være på tilbud i mere end en butik, og derfor have nul til mange tilbud.
 En vare kan desuden indgå i en opskrift, og er derfor forbundet med nul til mange.
@@ -80,6 +80,5 @@ Varen kan også være tilføjet til overvågningslisten hos en person, så derfo
 En person i problemområdet kan give hver opskrift en vurdering, derfor kan personen give nul til mange vurderinger.
 En vurdering gives til en opskrift alene, imens en opskrift kan have mange vurderinger, eller ingen vurderinger.
 Anbefalinger består af en opskrift, imens personen kan modtage nul til mange anbefalinger.
-
 
 Ovenstående analyse vil hjælpe til at designe systemets implementering, først foretages dog en analyse af anvendelsesområdet, for at undersøge hvad der er muligt at foretage sig i systemet.
