@@ -1,79 +1,89 @@
-\subsubsection*{Brugeridentifikation}
-\textit{Brugsmønster:} Brugeridentifikation sker ved at en bruger logger ind i systemet.
-Brugeren vil blive præsenteret for en side hvor, e-mail og password kan indtastes.
+\subsubsection{Brugeridentifikation}
+\begin{description}[font=\normalfont\itshape]
+\item[Brugsmønster]\hfill\\
+Brugeridentifikation sker ved, at en bruger logger ind i systemet.
+Brugeren vil blive præsenteret for en side, hvor e-mail og password kan indtastes.
 Herefter godkender eller afviser systemet den indtastede data og håndterer resultatet, enten ved at logge brugeren ind, eller ved at give en fejlbesked.
-Alternativt kan brugeren oprette en ny konto i systemet, ved oplysning af navn e-mail og password.
-Hvis du ikke er logget ind i systemet kan du ikke tilgå systemets funktionaliteter.
+Alternativt kan brugeren oprette en ny konto i systemet ved oplysning af navn, e-mail og password.
+Hvis du ikke er logget ind i systemet, kan du ikke tilgå systemets funktionaliteter.
+\item[Objekter]\hfill\\
+Person.
+\item[Funktioner]\hfill\\
+Registrer bruger, Log ind, Log ud.
+\end{description}
 
-\textit{Objekter:} Person.
-
-\textit{Funktioner:} Registrer bruger, Log ind, Log ud.
-
-\subsubsection*{Listehåndtering}
-\textbf{Brugsmønster:} Dette brugsmønster dækker over indkøbslisten såvel som overvågningslisten.
-Brugeren kan inden for listens brugsmønstre tilgå funktionaliteterne i vilkårlig rækkefølge, givet der er oprettet en liste på forhånd.
+\subsubsection{Listehåndtering}
+\begin{description}[font=\normalfont\itshape]
+\item[Brugsmønster]\hfill\\
+Dette brugsmønster dækker over indkøbslisten samt overvågningslisten.
+Brugeren kan, inden for listens brugsmønstre, tilgå funktionaliteterne i vilkårlig rækkefølge, givet der er oprettet en liste på forhånd.
 En bruger kan oprette, dele og slette sine egne indkøbslister.
-Hvis en liste er delt med andre og prøver at slette denne, forlader brugeren listen frem for at slette den.
-Overvågningslisten på den anden hånd, eksisterer altid og kan hverken oprettes eller slettes.
+Hvis en liste er delt med andre, og brugeren prøver på at slette denne, forlader brugeren listen frem for at slette den.
+Overvågningslisten, på den anden hånd, eksisterer altid, og kan hverken oprettes eller slettes.
 Brugeren kan på begge lister tilføje eller fjerne en vare.
-Varerne på overvågningslisten er varer som brugeren er interesserede i at få tilbud om.
-Når en vare på denne liste kommer på tilbud modtager brugeren en notifikation derom.
+Varerne på overvågningslisten er varer, som brugeren er interesserede i at få tilbud om.
+Når en vare på denne liste kommer på tilbud, modtager brugeren en notifikation derom.
 Ved indkøbslisten er der tre funktionaliteter til at tilføje ting til listen.
 Man kan tilføje ingredienser fra en opskrift.
 Ydermere kan en bruger aftjekke eller fjerne varer fra listen.
+\item[Objekter]\hfill\\
+Indkøbsliste, Overvågningsliste, Varer, Tilbud, Personer, Opskrifter.
+\item[Funktioner]\hfill\\
+Opret liste, Fjern Indkøbsliste, Tilføj til liste, Fjern fra liste, Aftjek på indkøbsliste, Del liste, Forlad Indkøbsliste.
+\end{description}
 
-\textbf{Objekter:} Indkøbsliste, Overvågningsliste, Varer, Tilbud, Personer, Opskrifter.
+\subsubsection{Søgning}
+\begin{description}[font=\normalfont\itshape]
+\item[Brugsmønster]\hfill\\
+Brugeren kan søge efter varer, hvorefter systemet filtrerer efter søgestrengen for at finde relevante resultater.
+Dette brugsmønster benyttes flere steder, både til at søge på tilbud til sine varer såvel som opskrifter.
+\item[Objekter]\hfill\\
+Vare, Tilbud, Opskrifter.
+\item[Funktioner]\hfill\\
+Søg efter tilbud, søg efter opskrifter.
+\end{description}
 
-\textbf{Funktioner:} Opret liste, Fjern Indkøbsliste, Tilføj til liste, Fjern fra liste, Aftjek på indkøbsliste, Del liste, Forlad Indkøbsliste.
-
-\subsubsection*{Søgning}
-\textbf{Brugsmønster:} Brugeren kan søge efter varer, hvorefter systemet filtrerer efter søgestrengen for at finde relevante resultater.
-Dette brugsmønster benyttes flere steder, både til at søge på tilbud til sine varer, såvel som opskrifter.
-
-
-\textbf{Objekter:} Vare, Tilbud, Opskrifter.
-
-\textbf{Funktioner:} Søg efter tilbud, Søg efter opskrifter.
-
-\subsubsection*{Tilpas præferencer}
-\textbf{Brugsmønster:} 
+\subsubsection{Tilpas præferencer}
+\begin{description}[font=\normalfont\itshape]
+\item[Brugsmønster]\hfill\\
 Brugere i systemet har mulighed for at fravælge madvarer eller butikker, som vises i programmet.
+\item[Objekter]\hfill\\
+Varer.
+\item[Funktioner]\hfill\\
+Sæt Præferencer, Filtrer efter præferencer.
+\end{description}
 
-\textbf{Objekter:} Varer.
-
-\textbf{Funktioner:} Sæt Præferencer, Filtrer efter præferencer.
-
-\subsubsection*{Opskrifts håndtering}
-\textbf{Brugsmønster:}
+\subsubsection{Opskrifts håndtering}
+\begin{description}[font=\normalfont\itshape]
+\item[Brugsmønster]\hfill\\
 Brugeren kan interagere med opskrifter på forskellig vis. 
 Som bruger har man mulighed for at oprette, klone, ændre, slette og vurdere opskrifter.
-Når en opskrift oprettes vil brugeren bedes tilføje instruktioner, tid og ingredienser.
+Når en opskrift oprettes, vil brugeren bedes tilføje instruktioner, tid og ingredienser.
 En bruger vil have mulighed for at ændre i sine egne opskrifter, og ligeledes kunne kopiere andres opskrifter og derefter tilføje ændringer i disse.
 Fra ingredienslisten på en opskrift kan brugerne tilføje en eller flere varer til deres indkøbslister, samt skalere ingredienslisten til et bestemt antal personer, så brugerne får købt den rigtige mængde.
-Brugerne har også mulighed for at vurdere opskrifter, ud fra brugerens vurderinger, vil systemet anbefale nye opskrifter til brugeren.
-
-\textbf{Objekter:} Opskrift, Vurdering, liste af vurderinger, varer, indkøbsliste.
-
-\textbf{Funktioner:} Se opskrift, oprette opskrift, ændre opskrift, klone opskrift, vurder opskrift, tilføj vare til liste, skalering af opskrift, slette opskrift.
-
-%\subsubsection*{Vurder}
-%\textbf{Brugsmønster:}
-%Efter en opskrift er vurderet, kan andre brugere se den gennemsnitlige vurdering af en opskrift, og de brugere som har vurderet opskrifter, vil få anbefalet opskrifter som ligner.
-%
-%\textbf{Objekter:} Opskrift, Vurderinger, Liste af vurderinger.
-%
-%\textbf{Funktioner:} Vurder opskrift.
+Brugerne har også mulighed for at vurdere opskrifter, og ud fra disse vurderinger, vil systemet så anbefale nye opskrifter til brugeren.
+\item[Objekter]\hfill\\
+Opskrift, Vurdering, liste af vurderinger, varer, indkøbsliste.
+\item[Funktioner]\hfill\\
+Se opskrift, oprette opskrift, ændre opskrift, klone opskrift, vurder opskrift, tilføj vare til liste, skalering af opskrift, slette opskrift.
+\end{description}
 
 \subsubsection*{Se anbefalinger}
-\textbf{Brugsmønster:} Brugeren kan se foreslåede opskrifter ud fra tidligere vurderede opskrifter.
+\begin{description}[font=\normalfont\itshape]
+\item[Brugsmønster]\hfill\\
+Brugeren kan se foreslåede opskrifter ud fra tidligere vurderede opskrifter.
+\item[Objekter]\hfill\\
+Opskrift, Vare.
+\item[Funktioner]\hfill\\
+Send anbefaling.
+\end{description}
 
-\textbf{Objekter:} Opskrift, Vare.
-
-\textbf{Funktioner:} Send anbefaling.
-
-\subsubsection*{Hent tilbud}
-\textbf{Brugsmønster:} Dette brugsmønster igangsættes af systemet, der periodisk henter tilbud fra eTilbudsavis og gemmer dem i systemet.
-
-\textbf{Objekter:} Tilbud.
-
-\textbf{Funktioner:} Hent tilbud.
+\subsubsection{Hent tilbud}
+\begin{description}[font=\normalfont\itshape]
+\item[Brugsmønster]\hfill\\
+Dette brugsmønster igangsættes af systemet, der periodisk henter tilbud fra eTilbudsavis, og gemmer dem i systemet.
+\item[Objekter]\hfill\\
+Tilbud.
+\item[Funktioner]\hfill\\
+Hent tilbud.
+\end{description}
