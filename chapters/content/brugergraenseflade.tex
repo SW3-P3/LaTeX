@@ -33,7 +33,7 @@ Feedback, får brugeren til at føle, at deres handlinger har gjort noget; derve
 Det er desuden relevant at gruppere felter på en brugergrænseflade, for at vise de hænger sammen. 
 Her kan benyttes en af Getalts love om perception, f.eks. proximity, eller continuity.\citep{DIS2014}
 
-\textbf{WIMP}
+\textbf{WIMP}\hfill\\
 En generel hjemmeside falder ind under begrebet WIMP, som er en type brugergrænseflade. Det står for \textit{Windows}, \textit{Icons}, \textit{Menus} og \textit{Pointers}.
 Vinduerne(\textit{Windows}) indelukker forskellige data og aktioner, man kan inteagere med på hjemmesiden, som f.eks. at tilgå opskrifter, eller en indkøbsliste.
 Ikoner(\textit{Icons}) bruges til at fortælle og vise handlinger eller emner.
@@ -42,8 +42,8 @@ Menuer(\textit{Menus}) bruges til at navigere på hjemmesider f.eks. imellem vin
 Pointeren(\textit{Pointers}) er redskabet, der bruges til hjemmesiden, og er på en almindelig pc ofte en markør, og på mobiltelefoner bruges touch-skærme, hvor ens fingre fungerer som pointere.
 
 
-\textbf{Mobilt interface}
-PÅ en enhed som f.eks. en smartphone er skærmen meget mindre, der er derfor mindre plads til information på skærmen. 
+\textbf{Mobilt interface}\hfill\\
+På en enhed som f.eks. en smartphone er skærmen meget mindre, der er derfor mindre plads til information på skærmen. 
 En række principper er udgivet af google\citep{Mobil}, og deres hovedpunkter er:
 \begin{itemize}[nolistsep,noitemsep]
 	\item Design hele hjemmesiden til at være mobilvenlig.
@@ -79,7 +79,7 @@ For at hjælpe med forståelsen af de forskellige komponenter, bruges ikoner, de
 \subsection{Implementation}
 I dette afsnit vil vi opsumere og beskrive en række design principper og teknologier, samt deres konkrete brug i implementationen af vores generelle brugergrænseflade. Derudover vil vi vurdere på betydning af disse for systememts brugervenlighed og kæde det sammen med ovenstående teori.
 
-\subsubsection{Globale design principper}
+\textbf{Globale design principper}\hfill\\
 Hele hjemmesiden er sikret et ens grund design, vha. det der kaldes et \textit{layout view}.
 Når en bruger beder om at få vist en side fra systemet, er det \textit{layout view'et} der står for brugergrænsefladen.
 Det sørger for at indlæse de rigtige scripts, stylesheets, navigerings-baren og til sidst det konkrete view, som brugeren har forespørgt.
@@ -136,7 +136,7 @@ Vi udnytter gitter-systemet, som bootstrap stiller til rådighed, og for at få 
 Med denne blanding af bootstrap og vores eget CSS, kan vi tilpasse systemet præcis som vi vil. 
 En af de andre funktioner, vi benytter fra bootstrap, er ``glyphicons'', der giver vores system en skub imod mere consistency og affordance, i og med ikonet beskriver overskriften, samt er ens fra navigerings-baren.
 
-\subsubsection{Mobil tilpasning}
+\textbf{Mobil tilpasning}\hfill\\
 Det meste af vores tilpasning til mobil-platformen, klares af bootstaps responsive design, som de opnår ved at definere forskellige atributter for forskellige skærm størrelser.
 Derudover benytter vi os af CSS-klasser, fra bootstrap, som kan skjule og/eller vise ting ved netop forskellige skærm størrelser.
 
