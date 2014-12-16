@@ -1,15 +1,16 @@
 \section{Analyse af anvendelsesområdet}\label{sec:anvendelses}
-Her analyseres anvendelsesområdet, dette omfatter brug af systemet, funktioner i systemet samt grænsefladen det er tilknyttet.\citep{OOA&D2001}
-Afsnittet skal give et overblik over funktionaliteten af systemet, samt formidle hvordan aktørerne interagerer med dette.
+Her analyseres anvendelsesområdet, dette omfatter brug af systemet, funktioner i systemet, samt grænsefladen det er tilknyttet.\citep{OOA&D2001}
+Afsnittet skal give et overblik over funktionaliteten af systemet, og formidle hvordan aktørerne interagerer med dette.
 
 \subsection{Brug}
 Denne del af analysen har til formål at fastlægge interaktion mellem systemets og dets aktører.
 Dette gøres ved at identificere brugsmønstre for aktørerernes aktioner i systemet.
 
-\subsubsection*{Aktører}
+\subsubsection{Aktører}
 I dette IT-system er der blevet identificeret to aktører.
-Der skal bruges et andet system til at indhente data om tilbudene fra butikkerne, dette gøres via eTilbudsavis' API og er derfor den ene aktør og den anden værende de brugere, som benytter systemet.
-For disse to aktører er der således udarbejdet en aktørtabel, \myref{aktortabel}, der giver overblik over hvilke brugsmønstre der er, samt hvilke aktører der er relevante for disse.
+Der skal bruges et andet system til at indhente data om tilbudene fra butikkerne, hvilket gøres via eTilbudsavis' API.
+Derfor er eTilbudsavis den ene aktør og den anden værende de brugere, som benytter systemet.
+For disse to aktører er der således udarbejdet en aktørtabel, \myref{aktortabel}, der giver overblik over, hvilke brugsmønstre der findes, samt hvilke aktører der er relevante for disse.
 
 \begin{table}[h]
 \centering
@@ -24,43 +25,50 @@ Søgning             & X		                    & 		 		\\
 Indstil præferencer & X		                    & 		 		\\
 Vurder opskrift     & X		                    & 		 		\\
 Se anbefalinger     & X		                    & 		 		\\
-Hent tilbud			& 							& X				\\ \hline
+Hent tilbud		    & 							& X				\\ \hline
 \end{tabular}
-\caption{Aktørtabel. Viser hvilke aktører er involveret i hvilke brugsmønstre}\label{aktortabel}
+\caption{Aktørtabel. Viser hvilke aktører, der er involveret i hvilke brugsmønstre}\label{aktortabel}
 \end{table}
 
-\subsubsection*{Bruger}
+\subsubsection{Bruger}
 
-\textit{Formål:} En person, som ønsker at bruge en eller flere af IT-systemets funktionaliteter, til at hjælpe med planlægning af mad og indkøb.
-
-\textit{Karakteristik:} Systemets brugere har meget varierende erfaring med IT-systemer, og er fordelt ud over en bred aldersgruppe.
-
-\textit{Eksempler:}Bruger A er en 21-årig universitetsstuderende, som for nyligt er flyttet hjemmefra. A har meget erfaring med IT, og bruger det dagligt til at navigere rundt på internettet.
+\begin{description}[font=\normalfont\itshape]
+\item[Formål]\hfill\\
+En person som ønsker at bruge en eller flere af IT-systemets funktionaliteter til at hjælpe med planlægning af mad og indkøb.
+\item[Karakteristik]\hfill\\
+Systemets brugere har meget varierende erfaring med IT-systemer, og er fordelt ud over en bred aldersgruppe.
+\item[Eksempler]\hfill\\
+Bruger A er en 21-årig universitetsstuderende, som for nyligt er flyttet hjemmefra. A har meget erfaring med IT, og bruger det dagligt til at navigere rundt på internettet.
 A har let ved at navigere rundt i systemet, og bruge dets funktionaliteter til at spare penge.
-
 Bruger B er en 47-årig familiefar, der kun har smartphone, da dette er arbejdstelefonen givet af hans arbejdsgiver.
 B benytter systemet til at handle ind på vej hjem fra arbejde, hvor indkøbslisten lavet af konen eller datteren, bruges som guide i supermarkedet.
 B vil således gerne kunne tilgå listen fra telefonen, så der ikke er behov for at køre hjem og hente den på papirformat, eller at ringe hjem og høre hvad der mangler.
+\end{description}
 
-\subsubsection*{eTilbudsavis}
+\subsubsection{eTilbudsavis}
 
-\textit{Formål:} eTilbudsavis har til formål at gøre tilbudsdata tilgængelig for systemet, dette sker igennem deres API, som giver information om navnet på tilbudet, pris, periode, butik og meget andet. 
+\begin{description}[font=\normalfont\itshape]
+\item[Formål]\hfill\\ 
+eTilbudsavis har til formål at gøre tilbudsdata tilgængelig for systemet, dette sker igennem deres API, som giver information om: navnet på tilbudet, pris, periode, butik og meget andet. 
 Brugen heraf beskrives nærmere i \myref{api}.
-
-\textit{Karakteristik:} API'et fra eTilbudsavis leverer data i formatet JSON, og er konsistent i formatet hvorpå dataene leveres. 
+\item[Karakteristik]\hfill\\
+API'et fra eTilbudsavis leverer data i formatet JSON, og er konsistent i formatet hvorpå dataene leveres. 
 Derfor er det nemt at gemme relevante data i vores eget format.
+\item[Eksempel]\hfill\\
+Føtex udgiver en ny tilbudsavis, og gennem API'et hentes tilbud fra avisen, og disse gemmes i systemet i form af objekter af tilbudsklassen.
+\end{description}
 
-\textit{Eksempel:} Føtex udgiver en ny tilbudsavis, og gennem API'et hentes tilbud fra avisen, og disse gemmes i systemet i form af objekter af tilbudsklassen.
-
-\subsubsection*{Brugsmønstre}
-For en yderligere beskrivelse af de funktionaliteter som er i systemet, og vedrører en given aktør, modelleres en række brugsmønstre lavet på baggrund af hændelserne repræsenteret på \myref{handelser}, dette er de samme brugsmønstre som ses i \myref{aktortabel}.
+\subsubsection{Brugsmønstre}
+For en yderligere beskrivelse af de funktionaliteter, som er i systemet og vedrører en given aktør, modelleres en række brugsmønstre, lavet på baggrund af hændelserne repræsenteret på \myref{handelser}.
+Dette er de samme brugsmønstre som ses i \myref{aktortabel}.
 Hver enkelt af disse mønstre vil blive beskrevet igennem en brugsmønstrespecifikation.
-Det er ikke alle mønstre som ses på denne liste, nogle af disse er sammentrækninger af flere andre mønstre, som alene virker simple og repetitive at beskrive.
-Andre er udeladt da de minder meget om allerede beskrevede brugsmønstre.
+Det er ikke alle mønstre, som ses på denne liste.
+Nogle af disse er sammentrækninger af flere andre mønstre, som alene virker simple og repetitive at beskrive.
+Andre er udeladt, da de minder meget om allerede beskrevede brugsmønstre.
 
 \input{chapters/content/Brugsmonstre.tex}
 
-\subsubsection*{Tilstanden af system}
+\subsubsection{Tilstanden af system}
 \begin{figure}
 	\centering
 	\includegraphics[scale=0.6, angle=90]{images/Diagrams/Tilstandsdiagram.PNG}

@@ -31,17 +31,16 @@ bruges til at fjerne ressourcer.
 Svarer til DELETE i CRUD.
 
 \subsection{Design}
-eTilbudsavis' API er kun et halv-offentligt API, dvs. at man skal have en API-nøgle (``APIKEY'') og dertilhørende hemmelighed (``Secret'').
+eTilbudsavis' API er kun et halv-offentligt API, dvs. at man skal have en API-nøgle (``APIKEY'') og dertilhørende hemmelighed (``Secret''), som vi har modtaget eTilbudsavis.
 API'en er placeret på \textit{https://api.etilbudsavis.dk/v2/}. \citep{eTilAPI}
 
 For at kommunikere med API'en fra C\#-kode anvendes værktøjet RestSharp. RestSharp er en simpel REST og HTTP API klient for et .NET miljø. \citep{RestSharp}
 For at kunne bruge informationen laves der en klasse, som svarer til det JSON som API'en sender tilbage.
 
-\subsection{Motivation}\label{api:skoddata}
+\subsection{Vurdering}\label{api:skoddata}
 Vi har valgt at benytte et API, især eTilbudsavis' API, da det giver os muligheden for at arbejde med og vise faktiske tilbud.
-Der er dog visse ulemper ved, at vi benytter os af eTilbudsavis' API. 
-Det data vi modtager er ikke, hvad vi ville betegne som ``optimalt''. 
-Med dette menes der, at dataet for eksempel ikke indeholder; informationer om grupperede tilbud, kategori-inddeling eller forekomster af allergener i varerne. 
+Der er dog fundet visse ulemper ved, at vi benytter os af eTilbudsavis' API.. 
+Det data vi modtager begrænser os fra at udvikle flere funktioner da det f.eks. ikke indeholder; information omkring mængde tilbud, kategori-inddeling eller forekomster af allergener i varerne. 
 Dette er funktioner vores testpersoner har adspurgt. 
 Hvis disse tre attributter havde været tilstede, ville systemet for eksempel være i stand til at frasortere tilbud, der indeholder spor af jordnødder eller lignende, hvis den pågældende bruger eksempelvis er allergisk overfor jordnødder. 
 Ligeledes ville det med kategori-inddeling være muligt at sortere mere intuitivt i tilbud, og information om grupperede tilbud ville give systemet mulighed for at præsentere visse tilbud bedre for brugeren, så der ikke opstår forvirring.
