@@ -43,18 +43,18 @@ Brugere i systemet har mulighed for at fravælge madvarer eller butikker, som vi
 
 \textbf{Funktioner:} Sæt Præferencer, Filtrer efter præferencer.
 
-\subsubsection*{Opskrift håndtering}
+\subsubsection*{Opskrifts håndtering}
 \textbf{Brugsmønster:}
 Brugeren kan interagere med opskrifter på forskellig vis. 
-Som bruger har man mulighed for at oprette opskrifter, kopiere opskrifter, ændre opskrifter og vurdere opskrifter.
+Som bruger har man mulighed for at oprette, klone, ændre, slette og vurdere opskrifter.
 Når en opskrift oprettes vil brugeren bedes tilføje instruktioner, tid og ingredienser.
 En bruger vil have mulighed for at ændre i sine egne opskrifter, og ligeledes kunne kopiere andres opskrifter og derefter tilføje ændringer i disse.
-Fra indgredienslisten på en opskrift kan brugerne tilføje en eller flere varer til deres indkøbslister, samt skalere ingredienslisten til et bestemt antal personer, så brugerne får købt den rigtige mængde.
+Fra ingredienslisten på en opskrift kan brugerne tilføje en eller flere varer til deres indkøbslister, samt skalere ingredienslisten til et bestemt antal personer, så brugerne får købt den rigtige mængde.
 Brugerne har også mulighed for at vurdere opskrifter, ud fra brugerens vurderinger, vil systemet anbefale nye opskrifter til brugeren.
 
 \textbf{Objekter:} Opskrift, Vurdering, liste af vurderinger, varer, indkøbsliste.
 
-\textbf{Funktioner:} Se opskrift, oprette opskrift, ændre opskrift, klone opskrift, vurder opskrift, tilføje vare til liste, skalering af opskrift, slette opskrift.
+\textbf{Funktioner:} Se opskrift, oprette opskrift, ændre opskrift, klone opskrift, vurder opskrift, tilføj vare til liste, skalering af opskrift, slette opskrift.
 
 %\subsubsection*{Vurder}
 %\textbf{Brugsmønster:}
@@ -65,15 +65,14 @@ Brugerne har også mulighed for at vurdere opskrifter, ud fra brugerens vurderin
 %\textbf{Funktioner:} Vurder opskrift.
 
 \subsubsection*{Se anbefalinger}
-\textbf{Brugsmønster:} Brugeren kan se hvilke opskrifter, som er foreslået ud fra tidligere vurderede opskrifter.
+\textbf{Brugsmønster:} Brugeren kan se foreslåede opskrifter ud fra tidligere vurderede opskrifter.
 
 \textbf{Objekter:} Opskrift, Vare.
 
 \textbf{Funktioner:} Send anbefaling.
 
 \subsubsection*{Hent tilbud}
-\textbf{Brugsmønster:} Dette brugsmønster igangsættes af systemet, der efter et specifikt tidsinterval kalder \textbf{eTilbudsavis}.\fxnote{Vi har jo ikke implementeret det således, hvordan skal vi formulere det?  evt. Hvis hjemmesiden blev deployed til en server ville det køre på et specifikt tidsinterval, men i dette projekt gøres det manuelt ved at trykke på en knap. Mere om det i myref whatever? - Søren}
-eTilbudsavis henter som følge deraf, tilbud fra en API,\fxnote{Det er vel programmet som henter vha. etilbudsavis, og ikke dem som henter vha, API?, jeg ved godt det er fordi de er aktøren, det er bare lidt forvirrende - Søren} og opdaterer systemets database med nye tilbud.
+\textbf{Brugsmønster:} Dette brugsmønster igangsættes af systemet, der periodisk henter tilbud fra eTilbudsavis og gemmer dem i systemet.
 
 \textbf{Objekter:} Tilbud.
 
