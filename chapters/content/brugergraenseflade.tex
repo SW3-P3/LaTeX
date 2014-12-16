@@ -79,13 +79,65 @@ For at hjælpe med forståelsen af de forskellige komponenter, bruges ikoner, de
 \subsection{Implementation}
 I dette afsnit vil vi opsumere og beskrive en række design principper og teknologier, samt deres konkrete brug i implementationen af vores generelle brugergrænseflade. Derudover vil vi vurdere på betydning af disse for systememts brugervenlighed og kæde det sammen med ovenstående teori.
 
+\subsubsection{Globale design principper}
 Hele hjemmesiden er sikret et ens grund design, vha. det der kaldes et \textit{layout view}.
 Når en bruger beder om at få vist en side fra systemet, er det \textit{layout view'et} der står for brugergrænsefladen.
 Det sørger for at indlæse de rigtige scripts, stylesheets, navigerings-baren og til sidst det konkrete view, som brugeren har forespørgt.
 På denne måde sikres et ens ``look'', og systemet consistency hæves, i og med at brugeren altid har adgang til den ``bekendte'' navigerings-bar.
 
 For at sikre en god mobil oplevelse, har vi først og fremmest tilladt, at der præsenteres en ``fuldskærms-oplevelse'' for brugeren, når hjemmesiden tilgås fra en mobiltelefon.
-Det følgende meta-tag sørger for at vi udnytter hele mobilens skærmbredde: \texttt{<meta name="viewport" content="width-device-width, initial-scale=1.0" />}.
-Som en lille detalje, har vi valgt at bruge følgende meta-tag, der muliggøre det på android enheder at gemme en genvej på hjemmeskærmen, og på den måde vil hjemmesiden optræde som en app, uden url-baren, der normalt optræder i browseren: \texttt{<meta name="mobile-web-app-capable" content="yes" />}.
+Det første meta-tag sørger for, at vi udnytter hele mobilens skærmbredde.
+Som en lille detalje, har vi valgt at bruge det andet meta-tag, der muliggøre det på android enheder at gemme en genvej på hjemmeskærmen, og på den måde vil hjemmesiden optræde som en app, uden url-baren, der normalt optræder i browseren.
+\begin{lstlisting}[language=HTML]
+<meta name="viewport" content="width-device-width, initial-scale=1.0" />
+<meta name="mobile-web-app-capable" content="yes" />
+\end{lstlisting}
+
+For at kunne præsentere brugeren for en ``bekendt'' side, når de navigerer rundt i systemet, har vi udarbejdet en skabelon, som vi designer alle hovedviews, med undtagelse af forsiden, udfra.
+\begin{figure}[h]
+\includegraphics[trim=3.5cm 0cm 3cm 0cm, clip=true, width=1\textwidth]{images/Images/generelt_layout.png}
+\caption{Design skabelon som beskriver den umiddelbare inddeling af views i systemet.}\label{ss:design_skabelon}
+\end{figure}
+Skabelonen er simpelt bygget op med tre hoved grupper, foruden navigerings-baren og footeren. En gruppe til ikon(glyphicon), overskrift og forklarende hjælpetekst, en anden gruppe til knapper og relevante funktioner (det kunne f.eks. være en ``Opret indkøbsliste''-knap), og en tredje gruppe til selve hovedindholdet.
+I HTML syntaks vil \myref{ss:design_skabelon}, se således ud:
+\begin{lstlisting}[language=HTML, caption=HTML-kode med de tre hoved grupper, label=html:design_skabelon]
+<div class="page-header nopadding-xs">
+    <div class="container-fluid nopadding">
+        <div class="col-md-9 col-xs-12 nopadding">
+            <!--- Første gruppe --->
+            <h1><span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;Overskrift</h1>
+            <p class="hidden-xs lead text-muted nopadding">
+                Kort og beskrivende tekst, som brugeren kan falde tilbage på, hvis det bliver nødvendligt med hjælp.
+                Også generel beskrivelse af, hvad det er muligt at gøre i pågældende view.
+            </p>
+            <!--- Første gruppe slut --->
+        </div>
+        <div class="col-md-3 col-xs-12 nopadding">
+            <!--- Anden gruppe --->            
+            <div class="well lead">
+                Relevante knapper og/eller funktioner for view'et.
+            </div>
+            <!--- Anden gruppe slut --->
+        </div>
+    </div>
+</div>
+<div class="container-fluid nopadding">
+    <!--- Tredje gruppe --->
+    <div class="well well-lg lead">
+        Hovedindhold på siden, f.eks. liste over indkøbsliste eller opskrifter.<br />
+        Det er her brugeren skal bruge mest tid.
+    </div>
+    <!--- Tredje gruppe slut --->
+</div>
+\end{lstlisting}
+
+I HTML koden i \myref{html:design_skabelon} ses også nogle forskellige bootstrap klasser, der gør, at resultatet bliver det, der kan ses \myref{ss:design_skabelon}. 
+Vi udnytter gitter-systemet, som bootstrap stiller til rådighed, og for at få indholdet til at stå, som vi vil have det, og samtidigt se pænt ud på mobil-platform, har vi bl.a. vores egne CSS-klasser som f.eks. \texttt{nopadding}. 
+Med denne blanding af bootstrap og vores eget CSS, kan vi tilpasse systemet præcis som vi vil. 
+En af de andre funktioner, vi benytter fra bootstrap, er ``glyphicons'', der giver vores system en skub imod mere consistency og affordance, i og med ikonet beskriver overskriften, samt er ens fra navigerings-baren.
+
+\subsubsection{Mobil tilpasning}
+Det meste af vores tilpasning til mobil-platformen, klares af bootstaps responsive design, som de opnår ved at definere forskellige atributter for forskellige skærm størrelser.
+Derudover benytter vi os af CSS-klasser, fra bootstrap, som kan skjule og/eller vise ting ved netop forskellige skærm størrelser.
 
 \subsection{Konklusion}
