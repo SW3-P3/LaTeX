@@ -1,35 +1,34 @@
 \subsubsection*{Brugeridentifikation}
-\textbf{Brugsmønster:} Brugeridentifikation sker ved at en \textbf{bruger} logger ind i systemet.
+\textit{Brugsmønster:} Brugeridentifikation sker ved at en bruger logger ind i systemet.
 Brugeren vil blive præsenteret for en side hvor, e-mail og password kan indtastes.
-Herefter godkender eller afviser systemet den opgivne data og håndterer resultatet, enten ved at logge brugeren ind, eller bede om informationen igen.
-Alternativt kan brugeren oprette en ny konto i systemet, brugeren vil blive bedt om samme information som login, dog vil der også spørges efter et navn, men håndterer i stedet informationen ved at oprette en bruger med dataene, der er opgivet.
-Når en bruger er logget vil den kunne tilgå bruger-specifik information såsom præferencer og indkøbslister såvel som ændre på disse.
+Herefter godkender eller afviser systemet den indtastede data og håndterer resultatet, enten ved at logge brugeren ind, eller ved at give en fejlbesked.
+Alternativt kan brugeren oprette en ny konto i systemet, ved oplysning af navn e-mail og password.
+Hvis du ikke er logget ind i systemet kan du ikke tilgå systemets funktionaliteter.
 
-\textbf{Objekter:} Person.
+\textit{Objekter:} Person.
 
-\textbf{Funktioner:} Registrer bruger, Log ind, Log ud.
+\textit{Funktioner:} Registrer bruger, Log ind, Log ud.
 
 \subsubsection*{Listehåndtering}
 \textbf{Brugsmønster:} Dette brugsmønster dækker over indkøbslisten såvel som overvågningslisten.
-Brugeren kan inden for listens brugsmønstre tilgå alle funktionaliteter i vilkårlig rækkefølge, givet der er oprettet en liste på forhånd.
-En bruger kan altid oprette en indkøbsliste, ved at oprette en tom liste.
-Ligeledes kan en bruger slette lister igen.
+Brugeren kan inden for listens brugsmønstre tilgå funktionaliteterne i vilkårlig rækkefølge, givet der er oprettet en liste på forhånd.
+En bruger kan oprette, dele og slette sine egne indkøbslister.
+Hvis en liste er delt med andre og prøver at slette denne, forlader brugeren listen frem for at slette den.
 Overvågningslisten på den anden hånd, eksisterer altid og kan hverken oprettes eller slettes.
 Brugeren kan på begge lister tilføje eller fjerne en vare.
 Varerne på overvågningslisten er varer som brugeren er interesserede i at få tilbud om.
 Når en vare på denne liste kommer på tilbud modtager brugeren en notifikation derom.
 Ved indkøbslisten er der tre funktionaliteter til at tilføje ting til listen.
-Man kan tilføje varer, tilbud, eller ingredienser fra en opskrift.
-Ydermere kan en bruger aftjekke eller fjerne vare fra listen, såvel som dele deres liste med andre brugere.
+Man kan tilføje ingredienser fra en opskrift.
+Ydermere kan en bruger aftjekke eller fjerne varer fra listen.
 
 \textbf{Objekter:} Indkøbsliste, Overvågningsliste, Varer, Tilbud, Personer, Opskrifter.
 
-\textbf{Funktioner:} Opret liste, Fjern liste, Tilføj til liste, Fjern fra liste, Aftjek på liste, Del liste.
+\textbf{Funktioner:} Opret liste, Fjern Indkøbsliste, Tilføj til liste, Fjern fra liste, Aftjek på indkøbsliste, Del liste, Forlad Indkøbsliste.
 
 \subsubsection*{Søgning}
-\textbf{Brugsmønster:} Dette brugsmønster igangsættes af brugeren.
-Brugeren kan søge efter varer, hvorefter systemet filtrerer efter søgestrengen for at finde relevante resultater.
-Dette brugsmønster benyttes flere steder, både til at finde vare og tilbud til at tilføje til lister, såvel som at finde opskrifter.
+\textbf{Brugsmønster:} Brugeren kan søge efter varer, hvorefter systemet filtrerer efter søgestrengen for at finde relevante resultater.
+Dette brugsmønster benyttes flere steder, både til at søge på tilbud til sine varer, såvel som opskrifter.
 
 
 \textbf{Objekter:} Vare, Tilbud, Opskrifter.
@@ -37,12 +36,10 @@ Dette brugsmønster benyttes flere steder, både til at finde vare og tilbud til
 \textbf{Funktioner:} Søg efter tilbud, Søg efter opskrifter.
 
 \subsubsection*{Tilpas præferencer}
-\textbf{Brugsmønster:} Brugsmønstret benyttes af en bruger.
-I denne del af systemet har brugeren mulighed for at indstille sine præferencer vedrørende madtyper.
-Brugeren kan blackliste forskellige typer af mad såsom fisk, resulterende i at opskrifter indeholdende fisk vil være sorteret fra under opskrifter, samt fjernelse af tilbud med fisk.
-Ligeledes er det muligt for brugeren at fjerne bestemte butikker, hvor der ikke ønskes at ses tilbud fra.
+\textbf{Brugsmønster:} 
+Brugere i systemet har mulighed for at fravælge madvarer eller butikker, som vises i programmet.
 
-\textbf{Objekter:} Blacklist.
+\textbf{Objekter:} Varer.
 
 \textbf{Funktioner:} Sæt Præferencer, Filtrer efter præferencer.
 
@@ -50,14 +47,14 @@ Ligeledes er det muligt for brugeren at fjerne bestemte butikker, hvor der ikke 
 \textbf{Brugsmønster:}
 Brugeren kan interagere med opskrifter på forskellig vis. 
 Som bruger har man mulighed for at oprette opskrifter, kopiere opskrifter, ændre opskrifter og vurdere opskrifter.
-Når en opskrift oprettes vil brugeren, udover at kunne tilføje almindelige ting, også tilføje instruktioner, tid og ingredienser.
+Når en opskrift oprettes vil brugeren bedes tilføje instruktioner, tid og ingredienser.
 En bruger vil have mulighed for at ændre i sine egne opskrifter, og ligeledes kunne kopiere andres opskrifter og derefter tilføje ændringer i disse.
 Fra indgredienslisten på en opskrift kan brugerne tilføje en eller flere varer til deres indkøbslister, samt skalere ingredienslisten til et bestemt antal personer, så brugerne får købt den rigtige mængde.
 Brugerne har også mulighed for at vurdere opskrifter, ud fra brugerens vurderinger, vil systemet anbefale nye opskrifter til brugeren.
 
 \textbf{Objekter:} Opskrift, Vurdering, liste af vurderinger, varer, indkøbsliste.
 
-\textbf{Funktioner:} Se opskrift, Oprette opskrift, ændre opskrift, kopier opskrift, vurder opskrift, tilføje vare til liste, skalering af opskrift.
+\textbf{Funktioner:} Se opskrift, oprette opskrift, ændre opskrift, klone opskrift, vurder opskrift, tilføje vare til liste, skalering af opskrift, slette opskrift.
 
 %\subsubsection*{Vurder}
 %\textbf{Brugsmønster:}
