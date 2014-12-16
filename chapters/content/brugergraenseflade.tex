@@ -83,9 +83,9 @@ I dette afsnit vil vi opsumere og beskrive en række design principper og teknol
 Hele hjemmesiden er sikret et ens grund design, vha. det der kaldes et \textit{layout view}.
 Når en bruger beder om at få vist en side fra systemet, er det \textit{layout view'et} der står for brugergrænsefladen.
 Det sørger for at indlæse de rigtige scripts, stylesheets, navigerings-baren og til sidst det konkrete view, som brugeren har forespørgt.
-På denne måde sikres et ens ``look'', og systemet consistency hæves, i og med at brugeren altid har adgang til den ``bekendte'' navigerings-bar.
+På denne måde sikres et ens ``look'', og systemet consistency hæves, i og med at brugeren altid har adgang til den bekendte navigerings-bar.
 
-For at sikre en god mobil oplevelse, har vi først og fremmest tilladt, at der præsenteres en ``fuldskærms-oplevelse'' for brugeren, når hjemmesiden tilgås fra en mobiltelefon.
+For at sikre en god mobil oplevelse, har vi først og fremmest tilladt, at der præsenteres en fuldskærms-oplevelse for brugeren, når hjemmesiden tilgås fra en mobiltelefon.
 Det første meta-tag sørger for, at vi udnytter hele mobilens skærmbredde.
 Som en lille detalje, har vi valgt at bruge det andet meta-tag, der muliggøre det på android enheder at gemme en genvej på hjemmeskærmen, og på den måde vil hjemmesiden optræde som en app, uden url-baren, der normalt optræder i browseren.
 \begin{lstlisting}[language=HTML]
@@ -93,7 +93,7 @@ Som en lille detalje, har vi valgt at bruge det andet meta-tag, der muliggøre d
 <meta name="mobile-web-app-capable" content="yes" />
 \end{lstlisting}
 
-For at kunne præsentere brugeren for en ``bekendt'' side, når de navigerer rundt i systemet, har vi udarbejdet en skabelon, som vi designer alle hovedviews, med undtagelse af forsiden, udfra.
+For at kunne præsentere brugeren for en bekendt side, når de navigerer rundt i systemet, har vi udarbejdet en skabelon, som vi designer alle hovedviews, med undtagelse af forsiden, udfra.
 \begin{figure}[h]
 \includegraphics[trim=3.5cm 0cm 3cm 0cm, clip=true, width=1\textwidth]{images/Images/generelt_layout.png}
 \caption{Design skabelon som beskriver den umiddelbare inddeling af views i systemet.}\label{ss:design_skabelon}
@@ -134,7 +134,7 @@ I HTML syntaks vil \myref{ss:design_skabelon}, se således ud:
 I HTML koden i \myref{html:design_skabelon} ses også nogle forskellige bootstrap klasser, der gør, at resultatet bliver det, der kan ses \myref{ss:design_skabelon}. 
 Vi udnytter gitter-systemet, som bootstrap stiller til rådighed, og for at få indholdet til at stå, som vi vil have det, og samtidigt se pænt ud på mobil-platform, har vi bl.a. vores egne CSS-klasser som f.eks. \texttt{nopadding}. 
 Med denne blanding af bootstrap og vores eget CSS, kan vi tilpasse systemet præcis som vi vil. 
-En af de andre funktioner, vi benytter fra bootstrap, er ``glyphicons'', der giver vores system en skub imod mere consistency og affordance, i og med ikonet beskriver overskriften, samt er ens fra navigerings-baren.
+En af de andre funktioner, vi benytter fra bootstrap, er \textit{glyphicons}, der giver vores system en skub imod mere consistency og affordance, i og med ikonet beskriver overskriften, samt er ens fra navigerings-baren.
 
 \textbf{Mobil tilpasning}\hfill\\
 Det meste af vores tilpasning til mobil-platformen, klares af bootstaps responsive design, som de opnår ved at definere forskellige atributter for forskellige skærm størrelser.
