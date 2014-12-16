@@ -81,7 +81,7 @@ Til sidst sorteres denne liste af opskrifter, efter forventet vurdering.
 \begin{lstlisting}[caption=Metoden RecommendRecipes. Sorterer opskrifter efter forventede vurdering for en given bruger.", label=recommendrecipes]
 public IEnumerable<Recipe> RecommendRecipes(User user)
 {
-    [...]
+    /* [...] */
     // Pair the ingrdients with the rating given
     // If two ingredients are the same, take the avg of both ratings.
     var itemsWithRatings = new List<Tuple<Item, List<decimal>>>();
