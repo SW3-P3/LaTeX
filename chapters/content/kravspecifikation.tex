@@ -2,7 +2,7 @@
 
 På baggrund af analysen af problemområdet, anvendelsesområdet og interviewene beskrevet i  \myref{section:interview2} kan der nu opstilles krav til systemet, samt hvad det skal kunne.
 Følgende user stories er baseret på brugsmønstrene og funktionerne fra \myref{sec:anvendelses}, samt svarene fra de interviewede.
-Som nævnt i \myref{chapter:Metode} benytter vi user stories til at formulere kravspefikationen, da vi benytter Scrum.
+Som nævnt i \myref{chapter:Metode} benytter vi user stories til at formulere kravspefikationen, da vi benytter Scrum. \fxnote{Er det pga. scrum eller agile? - Søren}
 \begin{enumerate}
 	\item Som en bruger vil jeg kunne oprette indkøbslister.
 	\item Som en bruger vil jeg kunne tilføje varer til min(e) indkøbsliste(r).
@@ -23,7 +23,7 @@ Som nævnt i \myref{chapter:Metode} benytter vi user stories til at formulere kr
 	\item Som en bruger vil jeg kunne finde opskrifter.
 	\item Som en bruger vil jeg kunne finde opskrifter ud fra anbefalinger til mig.
 	\item Som en bruger vil jeg kunne vurdere opskrifter jeg har prøvet.
-	\item Som en bruger vil jeg kunne tilføje ingredienser for en opskrift til mine indkøbsliste.
+	\item Som en bruger vil jeg kunne tilføje ingredienser for en opskrift til min indkøbsliste.
 	\item Som en bruger vil jeg kunne skalere opskrifterne til et valgt antal personer.
 \end{enumerate}
 Gruppen mener dog også at følgende user story ville være relevant: 
@@ -43,11 +43,11 @@ Desuden stilles der yderligere krav til projektet og systemet, bl.a. fra funktio
 \item Systemet skal kunne modtage feedback på de opskrifter brugerne prøver.
 \item Systemet skal kunne anbefale opskrifter på baggrund af:
 \begin{enumerate}
-	\item Madvaner (varieret kost).\fxnote{Dette krav er ikke overholdt, og har aldrig været med i vores overvejelser til udviklingsprocess. Fjern det?? - Troels}
 	\item Bedømmelse på opskrift.
 \end{enumerate}
-\item Systemet skal kunne fjerne forslag om eksempelvis kød til vegetarer ud fra præferencer.
+\item Systemet skal kunne fjerne forslag om eksempelvis kød til vegetarer ud fra præferencer. \fxnote{Ikke Opfyldt, slet?}
 \end{enumerate}
+\fxnote{Generelt er disse krav underlige, de 3 første giver meninge resten er enten ikke opfyldt eller dækket af user stories.}
 
 \subsection{Krav til UI (brugergrænseflade)}
 \begin{enumerate}
@@ -55,8 +55,8 @@ Desuden stilles der yderligere krav til projektet og systemet, bl.a. fra funktio
 	\item Systemet skal kunne anvendes på forskellige enheder
 	\item Systemets UI skal være responsivt og tilpasse sig den anvendte platform.
 	\item Brugerne skal synes det er nemt at skabe sig overblik over systemet og navigering heri.
-\end{enumerate}
+\end{enumerate}\fxnote{Disse krav dukker op ud af den blå luft. Hvis vi lader dem være skal der sættes en henvisning til brugergrænseflade afsnittet, specifikt ang. det med responsivt UI som er guideline fra google.}
 
 Alle kravene i dette afsnit vil blive taget i betragtning, under design og implementering af systemet.
-Slutteligt i rapporten konkluderes der på hvor vidt disse krav er opfyldt, og desuden vil der udføres endnu en række interviews med brugere for at teste deres tilfredsstillelse med systemet.
-I de følgende afsnit vil udviklingsprocessen yderligere beskrives, samt designet og implementationerne af løsninger til kravene stillet i dette afsnit.
+Slutteligt i rapporten\fxnote{Dette gør vi bare i konklusionen når vi ingen diskussion har så? Right? - Søren} konkluderes der på hvor vidt disse krav er opfyldt, og desuden vil der udføres brugertests med dertilhørende spørgsmål om produktet for at teste systemets brugervenlighed og funktionalitet, samt brugernes tilfredsstillelse med systemet.
+I de følgende afsnit vil udviklingsprocessen yderligere beskrives, samt designet og implementeringerne af løsningerne til kravene stillet i dette afsnit.

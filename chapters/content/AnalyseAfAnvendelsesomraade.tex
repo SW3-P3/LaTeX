@@ -101,11 +101,12 @@ Kompleksitet beskriver hvor kompleks en given funktion er, dette fastsættes på
       Give vurdering				& Simpel       		& Opdatering	\\
       Sende anbefaling				& Meget kompleks	& Aflæsning, signalering, beregning		\\
       Meddele tilbud på varer		& Medium      		& Signalering	\\
-	    Se opskrifter					& Simpel       		& Aflæsning		\\
-      Oprette opskrift      & Simpel          & Opdatering  \\
-      Ændre opskrift        & Simpel          & Opdatering \\
-      Kopier opskrift       & Simpel          & Opdatering \\
-	    Se tilbud						& Simpel       		& Aflæsning		\\
+	  Se opskrifter					& Simpel       		& Aflæsning		\\
+      Oprette opskrift      		& Simpel            & Opdatering  	\\
+      Ændre opskrift        		& Simpel            & Opdatering	\\
+      Kopier opskrift       		& Simpel            & Opdatering 	\\
+      Skaler opskrift				& Simpel			& Beregning		\\
+	  Se tilbud						& Simpel       		& Aflæsning		\\
       Hente tilbud					& Simpel	       	& Opdatering	\\
     \end{tabular}
   \caption{Funktionstabel. Viser de forskellige funktioner der skal bruges, samt deres kompleksitet og kategori.}\label{tabel:functionstable}
@@ -142,9 +143,19 @@ Når anbefalingen er lavet skal den gives eller signaleres til brugeren.
 
 \textbf{Se opskrifter:} Funktionen skal hente opskrifterne fra modellaget.
 
+\textbf{Oprette opskrift:} Funktionen skal oprette en opskrift ud fra brugerens givne informationer om denne.
+
+\textbf{Ændre opskrift:} Funktionen skal tilføje ændringer til en opskrift. Dog skal brugeren som oprettede opskriften være den eneste der kan ændre på den. 
+
+\textbf{Kopier opskrift:} Funktionen kopiere alle informationerne om en opskrift, således en bruger kan tilføje eller fjerne bestemte ingredienser for at personificere dem.
+
+\textbf{Skaler opskrift:} Funktionen skalere ingredienslisten på en opskrift, således en opskrift til 6 personer kan skaleres til det dobbelte altså 12 personer. Dette skal ikke gemmes i systemet, men blot beregnes og vises for brugeren.		
+
 \textbf{Se tilbud:} Funktionen henter tilbudene fra modellaget.
 
 \textbf{Hente tilbud:} Denne funktion henter tilbud, vha. API'et fra eTilbudsavis, disse skal derefter gemmes i modellaget.
+
+\fxnote{Har lidt svært ved at se om vi får dette brugt = / . På den ene side hjælper det til at danne overblik over hvilke funktioner der skal udvikles til systemet. Vi kunne evt under user stories på næste side, skrive hvilke der hører til hvor? Give dem numre og så henvise til dem osv? - Søren}
 
 Denne analyse af funktionerne hjælper med at danne et overblik over hvilke funktionaliteter der skal designes, samt hjælper det til at stille krav til systemet.
 I det følgende afsnit stilles der krav til systemet.
