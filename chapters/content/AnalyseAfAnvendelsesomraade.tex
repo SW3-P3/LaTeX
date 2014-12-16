@@ -1,14 +1,15 @@
 \section{Analyse af anvendelsesområdet}\label{sec:anvendelses}
-Dette afsnit tager udgangspunkt i metoder fra ''Objektorienteret Analyse og Design'' og benytter metoder herfra til at analyserer anvendelsområdet, dette omfatter brug af systemet, funktioner i systemet samt grænsefladen der er tilknyttet.\citep{OOA&D2001}
-Afsnittet skal give et overblik over funktionaliteten af systemet, samt formidle hvordan brugeren interagerer med systemet.
+Her analyseres anvendelsesområdet, dette omfatter brug af systemet, funktioner i systemet samt grænsefladen det er tilknyttet.\citep{OOA&D2001}
+Afsnittet skal give et overblik over funktionaliteten af systemet, samt formidle hvordan aktørerne interagerer med dette.
 
 \subsection{Brug}
-Denne del af analysen har til formål at fastlægge interaktion mellem systemet og aktører.
+Denne del af analysen har til formål at fastlægge interaktion mellem systemets og dets aktører.
 Dette gøres ved at identificere brugsmønstre for aktørerernes aktioner i systemet.
+
 \subsubsection*{Aktører}
 I dette IT-system er der blevet identificeret to aktører.
-Den første værende datakilden, eTilbudsavis API, hvor tilbudende hentes fra og den anden værende de brugere, som benytter systemet.
-For disse to aktører er der således udarbejdet en aktørtabel \myref{aktortabel}, der giver overblik over hvilke brugsmønstre der er, samt hvilke aktører der er relevante for disse.
+Der skal bruges et andet system til at indhente data om tilbudene fra butikkerne, dette gøres via eTilbudsavis' API og er derfor den ene aktør og den anden værende de brugere, som benytter systemet.
+For disse to aktører er der således udarbejdet en aktørtabel, \myref{aktortabel}, der giver overblik over hvilke brugsmønstre der er, samt hvilke aktører der er relevante for disse.
 
 \begin{table}[h]
 \centering
@@ -17,45 +18,42 @@ For disse to aktører er der således udarbejdet en aktørtabel \myref{aktortabe
 \begin{tabular}{rcc}
 %\hline
 				    & Bruger               		& eTilbudsavis  \\ \hline
-Login               & \cmark                    & 		 		\\
-Listehåndtering     & \cmark                    & 		 		\\
-Søgning             & \cmark                    & 				\\
-Indstil præferencer & \cmark                    & 				\\
-Vurder opskrift     & \cmark                    &  	   			\\
-Se anbefalinger     & \cmark                    & 				\\
-Hent tilbud         &  						    & \cmark 		\\ \hline
+Login               & X		                    & 		 		\\
+Listehåndtering     & X		                    & 		 		\\
+Søgning             & X		                    & 		 		\\
+Indstil præferencer & X		                    & 		 		\\
+Vurder opskrift     & X		                    & 		 		\\
+Se anbefalinger     & X		                    & 		 		\\
+Hent tilbud			& 							& X				\\ \hline
 \end{tabular}
 \caption{Aktørtabel. Viser hvilke aktører er involveret i hvilke brugsmønstre}\label{aktortabel}
 \end{table}
 
 \subsubsection*{Bruger}
 
-\textbf{Formål:}\fxnote{Det ligner oversskriften for meget, vi må kunne gøre something. - Søren} En person, som ønsker at bruge en eller flere af IT-systemets funktionaliteter, til at hjælpe med planlægning af mad og indkøb.
+\textit{Formål:} En person, som ønsker at bruge en eller flere af IT-systemets funktionaliteter, til at hjælpe med planlægning af mad og indkøb.
 
-\textbf{Karakteristik:} Systemets brugere har meget varierende erfaring med IT-systemer, samt er bredt ud over mange forskellige aldersgrupper, majoriteten er dog mellem 18 - 30 år og har middel erfaring med IT.
+\textit{Karakteristik:} Systemets brugere har meget varierende erfaring med IT-systemer, og er fordelt ud over en bred aldersgruppe.
 
-\textbf{Eksempler:}Bruger A er en 21-årig universitetsstuderende, som for nyligt er flyttet hjemmefra. A har meget erfaring med IT, og bruger det dagligt til at navigere rundt på internettet.
-A har let ved at navigere rundt i systemet og bruge dets funktionaliteter til at lave besparelser på det allerede lave budget, samt at undgå at få pasta med ketchup til aftensmad hver dag.
+\textit{Eksempler:}Bruger A er en 21-årig universitetsstuderende, som for nyligt er flyttet hjemmefra. A har meget erfaring med IT, og bruger det dagligt til at navigere rundt på internettet.
+A har let ved at navigere rundt i systemet, og bruge dets funktionaliteter til at spare penge.
 
 Bruger B er en 47-årig familiefar, der kun har smartphone, da dette er arbejdstelefonen givet af hans arbejdsgiver.
 B benytter systemet til at handle ind på vej hjem fra arbejde, hvor indkøbslisten lavet af konen eller datteren, bruges som guide i supermarkedet.
-B vil således gerne kunne tilgå listen fra telefonen, så der ikke er behov for at køre hjem og hente den på papirformat, eller at ringe hjem og høre hvad der mangles.
+B vil således gerne kunne tilgå listen fra telefonen, så der ikke er behov for at køre hjem og hente den på papirformat, eller at ringe hjem og høre hvad der mangler.
 
 \subsubsection*{eTilbudsavis}
 
-\textbf{Formål:} eTilbudsavis har til formål at gøre tilbudsdata tilgængelig for systemet, dette sker igennem deres application programming interface ("API"). \fxnote{Vi har skrevet API tusing gange før dette? What do. - Søren}
-Dette giver information om navnet på tilbudet, pris, periode, butik og meget andet. 
-Dette vil blive beskrevet nærmere i \myref{api}.
-Da dataene der hentes igennem API'et kan være af meget svingende kvalitet, filtreres det, så kun forståeligt tilbudsdata kommer igennem.
+\textit{Formål:} eTilbudsavis har til formål at gøre tilbudsdata tilgængelig for systemet, dette sker igennem deres API, som giver information om navnet på tilbudet, pris, periode, butik og meget andet. 
+Brugen heraf beskrives nærmere i \myref{api}.
 
-\textbf{Karakteristik:} eTilbudsavis er konsistent i metoden hvorpå data leveres, information der gives omkring dataene kan dog være meget varierende, hvilket resultere i en del ubrugeligt data, der som følge skal sorteres fra.
-Da eTilbudsavis altid sender dataene på samme måde, kan ubrugeligt data sorteres fra uden større problemer. \fxnote{Skal dette nævnes her? - Det kan man måske godt, ved ikke om det er bedre bare at gemme det til senere dog?}
+\textit{Karakteristik:} API'et fra eTilbudsavis leverer data i formatet JSON, og er konsistent i formatet hvorpå dataene leveres. 
+Derfor er det nemt at gemme relevante data i vores eget format.
 
-\textbf{Eksempel:} eTilbudsavis gør 2.000 tilbud tilgængelig, heri er nogle på et format der ikke klargøre hvad der er på tilbud, men blot giver en række mærkenavne som er på tilbud.
-En sådan uforståelig række bliver filtreret ud såvel som andre uforståelige tilbud, og systemet ender tilbage med 1.337 brugbare tilbud, der kan vises til brugeren. \fxnote{Det gør vi så ikke. Der filtreres på om der står komma, eller 'eller', og så blacklisten. - Søren }
+\textit{Eksempel:} Føtex udgiver en ny tilbudsavis, og gennem API'et hentes tilbud fra avisen, og disse gemmes i systemet i form af objekter af tilbudsklassen.
 
 \subsubsection*{Brugsmønstre}
-For en yderligerer beskrivelse af de funktionaliteter i systemet, som vedrører en given aktør, modelleres en række brugsmønstre lavet på baggrund af hændelserne repræsenteret på \myref{handelser}, dette er de samme brugsmønstre som ses i \myref{aktortabel}.
+For en yderligere beskrivelse af de funktionaliteter i systemet, som vedrører en given aktør, modelleres en række brugsmønstre lavet på baggrund af hændelserne repræsenteret på \myref{handelser}, dette er de samme brugsmønstre som ses i \myref{aktortabel}.
 Hver enkelt af disse mønstre vil blive beskrevet igennem en brugsmønstrespecifikation.
 Det er ikke alle mønstre som ses på denne liste, nogle af disse er sammentrækninger af flere andre mønstre, som alene virker simple og repetitive at beskrive.
 Andre er udeladt da de ikke passer helt ind i en sammentrækning, men variationen fra det mønster og andre brugsmønstre ellers beskrevet, er så minimal, at mønstret er anset som værende ubetydeligt at beskrive.
