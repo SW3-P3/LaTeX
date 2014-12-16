@@ -10,7 +10,7 @@ Opskrifterne er opstillet således der på forsiden for opskrifter kan ses den m
 Opskrifterne er opstillet vha. Bootstraps CSS klasse \class{panels} for at give en klar opdeling og en gøre det overskueligt.
 Opskrifterne indeholder alle en titel, tid, antal personer, bedømmelse, ingredienser og en fremgangsmåde.
 
-Hver opskrift er relateret til brugeren som har oprettet den, denne bruger har senere mulighed for at redigere eller slette opskriften.
+Hver \class{opskrift} er relateret til brugeren som har oprettet den, denne bruger har senere mulighed for at redigere eller slette opskriften.
 Er man ikke den bruger der har oprettet opskriften, har man mulighed for at kunne klone opskriften, dette er fra user story 18.
 Når en opskrift bliver klonet, bliver alt data fra den tidligere opskrift kopieret og derefter kan man foretage ændringer til opskriften, gemme den under et nyt navn, således opskriften kan personliggøres.
 
@@ -25,10 +25,10 @@ Brugerne kan se den gennemsnitlige vurdering på den enkelte opskrift, og ud fra
 Brugen af disse vurderinger, bliver beskrevet i \myref{anbefaling}.
 
 \subsection{Implementering}
-En instans af \class{Recipe} bliver oprettet når en bruger tilføjer en ny opskrift eller prøver at oprette en kopi af en allerede eksisterende opskrift.
+En instans af \class{Recipe} bliver oprettet når en bruger tilføjer en ny \class{recipe} eller prøver at oprette en kopi af en allerede eksisterende \class{recipe}.
 
-\class{AddIngredient} er en metode til at tilføje generiske varer til opskrifterne, således de indeholder en mængde og en enhed, der derudover senere kan skaleres til det valgte antal personer. 
-Metoden ligner \class{AddItem} fra \class{ShoppingListsController}, den adskiller sig ved at tilføje varen til en opskrift istedet for en indkøbsliste.
+\class{AddIngredient} er en metode til at tilføje \class{items} til \class{recipes}, således de indeholder en \class{amount} og et \class{unit}, der derudover senere kan skaleres til det valgte antal personer. 
+Metoden ligner \class{AddItem} fra \class{ShoppingListsController}, den adskiller sig ved at tilføje varen til en \class{recipe} istedet for en \class{shoppinglist}.
 Et udklip af \class{AddIngredient} kan ses på \myref{addIngredient}.
 Her tjekkes om det \class{Item} der tilføjes til den aktive \class{Recipe} allerede er derpå. 
 Hvis det eksisterer adderes dens \class{Amount}, til den nuværende,
@@ -64,4 +64,4 @@ else
 Alle user stories vedrørende opskrifter bliver opfyldt. 
 Opskrifter er skrevet sammen med indkøbslisten og der er funktionalitet til at tilføje varer dertil. 
 Brugeren kan ændre på enkelte opskrifter eller oprette sin egen version af andres opskrifter. 
-Opskrifterne kan skaleres efter antal personer og har et etableret vurderingssystem. 
+Opskrifterne kan skaleres efter antal personer og kan vurderes af brugerne. 
