@@ -71,6 +71,13 @@ Kernen i denne funktionalitet ligger i en metode, metoden \texttt{ReccomendRecip
 Denne metode findes i RecipesController.
 Metoden gennemgår alle opskrifter for den givne bruger, og regner på baggrund af ingredienserne i disse, en forventet vurdering ud, som beskrevet i forrige afsnit.
 
+Det første som funktionen gør, hvilket man ikke ser på \myref{recommendrecipes}, er at finde alle opskrifter en bruger har vureret.
+Derefter tjekkes om der brugeren har nogle opskkrifter, som er vurderet.
+En foreach-løkke bliver gennemløbet for hver opskrift, en bruger har vurderet, og heri bliver den gennemsnitlige vurdering af de forskelige ingredieser tilføjet til en liste af Tuple.
+
+Dernæst gennemgåes en ny foreach, hvori den forventede vurdering for alle opskrifer af brugeren udregnes, på baggrund af ingredienserne i hver opskrift.
+Til sidst sorteres denne liste af opskrifter, efter forventet vurdering.
+
 \begin{lstlisting}[caption=Metoden RecommendRecipes. Sorterer opskrifter efter forventede vurdering for en given bruger.", label=recommendrecipes]
 public IEnumerable<Recipe> RecommendRecipes(User user)
 {
