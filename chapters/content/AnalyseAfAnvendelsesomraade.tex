@@ -80,29 +80,30 @@ Andre er udeladt, da de minder meget om allerede beskrevede brugsmønstre.
 
 \subsection{Funktioner}\label{subsec:funktioner}
 
-I dette afsnit beskrives funktionerne der skal bruges for at kunne håndtere hændelserne fra problemområdet, og brugsmønstrene.
+I dette afsnit beskrives funktionerne, der skal bruges for at kunne håndtere hændelserne fra problemområdet samt brugsmønstrene.
 Der findes fire typer funktioner: Aflæsnings-, opdaterings-, beregnings-, og signaleringsfunktioner.\citep{OOA&D2001}
-Først identificeres funktionerne, hvorefter der gives en kategori til funktionerne, og en bedømmelse af deres kompleksitet. Herefter gives en kortfattet beskrivelse af funktionen hvis dette er tilstrækkeligt, ellers gives en dybere beskrivelse.
+Først identificeres funktionerne, hvorefter der gives en kategori til funktionerne og en bedømmelse af deres kompleksitet. 
+Herefter gives en kortfattet beskrivelse af funktionen, hvis dette er tilstrækkeligt, ellers gives en dybere beskrivelse.
 
 På figur \ref{tabel:functionstable} ses en tabel over de forskellige funktioner samt deres kompleksitet og kategori.
-Kompleksitet beskriver hvor kompleks en given funktion er, dette fastsættes på baggrund af om en given funktion har mere end en kategori, som også kan ses i tabellen, samt en vurdering af hvor kompleks funktionens arbejde er.
+Kompleksitet beskriver, hvor kompleks en given funktion er; dette fastsættes på baggrund af, om en given funktion har mere end en kategori, som også kan ses i tabellen, samt en vurdering af hvor kompleks funktionens arbejde er.
 
 \begin{table}[H]
   \centering
-    \colorlet{shadecolor}{gray!40}
+   	\colorlet{shadecolor}{gray!40}
     \rowcolors{1}{white}{shadecolor}
       \begin{tabular}{l|lllll}
       %\hline
       \textbf{Funktioner}			& {Kompleksitet}	& {Kategori}  	\\ \hline
       Log ind						& Medium			& Beregning, Opdatering		\\
-      Log ud						& Simpel			& Opdatering	\\
+      Log ud						    & Simpel			& Opdatering	\\
       Registrer bruger				& Simpel			& Opdatering	\\
-      Tilføje varer til lister		& Simpel       		& Opdatering	\\
+      Tilføje varer til lister		& Simpel       & Opdatering	\\
       Fjerne varer fra lister		& Simpel       		& Opdatering	\\
       Oprette og slette indkøbslister & Simpel       	& Opdatering	\\
-      Forlad indkøbsliste			& Simpel			& Opdatering
+      Forlad indkøbsliste			& Simpel			& Opdatering \\
       Dele Indkøbsliste				& Medium       		& Opdatering	\\
-      Søgning på tilbud for varer   & Medium     		& Beregning		\\
+      Søgning på tilbud for varer    & Medium     		& Beregning		\\
       Sætte præferencer				& Simpel       		& Opdatering	\\
       Filtrere for præferencer		& Kompleks     		& Beregning		\\
       Give vurdering				& Simpel       		& Opdatering	\\
@@ -133,35 +134,35 @@ Hvis dette fuldføres, opdateres modellaget således brugeren er registreret som
 
 \textbf{Opret og slet indkøbslister:} Disse funktioner henholdsvis opretter eller sletter indkøbslister.
 
-\textbf{Forlad Indkøbsliste:} Denne funktion fjerner brugeren fra en indkøbsliste, men bevarer listen i systemet så andre brugere på listen stadig kan se den.
+\textbf{Forlad Indkøbsliste:} Denne funktion fjerner brugeren fra en indkøbsliste, men bevarer listen i systemet, så andre brugere på listen stadig kan se den.
 
-\textbf{Del Indkøbsliste:} Skal opdatere modellaget således en anden bruger kan tilgå samme indkøbsliste som brugeren der deler sin liste.
+\textbf{Del Indkøbsliste:} Skal opdatere modellaget således, en anden bruger kan tilgå samme indkøbsliste, som brugeren der deler sin liste.
 
-\textbf{Søg på tilbud for varer:} Søger efter tilbud som passer til varen der søges for.
+\textbf{Søg på tilbud for varer:} Søger efter tilbud, som passer til varen, der søges efter.
 
-\textbf{Sæt præferencer:} Funktionen skal sætte forskellige præferencer som vælges af brugeren, således brugerens oplevelse rettes efter brugerens præferencer.
+\textbf{Sæt præferencer:} Funktionen skal sætte forskellige præferencer, som vælges af brugeren, således brugerens oplevelse rettes efter brugerens præferencer.
 
 \textbf{Filtrer efter præferencer:} Funktionen filtrerer tilbud i forhold til brugerens præferencer.
 
 \textbf{Giv vurdering:} Funktionen skal modtage en vurdering fra brugeren og gemme denne i modellaget.
 
-\textbf{Send anbefaling:} Funktionen her er meget kompleks da der indgår mange forskellige typer handlinger.
+\textbf{Send anbefaling:} Funktionen her er meget kompleks, da der indgår mange forskellige typer handlinger.
 Brugerne har vurderet forskellige opskrifter, og der beregnes en anbefaling ud fra disse.
-Når anbefalingen er lavet skal den gives eller signaleres til brugeren.
+Når anbefalingen er lavet, skal den gives eller signaleres til brugeren.
 
-\textbf{Meddel tilbud på varer:} Når en varer på overvågningslisten kommer på tilbud sender denne funktion et signal til brugeren derom.
+\textbf{Meddel tilbud på varer:} Når en varer på overvågningslisten kommer på tilbud, sender denne funktion et signal til brugeren derom.
 
 \textbf{Se opskrifter:} Funktionen skal hente opskrifterne fra modellaget.
 
 \textbf{Opret opskrift:} Funktionen skal oprette en opskrift ud fra brugerens givne informationer om denne.
 
-\textbf{Ændr opskrift:} Funktionen skal tilføje ændringer til en opskrift. Dog skal brugeren som oprettede opskriften være den eneste der kan ændre på den. 
+\textbf{Ændr opskrift:} Funktionen skal tilføje ændringer til en opskrift. Dog skal brugeren, som oprettede opskriften, være den eneste, der kan ændre på den. 
 
-\textbf{Klone opskrift:} Funktionen kopiere alle informationerne om en opskrift, således en bruger kan tilføje eller fjerne bestemte ingredienser for at personificere dem.
+\textbf{Klone opskrift:} Funktionen kopierer alle informationerne om en opskrift, således en bruger kan tilføje eller fjerne bestemte ingredienser for at personificere dem.
 
 \textbf{Slet opskrift:} Funktionen sletter en opskrift.
 
-\textbf{Skaler opskrift:} Funktionen skalere ingredienslisten på en opskrift, således en opskrift til 6 personer kan skaleres til det dobbelte altså 12 personer. Dette skal ikke gemmes i systemet, men blot beregnes og vises for brugeren.		
+\textbf{Skaler opskrift:} Funktionen skalerer ingredienslisten på en opskrift, således en opskrift til 6 personer kan skaleres til det dobbelte altså 12 personer. Dette skal ikke gemmes i systemet, men blot beregnes og vises for brugeren.		
 
 \textbf{Se tilbud:} Funktionen henter tilbudene fra modellaget.
 
@@ -169,5 +170,5 @@ Når anbefalingen er lavet skal den gives eller signaleres til brugeren.
 
 \fxnote{Har lidt svært ved at se om vi får dette brugt = / . På den ene side hjælper det til at danne overblik over hvilke funktioner der skal udvikles til systemet. Vi kunne evt under user stories på næste side, skrive hvilke der hører til hvor? Give dem numre og så henvise til dem osv? - Søren}
 
-Denne analyse af funktionerne hjælper med at danne et overblik over hvilke funktionaliteter der skal designes, samt hjælper det til at stille krav til systemet.
-I det følgende afsnit stilles der krav til systemet.
+Denne analyse af funktionerne hjælper med at danne et overblik over, hvilke funktionaliteter der skal designes.
+Derudover hjælper det til at stille krav til systemet, som bliver stillet i det følgende afsnit.
