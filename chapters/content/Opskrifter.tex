@@ -1,15 +1,16 @@
 \section{Opskrifter}
-I dette afsnit beskrives hvordan implementeringen af opskrifter er designet of udført, og hvordan denne har opfyldt user story 13, 15, 16, 17, og 18. User story 14, hører også til opskrifts komponentet, men vil blive uddybet i \myref{anbefaling}. Til sidst samles alt dette op i en konklusion. Opskrifter i dette projekt har som udgangspunkt rødder i user story 13, som beskriver at brugeren ville have mulighed for at kunne finde opskrifter.
+I dette afsnit beskrives hvordan implementeringen af opskrifter er designet udført, og hvordan implementeringen har opfyldt user story 13, 15, 16, 17, og 18. 
+User story 14, at finde anbefalinger på opskrifter, hører også til opskriftskomponenten, men vil blive uddybet i \myref{anbefaling}. Til sidst samles alt dette op i en konklusion. 
+Opskrifter i dette projekt har som udgangspunkt rødder i user story 13, som beskriver at brugeren ville have mulighed for at kunne finde opskrifter.
 \subsection{Design}
 Idéen er at give brugeren mulighed for nemt at finde opskrifter, hvorefter ingredienserne fra disse, nemt kan tilføjes til deres indkøbsliste(r).
 Når man først går ind på opskrifterne, bliver man mødt af alle offentliggjorte opskrifter, som er blevet tilføjet af brugerne af systemet.
 Opskrifterne er opstillet således der på forsiden for opskrifter kan ses den mest nødvendige information om hver enkelt opskrift.
-Opskrifterne er opstillet vha. css bootstrap klassen panels for at give en klar opdeling og en gøre det overskueligt.
+Opskrifterne er opstillet vha. Bootstraps CSS klasse ``panels'' for at give en klar opdeling og en gøre det overskueligt.
 Opskrifterne indeholder alle sammen en titel, tid, antal personer, bedømmelse, ingredienser og en fremgangsmåde.
 
-Hver opskrift er gemt under brugeren som har oprettet den, denne bruger har senere mulighed for at redigere eller slette opskriften efter valg.
-Dette er gjort da user story 18 ligger til grundlag for dette.
-Er man ikke den bruger der har oprettet opskriften, har man mulighed for at kunne klone opskriften.
+Hver opskrift er relateret til brugeren som har oprettet den, denne bruger har senere mulighed for at redigere eller slette opskriften.
+Er man ikke den bruger der har oprettet opskriften, har man mulighed for at kunne klone opskriften, dette er fra user story 18.
 Når en opskrift bliver klonet, bliver alt data fra den tidligere opskrift kopieret og derefter kan man foretage ændringer til opskriften, gemme den under et nyt navn, således opskriften kan personliggøres.
 
 Brugerne har efterspurgt mulighed for at kunne tilføje ingredienser fra opskriften til deres indkøbs liste, i følge user story 16.
@@ -31,10 +32,11 @@ Brugen af disse vurderinger, bliver beskrevet i \myref{anbefaling}.
 
 \subsection{Implementering}
 \textbf{Opskrift}
-Selve opskriften er en klasse set på \myref{diagram:klassediagram} Objektet bliver instantieret når en bruger prøver at oprette en ny opskrift eller prøver at oprette en kopi af en allerrede eksisterende opskrift.
+Selve opskriften er en klasse set på \myref{diagram:klassediagram}.
+Objektet bliver instantieret når en bruger prøver at oprette en ny opskrift eller prøver at oprette en kopi af en allerrede eksisterende opskrift.
 
 
-\begin{lstlisting}[caption="Klassen Recipe som svarer til objektet\, opskrift"]
+\begin{lstlisting}[caption="Klassen Recipe, som Instantieres til et objekt\, opskrift"]
 public class Recipe
 {
     public int ID { get; set; }
@@ -55,32 +57,34 @@ public class Recipe
 \end{lstlisting}
 
 \textbf{AddIngredient}
-AddIngredient som ses på er en metode til at tilføje generiske varer til opskrifterne, således de kan skaleres med antallet af personer valgt. AddIngredient er en metode der ligner AddItem fra ShoppingListsController. AddIngredient udskiller sig på at der ikke bliver fundet tilbud på varen, og varen bliver lagt til en opskrift i stedet for en indkøbsliste.
+AddIngredient er en metode til at tilføje generiske varer til opskrifterne, således de kan skaleres med antallet af personer valgt. 
+AddIngredient er en metode der ligner AddItem fra ShoppingListsController. 
+AddIngredient udskiller sig på at der ikke bliver fundet tilbud på varen, og varen bliver lagt til en opskrift i stedet for en indkøbsliste.
 
 
 \begin{lstlisting}[caption="Udklip fra AddIngredient som opretter og tilføjer ingredienser til en specifik opskrift - Her er vist hvad der er forskel fra AddItem i ShoppingListsController"]
-.....
-            var tmpIngredient = knownItem ?? new Item { Name = name };
-            
-            // If recipe contains tempIngredient add ingredient, else initiate ingredient and then add it.
-            if (recipe.Ingredients.Contains(tmpIngredient))
-            {
-            _db.Recipe_Ingredient.First(i => i.Recipe == recipe && i.Ingredient == tmpIngredient).AmountPerPerson = (double)amountPerPerson;
-            }
-            else
-            {
-            var recipeIngredient = new Recipe_Ingredient { RecipeID = id, Ingredient = tmpIngredient, AmountPerPerson = (double)amountPerPerson, Unit = unit };
-            recipe.Ingredients.Add(tmpIngredient);
-            _db.Recipe_Ingredient.Add(recipeIngredient);
-            }
-            
-.....
+/* [...] */          
+var tmpIngredient = knownItem ?? new Item { Name = name };
+
+// If recipe contains tempIngredient add ingredient, else initiate ingredient and then add it.
+if (recipe.Ingredients.Contains(tmpIngredient))
+{
+    _db.Recipe_Ingredient.First(i => i.Recipe == recipe && i.Ingredient == tmpIngredient).AmountPerPerson = (double)amountPerPerson;
+}
+else
+{
+    var recipeIngredient = new Recipe_Ingredient { RecipeID = id, Ingredient = tmpIngredient, AmountPerPerson = (double)amountPerPerson, Unit = unit };
+    recipe.Ingredients.Add(tmpIngredient);
+    _db.Recipe_Ingredient.Add(recipeIngredient);
+}
+/* [...] */          
 \end{lstlisting}
 
 
 \subsection{Konklusion}
 Implementeringen af opskrifter virker efter hensigten. 
 Alle user stories vedrørende opskrifter bliver opfyldt. 
-Opskrifter er skrevet sammen med indkøbslisten og der er funktionalitet til at tilføje varer dertil. Brugeren kan ændre på enkelte opskrifter eller oprette sin egen version af andres opskrifter. 
+Opskrifter er skrevet sammen med indkøbslisten og der er funktionalitet til at tilføje varer dertil. 
+Brugeren kan ændre på enkelte opskrifter eller oprette sin egen version af andres opskrifter. 
 Opskrifterne kan skaleres efter antal personer og har et etableret vurderingssystem. 
 Alle opskrifter og dets information bliver gemt i databasen på en hensigtsmæssig måde.

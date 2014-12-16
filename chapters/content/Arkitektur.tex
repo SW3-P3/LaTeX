@@ -1,11 +1,11 @@
 \section{Arkitektur}
-Dette afsnit beskriver arkitekturen der benyttes i implementationen for systemet.
-Først gennemgås design mønsteret der benyttes, derefter systemets klasser, samt dets komponenter.
+Dette afsnit beskriver arkitekturen der benyttes i implementeringen af systemet.
+Først gennemgås design mønsteret, MVC, der benyttes, derefter systemets klasser, samt dets komponenter.
 
-Nogle komponenter har vi valgt at benytte, ASP.NETs indbyggede programdele.
+Nogle komponenter har vi valgt at benytte, ASP.NETs indbyggede programdele. \fxnote{Wat, hvad menes der her? At vi har brugt ting indbygget i ASP.NET? - Troels}
 For at opfylde user story 10, skal der altså laves et login system.
 Vi benytter os af en færdig login løsning, der er tilgængeligt i ASP.NET teknologien (se eventuelt \myref{aspnet}).
-Dette er en gennemtestet løsning udviklet af microsoft kaldet OWIN, hvilket gør det sikkert for os at vælge dette som vores login platform.
+Dette er en gennemtestet løsning udviklet af Microsoft kaldet OWIN, vi antager at denne er sikker.
 Dette har vi valgt, da vi har vurderet at login ikke er en central problemstilling i forhold til studieordningen og projektets mål.
 Dette tillader os at bruge mere tid på andre dele af programmet, som vi finder mere relevante i forhold til de opstillede mål.
 
@@ -28,16 +28,15 @@ Figuren viser hvordan de forskellige user stories kan deles op i komponenter, og
 	\vspace{-20pt}
 \end{figure}
 
-\textbf{Indkøbslistekomponentet} står for at lave indkøbslister, og tilføje varer og tilbud til disse.
-Tilbudene skal importeres fra \textbf{tilbudskomponentet}, for at lave koblingen imellem varerne og tilbud.
-Det er afhængigt af \textbf{brugerkomponentet} da indkøbslisterne hører til en bruger for at danne personlige lister. Brugerkomponentet er ansvarlig for alt der har med en bruger at gøre. Det indebærer at registrere hvem der er logget på, håndtere brugerens personlige indstillinger. Det er altså dette komponent der sørger for den personlige oplevelse på hjemmesiden.
+\textbf{Indkøbslistekomponenten} står for at lave indkøbslister, og tilføje varer og tilbud til disse.
+Tilbudene skal importeres fra \textbf{tilbudskomponenten}, for at lave koblingen imellem varerne og tilbud.
+Det er afhængigt af \textbf{brugerkomponenten} da indkøbslisterne hører til en bruger for at danne personlige lister. Brugerkomponenten er ansvarlig for alt der har med en bruger at gøre. Det indebærer at registrere hvem der er logget på, håndtere brugerens personlige indstillinger. Det er altså dette komponent der sørger for den personlige oplevelse på hjemmesiden.
 
-\textbf{Opskriftskomponentet} er afhængig af brugerkomponentet, da det er brugerene i systemet der tilføjer opskrifter, samt giver opskrifterne en rating.
-Dog er det opskriftskomponentet der står for dette, men det skal dog vide hvem der er logget ind på hjemmesiden.
+\textbf{Opskriftskomponenten} er afhængig af brugerkomponenten, da det er brugerene i systemet der tilføjer opskrifter, samt giver opskrifterne en vurdering.
+Dog er det opskriftskomponenten der står for vurderingen, men det skal dog vide hvem den aktive bruger er.
 Der er en adgang her fra til indkøbslisterne for at kunne tilføje ingredienser fra opskrifterne til indkøbslister.
 
-\textbf{Overvågningskomponentet} står for at overvågningen af tilbud for en specifik varer kan foregå.
-Der dannes en afhængighed herfra og til indkøbslistekomponentet da overvågningslisten gør brug af de metoder som der stilles til rådighed i dette komponenet, såsom tilføje varer, og finde tilbud.
-
+\textbf{Overvågningskomponenten} står for at overvågningen af tilbud for en specifik vare kan foregå.
+Der dannes en afhængighed herfra og til indkøbslistekomponenten da overvågningslisten\fxnote{Denne er ikke på figuren? - Troels} gør brug af de metoder som der stilles til rådighed i dette komponenet, såsom tilføje varer, og finde tilbud.
 
 \input{chapters/content/klassediagram.tex}
