@@ -6,7 +6,7 @@ Opskrifter i dette projekt har som udgangspunkt rødder i user story 13, som bes
 Idéen er at give brugeren mulighed for nemt at finde opskrifter, hvorefter ingredienserne fra disse, nemt kan tilføjes til deres indkøbsliste(r).
 Når man først går ind på opskrifterne, bliver man mødt af alle offentliggjorte opskrifter, som er blevet tilføjet af brugerne af systemet.
 Opskrifterne er opstillet således der på forsiden for opskrifter kan ses den mest nødvendige information om hver enkelt opskrift.
-Opskrifterne er opstillet vha. Bootstraps CSS klasse ``panels'' for at give en klar opdeling og en gøre det overskueligt.
+Opskrifterne er opstillet vha. Bootstraps CSS klasse \class{panels} for at give en klar opdeling og en gøre det overskueligt.
 Opskrifterne indeholder alle sammen en titel, tid, antal personer, bedømmelse, ingredienser og en fremgangsmåde.
 
 Hver opskrift er relateret til brugeren som har oprettet den, denne bruger har senere mulighed for at redigere eller slette opskriften.
@@ -36,7 +36,7 @@ Selve opskriften er en klasse set på \myref{diagram:klassediagram}.
 Objektet bliver instantieret når en bruger prøver at oprette en ny opskrift eller prøver at oprette en kopi af en allerrede eksisterende opskrift.
 
 
-\begin{lstlisting}[caption="Klassen Recipe"]
+\begin{lstlisting}[caption=Klassen \class{Recipe}]
 public class Recipe
 {
     public int ID { get; set; }
@@ -56,16 +56,14 @@ public class Recipe
 }
 \end{lstlisting}
 
-\textbf{AddIngredient}
-AddIngredient er en metode til at tilføje generiske varer til opskrifterne, således de kan skaleres med antallet af personer valgt. 
-AddIngredient er en metode der ligner AddItem fra ShoppingListsController. 
-AddIngredient udskiller sig på at der ikke bliver fundet tilbud på varen, og varen bliver lagt til en opskrift i stedet for en indkøbsliste.
+\class{AddIngredient}
+\class{AddIngredient} er en metode til at tilføje generiske varer til opskrifterne, således de kan skaleres med antallet af personer valgt. 
+\class{AddIngredient} er en metode der ligner \class{AddItem} fra \class{ShoppingListsController}. 
+\class{AddIngredient} udskiller sig på at der ikke bliver fundet tilbud på varen, og varen bliver lagt til en opskrift i stedet for en indkøbsliste.
 
 
-\begin{lstlisting}[caption="Udklip fra AddIngredient som opretter og tilføjer ingredienser til en specifik opskrift - Her er vist hvad der er forskel fra AddItem i ShoppingListsController"]
-/* [...] */          
-var tmpIngredient = knownItem ?? new Item { Name = name };
-
+\begin{lstlisting}[caption="Udklip fra \class{AddIngredient} som opretter og tilføjer ingredienser til en specifik opskrift - Her er vist hvad der er forskel fra \class{AddItem} i \class{ShoppingListsController}"]
+/* [...] */      
 // If recipe contains tempIngredient add ingredient, else initiate ingredient and then add it.
 if (recipe.Ingredients.Contains(tmpIngredient))
 {
