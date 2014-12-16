@@ -5,26 +5,28 @@ Disse teknologier er valgt for at opfylde kravene stillet i \myref{sec:krav}.
 \subsection{Bootstrap}
 Bootstrap er navnet på et front-end web udviklings framework, oprindeligt udviklet af Twitter til eget brug, men senere frigivet som open source.
 Bootstrap er i følge dem selv ``[...] the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.'' \cite{GETBOOTSTRAP}
-Som de selv skriver så giver Bootstrap mulighed for at bruge den samme teknologi på tværs af enheder, dette gør det nemmere for udviklere at give brugeren en mere konsistent oplevelse.
-Et af de vigtigste koncepter bag Bootstrap er at hver side består af et gitter som er 12 kolonner.
-På denne måde er det nemt at bestemme bredden på et givent element, ved at indgrænse det til en del af sidens bredde, dette vil også automatisk forsøge at skalere sig til en mobil enhed.
-Bootstrap er anvendt til at style HTML elementer med de givne CSS klasser som Bootstrap udgiver.
+Som de selv skriver, så giver Bootstrap mulighed for at bruge den samme teknologi på tværs af enheder; hvilket gør det nemmere for udviklere at give brugeren en mere konsistent oplevelse.
+Et af de vigtigste koncepter bag Bootstrap er, at hver side består af et gitter, som er 12 kolonner.
+På denne måde er det nemt at bestemme bredden på et givent element, ved at indgrænse det til en del af sidens bredde. 
+Dette vil også automatisk forsøge at skalere sig til en mobilenhed.
+Bootstrap er anvendt til at style HTML elementer med de givne CSS klasser, som Bootstrap udgiver.
 Det er herunder muligt at anvende flere klasser på samme element, samt den samme klasse på tværs af forskellige HTML elementer.
 Dette bidrager til at øge konsistensen i layoutet.
 JavaScript bruges i Bootstrap til at animere elementer på siden, hvilket øger systemets visuelle feedback.
-En uddybning af hvordan dette bruges kan findes i \myref{brugergraenseflade} om brugergrænseflade. \cite{GETBOOTSTRAP}
+En uddybning af hvordan dette bruges, kan findes i \myref{brugergraenseflade} om brugergrænseflade. \cite{GETBOOTSTRAP}
 
 \subsection{ASP.NET MVC 5}\label{aspnet}
 ASP.NET MVC 5 er navnet på Microsofts open source implementering af MVC mønstret (beskrevet i \myref{MVC}).
 Brugen af ASP.NET giver mulighed for at bruge den såkaldte \textit{Razor syntax}, som er en del af \textit{ASP.NET Razor view engine}.
-Den gør det muligt at anvende C\#-kode (Eller Visual Basic .NET) i front-end, til at generere dynamiske hjemmesider.
-Disse udtryk evalueres serverside ved run-time, derfor er alle datatyperne dynamiske, og ikke typesikre, det antages altså ved compile-time at alle operationer er mulige på objekter af typen \textit{dynamic} \citep{UsingTypeDynamic}.
+Den gør det muligt at anvende C\#-kode (Eller Visual Basic .NET), i front-end, til at generere dynamiske hjemmesider.
+Disse udtryk evalueres serverside ved run-time, derfor er alle datatyperne dynamiske, og ikke typesikre.
+Det antages altså ved compile-time, at alle operationer er mulige på objekter af typen \textit{dynamic} \citep{UsingTypeDynamic}.
 
-For at opfylde user story 10, skal der bruges et login system.
-Vi benytter os af en færdig login løsning, der er tilgængeligt i ASP.NET teknologien kaldet OWIN.
-
+For at opfylde user story nummer 10, skal der bruges et login system.
+Vi benytter os af en færdig login løsning, der er tilgængeligt i ASP.NET, teknologien kaldet OWIN.
 
 \subsection{Entity Framework}
-Entity Framework (EF) er et Object-relational mapping framework til .NET frameworket, udviklet af Microsoft, og er databasen der bruges i projektet \citep{EF}.
-EF er valgt til dels grundet at det er muligt at udvikle \textit{Code-first}, hvilket vil sige at udvikleren først skriver modellen som klasser, hvorefter databasestrukturen genereres.
-Der understøttes komplekse relationer såsom mange-til-mange og en-til-mange, ved brug af en relationstabel.
+Entity Framework (EF) er et Object-relational mapping framework til .NET frameworket, udviklet af Microsoft.
+Det udgører databasen, der bruges i projektet \citep{EF}.
+EF er valgt til dels grundet, at det er muligt at udvikle \textit{Code-first}, hvilket vil sige, at udvikleren først skriver modellen som klasser, hvorefter databasestrukturen genereres.
+Der understøttes komplekse relationer såsom mange-til-mange og en-til-mange, ved brug af en relationstabeller.
