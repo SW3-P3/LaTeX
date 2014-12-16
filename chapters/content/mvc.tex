@@ -1,16 +1,15 @@
 \subsection{MVC-mønsteret}\label{MVC}
 
-Et af de standardiserede design mønstre, som bruges af mange udviklere er MVC-mønsteret - som står for \textit{Model-View-Controller}.
-MVC-mønsteret har til formål, at dele systemet op i tre komponenter, nemlig \textit{Model}, \textit{View} og \textit{Controller}.
-Denne segregering adskiller således ``forretnings-logik'', ``input-logik'' og ``UI-logik'', og gør herved systemet mere fleksibelt, samt fremmer muligheden for at udvikle parallelt på de forskellige komponenter.
-Dette kan være nyttigt i udviklingen af systemet, men også efter udgivelsen, idet blandt andet ``UI-logik''kan blive ændret oftere end for eksempel ``forretnings-logik''.
-Opdelingen hjælper også til at skabe overblik over koden, og gør det nemmere at udføre tests på systemet. \citep{MVC_Overview}
+Et af de standardiserede design mønstre, som bruges af mange udviklere er MVC-mønstret - som står for \textit{Model-View-Controller}, en figur over modellen kan ses på \myref{MVC-Figure}.
+MVC-mønsteret har til formål, at dele systemet op i tre komponenter, \textit{Model}, \textit{View} og \textit{Controller}.
+Denne segregering adskiller således forretnings-logik, input-logik og UI-logik, og gør herved systemet mere fleksibelt, samt fremmer muligheden for at udvikle parallelt på de forskellige komponenter.
+Dette kan være nyttigt i udviklingen af systemet, men også efter udgivelsen, idet blandt andet UI-logik kan blive ændret oftere end for eksempel forretnings-logik.
+Opdelingen hjælper også til at skabe overblik over koden, og gør det nemmere at unit teste systemet via dets controllere. \citep{MVC_Overview}
 
 Nedenfor beskrives de tre komponenter.
 
 \textbf{Model}\\
-De objekter, der udgør model-laget skal indeholde den føromtalte ``forretnings-logik'', samt alle data der skal modelleres i systemet.
-Dataet, i form af objekter, gemmes oftest i en database eller fil, og er helt skjult for brugeren i den forstand, at al repræsentation af modellen foregår igennem view-delen af MVC-mønsteret.
+Objekterne der udgør model-laget indeholder forretnings-logik, samt alle data der skal modelleres i systemet.
 
 \begin{wrapfigure}{r}{0.4\textwidth}
 	\vspace{0pt}
@@ -18,21 +17,19 @@ Dataet, i form af objekter, gemmes oftest i en database eller fil, og er helt sk
 		\includegraphics[width=0.38\textwidth]{images/Images/mvc.png}
 	\end{center}
 	\vspace{-20pt}
+	\label{MVC-Figure}
 	\caption{MVC-mønsteret}
 	\vspace{-30pt}
 \end{wrapfigure}
 
 \textbf{View}\\
-Det er igennem forskellige views, at brugeren får præsenteret brugergrænsefladen - også kaldet UI(user-interface). \fxnote{Forkortelsen her er anvendt tidligere? Skal vi evt. bare antage at folk ved hvad UI i? Evt begrebskort i forord?? - Troels}
-Derfor giver det også mening, at placere ``UI-logikken'' i denne del af MVC-mønsteret.
-Typisk bliver et views indhold genereret ud fra data fra en model.
+Det er igennem forskellige views, at brugeren får præsenteret brugergrænsefladen. 
+Derfor giver det også mening, at placere UI-logik i denne del af MVC-mønsteret.
+Indholdet i et view genereres ud fra data fra modellen.
 Et eksempel på dette ville være visning af en liste af objekter ud fra en model, der indeholder netop en liste.
 
 \textbf{Controller}\\
-Når det kommer til interaktionen mellem brugeren og systemet, er det controlleren der påtager sig opgaven.
-Derfor er det også i de forskellige controllerere, at vi finder ``input-logikken''. 
-Her bestemmes ud fra input fra brugeren, hvilket data der skal arbejdes med i hvilken model og hvilket view, der skal præsenteret for brugeren. 
-Med dette kan vi også se, at viewet ikke indeholder nogen logik og al manipulation af data altså foregår gennem controller komponenten. \fxnote{Vi har meget simpel logik i viewet? Tæller dette? - Troels}
+Controlleren håndterer interaktionen mellem brugeren og systemet.
+Derfor er det også i de forskellige controllerer, at vi finder input-logikken. 
+Her bestemmes ud fra input fra brugeren, hvilket data der skal arbejdes med i hvilken model og hvilket view, der skal præsenteres for brugeren.
 
-Der benyttes altså MVC til systemet for at danne denne segregering imellem brugergrænsefladen og det bagvedliggende modellag og logik dertil.
-Denne fordeling gør det også nemmere at teste, grundet den større abstraktion. \fxnote{Dette er nævnt i indledningen. - Troels}
