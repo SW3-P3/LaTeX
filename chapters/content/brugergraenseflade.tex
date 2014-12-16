@@ -139,5 +139,46 @@ En af de andre funktioner, vi benytter fra bootstrap, er \textit{glyphicons}, de
 \textbf{Mobil tilpasning}\hfill\\
 Det meste af vores tilpasning til mobil-platformen, klares af bootstaps responsive design, som de opnår ved at definere forskellige atributter for forskellige skærm størrelser.
 Derudover benytter vi os af CSS-klasser, fra bootstrap, som kan skjule og/eller vise ting ved netop forskellige skærm størrelser.
+Vi vælger derved at begrænse systemets funktionalitet for brugeren, når de tilgår det via en mobil-platform. De funktioner, som vi skjuler for brugeren, er:
 
+\begin{description}
+\item[Oprettelse, redigering og kloning af opskrifter]\hfill\\
+Grunden til, at har valgt at begrænse brugeren for denne funktionalitet på mobil-platformen, er at denne platform ikke er tænkt som et sted, hvor man skal foretage forholdvis kompliceret data oprettelse eller ændring.
+Det at oprette eller ændre en opskrift, er noget man skal gøre mens man har en skærm størrelse til rådighed, der tillader et godt overblik.
+Med denne begrænsning tvinger vi dermed brugeren til at bruge mobil-platformen for en informationssøgning, ift. opskrifter.
+Samtidigt fokuserer vi opskrift komponenten omkring den relevate kontekst, når mobil-platforment benyttes, som er inspirationssøgning eller madlavning - i disse kontekster er det kun nødvendigt at kunne gennemse opskrifter og følge dem.
+\item[Muligheden for at ændre kodeord]\hfill\\
+Dette er ikke noget brugeren vil gøre ofte, og derfor har vi valgt, at inkludere det som en funktion man kan opsøge via brug af en computer.
+Således er det ikke relevant i konteksten, hvor mobil-platformen bruges.
+\end{description}
+
+Når vil vælger at gemme funktionalitet for brugeren, er det udelukkende for at give brugeren en bedre oplevelse med brugen af systemet.
+Vi påfører \textit{constraints} og på den måde, forhindres brugeren i, at bevæge sig steder hen, der ikke egner sig til mobil-platformen.
+Dog skal det siges, at man med fordel kunne inkoorporere alle funktioner vha. \textit{overflow menuer} bl.a kendt fra Google's tjenester, hvor tre prikker indikerer at yderligere funktionalitet er tilgængelig.
+\fxnote{måske henvisning til http://developer.android.com/design/patterns/actionbar.html}
+På denne måde vil brugere, der udelukkende benytter sig at smartphones og lign. også være i stand til at kunne udnytte alle systemets funktionaliteter.
+
+\begin{wrapfigure}{o}{0.42\textwidth}
+\vspace{-30pt}
+\begin{center}
+\textit{Desktop}
+\frame{\includegraphics[width=0.4\textwidth]{images/Images/share_desktop.png}}\\
+\vspace{10pt}
+\textit{Mobil (efter tryk på knap)}
+\frame{\includegraphics[width=0.4\textwidth]{images/Images/share_modal.png}}
+\end{center}
+\vspace{-10pt}
+\caption{Her ses henholdsvis desktop- og mobil-udgaven af \textit{del-funktionen}}\label{ss:share_diffs}
+\end{wrapfigure}
+Nogle steder har vi istedet for at gemme en funktionalitet væk, erstattet f.eks. en tekstboks med en knap, der så generere et vindue med de elementer der skal til for at udføre handlingen. 
+Et eksempel på dette ses, når en bruger vil dele sin indkøbsliste med andre brugere.
+På en pc vil man blive præsenteret for en tekstboks, med dertilhørrende knap, mens mobil-udgaven viser brugeren en knap med titlen ``Del'', som generere et vindue over selve siden, når de trykker på den (se \myref{ss:share_diffs} ).
+
+
+\textbf{Brug af glyphicons}\hfill\\
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.66\textwidth]{images/Images/glyphicons.png}
+\caption{Brugte glyphicons inkluderet i Bootstrap fra \textit{GLYPHICONS.com}}
+\end{figure}
 \subsection{Konklusion}
