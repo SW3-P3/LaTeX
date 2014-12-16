@@ -6,14 +6,12 @@ For at kunne indhente infomation om butikker og deres tilbud, anvendes der et AP
 Dette API udbydes af den danske virksomhed eTilbudsavis.dk, og er af typen REST.
 
 \subsection{Teori}
-REST er en abstraktion for arkitekturen af internettet, den simplificerer den måde som applikationer kan kommunikere med hinanden.
-Dette bruges ofte til API'er for at skabe en simpel og struktureret måde at kommunikere med en service\citep{REST}.
+Representational state transfer (REST) er en arkitektur anvendt over HTTP(s) standarden. 
+I forbindelse med eTilbudsavisen anvendes der HTTP status koder som signalerer hvorvidt en given forespørgsel er godkendt, afvist eller lign.
 
-\subsubsection{REST}
-REST står for: \textit{Representational state transfer}.
-REST er er måden man kommunikerer med API'et.
-Der findes fire metoder som svarer til de fire som findes i CRUD (``CREATE, READ, UPDATE, DELETE'').
-Disse metoder er: GET, POST, PUT og DELETE.
+\subsubsection{API-Kald}
+For at kommunikere med API'et skal der konstrueres en forespørgsel, inden for REST, bruges der de fire mest almindelige HTTP metoder, som er POST, GET, PUT og DELETE.
+Disse fire metoder findes tilsvarende i CRUD som: CREATE, READ, UPDATE, DELETE.
 
 \textbf{GET}
 returnerer data, typisk som JSON eller XML og med HTTP svarkoden 200 (OK).
@@ -25,7 +23,7 @@ bruges til at oprette nye ressourcer.
 Svarer til CREATE i CRUD.
 
 \textbf{PUT}
-bruges til at opdatere infomation, eksempelvis til at forlænge en session.
+bruges til at opdatere information, eksempelvis til at forlænge en session.
 Svarer til UPDATE i CRUD.
 
 \textbf{DELETE}
