@@ -139,5 +139,104 @@ En af de andre funktioner, vi benytter fra bootstrap, er \textit{glyphicons}, de
 \textbf{Mobil tilpasning}\hfill\\
 Det meste af vores tilpasning til mobil-platformen, klares af bootstaps responsive design, som de opnår ved at definere forskellige atributter for forskellige skærm størrelser.
 Derudover benytter vi os af CSS-klasser, fra bootstrap, som kan skjule og/eller vise ting ved netop forskellige skærm størrelser.
+Vi vælger derved at begrænse systemets funktionalitet for brugeren, når de tilgår det via en mobil-platform. De funktioner, som vi skjuler for brugeren, er:
+
+\begin{description}
+\item[Oprettelse, redigering og kloning af opskrifter]\hfill\\
+Grunden til, at har valgt at begrænse brugeren for denne funktionalitet på mobil-platformen, er at denne platform ikke er tænkt som et sted, hvor man skal foretage forholdvis kompliceret data oprettelse eller ændring.
+Det at oprette eller ændre en opskrift, er noget man skal gøre mens man har en skærm størrelse til rådighed, der tillader et godt overblik.
+Med denne begrænsning tvinger vi dermed brugeren til at bruge mobil-platformen for en informationssøgning, ift. opskrifter.
+Samtidigt fokuserer vi opskrift komponenten omkring den relevate kontekst, når mobil-platforment benyttes, som er inspirationssøgning eller madlavning - i disse kontekster er det kun nødvendigt at kunne gennemse opskrifter og følge dem.
+\item[Muligheden for at ændre kodeord]\hfill\\
+Dette er ikke noget brugeren vil gøre ofte, og derfor har vi valgt, at inkludere det som en funktion man kan opsøge via brug af en computer.
+Således er det ikke relevant i konteksten, hvor mobil-platformen bruges.
+\end{description}
+
+Når vil vælger at gemme funktionalitet for brugeren, er det udelukkende for at give brugeren en bedre oplevelse med brugen af systemet.
+Vi påfører \textit{constraints} og på den måde, forhindres brugeren i, at bevæge sig steder hen, der ikke egner sig til mobil-platformen.
+Dog skal det siges, at man med fordel kunne inkoorporere alle funktioner vha. \textit{overflow menuer} bl.a kendt fra Google's tjenester, hvor tre prikker indikerer at yderligere funktionalitet er tilgængelig.
+\fxnote{måske henvisning til http://developer.android.com/design/patterns/actionbar.html}
+På denne måde vil brugere, der udelukkende benytter sig at smartphones og lign. også være i stand til at kunne udnytte alle systemets funktionaliteter.
+
+\begin{wrapfigure}{o}{0.42\textwidth}
+\vspace{-30pt}
+\begin{center}
+\textit{Desktop}
+\frame{\includegraphics[width=0.4\textwidth]{images/Images/share_desktop.png}}\\
+\vspace{10pt}
+\textit{Mobil (efter tryk på knap)}
+\frame{\includegraphics[width=0.4\textwidth]{images/Images/share_modal.png}}
+\end{center}
+\vspace{-10pt}
+\caption{Her ses henholdsvis desktop- og mobil-udgaven af \textit{del-funktionen}}\label{ss:share_diffs}
+\vspace{-30pt}
+\end{wrapfigure}
+Nogle steder har vi istedet for at gemme en funktionalitet væk, erstattet f.eks. en tekstboks med en knap, der så generere et vindue med de elementer der skal til for at udføre handlingen. 
+Et eksempel på dette ses, når en bruger vil dele sin indkøbsliste med andre brugere.
+På en pc vil man blive præsenteret for en tekstboks, med dertilhørrende knap, mens mobil-udgaven viser brugeren en knap med titlen ``Del'', som generere et vindue over selve siden, når de trykker på den (se \myref{ss:share_diffs} ).
+
+\textbf{Respons til brugerinput}\hfill\\
+For at brugeren oplever systemet som ``levende'', har vi implementeret forskellige former for respons og visuel feedback.
+Måden hvorpå vi gør dette, er gennem jQuery og Bootstrap klasser.
+Med Javascript og jQuery, kan man tilføje og fjerne klasser fra HTML tags, samt genere HTML kode uden af genindlæse siden - på den måde virker det for brugeren som om, at siden er ``levende''.
+Vi har derudover valgt at benytte os af et javascript framework, kaldet \textit{snackbar.js}, der tillader os, at præsentere brugeren for en snackbar.
+En snackbar er, i dette tilfælde, en lille besked der popper op i nederste venstre hjørne af skærmen; snackbaren kan indeholde en hvilken som helst besked, og vi kan endvidere vise glyphicons deri.
+Nogle eksempler på dette er:
+\begin{description}
+\item[Tilføje varer til indkøbsliste, fra tilbud side eller opskrift]\hfill\\
+Ud for hvert tilbud, på tilbuds siden, og ingredienser på opskrifter, er det muligt for brugeren at trykke på en blå knap, der er præsenteret med et \textbf{+}. 
+Hvis det lykkedes at tilføje varen for systemets backend, vil brugeren opleve, at knappen skifter farve til grøn, og plusset bliver til et flueben.
+Derudover vil en snackbar komme til syne, med en besked om, at det er lykkedes at tilføje varen til den valgte indkøbsliste.
+(Se \myref{code:user_feedback} funktion nr. 1)
+\item[Ændre hvilke butikker man ønsker at se tilbud fra]\hfill\\
+Under brugerindstillinger, er alle butikker, som systemet har fundet tilbud fra, vist med en checkboks udfor.
+Som udgangspunkt er alle butikker tilvalgt, hvilket er vist med et flueben i checkboxen.
+Når brugeren så vælger at fjerne en butik, vil fluebenet forsvinde, og teksten bliver overstreget og faded ud.
+Vi informerer også brugeren om, at indstillingen er gemt, med en snackbar.
+(Variation af funktion nr. 1 på \myref{code:user_feedback})
+\item[Dele indkøbsliste med andre brugere]\hfill\\
+Hvis brugeren forsøger at dele med en anden bruger, præsenterer vi resultatet af handlingen igennem en snackbar.
+På denne måde kan brugeren se, om det er lykkedes eller om den indtastede email ikke findes.
+(Udvidelse af funktion nr. 2 på \myref{code:user_feedback})
+\end{description}
+
+\begin{lstlisting}[language=JavaScript,caption={Javascript funktioner, der giver bruger feedback},label=code:user_feedback]
+function ChangeToCheckRecipe(json) {
+    var recipeButton = '#AddItem_' + json.itemID;
+    $(recipeButton)
+        .removeClass('btn-info')
+        .addClass('btn-success')
+        .blur();
+    $(recipeButton + ' span')
+        .removeClass('glyphicon-plus')
+        .addClass('glyphicon-ok');
+    MakeSnackbar("Vare tilføjet til " + json.shoppingListTitle, "glyphicon-ok", "toast", "1500");
+};
+
+//Generate snackbar and show on screen. text, glyphicon, style and timeout is optional.
+function MakeSnackbar(text, glyphicon, style, timeout) {
+    $('#snackbar-container').children().each(function () {
+        $(this).snackbar('hide');
+    });
+    var options;
+    if (isset(glyphicon)) {
+        var glyphiconContainer = $('<div>');
+        var span = $('<span>').addClass('glyphicon').addClass(glyphicon);
+        glyphiconContainer.append(span);
+        options = {
+            content: glyphiconContainer.html() + "&nbsp;&nbsp;" + ((isset(text)) ? text : " "),
+            style: (isset(style)) ? style : "snackbar",
+            timeout: (isset(timeout)) ? timeout : 2500
+        };
+    } else {
+        options = {
+            content: (isset(text)) ? text : " ",
+            style: (isset(style)) ? style : "snackbar",
+            timeout: (isset(timeout)) ? timeout : 2500
+        };
+    }
+    $.snackbar(options);
+};
+\end{lstlisting}
 
 \subsection{Konklusion}
