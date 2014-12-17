@@ -10,29 +10,28 @@ En metode med attributten \class{[Setup]} køres hver gang inden en test køres,
 \class{[TearDown]} køres efter hver test og kan bruges til at frigive hukommelse og andet oprydning. 
 Ved NUnit anvendes desuden attributten \class{Test} til at markere at en metode, i en klasse markeret med \class{TestFixture}, er en test.
 For at konfigurere en test anvedes der en testcase, på følge format: \class{[TestCase(inputA, inputB, Result=value)]}.
-Her er inputA og inputB de paremetere som metoden tager, og value, den forventede returværdi.
+Her er inputA og inputB de paremeter som metoden tager, og value, den forventede returværdi.
 
 Typisk forgår unit tests af de metoder, som ikke afhænger af andre metoder først.
-Når disse er testet, er det muligt at teste metoderne som kalder disse uafhængige metoder. 
-Efter tests er lavet på metoder af systemet som ikke kalder andre metoder, kan metoderne med flere dependencies, så testes, med en sikkerhed om, at deres dependencies er funktionelle.
-\citep{Unit_Testing}
+Først efter det bør man teste de metoder som kalder disse uafhængige metoder. \citep{Unit_Testing}
 
-For at oprette diverse tests, følges AAA mønsteret (Act, Assert, Arrange), dette er en måde hvorpå unit tests kan konstrueres, for at give et bedre overblik over de forskellige dele af testen.
+For at oprette tests, følges AAA mønsteret (Act, Assert, Arrange), ved at følge dette mønster, øger det konsistensen og dermed overblikket på tværs at unit testene.
 \citep{Writing_Your_Tests}
 De tre dele af AAA mønsteret repræsentere respektivt:
 \begin{itemize}
-  \item \textbf{Arrange:} Her initialiseres det data der skal bruges i testen. Da vi Bruger NUnit sker dette udelukkende for mange tests i \class{Initilize()} metoden, der er dog nogle som har sin egen Arrange sektion som initialisere data der kun skal bruges i den enkelte test.
+  \item \textbf{Arrange:} Her initialiseres det data der skal bruges i testen. Da der benyttes NUnit sker dette udelukkende for mange tests i \class{Initilize()} metoden, der er dog nogle som har sin egen Arrange sektion som initialisere data der kun skal bruges i den enkelte test.
   \item \textbf{Act:} Her kaldes den kode som ønskes testet, såvel som gemmer eventuelle resultater i variabler, hvilke bruges i Assert.
   \item \textbf{Assert:} Her specificeres hvad der skal være sket i act, og tjekkes om ændringer i data og eventuelle resultater, stemmer overens med det forventede resultat af metode kaldet.
 \end{itemize}
-Der benyttes i nogle tests også et \textbf{PreCondition}, felt der sikre at de ændringer der foretages i \textbf{Act} ikke er foretaget inden Act. 
+Der benyttes i nogle tests også \textbf{PreCondition}, dette bruges til at sikre at de ændringer der foretages i \textbf{Act} ikke er foretaget inden Act. 
 Dermed sikres der at \textbf{Assert} ikke blot giver positive resultater fordi det som tjekkes for allerede var sandt før \textbf{Act}.
 Givet at testen er skrevet korrekt kan der ved brug af dette system findes potentielle fejl i systemets metoder.
 
 
-Til hver enkelt testede funktionalitet oprettes tests der går igennem mange af stierne i funktionen, for at være sikker på at de  agerer som det forventes.
-På \myref{lsttest} ses en test for metoden \class{ShareList} i \class{ShoppingListcontroller}. I testen tjekkes der hvorvidt den \class{User} der deles en \class{ShoppingList} med, har den delte \class{ShoppingList} efter kaldet.
-Der oprettes også en ekstra Arrange her for at oprette en \class{User} der kan deles med.
+Til hver enkelt testede funktionalitet oprettes tests der går igennem mange af kodeeksekveringsstierne i metoderne som testes, for at være sikker på at de agerer som det forventet.
+På \myref{lsttest} ses en test for metoden \class{ShareList} i \class{ShoppingListcontroller}. 
+I testen tjekkes der hvorvidt den \class{User} der deles en \class{ShoppingList} med, har den delte \class{ShoppingList} efter kaldet.
+Her er en Arrange her for at oprette en \class{User} der kan deles med, som ikke eksisterer i \class{Initilize()} metoden.
 
 \begin{lstlisting}[caption={Test for metoden \class{ShareList}.}, label=lsttest]
 {
