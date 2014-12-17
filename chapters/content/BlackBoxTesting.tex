@@ -1,17 +1,19 @@
 \section{Black Box Testing}\label{BBtest}
 For at sikre funktionaliteterne i systemets korrekthed, er der konstrueret unit tests, disse kan findes i \class{ProjectFood.Tests} projektet.
-En af de metoder, som er taget i brug, er Black Box Testing eller Behavioral Testing.
-En sådan test udføres ved at give et input til et kørbart system, og derefter verificere ens output.
+En af de metoder, som er taget i brug, er Black Box Testing også kaldt Behavioral Testing.
+En sådan test udføres ved at give et input til en del af et kørbart system, og derefter verificere at output er som forventet.
 Det eneste i denne process der er kendt af testpersonen er input og output, selve funktionaliteten er således gemt i en ``Black Box''. \citep{Black_Box}
 
-Til dette formål anvendes NUnit frameworket, som er et unit-testing framework til alle .Net sprogene.
-Vi bruger NUnit attributten \class{[TestFixture]} på den pågældende testklasse, dette gør det muligt at have \class{[SetUp]} og \class{[TearDown]} i sine tests.
-En metode med attributten \class{[Setup]} køres hver gang inden en test køres, og gør data klar i hukommelsen så det kan behandles.
-\class{[TearDown]} køres derimod efter hver test og kan bruges til at frigive hukommelse osv.
-Ved NUnit bruges desuden attributten \class{Test} til at markere at en metode i en klasse markeret med \class{TestFixture} er en test.
-Der kan ikke sendes input til en \class{[Test]} 
-Der bruges ved testmetoder der skal have et input \class{[TestCase(inputA, inputB, Result=value)]} attributten, hvor inputtet sendes til testen sekventielt.
-\class{Result=value} tester når metoden er returnere om det returnere den satte værdi i \class{value}. 
+Til dette formål anvendes NUnit frameworket, som er et unit-testing framework til .NET-platformen.
+Vi bruger NUnit attributten \class{[TestFixture]} på testklasserne, dette gør det muligt at have \class{[SetUp]} og \class{[TearDown]} i sine testklasser.
+En metode med attributten \class{[Setup]} køres hver gang inden en test køres, og forbereder system til test.
+\class{[TearDown]} køres efter hver test og kan bruges til at frigive hukommelse og andet oprydning. 
+Ved NUnit anvendes desuden attributten \class{Test} til at markere at en metode, i en klasse markeret med \class{TestFixture}, er en test.
+For at konfigurere en test anvedes der en testcase, på følge format: \class{[TestCase(inputA, inputB, Result=value)]}.
+Her er inputA og inputB de paremetere som metoden tager, og value, den forventede returværdi.
+
+Typisk forgår unit tests af de metoder, som ikke afhænger af andre metoder først.
+Når disse er testet, er det muligt at teste metoderne som kalder disse uafhængige metoder. 
 Efter tests er lavet på metoder af systemet som ikke kalder andre metoder, kan metoderne med flere dependencies, så testes, med en sikkerhed om, at deres dependencies er funktionelle.
 \citep{Unit_Testing}
 
@@ -66,7 +68,7 @@ Der oprettes også en ekstra Arrange her for at oprette en \class{User} der kan 
         }
 }        
 \end{lstlisting}
-Der findes desuden en lignende test som kaldes \class{.._ShouldNotShare}, som ikke opfylder alle metodens kriterier, og derfor fejler, hvilket så tjekkes igennem asserts.
+Der findes desuden en lignende test som kaldes \class{[...]/\_ShouldNotShare}, som ikke opfylder alle metodens kriterier, og derfor fejler, hvilket så tjekkes igennem asserts.
 Fordelen ved at bruge Unit tests som Black Box tests frem for andre, er muligheden for at køre tests nemt igen og igen.
 Dette er en stor fordel når man arbejder iterativt.
 Dette er en mulighed der ellers ikke nødvendigvis er tilgængelig for alle typer af Black Box tests, eksempelvis hvis systemet testes igennem brug.
