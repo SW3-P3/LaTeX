@@ -115,13 +115,13 @@ public IEnumerable<Recipe> RecommendRecipes(User user)
             var score = new List<decimal>();
             foreach (var ingredient in recipie.Ingredients)
             {
-                var derp = (itemsWithRatings.FirstOrDefault(x => x.Item1.Equals(ingredient)));
-                score.Add(derp != null ? derp.Item2.Average() : avgRating);
+                var itemrating = (itemsWithRatings.FirstOrDefault(x => x.Item1.Equals(ingredient)));
+                score.Add(itemrating != null ? derp.Item2.Average() : avgRating);
             }
             recipiesRated.Add(new Tuple<Recipe, decimal>(item1: recipie, item2: score.Any() ? score.Average() : 0M));
         }
     }
-    // Sort the recipies descending and return itz
+    // Sort the recipies descending and return the recipie from the Tuple
     return recipiesRated.OrderByDescending(x => x.Item2).Select(x => x.Item1);
 }
 \end{lstlisting}
