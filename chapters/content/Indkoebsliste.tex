@@ -43,7 +43,8 @@ Dette gemmes i feltet \class{selectedOffer} på \class{shoppingList\_Item}.
 
 På \myref{OffersFilteredByUserPrefs} ses metoden \class{OffersFilteredByUserPrefs}, som kaldes i \myref{getoffersforitem}. Denne metode sørger for at brugeren kun ser \class{Offers} hvis \class{Heading} ikke indeholder noget fra deres liste af \class{Pref}s.
 F.eks. hvis man ikke vil se tilbud på mærket ``vores'', kan man her filtrere \class{Offers} fra, som indeholder ``vores'' i sin \class{Heading}. 
-Der er taget et valg om at \class{Offers} hvis \class{Heading} indeholder kommaer eller ``eller'' i sit navn, skal filtreres væk.
+Der er taget et valg om at \class{Offer}s hvis \class{Heading} indeholder kommaer eller ``eller'' i sit navn, skal filtreres væk.
+Desuden filtreres et \class{Offer} også væk hvis dets \class{unit} er en tom streng.
 Dette er fordi de bliver meget intetsigende og kan skabe forvirring for brugeren. 
 Et eksempel kan være at man søger på leverpostej, og \class{SelectOffer} hedder: ``Leverpostej eller kødpølse''. 
 Hvis der så på brugerens  \class{ShopplingList} står ``Leverpostej eller kødpølse'', kan de være usikre på hvad det egentlig var de skulle købe. 
@@ -78,10 +79,14 @@ public IEnumerable<Offer> OffersFilteredWithString(params string[] args)
 }
 \end{lstlisting}
 
-\texttt{OfferIsReleant()} som kaldes af \myref{OffersFilteredByUserPrefs} kan ses på \myref{OfferIsRelevant}. Dette er metoden som giver resultatet om hvorvidt tilbudet skal tilføjes til listen over tilbud eller ej. Hvis den returnere false vil tilbudet ikke blive tilføjet på linie 19 i \myref{OffersFilteredByUserPrefs}.
+\class{OfferIsReleant()} som kaldes af \myref{OffersFilteredByUserPrefs} kan ses på \myref{OfferIsRelevant}. Dette er metoden som giver resultatet om hvorvidt tilbudet skal tilføjes til listen over tilbud eller ej. 
+Hvis den returnere false vil tilbudet ikke blive tilføjet på linie 19 i \myref{OffersFilteredByUserPrefs}.
+Der tjekkes om hvorvidt det medsendte  \class{Offer} passer ind i den satte systemtid.
+Her tjekkes desuden om navnet på det givne \class{Offer} indeholder nogle af de strenge i blacklist.
+Desuden fjernes alle \class{Offer}s uden enhed har.
 
 \fxnote{Denne forklareing burde blive fjernet}
-\begin{lstlisting}[caption=Denne metode kaldet af OffersFilteredByUserPrefs\, sørger for at tilbudet som modtages som input overholder de forskellige krav sat i blacklisten. Der tjekkes også om tilbudet er passende for den nuværende systemtid. Den nuværende systemtid bruges til at ændre tiden i programmet for at loade relevant tilbud\, og bruges udelukkende til fremvisning af funktionalitet og testing. Er resultates true\, tilføjes tilbudet til listen\, hvis resultatet er false tilføjes den ikke., label=OfferIsRelevant]
+\begin{lstlisting}[caption={\class{OffersFilteredByUserPrefs}, sørger for at tilbudet som modtages som input overholder de forskellige krav sat i blacklisten.}, label=OfferIsRelevant]
 private static bool OfferIsRelevant(Offer o, IEnumerable<string> blacklist)
 {
     if (o.End < GlobalVariables.CurrentSystemTime)
@@ -101,12 +106,9 @@ private static bool OfferIsRelevant(Offer o, IEnumerable<string> blacklist)
 }
 \end{lstlisting}
 
-
-Det er muligt at aftjekke varer som værende købte ved at klikke på deres navn på indkøbslisten. Hvis en bruger holder deres cursor over teksten kommer der en lille besked som viser dette. 
-Det er desuden muligt at fjerne varer helt fra indkøbslisten ved at trykke på den røde knap med et kryds under ``Fjern''. 
-Der er desuden også mulighed for at rydde hele listen for varer og tilbud.
-
 \subsection{Konklusion}
-Det er muligt at have personlige indkøbslister samt at dele dem med andre brugere, hvis en indkøbsliste er delt kan alle brugerne anvende den som var det deres egne. 
-Det er også muligt at tilføje varer, aftjekke dem, og tilgå tilbud baseret på de varer man har tilføjet. 
-Implementeringen udfylder alle user stories, det er dog op til brugertestene at afgøre om det er tilstrækkeligt udført. 
+
+User stories for indkøbslisten er opfyldt, dog er implementeringen der søger efter tilbud for en vare ikke optimal.
+Dette skyldes bl.a. det mangelfulde data som beskrevet i \myref{skoddata}.
+En bedre implementering kunne laves hvis der f.eks. fandtes kategorier på tilbudene, samt generiske varer.
+Som brugertestene viser, i \myref{ss:bt2}, fungerer implementeringen for slutbrugeren på trods af disse mangler.
