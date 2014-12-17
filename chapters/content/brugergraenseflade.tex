@@ -35,17 +35,18 @@ Det er desuden relevant at gruppere felter på en brugergrænseflade, for at vis
 Her kan benyttes en af Getalts love om perception, f.eks. proximity, eller continuity.\citep{DIS2014}
 
 \textbf{WIMP}\hfill\\
-En generel hjemmeside falder ind under begrebet WIMP, som er en type brugergrænseflade. Det står for \textit{Windows}, \textit{Icons}, \textit{Menus} og \textit{Pointers}.
-Vinduerne(\textit{Windows}) indelukker forskellige data og aktioner, man kan inteagere med på hjemmesiden, som f.eks. at tilgå opskrifter, eller en indkøbsliste.
-Ikoner(\textit{Icons}) bruges til at fortælle og vise handlinger eller emner.
+En generel hjemmeside falder ind under begrebet WIMP, som er en type brugergrænseflade.
+Det står for \textit{Windows}, \textit{Icons}, \textit{Menus} og \textit{Pointers}.
+Vinduerne(\textit{Windows}) indkapsler forskellige data og aktioner, man kan interagere med på hjemmesiden, som f.eks. at tilgå opskrifter, eller en indkøbsliste.
+Ikoner(\textit{Icons}) bruges til at illustrere mulige handlinger og emner.
 Her kan benyttes forskellige designs til ikonerne, såsom direct-mapping, metaforer, eller convention.
 Menuer(\textit{Menus}) bruges til at navigere på hjemmesider f.eks. imellem vinduerne, eller forskellige handlinger der skal udføres.
-Pointeren(\textit{Pointers}) er redskabet, der bruges til hjemmesiden, og er på en almindelig pc ofte en markør, og på mobiltelefoner bruges touch-skærme, hvor ens fingre fungerer som pointere.
+Pointeren(\textit{Pointers}) er et redskab, der bruges på hjemmesiden, og er på en almindelig pc ofte en markør, og på mobiltelefoner bruges touch-skærme, hvor ens fingre fungerer som pointere.
 
 
 \textbf{Mobilt interface}\hfill\\
-På en enhed som f.eks. en smartphone er skærmen meget mindre, der er derfor mindre plads til information på skærmen. 
-En række principper er udgivet af google\citep{Mobil}, og deres hovedpunkter er:
+På en enhed med en mindre skærm, f.eks. en smartphone er der mindre plads til information, end på en f.eks. en computer. 
+En række principper er defineret af Google\citep{Mobil}, og deres hovedpunkter er:
 \begin{itemize}[nolistsep,noitemsep]
 	\item Design hele hjemmesiden til at være mobilvenlig.
 	\item Benyt et responsivt design så domænet forbliver det samme.
@@ -55,38 +56,37 @@ En række principper er udgivet af google\citep{Mobil}, og deres hovedpunkter er
 I næste sektion vil vi diskutere, hvordan disse elementer skal benyttes på hjemmesiden, for at udvikle en brugervenlig hjemmeside.
 
 \subsection{Design}
-For at kunne øge hjemmesidens ease of use, skal der bruges et godt redskab til at navigere rundt på hjemmesiden.
+For at kunne øge hjemmesidens ease of use, skal der bruges et redskab til at navigere rundt på hjemmesiden.
 Dette kan f.eks. gøres vha. menuer med hierarkier, eller vha. en navigerings-bar i toppen.
-Der vælges at bruge en navigerings-bar, af bootstrap klassen navbar. 
-En hjemmeside på mobilen er svær at bruge med menu hierarkier, derfor er en navbar med direkte links til komponenterne god at bruge. 
-Den er vist overalt på hjemmesiden, og det er derfor nemt at navigere imellem de forskellige komponenter.
-Ud for alle emner på toolbaren er der tilsat et ikon, for brugeren nemmere kan genkende funktionerne på menupunkterne.
+Der vælges at bruge en navigerings-bar, af Bootstrap klassen navbar. 
+På hjemmeside på mobilen kan det være uhensigtmessigt at bruge en menu hierarkier, derfor er en navbar med direkte links til komponenterne god at bruge. 
+Den er vist overalt på hjemmesiden, og er derfor nem at navigere.
+Ud for alle emner på navigerings-baren er der et ikon, så brugeren nemmere kan genkende funktionerne på menupunkterne.
 Dette hjælper desuden også på sidens consistency, da denne altid er vist.
 
-For at være sikre på, at siden er nem at lære, er det de samme klasser fra bootstrap, der benyttes rundt om på siden. 
+For at sikre sig learnability på siden, er det de samme klasser fra Bootstrap, der benyttes over alt på siden. 
 Knapperne der har samme funktion, f.eks. som at tilføje noget til en indkøbsliste er ens over det hele. 
 Det er et plus ikon, som ændrer sig til et flueben når der trykkes på den.
 Denne feedback forsikrer brugeren om, at deres handlingen er udført.
 Dette er konventionen, et plus lægger noget til, og et flueben viser at hændelsen er sket.
 På samme måde angiver et kryds i en rød firkant, at man lukker noget ned, eller sletter noget.
-Derfor for at ``recover'' fra en fejl lavet i programmet, er det nemt at slette forskellige elementer for brugeren, ved at f.eks. trykke på krydset i den røde firkant.
 
-Det er dog ikke muligt at ``undo'' en sletning, så brugeren må derfor angive varen igen.
-Vælger brugeren derimod at slette hele indkøbslisten eller en opskrift, bliver de præsenteret for en besked, der advarer dem om sletningen og den manglende mulighed for at gendanne.
+Vælger brugeren at slette hele indkøbslisten eller en opskrift, bliver de præsenteret for en besked, der advarer dem om sletningen og den manglende mulighed for at gendanne.
+Denne advarelse eksiterer dog ikke for at fjerne ting fra nævnte lister.
 Der er desuden sat forskellige constraints for brugeren, således at en mængde ikke kan angives i bogstaver, eller kalde en opskrift det samme som en allerrede eksisterende opskrifter.
 
 For at hjælpe med forståelsen af de forskellige komponenter, bruges ikoner, der er direct-mapping, for at fremme forståelsen af hvad komponenten er.
 	
-\subsection{Implementation}
-I dette afsnit vil vi opsumere og beskrive en række design principper og teknologier, samt deres konkrete brug i implementationen af vores generelle brugergrænseflade. Derudover vil vi vurdere på betydning af disse for systememts brugervenlighed og kæde det sammen med ovenstående teori.
+\subsection{Implementering}
+I dette afsnit opsumeres og beskrives en række design principper og teknologier, samt deres konkrete brug i implementationen af brugergrænsefladen. Derudover vil betydning af disse vurderes for systemets brugervenlighed og kædes sammen med ovenstående teori.
 
 \textbf{Globale design principper}\hfill\\
-Hele hjemmesiden er sikret et ens grund design, vha. det der kaldes et \textit{layout view}.
-Når en bruger beder om at få vist en side fra systemet, er det \textit{layout view'et} der står for brugergrænsefladen.
+Hjemmesiden er sikret et ens grund design, vha. det der kaldes et \textit{layout view}.
+Når en bruger beder om at få vist en side fra systemet, er det \textit{layout view'et} der står for vise  brugergrænsefladen.
 Det sørger for at indlæse de rigtige scripts, stylesheets, navigerings-baren og til sidst det konkrete view, som brugeren har forespørgt.
-På denne måde sikres et ens ``look'', og systemet consistency hæves, i og med at brugeren altid har adgang til den bekendte navigerings-bar.
+På denne måde sikres systemet consistency, i og med at brugeren altid har adgang til den bekendte navigerings-bar.
 
-For at sikre en god mobil oplevelse, har vi først og fremmest tilladt, at der præsenteres en fuldskærms-oplevelse for brugeren, når hjemmesiden tilgås fra en mobiltelefon.
+For at sikre en god mobil oplevelse, har vi tilladt, at der præsenteres en fuldskærms-oplevelse for brugeren, når hjemmesiden tilgås fra en mobiltelefon.
 Det første meta-tag sørger for, at vi udnytter hele mobilens skærmbredde.
 Som en lille detalje, har vi valgt at bruge det andet meta-tag, der muliggøre det på android enheder at gemme en genvej på hjemmeskærmen, og på den måde vil hjemmesiden optræde som en app, uden url-baren, der normalt optræder i browseren.
 \begin{lstlisting}[language=HTML]
@@ -94,12 +94,12 @@ Som en lille detalje, har vi valgt at bruge det andet meta-tag, der muliggøre d
 <meta name="mobile-web-app-capable" content="yes" />
 \end{lstlisting}
 
-For at kunne præsentere brugeren for en bekendt side, når de navigerer rundt i systemet, har vi udarbejdet en skabelon, som vi designer alle hovedviews, med undtagelse af forsiden, udfra.
+For at kunne præsentere brugeren for en bekendt side, når de navigerer rundt i systemet, har vi udarbejdet en skabelon. Alle hovedviews, med undtagelse af forsiden, er lavet ud fra denne skabalon.
 \begin{figure}[h]
 \includegraphics[trim=3.5cm 0cm 3cm 0cm, clip=true, width=1\textwidth]{images/Images/generelt_layout.png}
 \caption{Design skabelon som beskriver den umiddelbare inddeling af views i systemet.}\label{ss:design_skabelon}
 \end{figure}
-Skabelonen er simpelt bygget op med tre hoved grupper, foruden navigerings-baren og footeren. En gruppe til ikon(glyphicon), overskrift og forklarende hjælpetekst, en anden gruppe til knapper og relevante funktioner (det kunne f.eks. være en ``Opret indkøbsliste''-knap), og en tredje gruppe til selve hovedindholdet.
+Skabelonen er bygget op med tre hovedgrupper, foruden navigerings-baren og footeren. En gruppe til ikon(glyphicon), overskrift og forklarende hjælpetekst, en anden gruppe til knapper og relevante funktioner (det kunne f.eks. være en ``Opret indkøbsliste''-knap), og en tredje gruppe til selve hovedindholdet.
 I HTML syntaks vil \myref{ss:design_skabelon}, se således ud:
 \begin{lstlisting}[language=HTML, caption=HTML-kode med de tre hoved grupper, label=html:design_skabelon]
 <div class="page-header nopadding-xs">
@@ -132,32 +132,30 @@ I HTML syntaks vil \myref{ss:design_skabelon}, se således ud:
 </div>
 \end{lstlisting}
 
-I HTML koden i \myref{html:design_skabelon} ses også nogle forskellige bootstrap klasser, der gør, at resultatet bliver det, der kan ses \myref{ss:design_skabelon}. 
-Vi udnytter gitter-systemet, som bootstrap stiller til rådighed, og for at få indholdet til at stå, som vi vil have det, og samtidigt se pænt ud på mobil-platform, har vi bl.a. vores egne CSS-klasser som f.eks. \texttt{nopadding}. 
-Med denne blanding af bootstrap og vores eget CSS, kan vi tilpasse systemet præcis som vi vil. 
-En af de andre funktioner, vi benytter fra bootstrap, er \textit{glyphicons}, der giver vores system en skub imod mere consistency og affordance, i og med ikonet beskriver overskriften, samt er ens fra navigerings-baren.
+I HTML koden i \myref{html:design_skabelon} anvender Bootstrap klasser, resultatet kan ses \myref{ss:design_skabelon}. 
+Gitter-systemet som Bootstrap stiller til rådighed bruges, for at få at opnå det ønsket layout og på samme tid tilpasses den mobil-platform.
+Vi har udviklet vores egne CSS-klasser som f.eks. \texttt{nopadding}, for at kunne tilpasse layoutet yderligere. 
+Med denne blanding af Bootstrap og vores eget CSS, kan vi tilpasse systemet præcis som vi vil. 
+En af de andre funktioner, vi benytter fra Bootstrap, er \textit{glyphicons}, som øger hjemmesidens consistency og affordance.
+Disse \textit{glyphicons} bruges bl.a. i overskrifter, og i navigerings-baren.
 
 \textbf{Mobil tilpasning}\hfill\\
-Det meste af vores tilpasning til mobil-platformen, klares af bootstaps responsive design, som de opnår ved at definere forskellige atributter for forskellige skærm størrelser.
-Derudover benytter vi os af CSS-klasser, fra bootstrap, som kan skjule og/eller vise ting ved netop forskellige skærm størrelser.
+Det meste af vores tilpasning til mobil-platformen, klares af bootstaps responsive design, som er opnået ved at definere forskellige atributter for forskellige skærm størrelser.
+Derudover benytter vi os af CSS-klasser, fra Bootstrap, som kan skjule og/eller vise ting ved netop forskellige skærm størrelser.
 Vi vælger derved at begrænse systemets funktionalitet for brugeren, når de tilgår det via en mobil-platform. De funktioner, som vi skjuler for brugeren, er:
 
 \begin{description}
 \item[Oprettelse, redigering og kloning af opskrifter]\hfill\\
-Grunden til, at har valgt at begrænse brugeren for denne funktionalitet på mobil-platformen, er at denne platform ikke er tænkt som et sted, hvor man skal foretage forholdvis kompliceret data oprettelse eller ændring.
-Det at oprette eller ændre en opskrift, er noget man skal gøre mens man har en skærm størrelse til rådighed, der tillader et godt overblik.
-Med denne begrænsning tvinger vi dermed brugeren til at bruge mobil-platformen for en informationssøgning, ift. opskrifter.
-Samtidigt fokuserer vi opskrift komponenten omkring den relevate kontekst, når mobil-platforment benyttes, som er inspirationssøgning eller madlavning - i disse kontekster er det kun nødvendigt at kunne gennemse opskrifter og følge dem.
+Grunden til, at vi har valgt at begrænse brugeren for denne funktionalitet på mobil-platformen, er at denne platform ikke er tænkt som et sted, hvor man skal foretage forholdvis kompliceret data oprettelse eller ændring.
+Samtidigt fokuserer vi opskrifts komponenten omkring den relevate kontekst, når mobil-platforment benyttes, som er inspirationssøgning eller madlavning - i disse kontekster er det kun nødvendigt at kunne finde opskrifter og følge dem.
 \item[Muligheden for at ændre kodeord]\hfill\\
-Dette er ikke noget brugeren vil gøre ofte, og derfor har vi valgt, at inkludere det som en funktion man kan opsøge via brug af en computer.
-Således er det ikke relevant i konteksten, hvor mobil-platformen bruges.
+Dette er ikke noget brugeren vil gøre ofte, og derfor har vi valgt, at ekskludere denne funktion fra mobil-platformen.
 \end{description}
 
-Når vil vælger at gemme funktionalitet for brugeren, er det udelukkende for at give brugeren en bedre oplevelse med brugen af systemet.
-Vi påfører \textit{constraints} og på den måde, forhindres brugeren i, at bevæge sig steder hen, der ikke egner sig til mobil-platformen.
-Dog skal det siges, at man med fordel kunne inkoorporere alle funktioner vha. \textit{overflow menuer} bl.a. kendt fra Google's tjenester, hvor tre prikker indikerer at yderligere funktionalitet er tilgængelig.
-\fxnote{måske henvisning til http://developer.android.com/design/patterns/actionbar.html}
-På denne måde vil brugere, der udelukkende benytter sig at smartphones og lign. også være i stand til at kunne udnytte alle systemets funktionaliteter.
+Når vi vælger at skjule funktionalitet for brugeren, er det udelukkende for at give brugeren en bedre oplevelse med brugen af hjemmesiden på mobil-platformen.
+Vi påfører \textit{constraints} og på den måde, forhindres brugeren i, at tilgå steder der ikke egner sig til mobil-platformen.
+Med fordel kunne man inkoorporere alle funktioner vha. \textit{overflow menuer} bl.a. kendt fra Google's tjenester, hvor tre prikker indikerer at yderligere funktionalitet er tilgængelig. \cite{actionbar}
+På denne måde vil brugere, der udelukkende benytter sig at smartphones eller lign. også være i stand til at kunne udnytte alle hjemmesidens funktionaliteter.
 
 \begin{wrapfigure}{o}{0.42\textwidth}
 \vspace{-30pt}
@@ -174,29 +172,29 @@ På denne måde vil brugere, der udelukkende benytter sig at smartphones og lign
 \end{wrapfigure}
 Nogle steder har vi istedet for at gemme en funktionalitet væk, erstattet f.eks. en tekstboks med en knap, der så generere et vindue med de elementer der skal til for at udføre handlingen. 
 Et eksempel på dette ses, når en bruger vil dele sin indkøbsliste med andre brugere.
-På en pc vil man blive præsenteret for en tekstboks, med dertilhørrende knap, mens mobil-udgaven viser brugeren en knap med titlen ``Del'', som generere et vindue over selve siden, når de trykker på den (se \myref{ss:share_diffs} ).
+På en computer vil man blive præsenteret for en tekstboks, med dertilhørende knap, mens mobil-udgaven viser brugeren en knap med titlen \textit{Del}, som generere et pop-up over selve siden, når de trykker på den (se \myref{ss:share_diffs} ).
 
 \textbf{Respons til brugerinput}\hfill\\
-For at brugeren oplever systemet som ``levende'', har vi implementeret forskellige former for respons og visuel feedback.
-Måden hvorpå vi gør dette, er gennem jQuery og Bootstrap klasser.
-Med Javascript og jQuery, kan man tilføje og fjerne klasser fra HTML tags, samt genere HTML kode uden af genindlæse siden - på den måde virker det for brugeren som om, at siden er ``levende''.
-Vi har derudover valgt at benytte os af et javascript framework, kaldet \textit{snackbar.js}, der tillader os, at præsentere brugeren for en snackbar.
+For at brugeren oplever systemet som \textit{levende}, har vi implementeret forskellige former for respons og visuel feedback.
+Dette gøres gennem jQuery og Bootstrap klasser.
+Med Javascript og jQuery, kan man tilføje og fjerne klasser fra HTML tags, samt genere HTML kode uden at genindlæse siden - på den måde virker det for brugeren som om, at siden er \textit{levende}.
+Vi har derudover valgt at benytte os af et javascript framework, kaldet \class{snackbar.js}, der tillader os, at præsentere brugeren for en snackbar.
 En snackbar er, i dette tilfælde, en lille besked der popper op i nederste venstre hjørne af skærmen; snackbaren kan indeholde en hvilken som helst besked, og vi kan endvidere vise glyphicons deri.
 Nogle eksempler på dette er:
 \begin{description}
 \item[Tilføje varer til indkøbsliste, fra tilbud side eller opskrift]\hfill\\
-Ud for hvert tilbud, på tilbuds siden, og ingredienser på opskrifter, er det muligt for brugeren at trykke på en blå knap, der er præsenteret med et \textbf{+}. 
-Hvis det lykkedes at tilføje varen for systemets backend, vil brugeren opleve, at knappen skifter farve til grøn, og plusset bliver til et flueben.
+Ud for hvert tilbud, på tilbuds siden, og ingredienser på opskrifter, er det muligt for brugeren at trykke på en blå knap, der er præsenteret med et plus (\textbf{+}). 
+Når varen bliver tilføjet, vil brugeren opleve, at knappen skifter farve til grøn, og plusset bliver til et flueben.
 Derudover vil en snackbar komme til syne, med en besked om, at det er lykkedes at tilføje varen til den valgte indkøbsliste.
 (Se \myref{code:user_feedback} funktion nr. 1)
 \item[Ændre hvilke butikker man ønsker at se tilbud fra]\hfill\\
-Under brugerindstillinger, er alle butikker, som systemet har fundet tilbud fra, vist med en checkboks udfor.
-Som udgangspunkt er alle butikker tilvalgt, hvilket er vist med et flueben i checkboxen.
+Under brugerindstillinger, er der ud for alle butikker vist en checkboks, som systemet har fundet tilbud fra.
+Som udgangspunkt er alle butikker tilvalgt, hvilket er vist med et flueben i checkboksen.
 Når brugeren så vælger at fjerne en butik, vil fluebenet forsvinde, og teksten bliver overstreget og faded ud.
 Vi informerer også brugeren om, at indstillingen er gemt, med en snackbar.
 (Variation af funktion nr. 1 på \myref{code:user_feedback})
 \item[Dele indkøbsliste med andre brugere]\hfill\\
-Hvis brugeren forsøger at dele med en anden bruger, præsenterer vi resultatet af handlingen igennem en snackbar.
+Hvis brugeren forsøger at dele sin indkøbsliste med en anden bruger, præsenterer vi resultatet af handlingen igennem en snackbar.
 På denne måde kan brugeren se, om det er lykkedes eller om den indtastede email ikke findes.
 (Udvidelse af funktion nr. 2 på \myref{code:user_feedback})
 \end{description}
@@ -241,10 +239,10 @@ function MakeSnackbar(text, glyphicon, style, timeout) {
 \end{lstlisting}
 
 \subsection{Konklusion}
-Med vores design skabelon og brugen af \textit{glyphicons}, højner vi niveauet af \textbf{learnability} mærkant, og brugeren får i sidste end lettere ved at bruge systemet.
-For at opfylde kravet om \textbf{effectiveness}, benytter vi os af constraints, bl.a. bliver funktionaliteterne begrænset i forskellige kontekster.
-\textbf{Ease of use} opnår vi ved, at systemet giver brugeren feedback, når det foretager forskellige handlinger.
+Med vores design skabelon og brugen af \textit{glyphicons}, forøger vi niveauet af \textbf{learnability} markant, og brugeren får i sidste ende lettere ved at bruge systemet.
+For at opfylde kravet om \textbf{effectiveness}, benytter vi os af constraints, bl.a. begrænset funktionaliteterne i forskellige kontekster.
+\textbf{Ease of use} opnås ved, at systemet giver brugeren feedback, når der foretages forskellige handlinger.
 Her er muligheden for at lave \textit{snackbarer} en essentiel del.
-Brugen af vores design skabelon, samt navigeringsbaren, hjælper også med til at overholde Getalts love om perception, i form af gruppering.
+Brugen af vores design skabelon, samt navigerings-baren, hjælper også med til at overholde Getalts love om perception, i form af gruppering.
 Guidelines omkring mobile-platforme, overholder vi bl.a. igennem overvejelser ift. konteksten i udviklingen af vores views.
-Efter som vi ikke har valgt at udvikle en dedikeret app, til smartphones, hjælper det også meget på bruger oplevelsen, at vi kan præsentere den mobile-udgave uden url-baren der normalt optræder i browseren.
+Efter som vi ikke har valgt at udvikle en dedikeret app, til smartphones, hjælper det også meget på brugeroplevelsen, at vi kan præsentere den mobile-udgave uden url-baren der normalt optræder i browseren.
