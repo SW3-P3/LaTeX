@@ -1,24 +1,22 @@
 \section{Overvågningslisten}
 
-User story 9 i \myref{sec:krav} lyder: ``Som en bruger vil jeg kunne overvåge specifikke varer, og få en notifikation når disse varer kommer på tilbud.''
+User story 9, i \myref{sec:krav}, lyder: ``Som en bruger vil jeg kunne overvåge specifikke varer og få en notifikation, når disse varer kommer på tilbud.''
 
 I dette afsnit vil design og implementering af denne user story uddybes.
 
 \subsection{Design}
-
-Overvågningslisten rent teknisk minder meget om en indkøbsliste, da det er en liste af varer som har tilbud.
+Overvågningslisten minder teknisk set meget om en indkøbsliste, da det er en liste af varer, som har tilbud.
 Den vil derfor også blive implementeret som en indkøbsliste. 
-Der oprettes en overvågningsliste, når en bruger oprettes og den kan kun blive slettet hvis brugeren fjernes.
-Når der hentes tilbud fra eTilbudsavis' API eller via JSON, sendes der en e-mail til brugerne hvis der er nye tilbud som passer på nogle af brugernes varer på deres overvågningsliste. 
+Der oprettes en overvågningsliste, når en bruger oprettes, og den kan kun blive slettet, hvis brugeren fjernes.
+Når der hentes tilbud fra eTilbudsavis' API eller via JSON, sendes der en e-mail til brugerne, hvis der er nye tilbud, som passer på nogle af brugernes varer fra deres overvågningsliste. 
 E-mailen indeholder en liste af alle tilbudene der findes, for de varer der er på listen.
 
 \subsection{Implementering} 
-
 Da overvågningslisten er en indkøbsliste, bliver der genbrugt meget kode derfra, herunder logikken til at finde tilbud, hvilket svarer til at finde en vare og tilføje et tilbud for varen til en indkøbsliste, som forklaret i \myref{Indkoebsliste}.
-En overvågningsliste er tilsluttet en bruger som et felt af typen \class{ShoppingList} og navnet \class{WatchList}. 
-Denne \class{Shoppinglist} bliver oprettet når brugeren oprettes.
+En overvågningsliste er tilsluttet en bruger som et felt af typen \class{ShoppingList} og med navnet \class{WatchList}. 
+Denne \class{Shoppinglist} bliver oprettet, når brugeren oprettes.
 
-For at kunne sende e-mails til en \class[User] kaldes \class{NotifyWatchers} lavet i \class{OfferControler.cs} som ses på \myref{notifywatcherlisting}. 
+For at kunne sende e-mails til en \class[User] kaldes \class{NotifyWatchers} lavet i \class{OfferControler.cs}, som ses på \myref{notifywatcherlisting}. 
 \begin{lstlisting}[caption={\class{NotifyWatchers} finder de tilbud som skal sendes til hver user og sender dem i en mail} ,label=notifywatcherlisting]
 public void NotifyWatchers()
 {
@@ -61,12 +59,12 @@ public void NotifyWatchers()
     _db.SaveChanges();
 }
 \end{lstlisting}
-I \myref{notifywatcherlisting} bliver alle \class{User}s \class{ShoppingList}s gennemløbet og tjekket mod listen over tilbud, som allerede er blevet sendt til denne \class{User} (\class{SentOffers}). 
-Hvis der eksistere \class{Offer}s som ikke allerede er sendt til en \class{User}, som passer til \class{Item}s på deres \class{WatchList}, så vil en e-mail, indeholdende de nævnte tilbud, blive sendt til dem. 
-E-mail notifikationen kan i princippet godt udskiftes med andre typer notifikationer, så som push notifikationer. 
-\subsection{Konklusion}
+I \myref{notifywatcherlisting} bliver alle \class{Users} \class{ShoppingLists} gennemløbet og tjekket mod listen over tilbud, som allerede er blevet sendt til denne \class{User} (\class{SentOffers}). 
+Hvis der eksistere \class{Offers}, der ikke allerede er sendt til en \class{User}, som passer til \class{Item}s på deres \class{WatchList}, så vil en e-mail indeholdende de nævnte tilbud blive sendt til dem. 
+E-mail notifikationen kan i princippet godt udskiftes med andre typer notifikationer - f.eks. push-notifikationer. 
 
-Overvågningslisten giver brugeren mulighed for at tilføje varer til en liste og se om de er på tilbud. 
+\subsection{Konklusion}
+Overvågningslisten giver brugeren mulighed for at tilføje varer til en liste og se, om de er på tilbud. 
 Derudover vil programmet også sende en e-mail notifikation, med relevante tilbud til brugeren. 
 Dette stemmer overens med user story 9: ``Som en bruger vil jeg kunne overvåge specifikke varer, og få en notifikation når disse varer kommer på tilbud.'', der som resultat er opfyldt.
-Metoden kaldes hver gang nye tilbud importeres fra eTilbudsavis, eller JSON, hvilket gør at det fungerer automatisk.
+Metoden kaldes hver gang nye tilbud importeres fra eTilbudsavis eller JSON, hvilket gør, at det fungerer automatisk.

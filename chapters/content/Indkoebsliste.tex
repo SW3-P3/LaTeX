@@ -30,22 +30,25 @@ public static List<Offer> GetOffersForItem(IDataBaseContext db, Item item, User 
 Denne metode vil søge efter \class{Offers}, som passer på det tilføjede \class{Item}
 Her tages højde for, hvilke butikker den pågældende \class{User} har fravalgt, og dermed tilføjet til sin liste over \class{Pref} (Uddybes i \myref{OffersFilteredByUserPrefs}).
 Den naive implementering af denne metode ville være at anvende \class{String.Contains()} metoden, som returnerer sand, hvis den angivne streng er en substreng af den, som metoden kaldes på. 
-Men dette vil give unødige falske-positive, eksempelvis hvis en bruger vil købe varen ``Burger'', så vil tilbud på ``hamburgerryg'' blive inkluderet.
-Derfor er alle tilbud for en given vare kun med i listen, hvis varens navn findes efterfulgt af et mellemrum, eller forud for et mellemrum, eller passer fuldstændigt.
-En bedre implementering kunne laves hvis man kunne vælge kategori på varen der søges på, såsom pålæg.
-Herudover kunne man oprette generiske varer såsom chokoladebar, og ved at søge på dette, finder den relaterede varer såsom marsbar.
-Der findes en blå knap ud for varen med teksten ``Se tilbud'', når knappen trykkes på udvides tabellen således brugeren kan se det pågældende \class{Item}s liste af \class{Offers}.
-Hvis der vælges et af disse \class{Offers} vil det viste navn for det pågældende \class{Item} erstattes af navnet på det valgte \class{Offer}.
+Men dette vil give unødige falske-positive, hvis en bruger eksempelvis vil købe en vare kaldet ``Burger'', vil tilbud på ``hamburgerryg'' blive inkluderet.
+Derfor er alle tilbud for en given vare kun med i listen, hvis varens navn findes efterfulgt af et mellemrum, forud for et mellemrum eller passer fuldstændigt.
+En bedre implementering kunne laves, hvis man kunne vælge kategori på varen, der søges på, f.eks. pålæg.
+Herudover kunne man oprette generiske varer, såsom chokoladebar, og ved at søge på dette finde relaterede varer f.eks. Marsbar.
+Ud for varerne findes en blå knap med teksten ``Se tilbud'', som udvider tabellen således brugeren kan se det pågældende \class{Item}s liste af \class{Offers}, når de trykker på knappen.
+Ved siden af knappen har brugeren mulighed for, via et \textit{badge}, at se antallet af \class{Offers} for det givne \class{Item}.
+Hvis der ikke eksisterer \class{Offers} på et \class{Item}, vil knappen ikke være synlig, og badget vil vise teksten ``0''.
+Hvis der vælges et af disse \class{Offers}, vil det viste navn for det pågældende \class{Item} erstattes af navnet på det valgte \class{Offer}.
 Dette gemmes i feltet \class{selectedOffer} på \class{shoppingList\_Item}.
 
-På \myref{OffersFilteredByUserPrefs} ses metoden \class{OffersFilteredByUserPrefs}, som kaldes i \myref{getoffersforitem}. Denne metode sørger for at brugeren kun ser \class{Offers} hvis \class{Heading} ikke indeholder noget fra deres liste af \class{Pref}s.
+På \myref{OffersFilteredByUserPrefs} ses metoden \class{OffersFilteredByUserPrefs}, som kaldes i \myref{getoffersforitem}. 
+Denne metode sørger for, at brugeren kun ser \class{Offers}, hvis \class{Heading} ikke indeholder noget fra deres liste af \class{Pref}s.
 F.eks. hvis man ikke vil se tilbud på mærket ``vores'', kan man her filtrere \class{Offers} fra, som indeholder ``vores'' i sin \class{Heading}. 
-Der er taget et valg om at \class{Offer}s hvis \class{Heading} indeholder kommaer eller ``eller'' i sit navn, skal filtreres væk.
-Desuden filtreres et \class{Offer} også væk hvis dets \class{unit} er en tom streng.
-Dette er fordi de bliver meget intetsigende og kan skabe forvirring for brugeren. 
-Et eksempel kan være at man søger på leverpostej, og \class{SelectOffer} hedder: ``Leverpostej eller kødpølse''. 
-Hvis der så på brugerens  \class{ShopplingList} står ``Leverpostej eller kødpølse'', kan de være usikre på hvad det egentlig var de skulle købe. 
-Metoden kaldes alle steder hvor der skal vises tilbud på hjemmesiden.
+Der er taget et valg om, at \class{Offer}s, hvis \class{Heading} indeholder kommaer eller ``eller'' i sit navn, skal filtreres væk.
+Desuden filtreres et \class{Offer} også væk, hvis dets \class{unit} er en tom streng.
+Dette er fordi, de bliver meget intetsigende og kan skabe forvirring for brugeren. 
+Et eksempel kan være, at man søger på leverpostej, og \class{SelectOffer} hedder: ``Leverpostej eller kødpølse''. 
+Hvis der så på brugerens \class{ShopplingList} står ``Leverpostej eller kødpølse'', kan de være usikre på hvad det egentlig var, de skulle købe. 
+Metoden kaldes alle steder, hvor der skal vises tilbud på hjemmesiden.
 
 \begin{lstlisting}[caption={\class{OffersFilteredByUserPref} er metoden, der filtrerer \class{Offers} på baggrund af uønskede strenge.}, label=OffersFilteredByUserPrefs] 
 public IEnumerable<Offer> OffersFilteredWithString(params string[] args)
@@ -76,13 +79,13 @@ public IEnumerable<Offer> OffersFilteredWithString(params string[] args)
 }
 \end{lstlisting}
 
-\class{OfferIsReleant()} som kaldes af \myref{OffersFilteredByUserPrefs} kan ses på \myref{OfferIsRelevant}. Dette er metoden som giver resultatet om hvorvidt tilbudet skal tilføjes til listen over tilbud eller ej. 
-Hvis den returnere false vil tilbudet ikke blive tilføjet på linie 19 i \myref{OffersFilteredByUserPrefs}.
-Der tjekkes om hvorvidt det medsendte  \class{Offer} passer ind i den satte systemtid.
+\class{OfferIsReleant()}, som kaldes af \myref{OffersFilteredByUserPrefs}, kan ses på \myref{OfferIsRelevant}. 
+Dette er metoden, som giver resultatet om, hvorvidt tilbudet skal tilføjes til listen over tilbud eller ej. 
+Hvis den returnerer false, vil tilbudet ikke blive tilføjet på linie 19 i \myref{OffersFilteredByUserPrefs}.
+Der tjekkes om hvorvidt det medsendte \class{Offer} passer ind i den satte systemtid.
 Her tjekkes desuden om navnet på det givne \class{Offer} indeholder nogle af de strenge i blacklist.
-Desuden fjernes alle \class{Offer}s uden enhed har.
+Desuden filtreres alle \class{Offer}s uden enhed også fra.
 
-\fxnote{Denne forklareing burde blive fjernet}
 \begin{lstlisting}[caption={\class{OffersFilteredByUserPrefs}, sørger for at tilbudet som modtages som input overholder de forskellige krav sat i blacklisten.}, label=OfferIsRelevant]
 private static bool OfferIsRelevant(Offer o, IEnumerable<string> blacklist)
 {
@@ -104,8 +107,7 @@ private static bool OfferIsRelevant(Offer o, IEnumerable<string> blacklist)
 \end{lstlisting}
 
 \subsection{Konklusion}
-
-User stories for indkøbslisten er opfyldt, dog er implementeringen der søger efter tilbud for en vare ikke optimal.
+User stories for indkøbslisten er opfyldt, dog er implementeringen, der søger efter tilbud for en vare, ikke optimal.
 Dette skyldes bl.a. det mangelfulde data som beskrevet i \myref{skoddata}.
-En bedre implementering kunne laves hvis der f.eks. fandtes kategorier på tilbudene, samt generiske varer.
-Som brugertestene viser, i \myref{ss:bt2}, fungerer implementeringen for slutbrugeren på trods af disse mangler.
+En bedre implementering kunne laves, hvis der f.eks. fandtes kategorier på tilbudene, samt generiske varer.
+Som brugertestene viser, i \myref{ss:bt2}, fungerer implementeringen for slutbrugeren trods disse mangler.
