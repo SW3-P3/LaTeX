@@ -1,33 +1,38 @@
 \section{Black Box Testing}\label{BBtest}
-For at sikre systemets funktionalitet, er systemet blevet testet, ikke kun af brugere, men også af projektgruppen.
+For at sikre funktionaliteterne i systemets korrekthed, er der konstrueret unit tests, disse kan findes i \class{ProjectFood.Tests} projektet.
 En af de metoder, som er taget i brug, er Black Box Testing eller Behavioral Testing.
 En sådan test udføres ved at give et input til et kørbart system, og derefter verificere ens output.
 Det eneste i denne process der er kendt af testpersonen er input og output, selve funktionaliteten er således gemt i en ``Black Box''. \citep{Black_Box}
 
 Til dette formål anvendes NUnit frameworket, som er et unit-testing framework til alle .Net sprogene.
-I dette framework brydes metoder og properties med logik, op i så små dele som overhovedet muligt, for at teste de enkelte logiske sammenligninger og teste resultatet.
-Efter tests er lavet på  demindste dele af systemet, kan metoder med flere dependencies, så testes, med en sikkerhed om, at deres dependencies er funktionelle.
+Vi bruger NUnit attributten \class{[TestFixture]} på den pågældende testklasse, dette gør det muligt at have \class{[SetUp]} og \class{[TearDown]} i sine tests.
+En metode med attributten \class{[Setup]} køres hver gang inden en test køres, og gør data klar i hukommelsen så det kan behandles.
+\class{[TearDown]} køres derimod efter hver test og kan bruges til at frigive hukommelse osv.
+Ved NUnit bruges desuden attributten \class{Test} til at markere at en metode i en klasse markeret med \class{TestFixture} er en test.
+Der kan ikke sendes input til en \class{[Test]} 
+Der bruges ved testmetoder der skal have et input \class{[TestCase(inputA, inputB, Result=value)]} attributten, hvor inputtet sendes til testen sekventielt.
+\class{Result=value} tester når metoden er returnere om det returnere den satte værdi i \class{value}. 
+Efter tests er lavet på metoder af systemet som ikke kalder andre metoder, kan metoderne med flere dependencies, så testes, med en sikkerhed om, at deres dependencies er funktionelle.
 \citep{Unit_Testing}
 
 For at oprette diverse tests, følges AAA mønsteret (Act, Assert, Arrange), dette er en måde hvorpå unit tests kan konstrueres, for at give et bedre overblik over de forskellige dele af testen.
 \citep{Writing_Your_Tests}
 De tre dele af AAA mønsteret repræsentere respektivt:
 \begin{itemize}
-  \item \textbf{Arrange:} Alt setup krævet for at køre det testede kode. Dette inkluderer initialisering af data, objekter og dependencies, eftersom Test delen er et Mock af det rigtige system, og derved ikke er initialiseret.
+  \item \textbf{Arrange:} Her initialiseres det data der skal bruges i testen. Da vi Bruger NUnit sker dette udelukkende for mange tests i \class{Initilize()} metoden, der er dog nogle som har sin egen Arrange sektion som initialisere data der kun skal bruges i den enkelte test.
   \item \textbf{Act:} Her kaldes den kode som ønskes testet, såvel som gemmer eventuelle resultater i variabler, hvilke bruges i Assert.
-  \item \textbf{Assert:} Her specificeres hvad der skal være sket i act, og tjekkes om ændringer i data og eventuelle resultater, stemmer overens med det forventede.
+  \item \textbf{Assert:} Her specificeres hvad der skal være sket i act, og tjekkes om ændringer i data og eventuelle resultater, stemmer overens med det forventede resultat af metode kaldet.
 \end{itemize}
 Der benyttes i nogle tests også et \textbf{PreCondition}, felt der sikre at de ændringer der foretages i \textbf{Act} ikke er foretaget inden Act. 
 Dermed sikres der at \textbf{Assert} ikke blot giver positive resultater fordi det som tjekkes for allerede var sandt før \textbf{Act}.
-Givet at testen er skrevet korrekt kan der ved brug af dette system finde ud af potentielle fejl i systemets metoder.
-NUnit frameworket benyttes til at kunne oprette en Arrange for alle tests som indeholder det mest generelle brugte data.
-Dette sker i en ``SetUp'' med en Initialize() metode, dataene i denne bliver kaldt før hver enkelt test, på den måde sikre man sig yderligere at det samme Mock-data er tilgængelig, for hver test.
-I en given test kan der så oprettes yderligere mock-data i \textbf{Arrange} sprogenementet om nødvendigt.
+Givet at testen er skrevet korrekt kan der ved brug af dette system findes potentielle fejl i systemets metoder.
 
-Til hver enkelt testede funktionalitet oprettes tests der går igennem mange af stierne i funktionen, for at være sikker på at logik tjekkene agerer som det forventes.
-På \myref{lsttest} ses et eksempel for en oprettet test i systemet.
 
-\begin{lstlisting}[caption="En test for ``ShareList'' metoden i ``ShoppingListController''\, heri tjekkes hvorom den User listen deles med\, får listen sat ind på sin liste over ShoppingLists\, samt at ShoppingListen får tilføjet endnu en user.", label=lsttest]
+Til hver enkelt testede funktionalitet oprettes tests der går igennem mange af stierne i funktionen, for at være sikker på at de  agerer som det forventes.
+På \myref{lsttest} ses en test for metoden \class{ShareList} i \class{ShoppingListcontroller}. I testen tjekkes der hvorvidt den \class{User} der deles en \class{ShoppingList} med, har den delte \class{ShoppingList} efter kaldet.
+Der oprettes også en ekstra Arrange her for at oprette en \class{User} der kan deles med.
+
+\begin{lstlisting}[caption={Test for metoden \class{ShareList}.}, label=lsttest]
 {
     [TestFixture]
     public class TestShoppingListsController
@@ -61,14 +66,13 @@ På \myref{lsttest} ses et eksempel for en oprettet test i systemet.
         }
 }        
 \end{lstlisting}
-Til testen på \myref{lsttest} oprettes en lignende test som kaldes ``...\_ShouldNotShare'', som ikke opfylder alle metodens kriterier, og derfor fejler, hvilket så tjekkes igennem asserts.
-Fordelen ved at bruge denne type af Black Box tests frem for andre, er muligheden for at køre tests nemt igen og igen.
+Der findes desuden en lignende test som kaldes \class{.._ShouldNotShare}, som ikke opfylder alle metodens kriterier, og derfor fejler, hvilket så tjekkes igennem asserts.
+Fordelen ved at bruge Unit tests som Black Box tests frem for andre, er muligheden for at køre tests nemt igen og igen.
 Dette er en stor fordel når man arbejder iterativt.
 Dette er en mulighed der ellers ikke nødvendigvis er tilgængelig for alle typer af Black Box tests, eksempelvis hvis systemet testes igennem brug.
 Disse tests ville skulle udføres manuelt hver gang, hvor dette ikke er tilfældet ved brug af unit testing.
-Dette kommer til gavn når der laves eventuelle ændringer i systemet, alle tests lavet førhen kan køres for at se om ændringerne har haft nogen effekt på funktionalitet andre steder i systemet. 
-Hvor en funktion som testes igennem brug, ikke nødvendigvis ville opfange fejl forårsaget af ændringer andre steder i systemet.
-Der benyttes yderligere et library kaldet moq, dette er et library lavet for kunne oprette mock data, samt de dependencies der nu må høre til.
+Dette kommer til gavn når der laves eventuelle ændringer i systemet i en iteration, alle tests lavet førhen kan køres for at se om ændringerne har haft nogen effekt på det ellers før funktionelle system. 
+Der benyttes yderligere et library kaldet moq, dette er et library lavet for at kunne oprette mock data, samt de dependencies der nu må høre til.
 I det oprettede testproject benyttes dette til at simulere hvorom en bruger er authenticated eller ej, dette tillader at teste funktionaliteter der kræver at en bruger er authenticated, såvel som at teste hvad der sker, hvis en bruger ikke er authenticated.
 
 Der benyttes desuden et NCover Bolt extension til Visual Studio. 
