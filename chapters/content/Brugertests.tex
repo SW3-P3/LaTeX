@@ -1,158 +1,180 @@
 \section{Brugertests}\label{s:brugertests}
-For at kvalitetssikre systemet, er det blevet afprøvet af evt. slutbrugere i udviklingsforløbet såvel som det endelige produkt, i slutningen af projektet.
-Dette gøres for at få brugernes indsigt i hvordan systemet bør se ud og agere ifølge brugerne.
-Dette hjælper med at udvikle et system den almene bruger har forståelse for, fremfor udelukkende ekspertbrugere, som vi i projektgruppen afspejler.
-I dette afsnit gennemgås formål, udførelse, såvel som resultater for de to brugertests lavet på systemet, henholdsvis midt i udviklingen og ved det endelige program.
-
+For at kvalitetssikre systemet er det blevet afprøvet af eventuele slutbrugere,i udviklingsforløbet, samt det endelige produkt, i slutningen af projektet.
+Dette gøres, for at få brugernes indsigt i, hvordan systemet bør se ud og agere ifølge brugerne.
+Dette hjælper med til at udvikle et system, som den almene bruger har forståelse for, fremfor udelukkende ekspertbrugere, som vi i projektgruppen afspejler.
+I dette afsnit gennemgås formål, udførelse, såvel som resultater for de to brugertests lavet på systemet henholdsvis midt i udviklingen og ved det endelige program.
 
 \subsection{Brugertest 1}
 Dette var den første brugertest udført på systemet.
 På dette tidspunkt har systemet haft de fleste funktionaliteter tilgængelige.
 Af de opstillede krav har brugerne i denne omgang ikke kunnet:
-\begin{itemize}
+\begin{itemize}[nolistsep, noitemsep]
    \item{Sortere opskrifter efter systemets forventede vurdering af opskrifterne for brugeren}
    \item{Dele Indkøbslister}
    \item{Overvåge eller modtage notifikationer om tilbudsvarer}
    \item{Anvende systemet fra en platform anden end computer}
 \end{itemize}
-Formålet med brugertesten var at få feedback om, hvorvidt systemet kunne benyttes af potentielle slutbrugere, såvel som at se hvad de syntes om systemets design.
+Formålet med brugertesten var at få feedback om, hvorvidt systemet kunne benyttes af potentielle slutbrugere, samt at se hvad de syntes om systemets design.
 Med et delvist færdigt produkt ville vi gerne have en indikation om, i hvor høj grad henholdsvis programmets funktionalitet og udseende levede op til brugernes forventninger.
 
-Hertil blev der udvalgt en række personer, som blev fundet igennem gruppemedlemmernes netværk, 4 kvinder såvel som 4 mænd, alle brugerne var i alderen 20-24.
+Hertil blev der udvalgt en række personer, som blev fundet igennem gruppemedlemmernes netværk, fire kvinder og fire mænd, alle brugerne var i alderen 20-24.
 Hver enkelt bruger blev introduceret til de samme opgaver, disse kan findes i \myref{b:brugertest1}.
 Der blev ikke filmet under disse tests, men der blev derimod taget notater for de forskellige mangler ved hjemmesiden. 
-De afsluttende brugertests blev tilgengæld optaget for at kunne citere deres holdninger til det endelige program.
-Som resultat af testenene identificerede vi en række problemer som brugerne stødte ind i.
-En opsummering af disse problemer for de forskellige komponentdele, indkøbsliste, tilbud, opskrifter og brugerkomponent findes nedenfor.
-Resultater som ikke er nævnt fra testen af systemet, består enten af problemer kun enkelte har nævnt, eller små kosmetiske kommentarer til systemet.
+De afsluttende brugertests blev derimod optaget for at kunne citere deres holdninger til det endelige program.
+Som resultat af testenene identificerede vi en række problemer, som brugerne stødte ind i.
+En opsummering af disse problemer for de forskellige komponentdele: indkøbsliste, tilbud, opskrifter og brugerkomponent, findes nedenfor.
+Resultater, som ikke er nævnt fra testen af systemet, består enten af problemer kun enkelte har nævnt eller små kosmetiske kommentarer til systemet.
 Disse bemærkninger og fejl er ikke blevet ignoreret, men en forklaring af dem virker overflødig, f.eks. at de ikke kunne lide farven. 
-Dette betyder dog ikke at de ikke tages med i overvejelserne, og evt. ændres.
+Dette betyder dog ikke, at de ikke tages med i overvejelserne, og evt. ændres.
 En komplet liste over resultaterne af testen kan findes i \myref{b:brugertestrespons}.
-\begin{enumerate}
-   \item \textbf{Indkøbsliste} \begin{itemize}
-   								  \item Til indkøbslisten var der få kommentarer, den primære respons herom var til knappen med teksten ``Se Tilbud''. Hvis en given vare ikke matchede nogle tilbud, blev knappen ikke vist. Som følge heraf gik det ikke op for alle at denne funktionalitet overhovedet eksisterede før de havde søgt på en vare som havde et tilbud. Derfor ønskes det at tydeliggøres hvis der ikke er fundet nogle tilbud på en vare, frem for at intet vises.
-   							   \end{itemize}
-   \item \textbf{Tilbud}\begin{itemize}
-   								  \item Flere var i tvivl om hvorvidt tilbudene var aktuelle på tidspunktet programmet blev anvendt, således kunne en informativ tekst omkring tilbudene tilføjes til denne sektion af systemet, for at give brugeren mere præcis information, om hvad der ses på skærmen.
-   								  
-   								  \item En anden ønsket funktionalitet var at varer blev kategoriseret, eksempelvis som mejeri, pålæg, kød osv. Dette problem er svært at løse med den grundet dataene der hentes til systemet gennem eTilbudsavis' API, dette er beskrevet i \myref{api:skoddata}.
-   							   \end{itemize}
-   \item \textbf{Opskrifter}\begin{itemize}
-   								  \item En absolut kritisk fejl der ramte samtlige testpersoner, var at navigere ind på en individuel opskrift. Som følge af mangel på highlighting, var det ikke klart for brugeren at man kunne trykke på en opskrift.
-   								  
-   								  \item Som en del af opgaverne skulle man tilføje ingredienser til sin indkøbsliste, her ønskede de fleste en knap til at tilføje alle varer fra listen, da det var irriterende at trykke på varerne enkeltvis.
-   								  En mindre gruppe ønskede yderligere at der ligeledes kunne fjernes vare fra sin indkøbsliste, gennem opskrift sektionen af systemet.
-   								  
-   								  \item Nogle ønskede yderligere funktionaliteten med at vise tilbud på indkøbslister også blev tilføjet til ingredienslisten på opskrifter, såvel som at vise en samlet pris på opskrifterne.
-   								  Det er dog ikke muligt at tilføje en totalpris, da der både eksisterer mange tilbud på samme vare på et givent tidspunkt, samt en mangel på priser på varer, som ikke er på tilbud.
-   								  At kunne se tilbud, er ligeledes ikke formålet med opskrifter, derfor vil funktionaliteten være forbeholdt indkøbslister, for at adskille de enkelte sektioner, minimalistisk og konsistent.
-   							   \end{itemize}
-   \item \textbf{Præferencer}\begin{itemize}
-   								  \item Samtlige personer mente at ``Præferencer'', var et dårligt dækkende navn for det bagvedliggende funktionalitet der blacklister varer såvel som butikker.
-   								  
-   								  \item Denne sektion af systemet benytter sig af checkboxes, testpersonerne vidste ikke hvorvidt deres information blev gemt.
-   							   \end{itemize}
-   \item \textbf{Generel design og funktionalitet}\begin{itemize}
-   								  \item Aftjekningsfunktionaliteten i indkøbslister blev fuldstændig overset.
-   								  \item Det var ikke kun under ``Præferencer'' der opstod forvirring om hvorvidt information blev gemt. 
-   								  Der var altså generelt mangel på feedback.
-   								  \item Under både tilbud og opskrifter, vælger brugeren en indkøbsliste at arbejde på.
-   								  Denne funktionalitet er på tidspunktet for udførelsen af testene, placeret i øverste højre hjørne.
-   								  Dette er fuldstændig overset af alle brugerne, som oprettede flere lister.
-   								  Brugerne fokuserer det meste af deres opmærksomhed på venstre del af siden, når de åbner den.
-   							   \end{itemize}
-\end{enumerate}
+\begin{description}
+   \item[Indkøbsliste]\hfill\\
+   \vspace{-15pt}
+   	\begin{itemize}[nolistsep, noitemsep]
+   	\item Til indkøbslisten var der få kommentarer.
+   	Den primære respons herom var til knappen med teksten ``Se Tilbud''. 
+   	Hvis en given vare ikke matchede nogle tilbud, blev knappen ikke vist. 
+   	Som følge heraf gik det ikke op for alle, at denne funktionalitet overhovedet eksisterede, før de havde søgt på en vare, som havde et tilbud. 
+   	Derfor ønskes det, at der tydeliggøres, hvis der ikke er fundet nogle tilbud på en vare, frem for at intet vises.
+   	\end{itemize}
+   \item[Tilbud]\hfill\\
+   \vspace{-15pt}
+   	\begin{itemize}[nolistsep, noitemsep]
+   	\item Flere var i tvivl om, hvorvidt tilbudene var aktuelle på tidspunktet programmet blev anvendt. 
+   	Således kunne en informativ tekst omkring tilbudene tilføjes til denne sektion af systemet, for at give brugeren mere præcis information, om hvad der ses på skærmen.
+	\item En anden ønsket funktionalitet var, at varer blev kategoriseret, eksempelvis som mejeri, pålæg, kød osv. 
+	Dette problem er svært at løse grundet dataene, der hentes til systemet gennem eTilbudsavis' API, dette er beskrevet i \myref{api:skoddata}.
+	\end{itemize}
+   \item[Opskrifter]\hfill\\
+   \vspace{-15pt}
+   	\begin{itemize}[nolistsep, noitemsep]
+	\item En absolut kritisk fejl, der ramte samtlige testpersoner, var at navigere ind på en opskrift. 
+	Som følge af mangel på highlighting, var det ikke klart for brugeren, at man kunne trykke på en opskrift.   									\item Som en del af opgaverne skulle man tilføje ingredienser til sin indkøbsliste.
+	Her ønskede de fleste en knap til at tilføje alle varer fra listen, da det var irriterende at trykke på varerne enkeltvis.
+   	En mindre gruppe ønskede yderligere, at der ligeledes kunne fjernes vare fra sin indkøbsliste, gennem opskrift sektionen af systemet.
+	\item Nogle ønskede yderligere, at funktionaliteten med at vise tilbud på indkøbslister, også blev tilføjet til ingredienslisten på opskrifter, samt at der kunne vises en samlet pris på en given opskrift.
+	Det er dog ikke muligt at tilføje en totalpris, da der både eksisterer mange tilbud på samme vare på et givent tidspunkt, samt en mangel på priser på varer som ikke er på tilbud.
+	At kunne se tilbud, er ligeledes ikke formålet med opskrifter, derfor vil funktionaliteten være forbeholdt indkøbslister for at adskille de enkelte sektioner, minimalistisk og konsistent.
+	\end{itemize}
+   \item[Præferencer]\hfill\\
+   \vspace{-15pt}
+   	\begin{itemize}[nolistsep, noitemsep]
+	\item Samtlige personer mente, at ``Præferencer'' var et dårligt navn for den bagvedliggende funktionalitet, der \textit{blacklister} både varer og butikker.
+	\item Denne sektion af systemet benytter sig af checkboxes, og testpersonerne var i tvivl om, hvorvidt deres information blev gemt.
+	\end{itemize}
+   \item[Generel design og funktionalitet]\hfill\\
+   \vspace{-15pt}
+	\begin{itemize}[nolistsep, noitemsep]
+	\item Aftjekningsfunktionaliteten i indkøbslister blev fuldstændig overset.
+	\item Det var ikke kun under ``Præferencer'', der opstod forvirring om hvorvidt information blev gemt. 
+	Der var altså generelt mangel på feedback fra systemet til brugeren.
+	\item Under både tilbud og opskrifter, vælger brugeren en indkøbsliste at arbejde med.
+	Denne funktionalitet er på tidspunktet for udførelsen af testene, placeret i øverste højre hjørne.
+	Dette er fuldstændig overset af alle brugerne, som oprettede flere lister.
+	Brugerne fokuserer det meste af deres opmærksomhed på venstre del af siden, når de åbner den.
+	\end{itemize}
+\end{description}
 
-Som følge af disse resultater, kan systemet udvikles og ændres, til at være mere brugervenligt og indbydende.
-De testede blev yderligere spurgt en række opfølgende spørgsmål omkring brugen af systemet, her var den generelle konsensus at systemet virkede som et let at benytte og brugbart system, dog med visse mangler som beskrevet.
-De viste interesse for at hjemmesiden kunne udgives.
+Som følge af disse resultater kan systemet udvikles og ændres til at være mere brugervenligt og indbydende.
+De testede blev yderligere adspurgt en række opfølgende spørgsmål omkring brugen af systemet; her var den generelle konsensus, at systemet virkede som et let benytteligt og brugbart system, dog med visse mangler som beskrevet.
+De viste interesse for, at hjemmesiden kunne udgives.
 
 \subsection{Brugertest 2}
-Den anden brugertest blev udført efter vi afsluttede vores sidste sprint, hvor vi arbejde på programmet.
-Det vil sige at denne test, var en test af det endelige program.
-Testen blev udført af syv testbrugere, i alderen 20-48 år, to af testpersonerne havde også deltaget i den første brugertest, hvilket gjorde det muligt for dem at tale om forbedringer på hjemmesiden.
+Den anden brugertest blev udført, efter vi afsluttede vores sidste sprint, hvor vi arbejde på programmet.
+Det vil sige, at denne test var en test af det endelige program.
+Testen blev udført af syv testbrugere, i alderen 20-48 år.
+To af testpersonerne havde også deltaget i den første brugertest, hvilket gjorde det muligt for dem at tale om forbedringer på hjemmesiden.
 Testpersonerne til denne test blev, ligesom i første brugertest, fundet gennem gruppemedlemmernes netværk.
-Testen blev styret af en testleder, og der sad en notattager og tog notater af hver test.
-Efter alle tests gennemgik testlederen og notattageren notaterne sammen for at krydsreferere om de havde glemt noget.
-Efterfølgende så andre gruppemedlemmer videomaterialet igennem for sikre notaterne havde alt med, og transskriberede ligeledes interessante passager ned.
+Testen blev styret af en testleder, og der var en notattager tilstede ved hver test.
+Efter alle tests gennemgik testlederen og notattageren sammen notaterne, for at krydsreferere om de havde glemt noget.
+Efterfølgende så andre gruppemedlemmer videomaterialet igennem for at sikre, at notaterne havde alt med.
+Samtidigt blev interessante passager ligeledes transskriberede til citations brug.
 
-Den opstillede test, som dette forløb følger kan ses i \myref{b:brugertest2}.
-De samlede resultater af denne test kan læses i \myref{b:brugertestrespons2} 
+Den opstillede test, som dette forløb følger, kan ses i \myref{b:brugertest2}.
+De samlede resultater af denne test. kan læses i \myref{b:brugertestrespons2} 
 
 Denne test havde tre overordnede formål:
-\begin{enumerate}
-   \item Bekræfte om problemerne i brugertest 1, er blevet løst. 
+\begin{enumerate}[nolistsep, noitemsep]
+   \item Bekræfte om problemerne i brugertest 1, var blevet løst. 
    \item Undersøge brugervenligheden af hjemmesiden.
    \item Indsamle data til at foretage en vurdering af programmets opfyldelse af vores user stories fra kravspecifikationen i \myref{kravsec:krav}. 
-
 \end{enumerate}
 
 \subsubsection{Test resultater}\label{ss:bt2}
-Resultaterne af testen viste hvor lette de forskellige programdele og funktioner var at benytte for vores testpersoner.
-\begin{enumerate}
-   \item \textbf{Indkøbsliste}
-   \begin{itemize}
-      \item De fleste oprettede sin egen indkøbsliste, nogle personer benyttede sig dog af den autogenereret indkøbsliste. 
+Resultaterne af testen viste, hvor lette de forskellige programdele og funktioner var at benytte for vores testpersoner.
+\begin{description}
+   \item[Indkøbsliste]\hfill\\
+   \vspace{-15pt}
+   \begin{itemize}[nolistsep, noitemsep]
+      \item De fleste oprettede deres egen indkøbsliste; nogle personer benyttede sig dog af den autogenereret indkøbsliste. 
       Fire personer benytter indkøbslistens funktionalitet uden nogle problemer.
-      \item De tre andre testbrugere udtrykker utilfredshed eller forvirring over hvorledes en indkøbsliste flyttes til en anden tabel når den deles.
-      Dette problem anses som værende seriøs, da enkelte blev så forvirret at de ikke kunne finde listen. 
-      \item Samtlige testpersoner benytter funktionaliteten fjern vare, frem for overstregning af varen. 
-      En person nævner her at de gerne ville kunne strege varen af, men var ikke klar over at denne funktionalitet rent faktisk eksisterede.
-      To andre brugere nævner derimod at det er rart, og giver mening at fjerne varen i forbindelse med at være ude og handle.
-      ``Og jeg registrerer når jeg afkrydser forsvinder det fra sedlen, det var jo fantastisk dejligt.''
-      ``Jeg trykker på krydset når jeg har lagt en vare i kurven og kan se det forsvinder. Det giver helt fint mening''\fxnote{Find tidspunkt i videoerne}
-      Er begge udtalelser fra brugere, i forbindelse med at benytte sig af fjern vare funktionaliteten.
+      \item De tre andre testbrugere udtrykker utilfredshed eller forvirring over, hvorledes en indkøbsliste flyttes til en anden tabel, når den deles.
+      Dette problem anses som værende seriøs, da enkelte blev så forvirret, at de ikke kunne finde listen. 
+      \item Samtlige testpersoner benytter funktionaliteten fjern vare frem for overstregning af varen. 
+      En person nævner her, at de gerne vil kunne strege varen af, men var ikke klar over, at denne funktionalitet rent faktisk eksisterede.
+      To andre brugere nævner derimod, at det er rart og giver mening at fjerne varen i forbindelse med at være ude og handle.
+      ``Og jeg registrerer, når jeg afkrydser, forsvinder det fra sedlen - det var jo fantastisk dejligt.''
+      ``Jeg trykker på krydset, når jeg har lagt en vare i kurven og kan se, det forsvinder. Det giver helt fint mening''\fxnote{Find tidspunkt i videoerne}
+      Dette er begge udtalelser fra brugere, i forbindelse med at benytte sig af fjern vare funktionaliteten.
       \item Desuden blev der fundet kosmetiske problemer, som er at finde i \myref{b:brugertestrespons2}.
    \end{itemize}
-   \item \textbf{Tilbud}
-   \begin{itemize}
-      \item En bruger finder det ikke klart at alle tilbuddene er aktuelle, på trods af at siden gør opmærksom herpå.
-      En bruger nævner ``Altså det jo bare folk der skal læse hvad der står, det bare mig der ikke gør det''.\fxnote{Find tidspunkt}
-      En anden bruger nævner yderligere i henhold til teksten på siden der fortæller at tilbud er aktuelle ``Tror der er mange der godt kunne have brug af det.''
-      En tredje bruger gør opmærksom på, at kun udløbsdatoen står nævnt, giver det fint mening at de er aktuelle.
-      \item En bruger er i tvivl om hvilken indkøbsliste tilbuddene bliver tilføjet til, to brugere gør her opmærksom på at navnet på standard listen ``Min Indkøbsliste'' kunne være misledende, og derved være med til at skabe problemet.
-      Problemet eksistere også andre steder hvor en indkøbsliste vælges.
-      Ligeledes kunne en af årsagerne for at denne del ignoreres være at nogle testpersoner kun arbejder ud fra en liste, hertil nævnes af en bruger ``Tænker ikke over det, jeg har jo kun en liste''
-      \item To brugere er i tvivl om de varer de tilføjer, bliver tilføjet til deres indkøbsliste.
-      Her nævner en af brugerne ``Den gemmer vi bare så... Er de gemt?'' som reaktion på at ingen feedback kommer fra systemet.
+   \item[Tilbud]\hfill\\
+   \vspace{-15pt}
+   \begin{itemize}[nolistsep, noitemsep]
+      \item En bruger finder det ikke klart, at alle tilbuddene er aktuelle på trods af, at siden gør opmærksom herpå.
+      En bruger nævner: ``Altså det jo bare folk der skal læse hvad der står, det er bare mig, der ikke gør det''.\fxnote{Find tidspunkt}
+      En anden bruger nævner yderligere i henhold til teksten på siden, der fortæller, at tilbud er aktuelle: ``Tror der er mange, der godt kunne have brug af det.''
+      En tredje bruger gør opmærksom på, at når kun udløbsdatoen står nævnt, giver det fint mening, at de er aktuelle.
+      \item En bruger er i tvivl om, hvilken indkøbsliste tilbuddene bliver tilføjet til.
+      To brugere gør her opmærksom på, at navnet på standard listen ``Min Indkøbsliste'' kunne være misledende, og derved være med til at skabe problemet.
+      Problemet eksisterer også andre steder, hvor en indkøbsliste vælges.
+      Ligeledes kunne en af årsagerne for, at denne del ignoreres være, at nogle testpersoner kun arbejder ud fra en liste, hertil nævner en bruger: ``Tænker ikke over det, jeg har jo kun en liste''
+      \item To brugere er i tvivl om de varer, de tilføjer, bliver tilføjet til deres indkøbsliste.
+      Her nævner en af brugerne: ``Den gemmer vi bare så... Er de gemt?'' som reaktion på, at ingen feedback kommer fra systemet.
       \item En bruger foreslår at sortere dem kronologisk efter udløbsdato.
-      \item Desuden blev der foreslået at man kunne se førpris på tilbuddene, og at man kunne vælge at se tilbud fra sine fravalgte butikker i dette view.
+      \item Desuden blev der foreslået, at man kunne se førpris på tilbuddene, og at man kunne vælge at se tilbud fra sine fravalgte butikker i dette view.
    \end{itemize}
-   \item \textbf{Opskrifter}
-   \begin{itemize}
+   \item[Opskrifter]\hfill\\
+   \vspace{-15pt}
+   \begin{itemize}[nolistsep, noitemsep]
       \item Ved opskrifter har ingen problemer med at finde opskrifter eller vurdere dem.
-      \item På mobillayoutet kommenterer en enkelt bruger at knapperne for at tilføje ingredienser til en liste er yderst træls placeret i midten af layoutet.
+      \item På mobillayoutet kommenterer en enkelt bruger, at knapperne for at tilføje ingredienser til en liste er yderst træls placeret i midten af layoutet.
       \item Ved funktionalitet med at lave sin egen udgave af en opskrift, har nogle brugere lidt forskellige problemer.
-      \begin{itemize}
-         \item En bruger havde problemer med at mængde skulle være et tal.
-         \item En bruger kommenterer at det er lidt svært at se felterne ingrediens, mængde og enhed, hører sammen.
-         \item En bruger bliver distraheret af, at man skal oprette en opskrift gennem to views, hvor i den første runde af brugertests blev det modsatte nævnt, hertil menes altså at dette er en smagssag.
+      \begin{itemize}[nolistsep, noitemsep]
+         \item En bruger havde problemer med, at mængde skulle være et tal.
+         \item En bruger kommenterer, at det er lidt svært at se felterne ingrediens, mængde og enhed, hører sammen.
+         \item En bruger bliver distraheret af, at man skal oprette en opskrift gennem to views.
+         I første runde af brugertests blev det modsatte nævnt, hertil menes altså, at dette er en smagssag.
       \end{itemize} 
    \end{itemize}
-   \item \textbf{Præferencer}
-   \begin{itemize}
-      \item En bruger trykker på gem knappen, ved vist navn-funktionen, efter at have fravalgt forskellige butikker.
-      Dette ændre ikke noget i systemet, men det var ikke klart for brugeren om det blev gemt.
+   \item[Præferencer]\hfill\\
+   \vspace{-15pt}
+   \begin{itemize}[nolistsep, noitemsep]
+      \item En bruger trykker på gem knappen ved vist navn-funktionen, efter at have fravalgt forskellige butikker.
+      Dette ændre ikke noget i systemet, men det var ikke klart for brugeren, om det blev gemt.
       \item Navigerer til tilbuds view, foreslår at butikker og varer-indstillinger ikke hører sammen med de andre brugerindstillinger.
    \end{itemize}
-   \item \textbf{Generel design og funktionalitet}
-   \begin{itemize}
+   \item[Generel design og funktionalitet]\hfill\\
+   \vspace{-15pt}
+   \begin{itemize}[nolistsep, noitemsep]
       \item Flere af testpersonerne udtrykte et ønske om billeder i programmet, især i forbindelse med opskrifter.
-      \item Flere testpersoner udtrykte også en mening om at velkomstteksten på forsiden var for stor, samt at det var ulogisk at link'sne heri førte til login-viewet, hvis man ikke er logget ind.
-      Til selv samme links var der både holdninger for og imod deres eksistens, den generelle konsensus omkring dem var dog, at de om ikke andet tog meget blikfang, og ledte væk fra menubjælken.
-      \item Flere testpersoner lå ikke mærke til snackbars, før de opfølgende spørgsmål, mere specifikt gennemgangen af problemer fra den forrige brugertest.
-      Der blev spurgt om de havde svært ved at se at informationerne blev gemt, og kunne her godt se snackbaren, på trods af de ikke så den under testen.
+      \item Flere testpersoner udtrykte også en mening om, at velkomstteksten på forsiden var for stor, samt det var ulogisk, at linkene heri førte til login-viewet, hvis man ikke er logget ind.
+      Til selv samme links var der både holdninger for og imod deres eksistens.
+      Den generelle konsensus omkring dem var dog, at de om ikke andet tog meget blikfang, og ledte væk fra menubjælken.
+      \item Flere testpersoner lagde ikke mærke til snackbars, før de opfølgende spørgsmål, mere specifikt gennemgangen af problemer fra den forrige brugertest.
+      Der blev spurgt, om de havde svært ved at se, at informationerne blev gemt, og kunne her godt se snackbaren på trods af, at de ikke så den under testen.
    \end{itemize}
-\end{enumerate}
+\end{description}
 
-Ud fra de opfølgende spørgsmål, og resultater heraf, konkluderes det at problemerne fra første brugertest enten er løst, eller stærkt reduceret i alvorligheden.
+Ud fra de opfølgende spørgsmål og resultater heraf konkluderes det, at problemerne fra første brugertest enten er løst, eller stærkt reduceret i alvorligheden.
 Hertil ses der på funktionaliteten at vælge en indkøbsliste, denne funktionalitet forvirrer eller overses stadig af enkelte brugere. 
-Denne test tyder dog på at ændringen af dens position har hjulpet, men at navnet på standard listen ``Min Indkøbsliste'' kan være med til at skabe problemet.
-En af testpersonerne fra sidste brugertest gav desuden følgende kommentar ``Ikke nogle problemer der lige sprang i hovedet som der var sidst.''\fxnote{Indsæt kilde}
+Denne test tyder dog på, at ændringen af dens position har hjulpet, men at navnet på standard listen ``Min Indkøbsliste'' kan være med til at skabe problemet.
+En af testpersonerne fra sidste brugertest gav desuden følgende kommentar: ``Ikke nogle problemer der lige sprang i hovedet, som der var sidst.''\fxnote{Indsæt kilde}
 
-Til den mobile del af systemet var den generelle konsensus fra testpersonerne at det var fint der manglede funktionalitet, og der var faktisk ingen der lå mærke til funktionaliteterne der ikke var der. 
-En af brugerne mente at dette var ganske logisk og nævnte som kommentar til spørgsmålet ``Sådan som jeg ser det er, mobilfunktionen en forlængelse af hjemmesiden, den er vel til for at gøre funktionaliteten mobil, hvilket virker fint. Det kunne dog godt forvirre folk i det der ikke er information der gør opmærksom på funktionaliteten er skærpet.''
+Til den mobile del af systemet var den generelle konsensus fra testpersonerne, at det var fint, der manglede funktionalitet, og der var faktisk ingen, der lagde mærke til funktionaliteterne, der ikke var der. 
+En af brugerne mente, at dette var ganske logisk og nævnte som kommentar til spørgsmålet: ``Sådan som jeg ser det er, mobilfunktionen en forlængelse af hjemmesiden, den er vel til for at gøre funktionaliteten mobil, hvilket virker fint. 
+Det kunne dog godt forvirre folk i det, der ikke er information, der gør opmærksom på funktionaliteten er skærpet.''
 Hertil kommer personen altså ligeledes med idéen om at gøre opmærksom på den skærpede funktionalitet.
-Blot en enkelt bruger afveg fra denne holdning, og mente at vedkommende udelukkende ville bruge hjemmesiden fra mobile enheder, og derfor gerne ville have adgang til alle funktionaliteter.
-Alle testpersonerne blev desuden spurgt om hvorledes de kunne se dem selv benytte systemet, samt hvor let det var at benytte.
-Her var der en enevældig mening om at alle dele af systemet var brugbart, og meget let at gå til.
+Blot en enkelt bruger afveg fra denne holdning og mente, at vedkommende udelukkende ville bruge hjemmesiden fra mobile enheder, og derfor gerne ville have adgang til alle funktionaliteter.
+Alle testpersonerne blev desuden spurgt om, hvorledes de kunne se dem selv benytte systemet, samt hvor let det var at benytte.
+Her var der en enstemmig mening om, at alle dele af systemet var brugbart, og meget let at gå til.
