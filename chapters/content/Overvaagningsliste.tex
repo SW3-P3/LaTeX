@@ -16,7 +16,7 @@ Da overvågningslisten er en indkøbsliste, bliver der genbrugt meget kode derfr
 En overvågningsliste er tilsluttet en bruger som et felt af typen \class{ShoppingList} og med navnet \class{WatchList}. 
 Denne \class{Shoppinglist} bliver oprettet, når brugeren oprettes.
 
-For at kunne sende e-mails til en \class[User] kaldes \class{NotifyWatchers} lavet i \class{OfferControler.cs}, som ses på \myref{notifywatcherlisting}. 
+For at kunne sende e-mails til en \class{User} kaldes \class{NotifyWatchers} lavet i \class{OfferControler.cs}, som ses på \myref{notifywatcherlisting}. 
 \begin{lstlisting}[caption={\class{NotifyWatchers} finder de tilbud som skal sendes til hver user og sender dem i en mail} ,label=notifywatcherlisting]
 public void NotifyWatchers()
 {
