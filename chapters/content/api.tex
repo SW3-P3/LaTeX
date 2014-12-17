@@ -1,16 +1,18 @@
 \section{eTilbudsavis API}\label{api}
 I dette afsnit beskrives først teori om hvad et API er, og hvordan sådan et er struktureret.
-Herefter gennemgås design og implementering for brug af eTilbudsavis' API, samt motivationen for at bruge API'en. Til sidst vil der blive konkluderet på API'ens betydning for projektet
+Herefter gennemgås design og implementering for brug af eTilbudsavis' API samt motivationen for at bruge API'en. 
+Til sidst vil der blive konkluderet på API'ens betydning for projektet
 
 For at kunne indhente infomation om butikker og deres tilbud, anvendes der et API.
 Dette API udbydes af den danske virksomhed eTilbudsavis.dk, og er af typen REST.
 
 \subsection{Teori}
-Representational state transfer (REST) er en arkitektur anvendt over HTTP(s) standarden. 
-I forbindelse med eTilbudsavisen anvendes der HTTP status koder som signalerer hvorvidt en given forespørgsel er godkendt, afvist eller lign.
+Representational state transfer (REST) er en arkitektur anvendt over HTTP(S) standarden. 
+I forbindelse med eTilbudsavisen anvendes der HTTP status koder, som signalerer hvorvidt en given forespørgsel er godkendt, afvist eller lign.
 
 \subsubsection{API-Kald}
-For at kommunikere med API'et skal der konstrueres en forespørgsel, inden for REST, bruges der de fire mest almindelige HTTP metoder, som er POST, GET, PUT og DELETE.
+For at kommunikere med API'et skal der konstrueres en forespørgsel.
+Inden for REST, bruges der de fire mest almindelige HTTP metoder, som er POST, GET, PUT og DELETE.
 Disse fire metoder findes tilsvarende i CRUD som: CREATE, READ, UPDATE, DELETE.
 
 \textbf{GET}
@@ -39,9 +41,9 @@ For at kunne bruge informationen laves der en klasse, som svarer til det JSON so
 
 \subsection{Vurdering}\label{api:skoddata}
 Vi har valgt at benytte et API, især eTilbudsavis' API, da det giver os muligheden for at arbejde med og vise faktiske tilbud.
-Der er dog fundet visse ulemper ved, at vi benytter os af eTilbudsavis' API.. 
-Det data vi modtager begrænser os fra at udvikle flere funktioner da det f.eks. ikke indeholder; information omkring mængde tilbud, kategori-inddeling eller forekomster af allergener i varerne. 
-Dette er funktioner vores testpersoner har adspurgt. 
+Der er dog fundet visse ulemper ved, at vi benytter os af eTilbudsavis' API.
+Det data, vi modtager, begrænser os fra at udvikle flere funktioner, da det f.eks. ikke indeholder: information omkring mængde tilbud, kategori-inddeling eller forekomster af allergener i varerne. 
+Dette er funktioner, vores testpersoner har adspurgt. 
 Hvis disse tre attributter havde været tilstede, ville systemet for eksempel være i stand til at frasortere tilbud, der indeholder spor af jordnødder eller lignende, hvis den pågældende bruger eksempelvis er allergisk overfor jordnødder. 
 Ligeledes ville det med kategori-inddeling være muligt at sortere mere intuitivt i tilbud, og information om grupperede tilbud ville give systemet mulighed for at præsentere visse tilbud bedre for brugeren, så der ikke opstår forvirring.
 
@@ -51,9 +53,9 @@ Denne implementering er en del af controlleren: \class{OfferController.cs}, i me
 For at kunne bruge API'et skal man først oprette en session.
 En session består af en API-nøgle, den tilsvarende hemmelighed (Secret), en token og en signatur.
 Har man en API-nøgle kan man kalde API'et sessions og få en token.
-Den token kan man kombinere med sin hemmelighed og generere SHA-256 hashen af dette som er signaturen, der brugers til at underskrive requests.
+Den token kan man kombinere med sin hemmelighed og generere SHA-256 hashen af dette, som er signaturen, der brugers til at underskrive requests.
 
-Eksempelvis vil API-kaldet som opretter en session returnere:
+Eksempelvis vil API-kaldet, som opretter en session returnere:
 \begin{lstlisting}[language=json,firstnumber=1,caption={POST til sessions API'et med APIKEY'en},label=apilst1]
 {
     "token": "00hdcx7fnysn6541",
@@ -71,7 +73,6 @@ Eksempelvis vil API-kaldet som opretter en session returnere:
 
 Dette svar kan oversættes til en klasse i C\#, som har tilsvarende felter, så den kan indlæses med RestSharp som vist i \myref{lst:session}.
 
-%[firstnumber=1,caption="Det foerste API kald"]
 \begin{lstlisting}[caption=C\#-kode som opretter en RestClient og anvender den til at oprette et objekt med felter som svarer til JSON dataet givet fra API'en, label=lst:session]
 /* [...] */
 /* Create a RestClient*/
@@ -91,15 +92,15 @@ Session sessionobj = response2.Data;
 Global.Signature = EncryptionHelper.SHA256(Global.Secret + Global.SessionToken);
 /* [...] */
 \end{lstlisting}
-Efter eksekveringen af denne kode, vil der være et objekt af datatypen \class{Session} kaldet \class{sessionobj}, som indeholder de samme felter som givet i JSON i \myref{apilst1}; derudover er signaturen, en SHA256 hash af hemmeligheden og sessiontokenen, (\class{Global.Signature}) også beregnet og gemt.
+Efter eksekveringen af denne kode vil der være et objekt af datatypen \class{Session} kaldet \class{sessionobj}, som indeholder de samme felter som givet i JSON i \myref{apilst1}; derudover er signaturen, en SHA256 hash af hemmeligheden og sessiontokenen, (\class{Global.Signature}) også beregnet og gemt.
 
 \subsubsection{Indlæsning af tilbud}
 API'ets anvendelse i programmet er at indhente aktuelle tilbud.
-For at kunne modtage tilbud skal der konstrueres et request, som minder om det, vist i \myref{lst:session}, men anmoder tilbud.
-Der er en øvre grænse sat af eTilbudsavis.dk på at maksimalt 100 tilbud kan hentes ad gangen, da der vil skulle hentes mere end 100 tilbud ad gangen, er det nødvendigt at fortage flere anmodninger.
-Derfor bruges en \class{do..while} løkke som gentages så længe der returneres 100 tilbud fra API'et, denne er vist i \myref{apiofferscs}.
+For at kunne modtage tilbud skal der konstrueres et request, som minder om det vist i \myref{lst:session}, men anmoder tilbud.
+Der er en øvre grænse sat af eTilbudsavis på, at maksimalt 100 tilbud kan hentes ad gangen, da der vil skulle hentes mere end 100 tilbud ad gangen, er det nødvendigt at fortage flere anmodninger.
+Derfor bruges en \class{do..while} løkke som gentages, så længe der returneres 100 tilbud fra API'et, denne er vist i \myref{apiofferscs}.
 
-\begin{lstlisting}[caption=C\#-kode som anvender ``/v2/offers'' delen af API'et til at hente tilbud., label=apiofferscs]
+\begin{lstlisting}[caption={C\#-kode som anvender ``/v2/offers'' delen af API'et til at hente tilbud.}, label=apiofferscs]
 /* [...] */
 var listofApiOffers = new List<ApiOffer>();
 do {
@@ -144,7 +145,8 @@ foreach (var o in listofApiOffers)
 /* [...] */
 \end{lstlisting}
 
-Foruden at indhente data fra eTilbudsavis' API, er det også muligt at importere tilbud direkte fra JSON-filer (på samme format som eTilbudsavis'), dette sker via metoden \class{ImportOffersFromFiles} fra controlleren \class{AdminPanelController.cs}. 
+Foruden at indhente data fra eTilbudsavis' API, er det også muligt at importere tilbud direkte fra JSON-filer (på samme format som eTilbudsavis'). 
+Dette sker via metoden \class{ImportOffersFromFiles} fra controlleren \class{AdminPanelController.cs}. 
 Denne metode henter filer fra mappen \class{ProjectFood\/App\_Data\/jsonData\/}, og oversætter dem til instanser af klassen Offer og tilføjer dem til databasen. 
 Grunden til at begge metoder findes er, at denne gør det muligt at indhente data hurtigere og over en længere periode, da den ikke begrænses af: API'ets udløbstid (det er kun mulig at hente nuværende og fremtidige tilbud), API'ens hastighed og evt. offline brug. 
 For at kalde denne metode skal man tilgå administrator kontrolpanelet, som findes på stien \class{\/AdminPanel}.
@@ -153,4 +155,4 @@ For at kalde denne metode skal man tilgå administrator kontrolpanelet, som find
 Ved brug af frameworket RestSharp er det muligt at indhente data omkring tilbud fra eTilbudsavis' API. 
 Dette gør programmet i stand til at opføre sig mere realistisk, da alle tilbud vist i det vil være faktiske tilbud.
 Der er også mulighed for at importere tilbud fra lokale JSON-filer, så der lettere kan testes på overvågning og forekomst af nye tilbud. 
-Dog er eTilbudsavis' API data ikke detaljeret nok til at implementere visse funktionaliteter, som ville kunne forbedre systemet.
+Dog er eTilbudsavis' API-data ikke detaljeret nok til at implementere visse funktionaliteter, som ville kunne forbedre systemet.

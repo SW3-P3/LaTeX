@@ -1,6 +1,14 @@
 \subsection{MVC-mønsteret}\label{MVC}
-
-Et af de standardiserede design mønstre, som bruges af mange udviklere er MVC-mønstret - som står for \textit{Model-View-Controller}, en figur over modellen kan ses på \myref{MVC-Figure}.
+\begin{wrapfigure}{r}{0.4\textwidth}
+	\vspace{0pt}
+	\begin{center}
+		\includegraphics[width=0.38\textwidth]{images/Images/mvc.png}
+	\end{center}
+	\vspace{-20pt}
+	\caption{MVC-mønsteret \citep{mvcpic}}\label{MVC-Figure}
+	\vspace{-10pt}
+\end{wrapfigure}
+Et af de standardiserede design mønstre, som bruges af mange udviklere, er MVC-mønstret - som står for \textit{Model-View-Controller}, en figur over modellen kan ses på \myref{MVC-Figure}.
 MVC-mønsteret har til formål, at dele systemet op i tre komponenter, \textit{Model}, \textit{View} og \textit{Controller}.
 Denne segregering adskiller således forretnings-logik, input-logik og UI-logik, og gør herved systemet mere fleksibelt, samt fremmer muligheden for at udvikle parallelt på de forskellige komponenter.
 Dette kan være nyttigt i udviklingen af systemet, men også efter udgivelsen, idet blandt andet UI-logik kan blive ændret oftere end for eksempel forretnings-logik.
@@ -9,18 +17,7 @@ Opdelingen hjælper også til at skabe overblik over koden, og gør det nemmere 
 Nedenfor beskrives de tre komponenter.
 
 \textbf{Model}\\
-Objekterne der udgør model-laget indeholder forretnings-logik, samt alle data der skal modelleres i systemet.
-
-\begin{wrapfigure}{r}{0.4\textwidth}
-	\vspace{0pt}
-	\begin{center}
-		\includegraphics[width=0.38\textwidth]{images/Images/mvc.png}
-	\end{center}
-	\vspace{-20pt}
-	\label{MVC-Figure}
-	\caption{MVC-mønsteret \citep{mvcpic}}
-	\vspace{-30pt}
-\end{wrapfigure}
+Objekterne, der udgør model-laget, indeholder forretnings-logik, samt alle data der skal modelleres i systemet.
 
 \textbf{View}\\
 Det er igennem forskellige views, at brugeren får præsenteret brugergrænsefladen. 
@@ -31,5 +28,5 @@ Et eksempel på dette ville være visning af en liste af objekter ud fra en mode
 \textbf{Controller}\\
 Controlleren håndterer interaktionen mellem brugeren og systemet.
 Derfor er det også i de forskellige controllerer, at vi finder input-logikken. 
-Her bestemmes ud fra input fra brugeren, hvilket data der skal arbejdes med i hvilken model og hvilket view, der skal præsenteres for brugeren.
+Her bestemmes, ud fra input fra brugeren, hvilket data, der skal arbejdes med i hvilken model, og hvilket view der skal præsenteres for brugeren.
 

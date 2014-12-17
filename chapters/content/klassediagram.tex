@@ -12,7 +12,7 @@ Der er mange relationer mellem klasserne, da de forskellige klasser indeholder l
 En \class{ShoppingList} har en liste over \class{Items}, og disse \class{Items} har en liste over \class{Offers}, for at binde Offers til det pågældende Item.
 \class{Recipe} har en liste over \class{Items}, som bruges som ingredienser.
 På denne måde kan de tilføjes til \class{ShoppingList} gennem \class{RecipesController}, uden at skulle lave nye objekter, som \class{ShoppingList} kan læse.
-\class{User} har en liste over \class{ShoppingLists}, samt en liste over \class{Prefs}, eller præferencer som angiver hvilke tilbud der skal filtreres væk, for at gøre hjemmesiden mere personlig og fokuseret på brugeren som er logget ind.
+\class{User} har en liste over \class{ShoppingLists}, samt en liste over \class{Prefs}, eller præferencer, som angiver, hvilke tilbud der skal filtreres væk, for at gøre hjemmesiden mere personlig og fokuseret på brugeren, som er logget ind.
 Der er relationstabeller for many-to-many forholdene, som yderligere gør det muligt at gemme værdier ved hvert forhold, eksempelvis mængder (\class{Amount}) på en \class{ShoppingList}.
 Dette gøres igennem relationsklasserne, \class{Recipe\textunderscore Ingredient}, og \class{ShoppingList\textunderscore item}.
 I \myref{sec:struktur} blev anbefaling oprettet som en klasse, i vores implementering fungerer anbefaling som en sortering af viste opskrifter, læs mere om dette i \myref{anbefaling} om anbefaling.
