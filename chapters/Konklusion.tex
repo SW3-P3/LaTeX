@@ -1,1 +1,35 @@
 \chapter{Konklusion}
+
+Projektgruppen påtog sig opgaven at hjælpe personer med at handle ind efter tilbud, samt at inspirere i forhold til aftensmåltider.
+Problemet opstår i at personer har svært ved at overskue butikkernes tilbud, samt finde på hvad aftensmaden skal byde på.
+Nogle glemmer at koordinere med sine samboende om hvad der mangler der hjemme, imens andre blot glemmer dette.
+Dette kan resultere i at forkerte varer bliver købt med hjem.
+
+
+Gennem projektforløbet har projektgruppen udviklet en hjemmeside, ProjectFood. 
+Hjemmesiden er i stand til at hente faktiske tilbud fra eTilbudsavis’ API og fremvise opskrifter m.m. 
+Brugere af hjemmesiden kan også overvåge tilbud de har interesse for, samt lave indkøbslister, der kan deles med andre. Disse indkøbslister er integrerede med tilbud, på en sådan måde at brugere kan se hvilke butikker en given vare, er på tilbud i. Brugere kan tilføje opskrifter til hjemmesiden og lave variationer af andres opskrifter. 
+Systemet forsøger at forudsige hvilke opskrifter brugeren vil give høje vurderinger, ud fra de andre opskrifter de har vurderet. 
+Brugere kan også indstille programmet til kun at vise tilbud fra butikker som de ønsker at se tilbud fra, samt ekskludere varer fra tilbudsoversigten.
+Flere af disse funktioner er også tilgængelige i en udgave til enheder med små skærme, f.eks. smartphones, her tilpasser brugergrænsefladen sig til den mindre størrelse.
+Yderligere er funktioner til at logge ind i systemet, aftjekke varer fra indkøbslister, samt skalerer opskrifter efter et antal personer også tilgængelige. 
+
+Tidligt i udviklingsfasen blev der udført to interviewrunder.  
+Den første interviewrunde blev foretaget ved at spørge tilfældige personer i døråbningen til føtex, omkring deres indkøbs- og spisevaner i henhold til aftenmåltider.
+Ud fra den indsamlede information fra interviewrunden samt state of the art undersøgelsen, blev der lavet en prototype for et muligt system, som den anden interviewrunde byggede på. 
+Begge interviews bekræftede at det kunne laves et system der ville hjælpe brugere med at finde opskrifter til aftensmad og handle ind til disse med tilbud i øjet.  
+Resultaterne fra disse interviews ledte ud i et problemområde.
+Dette samt systemets anvendelsesområde blev analyseret ved metoderne i OOA\&D.
+Denne analyse resulterede i en kravspecifikation bestående af user stories.
+
+Som følge af at de funktioner, som er tilgængelig i systemet, er de 18 user stories nævnt i kravspecifikationen (\myref{hype}) forsøgt opfyldt. 
+Hvorom disse reelt set er opfyldt, afhænger af hvorledes funktionerne er brugbar for brugerne.
+
+For at sikre programmets kvalitet og holdbarhed er der udført flere forskellige typer af tests. . Der er anvendt black box test i form af unit tests, med en code coverage over 80\%, til at sikre at metoderne gør det som forventet. Disse har også været hjælpsomme til at udbedre bugs. Unit tests sikrer ikke nødvendigvis kodens kvalitet men derimod, at hvis et af de testede input er givet vil output være korrekt. Der er udført to runder af brugertests. På daværende tidspunkt havde hjemmesiden de fleste hovedfunktioner, men disse var ikke finpudset. Dette kunne ses i bruger testene af programmet, som ellers overordnet var positiv, både hvad angår funktionalitet og brugergrænsefladen. Feedbacken blev brugt til at finpudse programmet foruden at udvikle yderligere funktioner. Forbedringen var tydelig fra den første brugertest til den anden.
+Størstedelen af problemerne der blev fundet i den første brugertest viste sig at være udbedret. Derudover var den generelle holdning at systemet virkede brugervenligt og at brugerne kunne se sig selv bruge systemet.
+
+Gruppen besluttede at systemet skulle udvikles ved brug af den evolutionære udviklingsmodel. Igennem udviklingsfasen indså gruppen at der manglede organisering af den valgte metode. For at løse dette problem, blev det valgt at benytte dele af Scrum. Scrumboardet og daily scrum var særligt brugbart. Scrum hjalp med at planlægge iterationer vha. product backloggen.
+Gruppen havde ikke nogen product owner, men forstod kravene udvundet til hjemmesiden fra interviewrunderne. Dette har sikret at den evolutionære model har opnået flere iterationer, helt præcist 4. Delene fra scrum har yderligere  ledt til, at mængden af udført arbejde, samt kvaliteten deraf, steg væsentligt.
+
+På baggrund af de ovenstående informationer, konkluderes det at der er konstrueret en veltestet  løsning. Løsningen opfylder alle user stories der blev fundet som resultat af rapportens analyser.
+
