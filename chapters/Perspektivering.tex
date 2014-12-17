@@ -1,6 +1,6 @@
 \chapter{Perspektivering}
 I dette kapitel vil muligheden for fremtidig anvendelse samt videreudvikling af systemet diskuteres.
-Herunder eventuelle funktionaliteter der kunne tilføjes til systemet eller eksisterende funktionaliteter der kunne forbedres, samt hvordan det ville stå på det nuværende marked af lignende systemer.
+Herunder eventuelle funktionaliteter der kunne tilføjes til systemet eller eksisterende funktionaliteter der kunne forbedres.
 
 \section{Systemets brugbarhed}
 Udvikling af et system er ikke det eneste der bestemmer dets succes i fremtiden.
@@ -10,55 +10,43 @@ Gennem de samme tests og interviews har der været feedback, som vi enten har va
 En implementering af dette ville øge systemets brugbarhed.
 Ligeledes vil mange funktioner i programmet kunne forbedres, ved at tilpasse dette efter den vores brugerfeedback. 
 
-Dette betyder at vi har en system med nogle gode funktionaliteter, osm vores testpersoner synes om, men at systemets funktionalitet både kan forbedres og udvides.
-
-%\section{Systemet på markedet}
-%Som nævnt i state of the art analysen, \myref{s:SOTA}, er systemet ikke det eneste på market, derjar til formål at hjælpe den almene familie med den organisatoriske proces som hører til madlavning.
-%De systemer som eksisterer, er dog typisk begrænset til færre funktionaliteter.
-%Ses der på tilbudsugen eller eTilbudsavis, er det primære fokus her, tilbud der kan tilføjes til en indkøbsliste.
-%Foruden de to kendte tilbudsapps, udgiver mange af butikskæder også egne apps til både android og iphones.
-%De fleste af appsne kan det samme, hvor fakta skiller sig ud ved også at implementere deling, madplan og rabatkuponer.
-%Ulempen ved de enkelte apps, er at de er designet specifikt til den enkelt butikskæde, det sker at disse apps får en dårlig vurdering af brugerne, hvilket også kan ses på \myref{tbl-smartphone}.
-%Den udviklede hjemmeside i denne rapport, kan ses som en samling for disse individuelle apps, effektiv på tværs af alle butikskæderne, ligesom eTilbudsavis, og Tilbudsugen.
-%Før systemet kan blive en rigtig konkurrent, ville det dog kræve ændringer som kan ses i \myref{udvidelse}.
-%En af fordelene ved disse apps er at de er udviklet til de enkelte butikskæder, er bl.a. at det er butikskæderne der har ønsket dem udviklet, dette betyder at alt information for hele varekataloget muligvis er tilgængelig for dem.
-%Sådanne fordele kan kun opnås gennem samarbejde med de individuelle butikskæder.
+Dette betyder at vi har et system med nogle gode funktionaliteter, som vores testpersoner synes om, men at systemets funktionalitet både kan forbedres og udvides.
 
 \section{Løsning og forbedring af eksisterende funktionalitet i systemet}
-Efter endt udvikling og undervejs i systemudviklingen, er der identificeret forskellige funktionaliteter som kunne forbedres, disse er identciceret af både gruppen og vores testpersoner.
-Disse løsninger og problemer omhander både brugergrænsefladen, samt det bagvedliggende system.
+Efter endt udvikling og undervejs i systemudviklingen, er der identificeret forskellige funktionaliteter som kunne forbedres, disse er identificeret af både gruppen og vores testpersoner.
+Disse løsninger og problemer omhandler både brugergrænsefladen, samt det bagvedliggende system.
 
 \subsection{Systemfunktionaliteter}
 For det første ville bedre data om tilbud gøre oplevelsen i programmet en del bedre.
 Som beskrevet i \myref{api:skoddata}, ville data med kategorier gøre det meget mere overskueligt at browse gennem tilbudene.
-Desuden ville dette data gøre det nemmere at forbedre forskellige funktionaliteter i systemet, sådanne forbedringer ville være smartere søgefunktionaliteter.
+Desuden ville dette data gøre det nemmere at forbedre forskellige funktionaliteter i systemet, sådanne forbedringer kunne være smartere søgefunktioner efter tilbud.
 Der mangler også billeder under opskrifter, man kan ikke se hvordan ens mad ender ud.
 Hvis der var mere tid ville der udvikles en måde hvorpå man kunne uploade billeder til hjemmesiden. 
-Dette ville gså kræve en større ændring i brugergrænsefladen for se billederne.
+Dette ville også kræve en større ændring i brugergrænsefladen for at vise billederne.
 
-Brugere har i testene også udtrykt interesse for at kunnne se førpriser.
-Førpriserne ville vise besparelsen for tilbuddene i de forskellige butikker.
-Ligeledes kunne vi også godt tænkt os at have normalpriserne for alle varerne i de forskellige butikker.
-Normalpriserne ville gøre det muligt at regne totalpriser ud på ting som indkøbslister samt opskrifter, for hver butik, vi ser dette som en smart funktion, som vi tror brugerne vil have stor gavn af.
+Testpersonerne har også udtrykt interesse for at kunne se før-priser.
+Før-priserne ville vise besparelsen for tilbuddene i de forskellige butikker.
+Ligeledes kunne det være brugbart at  have normalpriserne for alle varerne i de forskellige butikker.
+Normalpriserne ville gøre det muligt at regne totalpriser ud på ting som indkøbslister samt opskrifter, for hver enkelte butik, vi ser dette som en smart funktion, som vi tror brugerne vil have stor gavn af.
 
-\subsection{Brugergrænsefalde}
-I den seneste brugertest, \myref{ss:bt2}, blev der opfanget en række af problemer.
-Mange af disse problemer kan løses af brugeren ved blot at læse de to til tre linjer beskrivelse af hver systemdel, som er til rådighed i systemet, noget som testpersonerne også selv har nævnt.
+\subsection{Brugergrænseflade}
+Mange af problemerne som testpersonerne stødte ind i ved brugergrænsefladen, kan løses af brugeren, ved blot at læse de to til tre linjer beskrivelse ved hver del af systemet.
+Problemet som de fortæller det er dog, at de ikke læser teksten før de støder ind i fejlen, men så kan teksten heldigvis hjælpe dem videre skulle de sidde fast.
 
 Dette er dog ikke sandt for alle problemerne.
 Herunder gives en beskrivelse af problemernes mulige oprindelse, såvel som mulige løsninger af problemerne.
 
 Et af disse problemer eksisterer under indkøbsliste sektionen.
 Her bliver indkøbslister delt ind i to kategorier, \textit{mine} såvel som \textit{delte}.
-Denne opdeling skabte forvirring for brugere, da handlingen at dele en liste, flyttede listen over i delte, det hjalp ikke på dette problem, at brugere delte en liste som hed \textit{min inkøbsliste}.
-Hertil forslåes to løsningsmuligheder, en kunne være at en reference til listen eksisterede under begge kategorier, således ville en liste ikke forsvinde fra \textit{mine} når en liste deles.
-En anden mulighed ville være at listen, for vedkommende som oprettede den, ikke stadig blev under \textit{mine}, mens at den for de den er delt med, ligges under \textit{delte}.
+Denne opdeling skabte forvirring for brugere, da handlingen at dele en liste, flyttede listen over i delte, det hjalp ikke på dette problem, at brugere under testen delte en liste som hed ``Min Inkøbsliste''.
+Hertil forslås to løsningsmuligheder, en kunne være at en reference til listen eksisterede under begge kategorier, således ville en liste ikke forsvinde fra \textit{mine} når en liste deles.
+En anden mulighed ville være at listen, for vedkommende som oprettede listen, forblev under \textit{mine}, mens at den for brugere den er delt med, placeres under \textit{delte}.
 
-Det andet problem der blev opfanget igennem denne test, var et problem vedrørende at vælge hvilken indkøbsliste, ens aktioner i systemet agere på.
-Ud fra brugertest er det ikke muligt at konkludere hvor kritisk problemet var, størstedelen af de testede, benyttede slet ikke funktionaliteten idét de valgte at arbejde ud fra den givet inkøbslisten.
-Hertil nævnes det også fra de selvsamme brugere, at de ignorede funktionaliteten, da de alligevel kun havde en liste.
-En af de personer som oprettede deres egen liste, nævnte at det skabte lidt forvirring at listen hedder \textit{min inkøbsliste} og derfor ikke tænker videre over hvilken liste der tilføjes til.
-Lignende kommentar blev nævnt for forrige problem, hertil menes det altså nødvendigt at ændre navnet, på denne standard oprettede liste.
+Det andet problem der blev opfanget gennem denne test, var et problem vedrørende det at vælge hvilken indkøbsliste, ens aktioner i systemet ageres på.
+Ud fra brugertestene er det ikke muligt at konkludere hvor kritisk problemet var, størstedelen af de testede, benyttede slet ikke funktionaliteten da de valgte at arbejde ud fra den automatisk oprettede indkøbsliste.
+Hertil nævnes det også fra de selvsamme brugere, at de ignorerede funktionaliteten, da de alligevel kun havde én liste.
+En personerne som oprettede deres egen liste, nævnte at det skabte lidt forvirring at den automatiske liste hedder ``Min Indkøbsliste'' og derfor ikke tænker videre over hvilken liste der tilføjes til.
+Lignende kommentarer blev nævnt for forrige problem, hertil menes det altså nødvendigt at ændre navnet, på denne standard oprettede liste.
 
 \section{Udvidelse af systemet}\label{udvidelse}
 
@@ -74,7 +62,7 @@ En anden forbedring eller feature ville være at kunne lægge en kommentar ved s
 På denne måde kunne man udover talvurderingen kan læses hvad andre brugere synes om opskrifterne. 
 
 En anden funktionalitet der kunne implementeres ville være en mad plan.
-Madplanen blev forslået af test personerne i vores prototype test fundet på \label{ch:protorespons}.
+Madplanen blev forslået af test personerne i vores prototype test fundet på \myref{ch:protorespons}.
 En madplan kunne implementeres for at give brugeren mulighed for at få foreslået varierede opskrifter gennem en periode.
 Vi fravalgte madplanen da vi mente at den faldt uden for projektets omfang.
 
