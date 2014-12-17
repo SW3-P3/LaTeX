@@ -1,12 +1,13 @@
 \section{Brugergrænsefladen} \label{brugergraenseflade}
+Det er besluttet at systemet bliver implementeret som en hjemmeside.
 I dette afsnit forklares de generelle designprincipper, som brugergrænsefladen er pålagt på vores hjemmeside.
-Først vil vi beskrive en række forskellige guidelines, der ofte benyttes på hjemmesider, både til mobilt og desktop brugergrænseflader.
-Derefter diskuterer vi de valg, der er taget ved nogle af hjemmesidens elementer, samt hvordan det opfylder de nævnte guidelines.
+Først beskrives en række forskellige guidelines, der ofte benyttes på hjemmesider, både til mobilt og desktop brugergrænseflader.
+Derefter diskuteres de valg, der er taget ved nogle af vores hjemmesides elementer, samt hvordan det opfylder de nævnte guidelines.
 Derefter fremvises det, hvordan den responsive brugergrænseflade er implementeret vha. Twitter Bootstrap, med kodeeksempler. 
 
 \subsection{Teori}
-Der findes forskellige teknikker til at designe efter, og hermed også forskellige begreber, der benyttes i forbindelse med design af en brugergrænseflade.
-Ifølge \citep{DIS2014} er de følgende 3 elementer vigtige i denne forbindelse:
+Der findes forskellige teknikker at designe hjemmesider efter, og hermed også forskellige begreber, der benyttes i forbindelse med design af en brugergrænseflade.
+Ifølge \citep{DIS2014} er de følgende tre elementer vigtige i denne forbindelse:
 \begin{itemize}[nolistsep,noitemsep]
 	\item \textbf{Learnability}
 	\item \textbf{Effectiveness}
@@ -14,23 +15,23 @@ Ifølge \citep{DIS2014} er de følgende 3 elementer vigtige i denne forbindelse:
 \end{itemize}
 
 Learnability kan opfyldes vha. \textbf{affordance} og \textbf{consistency}.
-Affordance betyder, at noget er designet, så det er tydeligt hvad det skal bruges til.
+Affordance betyder her, at noget er designet, så det er tydeligt hvad det skal bruges til.
 For eksempel at en knap er designet, så det ser ud som om, den kan trykkes på. 
-På den måde giver affordance et intuitivt design, hvor brugeren ``kan regne ud'', hvordan ting skal inteageres med.
-Consistency betyder, at hvis en opgave udføres på en måde et sted, bør den også udføres sådan et andet sted.
-Der findes flere måder at opnå learnability på, men dette er to gode metoder, der mindsker mængden af viden, der skal indlæres før brug af hjemmesiden.
+På den måde giver affordance et intuitivt design, hvor brugeren kan regne ud, hvordan ting skal inteageres med.
+Consistency betyder her, at hvis en opgave udføres på en måde et sted, bør den også udføres sådan et andet sted.
+Der findes flere måder at opnå learnability på, men dette er to gode metoder, der mindsker mængden af viden, der kræves for at benytte hjemmesiden.
 
 Effectiveness kan opfyldes vha. \textbf{recovery}, og/eller \textbf{constraints}.
-Recovery gør, at hvis man laver en fejl, eller farer vild, skal det være nemt at komme tilbage, eller rette fejlen man lavede.
-Constraints betyder at forhindre brugeren, i at gøre noget de ikke burde, såsom at lave store fejl. 
-Dette kan undgås ved at mindske mulighederne i forskellige skærmvinduer, eller f.eks. ved at spørge: ``Er du sikker på du vil slette''.
+Recovery betyder her, at hvis man laver en fejl, eller farer vild, skal det være nemt at komme tilbage, eller rette fejlen man lavede.
+Constraints betyder her at forhindre brugeren, i at gøre noget de ikke burde, såsom at lave store fejl. 
+Dette kan undgås ved at mindske mulighederne i forskellige skærmvinduer, eller f.eks. ved at spørge: ``Er du sikker på du vil slette dette?''.
 
 Ease of use kan opfyldes vha. \textbf{navigation} og \textbf{feedback}.
-Navigation hjælper brugeren med at forstå, hvor de befinder sig.
-Dette kan f.eks. opnås med såkaldte ``breadcrumbs'', der viser stien, som brugeren har bevæget sig ud af.
-Feedback, får brugeren til at føle, at deres handlinger har gjort noget; derved er de ikke i tvivl om hvorvidt det f.eks. er nødvendigt at trykke på den samme knap en gang til.
+Navigation betyder her at brugeren får assistance til at vide, hvor de befinder sig.
+Dette kan f.eks. opnås med såkaldte breadcrumbs, der viser stien, som brugeren har bevæget sig ud af.
+Feedback, betyder her at brugeren føler, at deres handlinger har gjort noget; derved er de ikke i tvivl om hvorvidt det f.eks. er nødvendigt at trykke på den samme knap en gang til.
 
-Det er desuden relevant at gruppere felter på en brugergrænseflade, for at vise de hænger sammen. 
+Det er desuden relevant at gruppere felter på en brugergrænseflade, for at vise der et sammenhæng. 
 Her kan benyttes en af Getalts love om perception, f.eks. proximity, eller continuity.\citep{DIS2014}
 
 \textbf{WIMP}\hfill\\
