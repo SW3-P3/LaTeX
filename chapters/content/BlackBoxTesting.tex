@@ -77,8 +77,8 @@ Dette kommer til gavn når der laves eventuelle ændringer i systemet i en itera
 Der benyttes yderligere et library kaldet moq, dette er et library lavet for at kunne oprette mock data, samt de dependencies der nu må høre til.
 I vores tests benyttes dette til at simulere hvorom en bruger er authenticated eller ej, dette tillader at teste funktionaliteter der kræver at en bruger er authenticated, såvel som at teste hvad der sker, hvis en bruger ikke er authenticated.
 
-Der benyttes endvidere NCover Bolt extension til Visual Studio. 
-Dette hjælper med at vise hvilke code paths der tages igennem testene, hvilket giver os testenes code coverage.
+Der benyttes endvidere NCover Bolt til Visual Studio. 
+Dette hjælper med at vise hvilke kodeeksekveringsstier der besøges i unit testene, hvilket giver os testenes code coverage procent.
 Oftest sigter man efter 80\% code coverage i projekter. \citep{Code_Coverage}
 De testede komponenter består af komponenterne beskrevet i \myref{subsec:komp}, dette er altså filerne: \class{RecipeController.cs}, \class{ShoppingListController.cs}, \class{OfferController.cs}, \class{UserController.cs},  og en lille del af \class{AccountController.cs}.
 
