@@ -24,7 +24,7 @@ Handlingerne kan være vurderinger, sidevisninger, eller tidligere køb.
 Hvert objekt i sådan et system vil have nogle attributter, og ud fra disse, vil man kunne udregne en brugers smagsprofil.
 Når systemet så har en smagsprofil på en bruger, vil det kunne sammenligne et objekts attributter med smagsprofilen, for at se om objektets attributter består af noget brugeren synes om.
 
-Ved brug af denne anbefalingsmetode kan ``term frequency inverse document frequency'' (tf-idf) benyttes, som vægter hver faktor, efter den reciprokke hyppighed den er i datamængden.
+Ved brug af denne anbefalingsmetode kan \textit{term frequency inverse document frequency} (tf-idf) benyttes, som vægter hver faktor, efter den reciprokke hyppighed den er i datamængden.
 Dette hjælper til at skelne mellem termer der optræder ofte, og termer der optræder sjældent.
 Hvis et term ikke forekommer så ofte tillægges det derfor en højere betydning end et term med oftere forekomst.
 
@@ -73,9 +73,9 @@ Metoden gennemgår alle opskrifter for den givne bruger, og regner på baggrund 
 
 Det første som funktionen gør, hvilket man ikke ser på \myref{recommendrecipes}, er at finde alle opskrifter en bruger har vureret.
 Derefter tjekkes om der brugeren har nogle opskrifter, som er vurderet.
-En foreach-løkke bliver gennemløbet for hver opskrift, en bruger har vurderet, og heri bliver den gennemsnitlige vurdering af de forskelige ingredieser tilføjet til en liste af Tuples.
+En \class{foreach} løkke bliver gennemløbet for hver opskrift, en bruger har vurderet, og heri bliver den gennemsnitlige vurdering af de forskelige ingredieser tilføjet til en liste af Tuples.
 
-Dernæst gennemgås en ny foreach, hvori den forventede vurdering for alle opskrifter af brugeren udregnes, på baggrund af ingredienserne i hver opskrift.
+Dernæst gennemgås en ny \class{foreach}, hvori den forventede vurdering for alle opskrifter af brugeren udregnes, på baggrund af ingredienserne i hver opskrift.
 Til sidst sorteres denne liste af opskrifter, efter forventet vurdering.
 
 \begin{lstlisting}[caption=Metoden \class{RecommendRecipes}. Sorterer opskrifter efter forventede vurdering for en given bruger., label=recommendrecipes]
@@ -119,7 +119,6 @@ public IEnumerable<Recipe> RecommendRecipes(User user)
 Metoden returner en liste af alle opskrifterne, hvori de er sorteret efter deres forventede vurdering, bemærk at vurderede opskrifter ligger i samme liste, og har værdien, som brugeren har vurderet disse.
 
 \subsection{Konklusion}
-Implementeringen af anbefalingerne virker efter hensigten.
 Den simple anbefaling, der sorterer efter højest gennemsnitlige vurderinger, er meget simpel men kan være brugbar.
 Problemerne ved denne er dog at vi ingen nedre grænse har, for hvor mange bedømmelser der skal være, derfor vil en opskrift med én vurdering på 5 ligge højere end en opskrift med 49 vurderinger på 5 og én vurdering på 4.
 Dette er en tydelig svaghed, som kunne forbedres uden store ændringer i koden.
