@@ -80,7 +80,8 @@ I vores tests benyttes dette til at simulere hvorom en bruger er authenticated e
 Der benyttes endvidere NCover Bolt til Visual Studio. 
 Dette hjælper med at vise hvilke kodeeksekveringsstier der besøges i unit testene, hvilket giver os testenes code coverage procent.
 Oftest sigter man efter 80\% code coverage i projekter. \citep{Code_Coverage}
-De testede komponenter består af komponenterne beskrevet i \myref{subsec:komp}, dette er altså filerne: \class{RecipeController.cs}, \class{ShoppingListController.cs}, \class{OfferController.cs}, \class{UserController.cs},  og en lille del af \class{AccountController.cs}.
+De testede komponenter består af komponenterne beskrevet i \myref{subsec:komp} om hjemmesidens arkitektur.
+Dette drejer sig om filerne: \class{RecipeController.cs}, \class{ShoppingListController.cs}, \class{OfferController.cs}, \class{UserController.cs},  og en lille del af \class{AccountController.cs}.
 
 \class{AccountController.cs} testes kun for metoden \class{Register()} da dette er det eneste sted vi selv har kodet i denne controller, resten af controlleren er en del Microsoft OWIN.
 Dette giver dermed kun 10\% code coverage i denne fil, imens de resterende filer foruden \class{OfferController.cs}  har 80\% eller mere.

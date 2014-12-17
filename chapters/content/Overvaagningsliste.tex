@@ -1,6 +1,6 @@
 \section{Overvågningslisten}
 
-User story 9, i \myref{sec:krav}, lyder: ``Som en bruger vil jeg kunne overvåge specifikke varer og få en notifikation, når disse varer kommer på tilbud.''
+User story 9 lyder: ``Som en bruger vil jeg kunne overvåge specifikke varer og få en notifikation, når disse varer kommer på tilbud.''
 
 I dette afsnit vil design og implementering af denne user story uddybes.
 
@@ -12,7 +12,7 @@ Når der hentes tilbud fra eTilbudsavis' API eller via JSON, sendes der en e-mai
 E-mailen indeholder en liste af alle tilbudene der findes, for de varer der er på listen.
 
 \subsection{Implementering} 
-Da overvågningslisten er en indkøbsliste, bliver der genbrugt meget kode derfra, herunder logikken til at finde tilbud, hvilket svarer til at finde en vare og tilføje et tilbud for varen til en indkøbsliste, som forklaret i \myref{Indkoebsliste}.
+Da overvågningslisten minder meget om en indkøbsliste, bliver der genbrugt meget kode derfra, herunder logikken til at finde tilbud for en vare. 
 En overvågningsliste er tilsluttet en bruger som et felt af typen \class{ShoppingList} og med navnet \class{WatchList}. 
 Denne \class{Shoppinglist} bliver oprettet, når brugeren oprettes.
 
