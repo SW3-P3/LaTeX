@@ -86,7 +86,7 @@ En \class{foreach}-løkke gennemløber alle opskrifter i databasen.
 Hvis en bruger allerede har vurderet den nuværende opskrift, vil denne få vurderingen givet.
 Hvis brugeren ikke har vurderet opskriften sker der følgende: Gennemløb alle ingredienser på opskriften, tilføj deres gennemsnitlige vurdering til en liste, hvis denne vare ikke tidligere er vurderet af brugen vil vurderingen være den gennemsnitlige vurdering af alle opskrifter. 
 Derefter vil opskriften få en vurdering som er den gennemsnitlige vurdering af alle varerne på opskriften.
-Til sidst sorteres denne liste af opskrifter, efter forventet vurdering.
+Til sidste returneres alle opskrifter sorteret efter systemets forventede vurdering til den givne bruger.
 
 \begin{lstlisting}[caption=Metoden \class{RecommendRecipes}. Sorterer opskrifter efter forventede vurdering for en given bruger., label=recommendrecipes]
 public IEnumerable<Recipe> RecommendRecipes(User user)
@@ -126,16 +126,14 @@ public IEnumerable<Recipe> RecommendRecipes(User user)
 }
 \end{lstlisting}
 
-Metoden returner en liste af alle opskrifterne, hvori de er sorteret efter deres forventede vurdering, bemærk at vurderede opskrifter ligger i samme liste, og har værdien, som brugeren har vurderet disse.
-
 \subsection{Konklusion}
-Den simple anbefaling, der sorterer efter højest gennemsnitlige vurderinger, er meget simpel men kan være brugbar.
-Problemerne ved denne er dog at vi ingen nedre grænse har, for hvor mange bedømmelser der skal være, derfor vil en opskrift med én vurdering på 5 ligge højere end en opskrift med 49 vurderinger på 5 og én vurdering på 4.
-Dette er en tydelig svaghed, som kunne forbedres uden store ændringer i koden.
-Ligeledes ville en forbedring også være at sikre sig, at hvis to eller flere opskrifter har samme gennemsnitlige vurdering, så ville opskriften med flest vurderinger vægtes højest.
+Den simple anbefaling, der sorterer efter højest gennemsnitlige vurderinger, er simpel men brugbar.
+Problemet ved denne er at vi ingen nedre grænse har, for hvor mange bedømmelser der skal være.
+Altså vil en opskrift med én vurdering på 5 ligge højere end en opskrift med 49 vurderinger på 5 og én vurdering på 4.
+Dette er en tydelig svaghed, som kunne forbedres.
+Ligeledes ville en forbedring også være, at hvis to eller flere opskrifter har samme gennemsnitlige vurdering, så ville opskriften med flest vurderinger vægtes højest.
 
-Vores sortering efter forventet vurdering, fungerer også til dels efter hensigten, dog kunne algoritmen godt bruge forfinelse, eftersom der ikke er lagt stor vægt på ingredienser man ikke har bedømt.
 Hvis dette skulle gøres kunne ingredienser eventuelt vægtes efter hvor mange gange en bruger har bedømt denne vare.
-Ligeledes kunne vi forestille os at en højere vægtning af sjældent forkommende ingredienser ville kunne præcisere anbefalingerne ved at bruge tf-idf.
+Ligeledes kunne vi forestille os at en højere vægtning af sjældent forekommende ingredienser ville kunne præcisere anbefalingerne ved at bruge tf-idf.
 
 Disse forbedringer har vi fravalgt at implementere, da de ikke er en del af kerneområdet i dette projektforløb.
