@@ -1,28 +1,26 @@
 \section{Indkøbsliste} \fxnote{Burde nok være før overvågningslisten? - Troels}
-Fra vores prototype interviews, \myref{section:interview2}, blev der ønsket muligheden for indkøbslister som både kunne bruges individuelt samt deles med andre, hvorpå der både kunne være tilbud eller blot generelle varer. 
-Dette er desuden user story nr. 1 - 6, som findes i \myref{sec:krav}. 
-Det er krav at indkøbslisten kan: Oprettes, tilføjes varer til, se valgte tilbud, aftjekke varer (ved køb), dele med andre brugere og tilgås fra smartphones.
+User story 1 - 6, som findes i \myref{sec:krav} beskriver funktionaliteter for en indkøbsliste.
+Det er altså krav at indkøbslisten kan: Oprettes, tilføjes varer til, se valgte tilbud, aftjekke varer (ved køb), dele med andre brugere og tilgås fra smartphones.
+
+I dette afsnit vil design og implementering af denne user story uddybes.
 
 \subsection{Design}
 
-Indkøbslisten er en meget central del af programmet, da stort set alle andre dele tilføjer varer til indkøbslisterne.
-Det vigtigste for indkøbslisten er at den både kan vise generelle varer og specifikke tilbud. 
-Hver indkøbsliste skal også understøtte at den kan deles med andre brugere. 
+Indkøbslisten er en meget central del af programmet, da stort set alle andre komponenter kan tilføje varer til indkøbslisterne.
+Det vigtigste for indkøbslisten er at den både kan vise varer og tilbud, på både mobilt og desktop layout, dette uddybes i \myref{brugergraenseflade} om brugergrænsefladen.
+For at vise varerne skal der kunne tilføjes en vare, med bl.a. en mængde og en enhed.
+Når brugeren opretter sit login, oprettes en indkøbsliste til brugeren automatisk ved navn ``Min Indkøbliste''.
+Brugeren skal kunne vælge hvilket af tilbudene på varen de ønsker at købe, og derfor skal der for hver vare på listen kunne vises en liste over varens tilbud.
+
+
 \subsection{Implementering}
 
-Indekssiden for indkøbslister tilgås via knappen i menubaren.
-På den kan en bruger se hvilke indkøbslister personen har, disse er opdelt således at de delte lister er separeret fra de personlige.
-Der er også en kort forklarende tekst, som oplyser brugeren om hvad der er muligt at bruge denne del af programmet til.
-Der er en knap til at oprette en ny indkøbsliste, den åbner en såkaldt Modal, som er en lille pop-up boks, hvori brugeren kan skrive indkøbslistens navn. 
-Der er på denne side også muligt at ændre titlen på en indkøbsliste eller slette den.
+Når en bruger går ind på indkøbslister, kan de se to lister af \class{ShopppingLists} de er med på.
+Den ene liste viser \class{ShoppingLists} hvorpå de er den eneste bruger, den anden liste hvor de indeholder flere brugere.
 
-Ved at klikke på knappen ``Tilføj og fjern varer'' eller blot på en indkøbsliste vil man tilgå en ny side som viser indholdet af den.
-Fra denne side er det nu muligt at dele indkøbslisten med andre bruger baseret på deres e-mail adresse i programmet.
-Det er samtidig muligt at se hvilke personer den er delt med på nuværende tidspunkt.
-På siden kan brugere også tilføje nye varer til deres indkøbsliste, det er også muligt at specificere mængden og en tilhørende enhed til hver vare, men dette er valgfrit.
-Efter en vare er tilføjet til en indkøbsliste forsøger programmet at finde tilbud som passer dertil, dette forgår i metoden \class{GetOffersForItem} i \class{ShoppingListController.cs}, og kan ses på \myref{getoffersforitem}.
+Når et \class{Item} tilføjes til en \class{ShoppingList}  kaldes metoden \class{GetOffersForItem} i \class{ShoppingListController.cs}, og kan ses på \myref{getoffersforitem}.
 
-\begin{lstlisting}[caption="Metoden ``GetOffersForItem'' finder relevante tilbud og returner dem som en liste", label=getoffersforitem]
+\begin{lstlisting}[caption={Metoden \class{GetOffersForItem} finder relevante tilbud og returner dem som en liste}, label=getoffersforitem]
 public static List<Offer> GetOffersForItem(IDataBaseContext db, Item item, User user)
 {
     return db.OffersFilteredByUserPrefs(user).Where(x => 
@@ -32,20 +30,30 @@ public static List<Offer> GetOffersForItem(IDataBaseContext db, Item item, User 
 }
 \end{lstlisting}
 
-Denne metode vil søge de tilbud, som er i butikker brugeren kan lide og ikke er på listen over til brugeren ikke ønsker at købe, som angivet i brugerindstilliger.
+Denne metode vil søge efter \class{Offers} som passer på det tilføjede \class{Item}
+Her tages højde for hvilke butikker den pågældende \class{User} har fravalgt, og dermed tilføjet på sin liste over \class{Pref}.(Uddybes i \myref{OffersFilteredByUserPrefs} )
 Den naive implementering af denne metode ville være at anvende \class{String.Contains} metoden, som returnerer sand hvis den angivne string er en substring af den som metoden kaldes på. 
 Men dette vil give unødige falske-positive, eksempelvis hvis en bruger vil købe varen ``Burger'', så vil tilbud på ``hamburgerryg'' blive inkluderet.
-Derfor er alle tilbud for en given vare kun med i listen hvis varens navn findes efterfulgt af et mellemrum, eller forud for et mellemrum, eller passer fuldstændigt.
-For at tilgå denne information kan brugeren trykke på den blå knap ud for  ``Se tilbud'', dette vil udvide tabellen således brugeren kan se tilbudene og vælge et af dem.
-Hvis der vælges et at tilbudene vil varen blive erstattet af informationen om tilbudet, da dette oftere er mere specifikt.
-Dette gøres vha. feltet \class{selectedOffer} på \class{shoppingList\_Item}.
+Derfor er alle tilbud for en given vare kun med i listen, hvis varens navn findes efterfulgt af et mellemrum, eller forud for et mellemrum, eller passer fuldstændigt.
+En bedre implementering kunne laves hvis man kunne vælge kategori på varen der søges på, såsom pålæg.
+Herudover kunne man oprette generiske varer såsom chokoladebar, og ved at søge på dette, finder den relaterede varer såsom marsbar.
+Der findes en blå knap ud for varen med teksten ``Se tilbud'', når knappen trykkes på udvides tabellen således brugeren kan se det pågældende \class{Item}s liste af \class{Offers}.
+Hvis der vælges et af disse \class{Offers} vil det viste navn for det pågældende \class{Item} erstattes af navnet på det valgte \class{Offer}.
+Dette gemmes i feltet \class{selectedOffer} på \class{shoppingList\_Item}.
 
-På \myref{OffersFilteredByUserPrefs} ses metoden \class{OffersFilteredByUserPrefs}, som blev kaldt i \myref{getoffersforitem}. Denne metode sørger for at brugeren kun ser tilbud som de ikke vil filtrere væk. F.eks. hvis man er allergisk over for mandler, kan man her filtrere tilbud væk, som har noget med mandler i sit navn. Der er taget et valg om at tilbud med kommaer og ``eller'' i sit navn, skal filtreres væk. Dette er fordi de bliver meget intetsigende og kan skabe forvirring for brugeren. Et eksempel kan være at man søger på leverpostej, og tilbudet hedder: ``Leverpostej eller kødpølse''. Hvis der så på brugerens indkøbsliste står ``Leverpostej eller kødpølse'', kan de være usikre på hvad det egentlig var de skulle købe. Metoden kaldes alle steder hvor der skal vises tilbud på hjemmesiden.
+På \myref{OffersFilteredByUserPrefs} ses metoden \class{OffersFilteredByUserPrefs}, som kaldes i \myref{getoffersforitem}. Denne metode sørger for at brugeren kun ser \class{Offers} hvis \class{Heading} ikke indeholder noget fra deres liste af \class{Pref}s.
+F.eks. hvis man ikke vil se tilbud på mærket ``vores'', kan man her filtrere \class{Offers} fra, som indeholder ``vores'' i sin \class{Heading}. 
+Der er taget et valg om at \class{Offer}s hvis \class{Heading} indeholder kommaer eller ``eller'' i sit navn, skal filtreres væk.
+Desuden filtreres et \class{Offer} også væk hvis dets \class{unit} er en tom streng.
+Dette er fordi de bliver meget intetsigende og kan skabe forvirring for brugeren. 
+Et eksempel kan være at man søger på leverpostej, og \class{SelectOffer} hedder: ``Leverpostej eller kødpølse''. 
+Hvis der så på brugerens  \class{ShopplingList} står ``Leverpostej eller kødpølse'', kan de være usikre på hvad det egentlig var de skulle købe. 
+Metoden kaldes alle steder hvor der skal vises tilbud på hjemmesiden.
 
-\fxnote{Denne forklareing burde blive fjernet}
-\begin{lstlisting}[caption=Metoden ``OffersFilteredByUserPrefs'' filtrere tilbud fra som indeholder kommaer\, og ``eller''. Derudover tilføjer det ekstra filtreringer ud fra brugerens opgivede præferencer. Disse sendes som input gennem et variabel antal af arrayet af strings eller objekter af typen string. Denne blackliste sendes sammen med hvert offer til metoden ``OfferIsRelevant''\, som tjekker om hvorvidt en vare bør tilføjes til listen af tilbud. Slutteligt returneres resultates som en IEnumerable, label=OffersFilteredByUserPrefs] 
+\begin{lstlisting}[caption={\class{OffersFilteredByUserPref} er metoden, der filtrerer \class{Offers} på baggrund af uønskede strenge.}, label=OffersFilteredByUserPrefs] 
 public IEnumerable<Offer> OffersFilteredWithString(params string[] args)
 {
+	//Puts filterstrings into a list of strings called blacklist
     var blacklist = new List<string> { ",", "eller" };
                 var fromArgs = new List<string>();
     foreach (var str in args)
@@ -53,11 +61,13 @@ public IEnumerable<Offer> OffersFilteredWithString(params string[] args)
         fromArgs.AddRange(str.Split(','));
     }
     blacklist.AddRange(fromArgs);
-    // If an empty strings if any was given
+    
+    //Trims and removes all empty strings from blacklist
     blacklist.RemoveAll(x => x.Trim().Equals(string.Empty));
 
     var res = new List<Offer>();
 
+	//Checks if OfferIsRelevant for all offers
     foreach (var o in Offers)
     {
         if (OfferIsRelevant(o, blacklist))
@@ -69,10 +79,14 @@ public IEnumerable<Offer> OffersFilteredWithString(params string[] args)
 }
 \end{lstlisting}
 
-\texttt{OfferIsReleant()} som kaldes af \myref{OffersFilteredByUserPrefs} kan ses på \myref{OfferIsRelevant}. Dette er metoden som giver resultatet om hvorvidt tilbudet skal tilføjes til listen over tilbud eller ej. Hvis den returnere false vil tilbudet ikke blive tilføjet på linie 19 i \myref{OffersFilteredByUserPrefs}.
+\class{OfferIsReleant()} som kaldes af \myref{OffersFilteredByUserPrefs} kan ses på \myref{OfferIsRelevant}. Dette er metoden som giver resultatet om hvorvidt tilbudet skal tilføjes til listen over tilbud eller ej. 
+Hvis den returnere false vil tilbudet ikke blive tilføjet på linie 19 i \myref{OffersFilteredByUserPrefs}.
+Der tjekkes om hvorvidt det medsendte  \class{Offer} passer ind i den satte systemtid.
+Her tjekkes desuden om navnet på det givne \class{Offer} indeholder nogle af de strenge i blacklist.
+Desuden fjernes alle \class{Offer}s uden enhed har.
 
 \fxnote{Denne forklareing burde blive fjernet}
-\begin{lstlisting}[caption=Denne metode kaldet af OffersFilteredByUserPrefs\, sørger for at tilbudet som modtages som input overholder de forskellige krav sat i blacklisten. Der tjekkes også om tilbudet er passende for den nuværende systemtid. Den nuværende systemtid bruges til at ændre tiden i programmet for at loade relevant tilbud\, og bruges udelukkende til fremvisning af funktionalitet og testing. Er resultates true\, tilføjes tilbudet til listen\, hvis resultatet er false tilføjes den ikke., label=OfferIsRelevant]
+\begin{lstlisting}[caption={\class{OffersFilteredByUserPrefs}, sørger for at tilbudet som modtages som input overholder de forskellige krav sat i blacklisten.}, label=OfferIsRelevant]
 private static bool OfferIsRelevant(Offer o, IEnumerable<string> blacklist)
 {
     if (o.End < GlobalVariables.CurrentSystemTime)
@@ -92,12 +106,9 @@ private static bool OfferIsRelevant(Offer o, IEnumerable<string> blacklist)
 }
 \end{lstlisting}
 
-
-Det er muligt at aftjekke varer som værende købte ved at klikke på deres navn på indkøbslisten. Hvis en bruger holder deres cursor over teksten kommer der en lille besked som viser dette. 
-Det er desuden muligt at fjerne varer helt fra indkøbslisten ved at trykke på den røde knap med et kryds under ``Fjern''. 
-Der er desuden også mulighed for at rydde hele listen for varer og tilbud.
-
 \subsection{Konklusion}
-Det er muligt at have personlige indkøbslister samt at dele dem med andre brugere, hvis en indkøbsliste er delt kan alle brugerne anvende den som var det deres egne. 
-Det er også muligt at tilføje varer, aftjekke dem, og tilgå tilbud baseret på de varer man har tilføjet. 
-Implementeringen udfylder alle user stories, det er dog op til brugertestene at afgøre om det er tilstrækkeligt udført. 
+
+User stories for indkøbslisten er opfyldt, dog er implementeringen der søger efter tilbud for en vare ikke optimal.
+Dette skyldes bl.a. det mangelfulde data som beskrevet i \myref{skoddata}.
+En bedre implementering kunne laves hvis der f.eks. fandtes kategorier på tilbudene, samt generiske varer.
+Som brugertestene viser, i \myref{ss:bt2}, fungerer implementeringen for slutbrugeren på trods af disse mangler.
