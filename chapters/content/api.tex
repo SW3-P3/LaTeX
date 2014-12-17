@@ -149,8 +149,8 @@ foreach (var o in listofApiOffers)
 Foruden at indhente data fra eTilbudsavis' API, er det også muligt at importere tilbud direkte fra JSON-filer (på samme format som eTilbudsavis'). 
 Dette sker via metoden \class{ImportOffersFromFiles} fra controlleren \class{AdminPanelController.cs}. 
 Denne metode henter filer fra mappen \class{ProjectFood\/App\_Data\/jsonData\/}, og oversætter dem til instanser af klassen Offer og tilføjer dem til databasen. 
-Grunden til at begge metoder findes er, at denne gør det muligt at indhente data hurtigere og over en længere periode, da den ikke begrænses af: API'ets udløbstid (det er kun mulig at hente nuværende og fremtidige tilbud), API'ens hastighed og evt. offline brug. 
-For at kalde denne metode skal man tilgå administrator kontrolpanelet, som findes på stien \class{\/AdminPanel}.
+Grunden til at begge metoder findes er, at denne gør det muligt at indhente data hurtigere og over en længere periode, da den ikke begrænses af: API'ets udløbstid (det er kun muligt at hente nuværende og fremtidige tilbud), API'ens hastighed og evt. offline brug. 
+For at kalde denne metode skal man tilgå administrationspanelet, som findes på stien \class{\/AdminPanel}.
 
 \subsection{Konklusion}
 Ved brug af frameworket RestSharp er det muligt at indhente data omkring tilbud fra eTilbudsavis' API. 
