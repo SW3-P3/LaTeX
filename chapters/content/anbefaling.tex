@@ -1,65 +1,72 @@
 \section{Anbefalingssystem}\label{anbefaling}
-At udvikle og implementere et anbefalingssystem vil opfylde user story 14.
-For at lave dette kræves implementering af stories 13 og 15.
+Udviklingen og implementeringen af et anbefalingssystem vil opfylde user story 14.
+For at lave dette kræves implementering af user stories 13 og 15.
 Først vil der gennemgås teori om anbefalingssystemer, efterfølgende beskrives vores design og implementering.
-Til sidst konkluderes på denne del af vores system.
-Anbefalingssystemet har ikke været en kerneområde dette projekt, og derfor foreslår vi også en del forbedringer i konklusionen, som vi ikke har prioriteret at implementere i projektets forløb.
+I vores program bliver anbefalingssystemet brugt til at sortere opskrifter for brugere, således at den opskrift systemet forventer bruger bedømmer højst, vil blive vist først. 
+Anbefalingssystemet har ikke været et kerneområde dette projekt, og derfor foreslår vi også en del forbedringer i konklusionen, som vi ikke har prioriteret at implementere i projektets forløb.
 
 \subsection{Teori}
-Inden for anbefalingssystemer findes der mange forskellige retninger.
-Hvilken retning et givent projekt benytter sig af ender ud i nogle valg om hvilke typer anbefalinger man ønsker, samt hvilke data man er i besiddelse af, hvorpå man kan basere sine anbefalinger.
-I følgende afsnit gennemgås kort nogle forskellige grene og designs inden for anbefalingssystemer.
+Inden for anbefalingssystemer findes der flere forskellige metoder.
+Metoden man anvender er afhængigt at det mål man har og hvilke data man er i besiddelse af.
 
-Nogle af de simpleste anbefalingssystemer, er upersonlige anbefalinger.
-Eksempler på dette kan være en simpel sortering af objekter.
-Sådanne sorteringer vil ofte være baseret på ting som popularitet, salg, sidevisninger eller lignende.
-Den anden overordnede retning inden for anbefaling er personlig anbefaling, dette vil sige at systemet benytter noget data om en bruger, til at anbefale ting, der kunne være særlig interessant for brugeren.
-Ved sådanne personlige anbefalinger skal systemet bruge en smagsprofil af dets brugere, for at personliggøre anbefalingerne.
-Der findes flere forskellige metoder til at generere personlige anbefalinger, vi vil herunder kort fortælle om to af de mest brugte hovedretninger\citep{RecommenderSystems}.
+Et simpelt upersonligt anbefalingssystem vil være en sortering efter en faktor såsom popularitet eller gennemsnitlig brugervurdering.
+Den anden overordnede metode inden for anbefaling er personlig anbefaling, her benytter systemet data om en bruger, til at anbefale.
+Ved brug af personlige anbefaling, skal systemet beregne og bruge en smagsprofil.
+En smagsprofil er systems målestok for hvorledes en bruger syndes om objekter, disse objekt varierer fra henholdsvis fra indholdsbaserede anbefalinger til kollaborative anbefalinger.  
+De vil derfor blive beskrevet i deres respektive afsnit. 
+Der findes flere forskellige metoder til at generere personlige anbefalinger, vi vil herunder kort fortælle om to af de mest brugte metoder\citep{RecommenderSystems}.
 
 \subsubsection{Indholdsbaserede anbefalinger}
 Indholdsbaserede anbefalinger anbefaler ud fra brugerens tidligere handlinger i et system.
 For hver bruger i et sådan system kan man tilskrive denne en smagsprofil, der beskriver hvor godt en bruger synes om forskellige attributter.
-Handlingerne kan være vurderinger, sidevisninger, eller tidligere køb.
+Handlingerne kan være vurderinger, sidevisninger, eller tidligere køb. 
 Hvert objekt i sådan et system vil have nogle attributter, og ud fra disse, vil man kunne udregne en brugers smagsprofil.
-Når systemet så har en smagsprofil på en bruger, vil det kunne sammenligne et objekts attributter med smagsprofilen, for at se om objektets attributter består af noget brugeren synes om.
+Når systemet så har en smagsprofil på en bruger, vil det kunne sammenligne et objekts attributter med smagsprofilen, for at kunne vurderere hvert objekt imod hinanden.
 
-Ved brug af denne anbefalingsmetode kan \textit{term frequency inverse document frequency} (tf-idf) benyttes, som vægter hver faktor, efter den reciprokke hyppighed den er i datamængden.
-Dette hjælper til at skelne mellem termer der optræder ofte, og termer der optræder sjældent.
-Hvis et term ikke forekommer så ofte tillægges det derfor en højere betydning end et term med oftere forekomst.
+Ved brug af denne anbefalingsmetode kan \textit{term frequency inverse document frequency} (tf-idf) benyttes, som vægter hver attribut, efter den reciprokke hyppighed attributten opstår i datamængden.
+Hvis en attribut ikke forekommer så ofte tillægges den derfor en højere betydning end en attribut med oftere forekomst.
 
 Denne implementering af anbefaling kræver at man har nogle attributter tilhørende de objekter man gerne vil anbefale brugerne.
-Den største fordel ved denne metode  er at man kan lave personlige anbefalinger lige så snart en bruger har generet data, til en smagsprofil.
-Ulemperne er man skal have gode attributter til sine data, for denne metode virker. 
-Ligeledes kan denne implementering heller ikke tage højde for betingede regler, eksempelvis hvis man kun kan lide attribut1 i forbindelse med atrribut2 men ikke kan fordrage attribut1 i forbindelse med attribut3.
+Den største fordel ved denne metode er at man kan lave personlige anbefalinger lige så snart en bruger har anvendt system nok, til at en smagsprofil kan beregnes.
+Ulemperne er at man skal have tilstrækkelige attributter til sine data, før denne metode virker. 
+Ligeledes kan denne implementering heller ikke tage højde for betingede regler, eksempelvis hvis man kun kan lide \textit{attribut-1} i forbindelse med \textit{attribut-2} men ikke kan fordrage \textit{attribut-1} i forbindelse med \textit{attribut-3}.
 
 \subsubsection{Kollaborativ anbefalinger}
 Kollaborativ anbefalinger er også bygget op om smagsprofiler.
-Denne implementation kræver, modsat den indholdsbaserede, ingen data om de objekter som systemet skal anbefale. 
-I denne metode tager man i stedet brugernes smagsprofiler og holder op mod andre brugeres for at finde anbefalinger til en bruger.
-I \myref{tabel:kollabrativ} ses et eksempel på hvordan denne implementation kan fungere i praksis.
+Denne implementering kræver, modsat den indholdsbaserede, ingen data om de objekter som systemet skal anbefale. 
+I denne metode tager man i stedet brugernes smagsprofiler, her er smagsprofiler vurderinger eller køb, og holder profilen op mod andre brugeres profiler for at finde anbefalinger til en bruger.
+I \myref{tabel:kollabrativ} ses et eksempel på hvordan denne implementering kan fungere i praksis.
+Tabellen viser hvordan et kollabrativt system ville anbefale bruger-5 objekt C.
+Denne anbefaling fortages ved at sammenlige bruger-5 smagsprofil med de andre brugeres.
+Da bruger-2 og bruger-3's smagsprofiler passer bedst, benyttes deres vudering til at antage at bruger5 ikke vil kunne lide objekt C.
+\citep{kollabrativEksempel}
 
-Fordelene ved denne er som nævnt, at den kan bruges på mangelfulde data, hvortil dårlige eller ingen attributter er tilgængelige.
+Fordelen ved denne er, at den kan bruges på trods af manglende attributter om de objekter der vurderes.
 Ligeledes slipper man også for problemet om betingede regler.
-Dog er en stor ulempe ved denne metode, det man betegner som ‘cold start’-problemet, hvor man mangler mange brugeres vurderinger, for at kunne give dem anbefalinger.\citep{RecommenderSystems}.
+Dog er en stor ulempe ved denne metode, det man betegner som ‘cold start’-problemet, hvor man mangler mange brugeres vurderinger, for at kunne give dem anbefalinger af tilstrækkelig kvalitet.\citep{RecommenderSystems}.
 \input{images/Tables/kollabrativ.tex}
 
 \subsection{Design}
-Vi har valgt at implementere to forskellige sorteringer. %TROELS ER IMOD DETTE!!!!!
-Den første er en simpel, ikke personliggjort anbefaling, som blot er de gennemsnitlige bedømmelser, sorteret faldende.
-Ligeledes har vi valgt at implementere en personlig anbefaling, her har vi valgt en indholdsbaseret sortering, sorteret efter brugerens beregnede forventede vurdering, baseret på brugerens vurderinger af andre opskrifter.
-Dette valg har vi foretaget hovedsageligt af to årsager, den første er fordi vi mener at ingredienserne på hver opskrift kan bruges som attributter til at generere smagsprofiler og derfor også anbefalinger udefra.
-Den anden årsag, til at valget er faldet på denne løsning, er at vil gerne ville undgå ‘cold-start’ problemet.
-Vi har valgt ikke at implementere tf-idf af det inholdsbaserede anbefalingssystem.
+Vi har valgt at implementeret fire forskellige sorteringer.
+Den første er en simpel, upersonlig anbefaling, som blot er de gennemsnitlige bedømmelser, sorteret faldende.
+Ligeledes har vi valgt at implementere en personlig anbefaling.
+Vi har valgt den indholdsbaserede sortering.
+Indholdet her er brugeres vurderinger af opskrifter.
+Metoden beregner brugerens forventede vurdering efter deres tidligere vurderinger på opskrifter med samme varer.
+Valget af den indholdsbaserede sortering, er truffet fordi vi mener at ingredienserne på hver opskrift kan bruges som attributter til at generere smagsprofiler.
+Derudover undgår vi ‘cold-start’-problemet fra den kollaborative anbefaling
 
-Implementeringen, som tidligere nævnt, baserer anbefalingerne på opskrifters ingredienser.
-Når en bruger har bedømt en opskrift, får hver ingrediens til opskriften tildelt samme bedømmelse.
-Hvis en ingrediens er bedømt på mere end en opskrift, bruges gennemsnittet af de samlede bedømmelser for ingrediensen.
-Hvis en ingrediens ikke har nogen bedømmelse, bliver denne ingrediens tildelt gennemsnittet af alle brugerens bedømmelser.
-Ud fra denne data oprettes en smagsprofil for hver bruger, som indeholder en værdi mellem 1-5, for hver ingrediens.
+Vi har valgt ikke at implementere tf-idf af det indholdsbaserede anbefalingssystem, men i stedet et system inspireret deraf. 
 
-Derefter tager vi blot gennemsnittet af alle værdierne for hver opskrift, for at estimere hvor godt en bruger ville kunne lide en opskrift.
-Modellen fungerer som vist på figur \myref{tabel:opskriftanbefaling}.
+Implementeringen baserer anbefalingerne på opskrifters ingredienser.
+Når en bruger har bedømt en opskrift, får hver ingrediens på opskriften tildelt samme bedømmelse.
+Hvis en ingrediens er bedømt på mere end en opskrift, bruges gennemsnittet af de alle bedømmelserne for ingrediensen.
+Hvis en ingrediens ikke har nogen bedømmelse, bliver denne ingrediens tildelt gennemsnittet af alle brugerenes bedømmelser.
+Ud fra denne data oprettes en smagsprofil for hver bruger, som indeholder en værdi mellem 1-5, for hver ingrediens, da brugere har mulighed for at vurdere opskrifter i dette interval.
+
+
+Derefter sorteres alle opskrifter faldende efter den forventede vurdering, som er gennemsnittet af værdier, fra smagsprofilen, for hver vare på opskriften. 
+På figur \myref{tabel:opskriftanbefaling} vises modellens anbefalinger på baggrund af ingredienserne i tidligere bedømte opskrifter.
 \input{images/Tables/opskriftanbefaling.tex}
 
 I brugergrænsefladen har brugeren mulighed for at vælge hvordan opskrifter skal sorteres.
@@ -67,15 +74,18 @@ De kan vælge mellem de to beskrevet her, samt at få sorteret dem efter nyeste 
 På forsiden præsenteres ligeledes de opskrifter som systemet regner højest forventede score ud på.
 
 \subsection{Implementering}
-Kernen i denne funktionalitet ligger i en metode, metoden \class{ReccomendRecipes}.
-Denne metode findes i RecipesController.
-Metoden gennemgår alle opskrifter for den givne bruger, og regner på baggrund af ingredienserne i disse, en forventet vurdering ud, som beskrevet i forrige afsnit.
+Kernen i denne funktionalitet ligger i metoden \class{ReccomendRecipes} som findes i \class{RecipesController}.
+Metoden gennemgår alle opskrifter vurderet af en given bruger, og regner på baggrund af ingredienserne i disse, en forventet vurdering ud, som beskrevet i forrige afsnit.
 
-Det første som funktionen gør, hvilket man ikke ser på \myref{recommendrecipes}, er at finde alle opskrifter en bruger har vureret.
-Derefter tjekkes om der brugeren har nogle opskrifter, som er vurderet.
-En \class{foreach} løkke bliver gennemløbet for hver opskrift, en bruger har vurderet, og heri bliver den gennemsnitlige vurdering af de forskelige ingredieser tilføjet til en liste af Tuples.
+Metoden \class{ReccomendRecipes} er vist i \myref{recommendrecipes}.
+Metoden finder først alle opskrifter vurderet af brugeren: \class{recipiesRatedByUser}, dette er ikke vist i \myref{recommendrecipes}.
+En \class{foreach}-løkke gennemløber hver opskrift, en bruger har vurderet, og heri bliver den gennemsnitlige vurdering for hver ingrediens tilføjet til en liste af \class{Tuples}, som er en samling af varen, og alle vurderingerne deraf. 
 
 Dernæst gennemgås en ny \class{foreach}, hvori den forventede vurdering for alle opskrifter af brugeren udregnes, på baggrund af ingredienserne i hver opskrift.
+En \class{foreach}-løkke gennemløber alle opskrifter i databasen. 
+Hvis en bruger allerede har vurderet den nuværende opskrift, vil denne få vurderingen givet.
+Hvis brugeren ikke har vurderet opskriften sker der følgende: Gennemløb alle ingredienser på opskriften, tilføj deres gennemsnitlige vurdering til en liste, hvis denne vare ikke tidligere er vurderet af brugen vil vurderingen være den gennemsnitlige vurdering af alle opskrifter. 
+Derefter vil opskriften få en vurdering som er den gennemsnitlige vurdering af alle varerne på opskriften.
 Til sidst sorteres denne liste af opskrifter, efter forventet vurdering.
 
 \begin{lstlisting}[caption=Metoden \class{RecommendRecipes}. Sorterer opskrifter efter forventede vurdering for en given bruger., label=recommendrecipes]
@@ -88,11 +98,11 @@ public IEnumerable<Recipe> RecommendRecipes(User user)
     foreach (var recipie in recipiesRatedByUser.ToList())
     {
         var score = recipie.Ratings.FirstOrDefault(x => x.User.Username == user.Username).Score;
-        [...]
+        /* [...] */
     }
 
     var avgRating = recipiesRatedByUser.Average(x => x.Ratings.FirstOrDefault(y => y.User.ID == user.ID).Score);
-    [...]
+    /* [...] */
     // Calculate the score for every recipie
     foreach (var recipie in _db.Recipes.Include(x => x.Ingredients).Include(x => x.Ratings))
     {
