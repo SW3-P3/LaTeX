@@ -1,40 +1,40 @@
 \section{Opskrifter}
-I dette afsnit vil implementeringen af opskrifter blive beskrevet. Komponentet opskrifter omhandler user story 13, 15, 16, 17, 18.
-User story 14, at finde anbefalinger på opskrifter, hører også til opskriftskomponentet, men vil blive uddybet i \myref{anbefaling}. Til sidst samles alt dette op i en konklusion. 
-Opskrifter i dette projekt har som udgangspunkt rødder i user story 13, som beskriver at brugeren ville have mulighed for at kunne finde opskrifter.
+I dette afsnit vil implementeringen af opskrifter blive beskrevet. 
+Komponentet opskrifter omhandler user story nummer 13, 15, 16, 17 og 18.
+User story nummer 14, at finde anbefalinger på opskrifter, hører også til opskriftskomponentet, men vil blive uddybet i \myref{anbefaling}. 
+Til sidst samles alt dette op i en konklusion. 
+Opskrifter, i dette projekt, har som udgangspunkt rødder i user story nummer 13, som beskriver, at brugeren ville have mulighed for at kunne finde opskrifter.
 
 \subsection{Design}
 Idéen er at give brugerene mulighed for nemt at finde opskrifter, hvorefter ingredienserne fra disse, nemt kan tilføjes til deres indkøbslister.
 Når man først går ind på opskrifterne, finder man alle offentliggjorte opskrifter, som er blevet tilføjet af brugerne af systemet.
-Opskrifterne er opstillet således der på forsiden for opskrifter kan ses den mest nødvendige information om hver enkelt opskrift.
-Opskrifterne er opstillet vha. Bootstraps CSS klasse \class{panels} for at give en klar opdeling og en gøre det overskueligt.
+Opskrifterne er opstillet således, der på forsiden for opskrifter kan ses den mest nødvendige information om hver enkelt opskrift.
+Opskrifterne er opstillet vha. Bootstraps CSS-klasse \class{panels}, for at give en klar opdeling og en gøre det overskueligt.
 Opskrifterne indeholder alle en titel, tid, antal personer, bedømmelse, ingredienser og en fremgangsmåde.
 
-Hver \class{opskrift} er relateret til brugeren som har oprettet den, denne bruger har senere mulighed for at redigere eller slette opskriften.
-Er man ikke den bruger der har oprettet opskriften, har man mulighed for at kunne klone opskriften, dette er fra user story 18.
-Når en opskrift bliver klonet, bliver alt data fra den tidligere opskrift kopieret og derefter kan man foretage ændringer til opskriften, gemme den under et nyt navn, således opskriften kan personliggøres.
+Hver \class{opskrift} er relateret til brugeren ,som har oprettet den.
+Denne bruger har senere mulighed for at redigere eller slette opskriften.
+Er man ikke den bruger, der har oprettet opskriften, har man mulighed for at kunne klone opskriften, dette er fra user story nummer 18.
+Når en opskrift bliver klonet, bliver alt data fra den tidligere opskrift kopieret, og derefter kan man foretage ændringer til opskriften, gemme den under et nyt navn, således opskriften kan personliggøres.
 
-I følge user story 16, vil brugerne have mulighed for at kunne tilføje ingredienser fra opskriften til deres indkøbsliste.
-Ingredienser på opskriften er opstillet således de nemt kan tilføjes til brugerens indkøbslister.
+I følge user story nummer 16, vil brugerne have mulighed for at kunne tilføje ingredienser fra opskriften til deres indkøbsliste.
+Ingredienser på opskriften er opstillet således, de nemt kan tilføjes til brugerens indkøbslister.
 Det er muligt kun at vælge de ting man mangler, således man ikke er tvunget til at tilføje alle ingredienser fra hele opskriften.
-Der kan vælges hvilken indkøbsliste varerne skal tilføjes til, og det kan ses hvilke ting der allerrede er blevet tilføjet fra opskriften, i form af små grønne flueben.
+Der kan vælges, hvilken indkøbsliste varerne skal tilføjes til, og det kan ses, hvilke ting der allerrede er blevet tilføjet fra opskriften i form af små grønne flueben.
 
-For at opfylde user story 15 har en bruger mulighed for at vurdere hver opskrift på en skala fra 1 til 5.
-Dette angives i form af stjerner.
-Brugerne kan se den gennemsnitlige vurdering på den enkelte opskrift, og ud fra dette tage en beslutning om hvorvidt man skal prøve den ene eller den anden opskrift.
+For at opfylde user story nummer 15 har en bruger mulighed for at vurdere hver opskrift på en skala fra 1 til 5.
+Hvilket angives i form af stjerner.
+Brugerne kan se den gennemsnitlige vurdering på den enkelte opskrift, og ud fra dette tage en beslutning om, hvorvidt man skal prøve den ene eller den anden opskrift.
 Brugen af disse vurderinger, bliver beskrevet i \myref{anbefaling}.
 
 \subsection{Implementering}
-En instans af \class{Recipe} bliver oprettet når en bruger tilføjer en ny \class{recipe} eller prøver at oprette en kopi af en allerede eksisterende \class{recipe}.
+En instans af \class{Recipe} bliver oprettet, når en bruger tilføjer en ny \class{recipe} eller prøver at oprette en kopi af en allerede eksisterende \class{recipe}.
 
-\class{AddIngredient} er en metode til at tilføje \class{items} til \class{recipes}, således de indeholder en \class{amount} og et \class{unit}, der derudover senere kan skaleres til det valgte antal personer. 
+\class{AddIngredient} er en metode til at tilføje \class{items} til \class{recipes}, således de indeholder en \class{amount} og et \class{unit}, der senere kan skaleres til det valgte antal personer. 
 Metoden ligner \class{AddItem} fra \class{ShoppingListsController}, den adskiller sig ved at tilføje varen til en \class{recipe} istedet for en \class{shoppinglist}.
 Et udklip af \class{AddIngredient} kan ses på \myref{addIngredient}.
-Her tjekkes om det \class{Item} der tilføjes til den aktive \class{Recipe} allerede er derpå. 
-Hvis det eksisterer adderes dens \class{Amount}, til den nuværende,
-hvis ikke tilføjes det nye \class{Item}.
-
-
+Her tjekkes om det \class{Item}, der tilføjes til den aktive \class{Recipe} allerede er derpå. 
+Hvis det eksisterer, adderes dens \class{Amount} til den nuværende, hvis ikke tilføjes det nye \class{Item}.
 
 \begin{lstlisting}[caption={Udklip fra \class{AddIngredient}},label=addIngredient]
 /* [...] */      
@@ -62,6 +62,6 @@ else
 
 \subsection{Konklusion}
 Alle user stories vedrørende opskrifter bliver opfyldt. 
-Opskrifter er skrevet sammen med indkøbslisten og der er funktionalitet til at tilføje varer dertil. 
+Opskrifter er skrevet sammen med indkøbslisten, og der er funktionalitet til at tilføje varer dertil. 
 Brugeren kan ændre på enkelte opskrifter eller oprette sin egen version af andres opskrifter. 
 Opskrifterne kan skaleres efter antal personer og kan vurderes af brugerne. 
