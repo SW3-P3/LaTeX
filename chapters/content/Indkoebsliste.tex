@@ -1,5 +1,5 @@
 \section{Indkøbsliste} \label{Indkoebsliste}
-User story 1 - 6, som findes i \myref{sec:krav}, beskriver funktionaliteter for en indkøbsliste.
+User story 1 - 6, beskriver funktionaliteter for en indkøbsliste.
 Det kræves altså, at indkøbslisten kan: Oprettes, tilføjes varer til, vise valgte tilbud, aftjekke varer (ved køb), deles med andre brugere og tilgås fra mobil-enheder.
 
 I dette afsnit vil design og implementering af disse user stories uddybes.
@@ -108,6 +108,6 @@ private static bool OfferIsRelevant(Offer o, IEnumerable<string> blacklist)
 
 \subsection{Konklusion}
 User stories for indkøbslisten er opfyldt, dog er implementeringen, der søger efter tilbud for en vare, ikke optimal.
-Dette skyldes bl.a. det mangelfulde data som beskrevet i \myref{api:skoddata}.
+Dette skyldes som sagt det mangelfulde data fra eTilbudsavis.
 En bedre implementering kunne laves, hvis der f.eks. fandtes kategorier på tilbudene, samt generiske varer.
-Som brugertestene viser, i \myref{ss:bt2}, fungerer implementeringen for slutbrugeren trods disse mangler.
+Brugertestene i \myref{ss:bt2} viser at, implementeringen fungerer for slutbrugeren trods disse mangler.
