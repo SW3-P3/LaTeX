@@ -66,24 +66,24 @@ Der oprettes også en ekstra Arrange her for at oprette en \class{User} der kan 
         }
 }        
 \end{lstlisting}
-Der findes desuden en lignende test som kaldes \class{.._ShouldNotShare}, som ikke opfylder alle metodens kriterier, og derfor fejler, hvilket så tjekkes igennem asserts.
+Der findes desuden en lignende test som kaldes \class{..._ShouldNotShare}, som ikke opfylder alle metodens kriterier, og derfor fejler, hvilket så tjekkes igennem asserts.
 Fordelen ved at bruge Unit tests som Black Box tests frem for andre, er muligheden for at køre tests nemt igen og igen.
 Dette er en stor fordel når man arbejder iterativt.
 Dette er en mulighed der ellers ikke nødvendigvis er tilgængelig for alle typer af Black Box tests, eksempelvis hvis systemet testes igennem brug.
 Disse tests ville skulle udføres manuelt hver gang, hvor dette ikke er tilfældet ved brug af unit testing.
 Dette kommer til gavn når der laves eventuelle ændringer i systemet i en iteration, alle tests lavet førhen kan køres for at se om ændringerne har haft nogen effekt på det ellers før funktionelle system. 
 Der benyttes yderligere et library kaldet moq, dette er et library lavet for at kunne oprette mock data, samt de dependencies der nu må høre til.
-I det oprettede testproject benyttes dette til at simulere hvorom en bruger er authenticated eller ej, dette tillader at teste funktionaliteter der kræver at en bruger er authenticated, såvel som at teste hvad der sker, hvis en bruger ikke er authenticated.
+I vores tests benyttes dette til at simulere hvorom en bruger er authenticated eller ej, dette tillader at teste funktionaliteter der kræver at en bruger er authenticated, såvel som at teste hvad der sker, hvis en bruger ikke er authenticated.
 
-Der benyttes desuden et NCover Bolt extension til Visual Studio. 
-Dette hjælper med at vise hvilke code paths tages igennem testen, hvilket giver os testenes code coverage.
+Der benyttes endvidere NCover Bolt extension til Visual Studio. 
+Dette hjælper med at vise hvilke code paths der tages igennem testene, hvilket giver os testenes code coverage.
 Oftest sigter man efter 80\% code coverage i projekter. \citep{Code_Coverage}
-De testede komponenter består af komponenterne beskrevet i \myref{subsec:komp}, dette er altså filerne: ``RecipesController'', ``ShoppingListsController'', ``OfferController'', ``UserController'',  og en lille del af ``AccountController''.
+De testede komponenter består af komponenterne beskrevet i \myref{subsec:komp}, dette er altså filerne: \class{RecipeController.cs}, \class{ShoppingListController.cs}, \class{OfferController.cs}, \class{UserController.cs},  og en lille del af \class{AccountController.cs}.
 
-AccountController testes kun for Register() metoden da dette er det eneste sted vi selv har kodet i denne controller. 
-Dette giver dermed kun 10\% code coverage i denne fil, imens de resterende filer foruden ``OfferController''  har 80\% eller mere.
-``OfferController'' er kun på 73\% da denne indeholder APIkaldet der henter tilbudene fra Etilbudsavis.dk. 
+\class{AccountController.cs} testes kun for metoden \class{Register()} da dette er det eneste sted vi selv har kodet i denne controller, resten af controlleren er en del Microsoft OWIN.
+Dette giver dermed kun 10\% code coverage i denne fil, imens de resterende filer foruden \class{OfferController.cs}  har 80\% eller mere.
+\class{OfferController.cs} er kun på 73\% da denne indeholder \class{ImportOffers()} der henter tilbudene fra eTilbudsavis' API. 
 Denne metode er ikke testet da den tager op imod 8 minutter før den afsluttes, hvilket er problematisk når unit tests skal være hurtige og effektive.
 
-Med denne code coverage samt brugertestene, er ProjectFood altså blevet en gennemtest og solid hjemmeside.
-Dette gør det mere sikkert at tilføje ny kode, og vha. testene være sikker på intet er ødelagt ved at køre dem en gang til.
+Code Coverage tallet viser os at meget af koden er testet.
+Med denne coverage og det faktum at vores tests ikke fejler, konkluderes det ikke nødvendigvis at koden er af høj kvalitet, men blot at koden opfører sig som forventet.
