@@ -1,24 +1,21 @@
-\section{Indkøbsliste} \fxnote{Burde nok være før overvågningslisten? - Troels}
-User story 1 - 6, som findes i \myref{sec:krav} beskriver funktionaliteter for en indkøbsliste.
-Det er altså krav at indkøbslisten kan: Oprettes, tilføjes varer til, se valgte tilbud, aftjekke varer (ved køb), dele med andre brugere og tilgås fra smartphones.
+\section{Indkøbsliste}
+User story 1 - 6, som findes i \myref{sec:krav}, beskriver funktionaliteter for en indkøbsliste.
+Det kræves altså, at indkøbslisten kan: Oprettes, tilføjes varer til, vise valgte tilbud, aftjekke varer (ved køb), deles med andre brugere og tilgås fra mobil-enheder.
 
-I dette afsnit vil design og implementering af denne user story uddybes.
+I dette afsnit vil design og implementering af disse user stories uddybes.
 
 \subsection{Design}
-
 Indkøbslisten er en meget central del af programmet, da stort set alle andre komponenter kan tilføje varer til indkøbslisterne.
-Det vigtigste for indkøbslisten er at den både kan vise varer og tilbud, på både mobilt og desktop layout, dette uddybes i \myref{brugergraenseflade} om brugergrænsefladen.
-For at vise varerne skal der kunne tilføjes en vare, med bl.a. en mængde og en enhed.
-Når brugeren opretter sit login, oprettes en indkøbsliste til brugeren automatisk ved navn ``Min Indkøbliste''.
-Brugeren skal kunne vælge hvilket af tilbudene på varen de ønsker at købe, og derfor skal der for hver vare på listen kunne vises en liste over varens tilbud.
-
+Det vigtigste for indkøbslisten er, at den både kan vise varer og tilbud, på både mobilt og desktop layout, dette uddybes i \myref{brugergraenseflade} om brugergrænsefladen.
+For at vise varerne skal der kunne tilføjes en vare med bl.a. en mængde og en enhed.
+Når brugeren opretter sit login, oprettes en indkøbsliste til brugeren automatisk med navnet ``Min Indkøbliste''.
+Brugeren skal kunne vælge, hvilket tilbud på varen de ønsker at købe, og derfor skal der for hver vare på listen kunne vises en liste over varens tilbud.
 
 \subsection{Implementering}
+Når en bruger går ind på indkøbslister, kan de se to lister af \class{ShopppingLists} de kan tilgå.
+Den ene liste viser \class{ShoppingLists}, hvorpå de er den eneste bruger, og den anden liste viser \class{ShoppingLists}, der indeholder flere brugere.
 
-Når en bruger går ind på indkøbslister, kan de se to lister af \class{ShopppingLists} de er med på.
-Den ene liste viser \class{ShoppingLists} hvorpå de er den eneste bruger, den anden liste hvor de indeholder flere brugere.
-
-Når et \class{Item} tilføjes til en \class{ShoppingList}  kaldes metoden \class{GetOffersForItem} i \class{ShoppingListController.cs}, og kan ses på \myref{getoffersforitem}.
+Når et \class{Item} tilføjes til en \class{ShoppingList}, kaldes metoden \class{GetOffersForItem} i \class{ShoppingListController.cs}, som kan ses i \myref{getoffersforitem}.
 
 \begin{lstlisting}[caption={Metoden \class{GetOffersForItem} finder relevante tilbud og returner dem som en liste}, label=getoffersforitem]
 public static List<Offer> GetOffersForItem(IDataBaseContext db, Item item, User user)
@@ -30,9 +27,9 @@ public static List<Offer> GetOffersForItem(IDataBaseContext db, Item item, User 
 }
 \end{lstlisting}
 
-Denne metode vil søge efter \class{Offers} som passer på det tilføjede \class{Item}
-Her tages højde for hvilke butikker den pågældende \class{User} har fravalgt, og dermed tilføjet på sin liste over \class{Pref}.(Uddybes i \myref{OffersFilteredByUserPrefs} )
-Den naive implementering af denne metode ville være at anvende \class{String.Contains} metoden, som returnerer sand hvis den angivne string er en substring af den som metoden kaldes på. 
+Denne metode vil søge efter \class{Offers}, som passer på det tilføjede \class{Item}
+Her tages højde for, hvilke butikker den pågældende \class{User} har fravalgt, og dermed tilføjet til sin liste over \class{Pref} (Uddybes i \myref{OffersFilteredByUserPrefs}).
+Den naive implementering af denne metode ville være at anvende \class{String.Contains()} metoden, som returnerer sand, hvis den angivne streng er en substreng af den, som metoden kaldes på. 
 Men dette vil give unødige falske-positive, eksempelvis hvis en bruger vil købe varen ``Burger'', så vil tilbud på ``hamburgerryg'' blive inkluderet.
 Derfor er alle tilbud for en given vare kun med i listen, hvis varens navn findes efterfulgt af et mellemrum, eller forud for et mellemrum, eller passer fuldstændigt.
 En bedre implementering kunne laves hvis man kunne vælge kategori på varen der søges på, såsom pålæg.
