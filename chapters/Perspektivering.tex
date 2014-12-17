@@ -25,14 +25,27 @@ Dette betyder at vi har en system med nogle gode funktionaliteter, osm vores tes
 %Sådanne fordele kan kun opnås gennem samarbejde med de individuelle butikskæder.
 
 \section{Løsning og forbedring af eksisterende funktionalitet i systemet}
-Efter endt udvikling på systemet,
+Efter endt udvikling og undervejs i systemudviklingen, er der identificeret forskellige funktionaliteter som kunne forbedres, disse er identciceret af både gruppen og vores testpersoner.
+Disse løsninger og problemer omhander både brugergrænsefladen, samt det bagvedliggende system.
 
+\subsection{Systemfunktionaliteter}
+For det første ville bedre data om tilbud gøre oplevelsen i programmet en del bedre.
+Som beskrevet i \myref{api:skoddata}, ville data med kategorier gøre det meget mere overskueligt at browse gennem tilbudene.
+Desuden ville dette data gøre det nemmere at forbedre forskellige funktionaliteter i systemet, sådanne forbedringer ville være smartere søgefunktionaliteter.
+Der mangler også billeder under opskrifter, man kan ikke se hvordan ens mad ender ud.
+Hvis der var mere tid ville der udvikles en måde hvorpå man kunne uploade billeder til hjemmesiden. 
+Dette ville gså kræve en større ændring i brugergrænsefladen for se billederne.
+
+Brugere har i testene også udtrykt interesse for at kunnne se førpriser og vi kunne ligeledes også godt tænkt os at have normalpriserne på de forskellige butikkers varer.
+Førpriserne ville vise hvor gode avisvarerne fra de forskellige butikker er.
+Normalpriserne ville gøre det muligt at regne totalpriser ud på ting som indkøbslister samt opskrifter, for hver butik, vi ser dette som en smart funktion, som vi tror brugerne vil have stor gavn af.
+
+\subsection{Brugergrænsefalde}
 I den seneste brugertest, \myref{ss:bt2}, blev der opfanget en række af problemer.
-Af disse problemer, er størstedelen af disse mindre problemer, som kun en enkelt bruger er stødt ind i, disse er således kategoriseret som kosmetiske problemer der ikke ville have en kritisk indflydelse på systemets brug.
-På samme tid hænder det at mange af disse problemer kan løses ved blot at læse de to til tre linjer beskrivelse af hver systemdel, som er til rådighed i systemet, noget som testpersonerne også selv har nævnt.
+Mange af disse problemer kan løses af brugeren ved blot at læse de to til tre linjer beskrivelse af hver systemdel, som er til rådighed i systemet, noget som testpersonerne også selv har nævnt.
 
-Dette er dog ikke sandt for alle problemer, de mere alvorlige problemer vil i denne sektion opsummeres.
-Yderligere gives en beskrivelse af problemets mulige oprindelse, såvel som en mulig løsning af problemet.
+Dette er dog ikke sandt for alle problemerne.
+Herunder gives en beskrivelse af problemernes mulige oprindelse, såvel som mulige løsninger af problemerne.
 
 Et af disse problemer eksisterer under indkøbsliste sektionen.
 Her bliver indkøbslister delt ind i to kategorier, ``mine'' såvel som ``delte''.
@@ -45,12 +58,6 @@ Ud fra brugertest er det ikke muligt at konkludere hvor kritisk problemet var, s
 Hertil nævnes det også fra de selvsamme brugere, at de ignorede funktionaliteten, da de alligevel kun havde en liste.
 En af de personer som oprettede deres egen liste, nævnte at det skabte lidt forvirring at listen hedder ``min inkøbsliste'' og derfor ikke tænker videre over hvilken liste der tilføjes til.
 Lignende kommentar blev nævnt for forrige problem, hertil menes det altså nødvendigt at ændre navnet, på denne standard oprettede liste.
-
-De yderligere problemer opfanget igennem testen, består af små kosmetiske problemer, opfanget af enkelte brugere, som ikke har nogen videre konsekvenser for funktionalitetsbrugen.
-Disse problemer indeholder andre måder at sortere tilbud, tvivl om ting bliver gemt og lignende.
-Svaret til nogle af de problemer som er nævnt, er desuden at finde på siden, hvis der blot bruges lidt tid på at læse.
-Dette blev også bekræftet under testet, hvor en person der valgte at gøre brug af dette tekst, ungik sådan forvirring.
-
 
 \section{Udvidelse af systemet}\label{udvidelse}
 
@@ -71,5 +78,5 @@ En madplan kunne implementeres for at give brugeren mulighed for at få foreslå
 Vi fravalgte madplanen da vi mente at den faldt uden for projektets omfang.
 
 Ligeledes blev der også nævnt i vores prototype test, at der var interesse for at se afstanden til de tilbud der vælges på indkøbslisten.
-Denne funktion ville give brugeren mulighed, for bedre at kunne bedømme hvilke tilbud de vil have, hvis afstanden til butikkerne har relevans.
+Denne funktion ville give brugeren mulighed, for bedre at kunne bedømme hvilke tilbud de vil have, hvis afstanden til butikkerne har relevans for brugeren.
 Funktionen blev også fravalgt da den faldt uden for projektets omfang.
