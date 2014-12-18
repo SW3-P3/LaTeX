@@ -1,62 +1,59 @@
 \chapter{Perspektivering}
 I dette kapitel vil muligheden for fremtidig anvendelse samt videreudvikling af systemet diskuteres.
-Herunder eventuelle funktionaliteter der kunne tilføjes til systemet eller eksisterende funktionaliteter der kunne forbedres.
-
-\section{Systemets brugbarhed}
-Udvikling af et system er ikke det eneste der bestemmer dets succes i fremtiden.
-Et system skal også være brugbart i den kontekst som det er udviklet til.
-Gennem både vores to interviewrunder, samt de to brugertest har feedbacken med henblik på at benytte sådan et system, været overvejende positiv.
-Gennem de samme tests og interviews har der været feedback, som vi enten har valgt af vælge fra, eller ikke har kunne nå at implementere.
-En implementering af dette ville øge systemets brugbarhed.
-Ligeledes vil mange funktioner i programmet kunne forbedres, ved at tilpasse dette efter den vores brugerfeedback. 
-
-Dette betyder at vi har et system med nogle gode funktionaliteter, som vores testpersoner synes om, men at systemets funktionalitet både kan forbedres og udvides.
+Herunder eventuelle funktionaliteter, der kunne tilføjes til systemet eller eksisterende funktionaliteter, der kunne forbedres.
 
 \section{Løsning og forbedring af eksisterende funktionalitet i systemet}
-Efter endt udvikling og undervejs i systemudviklingen, er der identificeret forskellige funktionaliteter som kunne forbedres, disse er identificeret af både gruppen og vores testpersoner.
-Disse løsninger og problemer omhandler både brugergrænsefladen, samt det bagvedliggende system.
+Undervejs i systemudviklingen, og efter endt udvikling, er der identificeret forskellige funktionaliteter, som kunne forbedres; disse er identificeret af både gruppen og vores testpersoner.
+Løsninger og problemer omhandler både brugergrænsefladen samt det bagvedliggende system.
 
 \subsection{Systemfunktionaliteter}
-For det første ville bedre data om tilbud gøre oplevelsen i programmet en del bedre.
-Som beskrevet i \myref{api:skoddata} om eTilbudsavisen' API, ville data med kategorier gøre det meget mere overskueligt at browse gennem tilbudene.
-Desuden ville dette data gøre det nemmere at forbedre forskellige funktionaliteter i systemet, sådanne forbedringer kunne være smartere søgefunktioner efter tilbud.
+Bedre tilbudsdata vil gøre brugeroplevelsen i programmet mærkbart bedre.
+Som beskrevet i \myref{api:skoddata} om eTilbudsavisen' API, ville data med kategorier gøre det mere overskueligt at browse gennem tilbudene.
+Desuden ville dette data gøre det nemmere at forbedre forskellige funktionaliteter i systemet.
+Eksempelvis smartere søge-/filtreringsfunktioner ift. tilbud.
 Der mangler også billeder under opskrifter, man kan ikke se hvordan ens mad ender ud.
-Hvis der var mere tid ville der udvikles en måde hvorpå man kunne uploade billeder til hjemmesiden. 
+En anden forbededring ville derfor være muligheden for at uploade billeder, der kunne vises med opskirfter. 
 Dette ville også kræve en større ændring i brugergrænsefladen for at vise billederne.
 
 Testpersonerne har også udtrykt interesse for at kunne se før-priser.
 Før-priserne ville vise besparelsen for tilbuddene i de forskellige butikker.
-Ligeledes kunne det være brugbart at  have normalpriserne for alle varerne i de forskellige butikker.
-Normalpriserne ville gøre det muligt at regne totalpriser ud på ting som indkøbslister samt opskrifter, for hver enkelte butik, vi ser dette som en smart funktion, som vi tror brugerne vil have stor gavn af.
+Ligeledes kunne det være brugbart at have normalpriserne for alle varerne i de forskellige butikker.
+Normalpriserne ville gøre det muligt at regne totalpriser ud på indkøbslister og opskrifter.
+Desuden ville det være muligt at kunne lave en sammenligning af indkøbslistens totalpris ift. hvilken butik man handler i, og på denne måde finde den billigste indkøbstur.
+Vi ser dette som en smart funktion, som vi tror brugerne ville have stor gavn af.
 
 \subsection{Brugergrænseflade}
 Mange af problemerne som testpersonerne stødte ind i ved brugergrænsefladen, kan løses af brugeren, ved blot at læse de to til tre linjer beskrivelse ved hver del af systemet.
-Problemet som de fortæller det er dog, at de ikke læser teksten før de støder ind i fejlen, men så kan teksten heldigvis hjælpe dem videre skulle de sidde fast.
+Problemet som de fortæller det er dog, at de ikke læser teksten før de støder ind i fejlen, men så kan teksten heldigvis hjælpe dem videre, skulle de sidde fast.
 
 Dette er dog ikke sandt for alle problemerne.
 Herunder gives en beskrivelse af problemernes mulige oprindelse, såvel som mulige løsninger af problemerne.
 
 Et af disse problemer eksisterer under indkøbsliste sektionen.
-Her bliver indkøbslister delt ind i to kategorier, \textit{mine} såvel som \textit{delte}.
-Denne opdeling skabte forvirring for brugere, da handlingen at dele en liste, flyttede listen over i delte, det hjalp ikke på dette problem, at brugere under testen delte en liste som hed ``Min Inkøbsliste''.
-Hertil forslås to løsningsmuligheder, en kunne være at en reference til listen eksisterede under begge kategorier, således ville en liste ikke forsvinde fra \textit{mine} når en liste deles.
-En anden mulighed ville være at listen, for vedkommende som oprettede listen, forblev under \textit{mine}, mens at den for brugere den er delt med, placeres under \textit{delte}.
+Her bliver indkøbslister delt ind i to kategorier, \textit{mine} og \textit{delte}.
+Denne opdeling skabte forvirring for brugere, da handlingen \textit{at dele en liste} flyttede listen over i delte.
+Det hjalp ikke på dette problem, at brugere under testen delte en liste som hed ``Min Inkøbsliste''.
+Hertil forslås to løsningsmuligheder. 
+En kunne være, at en reference til listen eksisterede under begge kategorier. 
+Således ville en liste ikke forsvinde fra \textit{mine} når den deltes.
+En anden mulighed ville være, at listen for vedkommende som oprettede listen forblev under \textit{mine}, mens at den for brugere, den er delt med, placeres under \textit{delte}.
+En tredje mulighed, som også blev foreslået af brugerne, var at tilføje et ikon til delte indkøbslister, frem for at adskille i to lister.
 
-Det andet problem der blev opfanget gennem denne test, var et problem vedrørende det at vælge hvilken indkøbsliste, ens aktioner i systemet ageres på.
-Ud fra brugertestene er det ikke muligt at konkludere hvor kritisk problemet var, størstedelen af de testede, benyttede slet ikke funktionaliteten da de valgte at arbejde ud fra den automatisk oprettede indkøbsliste.
+Et andet problem, der blev opfanget gennem denne test, var et problem vedrørende det at vælge, hvilken indkøbsliste ens aktioner i systemet ageres på.
+Ud fra brugertestene er det ikke muligt at konkludere, hvor kritisk problemet var.
+Størstedelen af de testede benyttede slet ikke funktionaliteten, da de valgte at arbejde ud fra den automatisk oprettede indkøbsliste.
 Hertil nævnes det også fra de selvsamme brugere, at de ignorerede funktionaliteten, da de alligevel kun havde én liste.
-En personerne som oprettede deres egen liste, nævnte at det skabte lidt forvirring at den automatiske liste hedder ``Min Indkøbsliste'' og derfor ikke tænker videre over hvilken liste der tilføjes til.
-Lignende kommentarer blev nævnt for forrige problem, hertil menes det altså nødvendigt at ændre navnet, på denne standard oprettede liste.
+En af personerne, som oprettede deres egen liste, nævnte, at det skabte lidt forvirring, at den automatiske liste hedder ``Min Indkøbsliste'' og derfor ikke tænker videre over, hvilken liste der tilføjes til.
+Lignende kommentarer blev nævnt for forrige problem, hertil menes det altså nødvendigt at ændre navnet på denne standard oprettede liste.
 
 \section{Udvidelse af systemet}\label{udvidelse}
+Der er forskellige features som vi gerne så udviklet på programmet. Dels fordi brugerne efterspurgte dem, og dels fordi vi på gruppen synes det ville forbedre oplevelsen på hjemmesiden.
 
-Der er forskellige features som vi gerne så udviklet på programmet, givet mere tid. Dels fordi brugerne efterspurgte dem, og dels fordi vi på gruppen synes det ville forbedre oplevelsen på hjemmesiden.
-
-En mulig forbedring som vi afgrænsede os fra i systemdefinitionen er \textit{tømkøleksabet}.
+En mulig forbedring som vi afgrænsede os fra i systemdefinitionen er \textit{tøm køleskabet}.
 Der blev nævnt i interview og brugertests at en form for udvidet søgning kunne være til fordel at tilføje.
 En sådan funktion ville munde ud i muligheden for at kunne fortælle brugeren om hvilke retter der kunne lave med allerede ejede ingredienser.
 Disse kunne så evt. anbefales ud fra hvilke der var de billigste at lave.
-Funktionen blev fravalgt på baggrund af at vi prioriterede anbefalinger højre, og vi lavede ikke begge ting grundet tiden ikke var til rådighed.
+Funktionen blev fravalgt på baggrund af at vi prioriterede anbefalinger højre.
 
 En anden forbedring eller feature ville være at kunne lægge en kommentar ved sin vurdering af en opskrift.
 På denne måde kunne man udover talvurderingen kan læses hvad andre brugere synes om opskrifterne. 
