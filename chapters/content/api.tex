@@ -5,25 +5,29 @@ Til sidst vil der blive konkluderet på API'ens betydning for projektet.
 
 User story 7 fortæller at man skal kunne se tilbud.
 API'et gør det muligt at indhente infomation om butikker og deres tilbud.
-Dette API udbydes af den danske virksomhed eTilbudsavis.dk, og er af typen Representational state transfer (REST).
+Det anvendte API udbydes af den danske virksomhed eTilbudsavis og forgår over HTTPS protokollen.
 
 \subsection{Teori}
-REST er en arkitektur anvendt over HTTP(S) standarden. 
-I forbindelse med eTilbudsavisen anvendes der HTTP status koder, som signalerer hvorvidt en given forespørgsel er godkendt, afvist eller lign.
+For at kommunikere med API'et skal der konstrueres en forespørgsel og modtages et svar.
 
 \subsubsection{API-Kald}
-For at kommunikere med API'et skal der konstrueres en forespørgsel.
-Inden for REST, bruges der de fire mest almindelige HTTP metoder, som er POST, GET, PUT og DELETE.
-Disse fire metoder findes tilsvarende i CRUD som: CREATE, READ, UPDATE, DELETE.
+eTilbudsavis' API er et  understøtter de fire mest almindelige HTTP(S) metoder, som er POST, GET, PUT og DELETE.
+Disse fire metoder findes tilsvarende i CRUD, som ofte bruges i databaser, og er: CREATE, READ, UPDATE, DELETE.
+API'et er opbygget efter REST arkitekturen og forsøger at anvende passende HTTP(S) status koder og headers når disse er brugbare.
+REST arkitekturen kan være svær at definere da der ikke er nogen standard, og det blot er en arkitekturisk stil. \citep{resttwo} 
+I brugen her kan man tænke på REST som CRUD over HTTP(S).
+Der bruges HTTP status koderne \class{2xx} som en sucess, \class{3xx} som en vidresendelse, \class{4xx} som en klient fejl og \class{5xx} som en serverfejl. 
+Eksempelvis på dette kunne være \class{200 OK} som viser at alt er sket i henhold til efterspørgslen, samt at datet er leveret. 
 
-\textbf{GET}
-returnerer data, typisk som JSON eller XML og med HTTP svarkoden 200 (OK).
-eTilbudsavis' API sender JSON.
-Svarer til READ i CRUD.
+eTilbudsavis' API sender og modtager alt data i formatet JSON (JavaScript Objet Notation).
 
 \textbf{POST}
 bruges til at oprette nye ressourcer.
 Svarer til CREATE i CRUD.
+
+\textbf{GET}
+returnerer data, typisk som JSON eller XML og med HTTP svarkoden 200 (OK).
+Svarer til READ i CRUD.
 
 \textbf{PUT}
 bruges til at opdatere information, eksempelvis til at forlænge en session.
@@ -37,7 +41,8 @@ Svarer til DELETE i CRUD.
 eTilbudsavis' API er kun et halv-offentligt API, dvs. at man skal have en API-nøgle (``APIKEY'') og dertilhørende hemmelighed (``Secret''), som vi har modtaget eTilbudsavis.
 API'en er placeret på \textit{https://api.etilbudsavis.dk/v2/}. \citep{eTilAPI}
 
-For at kommunikere med API'en fra C\#-kode anvendes værktøjet RestSharp. RestSharp er en simpel REST og HTTP API klient for et .NET miljø. \citep{RestSharp}
+For at kommunikere med API'en fra C\#-kode anvendes værktøjet RestSharp. 
+RestSharp er en simpel REST og HTTP API klient for et .NET miljø. \citep{RestSharp}
 For at kunne bruge informationen laves der en klasse, som svarer til det JSON som API'en sender tilbage.
 
 \subsection{Vurdering}\label{api:skoddata}
