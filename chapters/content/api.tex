@@ -11,15 +11,15 @@ Det anvendte API udbydes af den danske virksomhed eTilbudsavis og forgår over H
 For at kommunikere med API'et skal der konstrueres en forespørgsel og modtages et svar.
 
 \subsubsection{API-Kald}
-eTilbudsavis' API er et  understøtter de fire mest almindelige HTTP(S) metoder, som er POST, GET, PUT og DELETE.
+eTilbudsavis' API understøtter de fire mest almindelige HTTP(S) metoder, som er POST, GET, PUT og DELETE.
 Disse fire metoder findes tilsvarende i CRUD, som ofte bruges i databaser, og er: CREATE, READ, UPDATE, DELETE.
 API'et er opbygget efter REST arkitekturen og forsøger at anvende passende HTTP(S) status koder og headers når disse er brugbare.
 REST arkitekturen kan være svær at definere da der ikke er nogen standard, og det blot er en arkitekturisk stil. \citep{resttwo} 
 I brugen her kan man tænke på REST som CRUD over HTTP(S).
-Der bruges HTTP status koderne \class{2xx} som en sucess, \class{3xx} som en vidresendelse, \class{4xx} som en klient fejl og \class{5xx} som en serverfejl. 
-Eksempelvis på dette kunne være \class{200 OK} som viser at alt er sket i henhold til efterspørgslen, samt at datet er leveret. 
+Der bruges HTTP status koderne \class{2xx} som en sucess, \class{3xx} som en videresendelse, \class{4xx} som en klientfejl og \class{5xx} som en serverfejl. 
+Eksempelvis kunne dette være \class{200 OK} som viser at alt er sket i henhold til efterspørgslen, samt at dataet er leveret. 
 
-eTilbudsavis' API sender og modtager alt data i formatet JSON (JavaScript Objet Notation).
+eTilbudsavis' API sender og modtager alt data i formatet JSON (JavaScript Object Notation).
 
 \textbf{POST}
 bruges til at oprette nye ressourcer.
@@ -38,7 +38,7 @@ bruges til at fjerne ressourcer.
 Svarer til DELETE i CRUD.
 
 \subsection{Design}
-eTilbudsavis' API er kun et halv-offentligt API, dvs. at man skal have en API-nøgle (``APIKEY'') og dertilhørende hemmelighed (``Secret''), som vi har modtaget eTilbudsavis.
+eTilbudsavis' API er kun et halv-offentligt API, dvs. at man skal have en API-nøgle (APIKEY) og dertilhørende hemmelighed (Secret), som vi har modtaget eTilbudsavis.
 API'en er placeret på \textit{https://api.etilbudsavis.dk/v2/}. \citep{eTilAPI}
 
 For at kommunikere med API'en fra C\#-kode anvendes værktøjet RestSharp. 
