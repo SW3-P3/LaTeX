@@ -1,37 +1,44 @@
 \section{Black Box Testing}\label{BBtest}
-For at sikre funktionaliteterne i systemets korrekthed, er der konstrueret unit tests, disse kan findes i \class{ProjectFood.Tests} projektet.
-En af de metoder, som er taget i brug, er Black Box Testing også kaldt Behavioral Testing.
-En sådan test udføres ved at give et input til en del af et kørbart system, og derefter verificere at output er som forventet.
-Det eneste i denne process der er kendt af testpersonen er input og output, selve funktionaliteten er således gemt i en ``Black Box''. \citep{Black_Box}
+For at sikre systemets funktionaliteters korrekthed er der konstrueret unit tests.
+Disse kan findes i \class{ProjectFood.Tests} projektet.
+En af de metoder som er taget i brug, er Black Box Testing også kaldet Behavioral Testing.
+En sådan test udføres ved at give et input til en del af et kørbart system, og derefter verificere man, at output er som forventet.
+Det eneste, der i denne process er kendt af testpersonen, er input og output, selve funktionaliteten er således gemt i en ``Black Box''. \citep{Black_Box}
 
 Til dette formål anvendes NUnit frameworket, som er et unit-testing framework til .NET-platformen.
 Vi bruger NUnit attributten \class{[TestFixture]} på testklasserne, dette gør det muligt at have \class{[SetUp]} og \class{[TearDown]} i sine testklasser.
-En metode med attributten \class{[Setup]} køres hver gang inden en test køres, og forbereder system til test.
+En metode med attributten \class{[Setup]} køres forud for en test, og forbereder systemet til test.
 \class{[TearDown]} køres efter hver test og kan bruges til at frigive hukommelse og andet oprydning. 
-Ved NUnit anvendes desuden attributten \class{Test} til at markere at en metode, i en klasse markeret med \class{TestFixture}, er en test.
+Ved NUnit anvendes desuden attributten \class{Test} til at markere, at en metode, i en klasse markeret med \class{TestFixture}, er en test.
 For at konfigurere en test anvedes der en testcase, på følge format: \class{[TestCase(inputA, inputB, Result=value)]}.
-Her er inputA og inputB de paremeter som metoden tager, og value, den forventede returværdi.
+Her er inputA og inputB de paremeter som metoden tager, og value den forventede returværdi.
 
 Typisk forgår unit tests af de metoder, som ikke afhænger af andre metoder først.
-Først efter det bør man teste de metoder som kalder disse uafhængige metoder. \citep{Unit_Testing}
+Først efter det bør man teste de metoder, som kalder disse uafhængige metoder. \citep{Unit_Testing}
 
-For at oprette tests, følges AAA mønsteret (Act, Assert, Arrange), ved at følge dette mønster, øger det konsistensen og dermed overblikket på tværs at unit testene.
+For at oprette tests, følges AAA mønsteret (\textit{Act, Assert, Arrange}), ved at følge dette mønster, øger det konsistensen og dermed overblikket på tværs at unit testene.
 \citep{Writing_Your_Tests}
-De tre dele af AAA mønsteret repræsentere respektivt:
-\begin{itemize}
-  \item \textbf{Arrange:} Her initialiseres det data der skal bruges i testen. Da der benyttes NUnit sker dette udelukkende for mange tests i \class{Initilize()} metoden, der er dog nogle som har sin egen Arrange sektion som initialisere data der kun skal bruges i den enkelte test.
-  \item \textbf{Act:} Her kaldes den kode som ønskes testet, såvel som gemmer eventuelle resultater i variabler, hvilke bruges i Assert.
-  \item \textbf{Assert:} Her specificeres hvad der skal være sket i act, og tjekkes om ændringer i data og eventuelle resultater, stemmer overens med det forventede resultat af metode kaldet.
-\end{itemize}
-Der benyttes i nogle tests også \textbf{PreCondition}, dette bruges til at sikre at de ændringer der foretages i \textbf{Act} ikke er foretaget inden Act. 
-Dermed sikres der at \textbf{Assert} ikke blot giver positive resultater fordi det som tjekkes for allerede var sandt før \textbf{Act}.
-Givet at testen er skrevet korrekt kan der ved brug af dette system findes potentielle fejl i systemets metoder.
+De tre dele af AAA mønsteret repræsentere henholdsvis:
+\begin{description}
+  \item[Arrange]\hfill\\ 
+  Her initialiseres det data, der skal bruges i testen. 
+  Da der benyttes NUnit sker dette udelukkende for mange tests i \class{Initilize()} metoden.
+  Der er dog nogle, som har sin egen Arrange sektion, som initialiserer data, der kun skal bruges i den enkelte test.
+  \item[Act]\hfill\\ 
+  Her kaldes den kode, som ønskes testet.
+  Derudover gemmes eventuelle resultater i variabler, hvilke bruges i Assert.
+  \item[Assert]\hfill\\
+  Her specificeres, hvad der skal være sket i act, og der tjekkes om ændringer i data og eventuelle resultater, stemmer overens med det forventede resultat af metode kaldet.
+\end{description}
+Der benyttes i nogle tests også \textbf{PreCondition}, hvilket bruges til at sikre, at de ændringer der foretages i \textit{Act} ikke er foretaget inden Act. 
+Dermed sikres der, at \textit{Assert} ikke blot giver positive resultater, fordi det som tjekkes for allerede var sandt før \textit{Act}.
+Givet at testen er skrevet korrekt, kan der ved brug af dette system findes potentielle fejl i systemets metoder.
 
 
-Til hver enkelt testede funktionalitet oprettes tests der går igennem mange af kodeeksekveringsstierne i metoderne som testes, for at være sikker på at de agerer som det forventet.
+Til hver enkelt testede funktionalitet oprettes tests, der går igennem mange af kodeeksekveringsstierne i metoderne som testes, for at være sikker på at de agerer som forventet.
 På \myref{lsttest} ses en test for metoden \class{ShareList} i \class{ShoppingListcontroller}. 
-I testen tjekkes der hvorvidt den \class{User} der deles en \class{ShoppingList} med, har den delte \class{ShoppingList} efter kaldet.
-Her er en Arrange her for at oprette en \class{User} der kan deles med, som ikke eksisterer i \class{Initilize()} metoden.
+I testen tjekkes der, hvorvidt den \class{User} der deles en \class{ShoppingList} med, har den delte \class{ShoppingList} efter kaldet.
+Der er en Arrange her for at oprette en \class{User}, der kan deles med, som ikke eksisterer i \class{Initilize()} metoden.
 
 \begin{lstlisting}[caption={Test for metoden \class{ShareList}.}, label=lsttest]
 {
@@ -68,25 +75,27 @@ Her er en Arrange her for at oprette en \class{User} der kan deles med, som ikke
 }        
 \end{lstlisting}
 
-Der findes desuden en lignende test som kaldes \class{[...]/\_ShouldNotShare}, som ikke opfylder alle metodens kriterier, og derfor fejler, hvilket så tjekkes igennem asserts.
-Fordelen ved at bruge Unit tests som Black Box tests frem for andre, er muligheden for at køre tests nemt igen og igen.
-Dette er en stor fordel når man arbejder iterativt.
-Dette er en mulighed der ellers ikke nødvendigvis er tilgængelig for alle typer af Black Box tests, eksempelvis hvis systemet testes igennem brug.
+Der findes desuden en lignende test, som kaldes \class{[...]/\_ShouldNotShare}, som ikke opfylder alle metodens kriterier, og derfor fejler, hvilket så tjekkes igennem asserts.
+Fordelen ved at bruge Unit tests som Black Box tests, frem for andre, er muligheden for at køre tests nemt gentagende gange.
+Dette er en stor fordel, når man arbejder iterativt.
+Dette er en mulighed, der ellers ikke nødvendigvis er tilgængelig for alle typer af Black Box tests, eksempelvis hvis systemet testes igennem brug.
 Disse tests ville skulle udføres manuelt hver gang, hvor dette ikke er tilfældet ved brug af unit testing.
-Dette kommer til gavn når der laves eventuelle ændringer i systemet i en iteration, alle tests lavet førhen kan køres for at se om ændringerne har haft nogen effekt på det ellers før funktionelle system. 
-Der benyttes yderligere et library kaldet moq, dette er et library lavet for at kunne oprette mock data, samt de dependencies der nu må høre til.
-I vores tests benyttes dette til at simulere hvorom en bruger er authenticated eller ej, dette tillader at teste funktionaliteter der kræver at en bruger er authenticated, såvel som at teste hvad der sker, hvis en bruger ikke er authenticated.
+Dette kommer til gavn, når der laves eventuelle ændringer i systemet i en iteration.
+Alle tests lavet førhen kan køres, for at se om ændringerne har haft nogen effekt på det ellers før funktionelle system. 
+Der benyttes yderligere et library kaldet moq, som er et library lavet for at kunne oprette \textit{mock data}, samt de \textit{dependencies} der nu måtte høre til.
+I vores tests benyttes dette til at simulere, om en bruger er autentificeret eller ej.
+Dette tillader at teste funktionaliteter, der kræver at en bruger er autentificeret, såvel som at teste hvad der sker, hvis en bruger ikke er autentificeret.
 
 Der benyttes endvidere NCover Bolt til Visual Studio. 
-Dette hjælper med at vise hvilke kodeeksekveringsstier der besøges i unit testene, hvilket giver os testenes code coverage procent.
+Dette hjælper med at vise, hvilke kodeeksekveringsstier der besøges i unit testene, som så giver os testenes \textit{code coverage} procent.
 Oftest sigter man efter 80\% code coverage i projekter. \citep{Code_Coverage}
 De testede komponenter består af komponenterne beskrevet i \myref{subsec:komp} om hjemmesidens arkitektur.
-Dette drejer sig om filerne: \class{RecipeController.cs}, \class{ShoppingListController.cs}, \class{OfferController.cs}, \class{UserController.cs},  og en lille del af \class{AccountController.cs}.
+Dette drejer sig om filerne: \class{RecipeController.cs}, \class{ShoppingListController.cs}, \class{OfferController.cs}, \class{UserController.cs}, og en lille del af \class{AccountController.cs}.
 
-\class{AccountController.cs} testes kun for metoden \class{Register()} da dette er det eneste sted vi selv har kodet i denne controller, resten af controlleren er en del Microsoft OWIN.
-Dette giver dermed kun 10\% code coverage i denne fil, imens de resterende filer foruden \class{OfferController.cs}  har 80\% eller mere.
-\class{OfferController.cs} er kun på 73\% da denne indeholder \class{ImportOffers()} der henter tilbudene fra eTilbudsavis' API. 
-Denne metode er ikke testet da den tager op imod 8 minutter før den afsluttes, hvilket er problematisk når unit tests skal være hurtige og effektive.
+\class{AccountController.cs} testes kun for metoden \class{Register()}, da dette er det eneste sted, vi selv har kodet i denne controller; resten af controlleren er en del af Microsoft OWIN og ASP.NET.
+Dette giver dermed kun 10\% code coverage i denne fil, imens de resterende filer, foruden \class{OfferController.cs}, har 80\% eller mere.
+\class{OfferController.cs} er kun på 73\%, da denne indeholder \class{ImportOffers()}, der henter tilbudene fra eTilbudsavis' API. 
+Denne metode er ikke testet, da det tager op imod 8 minutter før den afsluttes, hvilket er problematisk, når unit tests skal være hurtige og effektive.
 
-Code Coverage tallet viser os at meget af koden er testet.
-Med denne coverage og det faktum at vores tests ikke fejler, konkluderes det ikke nødvendigvis at koden er af høj kvalitet, men blot at koden for de testede værdier opfører sig som forventet.
+\textit{Code Coverage} tallet viser os, at meget af koden er testet.
+Med denne dækning og det faktum, at vores tests ikke fejler, konkluderes det ikke nødvendigvis, at koden er af høj kvalitet, men blot at koden for de testede værdier opfører sig som forventet.
