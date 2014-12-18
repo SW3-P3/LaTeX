@@ -34,6 +34,9 @@ Der er en adgang herfra til indkøbslisterne for at kunne tilføje ingredienser 
 \textit{Overvågningskomponenten} står for, at overvågningen af tilbud for en specifik vare, kan foregå.
 Der dannes en afhængighed herfra og til indkøbslistekomponenten, da overvågningslisten gør brug af de metoder, som stilles til rådighed i dette komponent såsom at tilføje varer og finde tilbud.
 
+Komponenterne på \myref{figure:komp} har lav kobling med hinanden.
+Dette skyldes, at de forskelliges komponenters implementeringer let kan skiftes ud uden at skulle ændre på de andre komponenters kode.
+
 Der er desuden, for at teste programmet, udviklet et administrationspanel, i \class{AdminPanelController.cs}. 
 Der er forskellige funktioner heri, som gør det muligt at ændre systemtiden i programmet, hente tilbud ind via JSON data gemt i en lokal fil, og meget mere.
 
